@@ -1,7 +1,5 @@
-macos: [
+macos : [
   kitty
-  tmux
-  nvim/nvchad
   rectangle
   chrome
   snipaste
@@ -26,4 +24,27 @@ macos: [
   qq
   spotify
   網易雲
+
+  rustup
+  brew: [
+    tmux
+    nvim/nvchad
+    nim, nimlsp
+    zig - HEAD
+    zls(github)
+
+    clang-format
+    stylua
+    ripgrep
+    fzf
+  ]
 ]
+
+arch : [
+
+]
+
+windows : [
+
+]
+

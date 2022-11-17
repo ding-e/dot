@@ -160,8 +160,8 @@ return {
             callback = function()
                -- require("nvim-tree").toggle(false, true)
                vim.cmd [[
-                  " PackerLoad nvim-tree.lua
-                  " NvimTreeToggle
+                  PackerLoad nvim-tree.lua
+                  NvimTreeToggle
                   " vertical wincmd l
                   " wincmd w
                   PackerCompile

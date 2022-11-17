@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# nvchad - 配置
+ln -sf "$PWD/nvim/custom" "$HOME/.config/nvim/lua/custom"
+

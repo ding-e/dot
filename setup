@@ -1,5 +1,15 @@
 #!/bin/sh
 
-# nvchad - 配置
-ln -sf "$PWD/nvim/custom" "$HOME/.config/nvim/lua/custom"
+# nvim nvchad
+ln -sf "$PWD/nvim-nvchad/custom" "$HOME/.config/nvim/lua"
+
+# vim
+mkdir "$HOME/.vim/" "$HOME/.vim/autoload" "$HOME/.vim/plugged"
+ln -sf "$PWD/vim/autoload/plug.vim" "$HOME/.vim/autoload/plug.vim"
+ln -sf "$PWD/d.vimrc" "$HOME/.vimrc"
+
+# zsh
+ln -sf "$PWD/ohmyzsh/Chicago95.zsh-theme" "$HOME/.oh-my-zsh/themes/"
+ln -sf "$PWD/ohmyzsh/Chicago95_Dinge.zsh-theme" "$HOME/.oh-my-zsh/themes/"
+ln -sf "$PWD/d.zshrc" "$HOME/.zshrc"
 

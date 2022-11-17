@@ -8,9 +8,9 @@ export ZSH="/Users/dinge/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell"
 # ZSH_THEME="Chicago95"
-ZSH_THEME="Chicago95_Dinge"
+# ZSH_THEME="Chicago95_Dinge"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -109,6 +109,8 @@ alias vi="/usr/bin/vim"
 alias vim="nvim"
 #alias vim="TERM=xterm-256color /usr/bin/vim"
 #alias vimtutor="LANG=zh_CN.utf-8 vimtutor"
+
+alias dot="cd ~/Documents/Core/Workspace/dot/ && vim"
 
 # 解决tmux clear 提示 "terminals database is inaccessible" 问题
 # [x] alias tmux="TERM=xterm-256color tmux"

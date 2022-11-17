@@ -1,0 +1,29 @@
+macos: [
+  kitty
+  tmux
+  nvim/nvchad
+  rectangle
+  chrome
+  snipaste
+  vscode
+  sublime
+  dash
+  aseprite
+  wacom
+  unity
+  godot
+  blender
+  tiled
+  ldtk
+  steam
+  avira
+  lulu
+  radio silence
+  tencent lemon
+  youdao
+  discord
+  wechat
+  qq
+  spotify
+  網易雲
+]

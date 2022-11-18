@@ -1,0 +1,8 @@
+{
+   "languageserver": {
+       "zls" : {
+           "command": "~/Core/Workspace/zig/lsp/zls/zig-out/bin/zls",
+           "filetypes": ["zig"]
+       }
+   }
+}

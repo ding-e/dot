@@ -2,15 +2,40 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/dinge/.oh-my-zsh"
+export ZSH="/home/dinge/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# af-magic / tjkirch / ys / alanpeabody
+# ZSH_THEME="robbyrussell"
+
+# ---------------------
+# export LC_ALL=C
+# unset LC_ALL
+
+# ---------------------
+# # if [ "$TERM" = "linux" -o  "$TERM" = "screen" ];then
+# if [ "$TERM" != "linux" ];then
+#   # unset LC_ALL
+#   # export LANGUAGE=zh_CN
+#   # export LANG=zh_CN.UTF-8
+#   if [ "$TERM" = "screen" ];then
+#     ZSH_THEME="tjkirch"
+#   else
+#     ZSH_THEME="robbyrussell"
+#   fi
+# else
+#   # export LC_ALL=C
+#   # export LANGUAGE=en_US
+#   # export LANG=en_US.UTF-8
+#   ZSH_THEME="tjkirch"
+# fi
+
+# ---------------------
 # ZSH_THEME="Chicago95"
-# ZSH_THEME="Chicago95_Dinge"
+ZSH_THEME="Chicago95_Dinge"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -25,13 +50,14 @@ ZSH_THEME="robbyrussell"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+# export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -46,9 +72,6 @@ ZSH_THEME="robbyrussell"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -102,30 +125,100 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# -------------- DINGE -------------- #
-alias c="clear"
+
+# ==========================================
+## DING.YI - START
+
+# alias ---------
+# alias open="pcmanfm"
+alias open="thunar"
 alias ra="ranger"
-alias vi="/usr/bin/vim"
-alias vim="nvim"
-#alias vim="TERM=xterm-256color /usr/bin/vim"
-#alias vimtutor="LANG=zh_CN.utf-8 vimtutor"
+alias s="neofetch"
+alias c="clear"
 
-# workspace
-alias dot="cd ~/Documents/Core/Workspace/dot/ && vim"
-alias cnim="cd ~/Documents/Core/Workspace/nim/"
-alias czig="cd ~/Documents/Core/Workspace/zig/"
+alias vi="nvim"
+alias vim="TERM=xterm-256color /usr/bin/vim"
+alias vimtutor="LANG=zh_CN.utf-8 vimtutor"
 
-# 解决tmux clear 提示 "terminals database is inaccessible" 问题
-# [x] alias tmux="TERM=xterm-256color tmux"
-#if [ "$TERM" = "tmux-256color" ];then
-#    #export TERMINFO=/usr/share/terminfo
-#    export TERM=xterm-256color
-#else
-#fi
+# alias code="code --disable-gpu"
+# alias eServer="egretServer"
 
-# vpn
+# 当临时连接的外接键盘，需要再次设置键位
+alias keyboardset="xmodmap ~/.Xmodmap"
+
+# NetworkManager systemd
+alias netstart="sudo systemctl start NetworkManager"
+alias netstop="sudo systemctl stop NetworkManager"
+
+# vmware net systemd
+alias vmnetstart="sudo systemctl start vmware-networks.service"
+alias vmnetstop="sudo systemctl stop vmware-networks.service"
+
+# vmware usb systemd
+alias vmusbstart="sudo systemctl start vmware-usbarbitrator.service"
+alias vmnetstop="sudo systemctl stop vmware-usbarbitrator.service"
+
+# vmware 共享 systemd
+alias vmhoststart="sudo systemctl start vmware-hostd.service"
+alias vmhoststop="sudo systemctl stop vmware-hostd.service"
+
+# bluetooth systemd
+alias bluestart="sudo systemctl start bluetooth"
+alias bluestop="sudo systemctl stop bluetooth"
+
+# sshd systemd
+alias sshstart="sudo systemctl start sshd"
+alias sshstop="sudo systemctl stop sshd"
+
+# docker systemd
+alias dockerstart="sudo systemctl start docker"
+alias dockerstop="sudo systemctl stop docker"
+# alias docker="sudo docker"
+
+# path ---------
+# /dinge/software/bin
+export PATH="/home/dinge/core/software/bin:$PATH"
+# /home/dinge/.local/bin
+export PATH="/home/dinge/.local/bin:$PATH"
+
+# egret
+# export PATH="/dinge/software/egret/egret-core/tools/bin:$PATH"
+# # export PATH="/dinge/software/egret/egret-core-5.2.33/tools/bin:$PATH"
+
+# godot engine
+# export GODOT_BIN="/dinge/software/bin/godot-50-v3.2.2"
+
+# npm
+export PATH="/home/dinge/core/library/npm-global/bin:$PATH"
+
+# nim lang
+export PATH="/home/dinge/.nimble/bin:$PATH"
+
+# go lang
+export GOROOT=/usr/lib/go
+export GOPATH=/home/dinge/core/workspace/go
+export GOBIN=/home/dinge/core/workspace/go/bin
+export PATH=$PATH:$GOROOT/bin:$GOBIN
+
+# vpn ssr
+# export http_proxy="http://127.0.0.1:12333"
+# export https_proxy="http://127.0.0.1:12333"
+
+# ubuntu gdm login page
+alias gdmstart="sudo systemctl start gdm"
+alias gdmstop="sudo systemctl stop gdm"
+
+# clash
+alias clash="/home/dinge/core/software/clash/clash -d /home/dinge/core/software/clash/"
+
+# net cat
+alias net_hogs="sudo nethogs ens160"
+alias net_iftop="sudo iftop -i ens160"
+alias net_nload="nload ens160 -u K"
+alias net_iptraf="sudo iptraf-ng"
+
 alias vpnstart="export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5://127.0.0.1:7891;echo \"Set proxy successfully\" "
-alias vpnstop="unset http_proxy;unset https_proxy;unset all_proxy;echo \"Unset proxy successfully\" " 
+alias vpnstop="unset http_proxy;unset https_proxy;unset all_proxy;echo \"Unset proxy successfully\" "
 alias ipcn="curl myip.ipip.net"
 alias ip="curl ip.sb"
 
@@ -134,9 +227,9 @@ function proxy_on() {
     export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
     export http_proxy="http://127.0.0.1:7890"
     export https_proxy=$http_proxy
-    export all_proxy="socks5://127.0.0.1:7890"
-    #curl www.google.com
-    #echo -e "\n"
+    export all_proxy=socks5://127.0.0.1:7890
+    curl www.google.com
+    echo -e "\n"
     echo -e "\033[32m已开启代理\033[0m"
 }
 # shell run -> proxy_off
@@ -147,56 +240,13 @@ function proxy_off() {
     echo -e "已关闭代理"
 }
 
-# fzf 模糊搜索
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# vpn v2ray
+#export http_proxy="http://127.0.0.1:7890"
+#export https_proxy="http://127.0.0.1:7890"
 
+# powerline
+# powerline-daemon -q
+# . /usr/lib/python3.8/site-packages/powerline/bindings/zsh/powerline.zsh
 
-# go lang
-# #export GOROOT=/opt/homebrew/Cellar/go/1.17.7/libexec
-# #export GOPATH=/Users/dinge/Documents//Workspace/go
-# #export GOBIN=/Users/dinge/Documents/Core/Workspace/go/bin
-# #export PATH=$PATH:$GOROOT/bin:$GOBIN
-# export GOPATH=/Users/dinge/Documents/Core/Workspace/go
-# export GOBIN=$GOPATH/bin
-# export PATH=$PATH:$GOBIN:$GOPATH
-
-# haxe lang
-# #export HAXE_STD_PATH="/opt/homebrew/lib/haxe/std"
-# alias openfl="haxelib run openfl"
-# alias lime="haxelib run lime"
-# alias flixel="haxelib run flixel-tools"
-
-# nim lang
-# 安装nimlsp, 编译nimlsp必须制定源码目录
-# nimble install \
-  # -p:-d:explicitSourcePath:/Users/dinge/Documents/Core/Workspace/nim/lsp/Nim-1.6.8 \
-  # nimlsp --verbose
-export NIMBIN=/Users/dinge/.nimble/bin
-export PATH=$PATH:$NIMBIN
-#export NIMSUGGEST=/opt/homebrew/bin/nimsuggest
-#export PATH=$PATH:$NIMSUGGEST
-
-# zig lang - brew install zig --HEAD
-# export ZIGBIN=/Users/dinge/Documents/Core/Workspace/zig/bin/lang/zig-macos-aarch64-0.10.0
-#export ZIGBIN=/Users/dinge/Documents/Core/Workspace/zig/bin/lang/zig-macos-aarch64-0.11.0
-#export PATH=$ZIGBIN:$PATH
-
-# zls - zig language server
-# zls -> zls.json path: /Users/dinge/Library/Application\ Support/zls.json
-# export ZLSBIN=/Users/dinge/Documents/Core/Workspace/zig/bin/lsp/zls-0.10.0/zig-out/bin
-export ZLSBIN=/Users/dinge/Documents/Core/Workspace/zig/bin/lsp/zls-master/zig-out/bin
-export PATH=$ZLSBIN:$PATH
-
-# brew
-export PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$PATH
-export CPATH=/opt/homebrew/include:$CPATH
-export LIBRARY_PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$LIBRARY_PATH
-export LD_LIBRARY_PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$LD_LIBRARY_PATH
-export DYLD_LIBRARY_PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$DYLD_LIBRARY_PATH
-
-export HOMEBREW_NO_AUTO_UPDATE=1
-export HOMEBREW_NO_INSTALL_CLEANUP=1
-
-# vim
-# export MYVIMRC=/Users/dinge/.config/nvim/init.vim
-
+# DING.YI - END
+# ==========================================

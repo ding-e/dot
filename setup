@@ -13,3 +13,10 @@ ln -sf "$PWD/ohmyzsh/Chicago95.zsh-theme" "$HOME/.oh-my-zsh/themes/"
 ln -sf "$PWD/ohmyzsh/Chicago95_Dinge.zsh-theme" "$HOME/.oh-my-zsh/themes/"
 ln -sf "$PWD/d.zshrc" "$HOME/.zshrc"
 
+# zls
+ln -sf "$PWD/zls/zls.json" "$HOME/Library/Application Support/zls.json"
+
+# vscode
+ln -sf "$PWD/vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
+ln -sf "$PWD/vscode/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json"
+

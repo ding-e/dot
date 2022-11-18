@@ -1,0 +1,79 @@
+// 将键绑定放在此文件中以覆盖默认值auto[]
+[
+    {
+        "key": "ctrl+shift+c ctrl+shift+a",
+        "command": "workbench.action.toggleActivityBarVisibility"
+    },
+    // {
+    //     "key": "ctrl+shift+c ctrl+shift+c",
+    //     "command": "workbench.action.toggleMenuBar"
+    // },
+    // ---------------------------------------------------------------------------------
+    
+    // {
+    //     "key": "shift+alt+d",
+    //     "command": "godot-tool.list_native_classes"
+    // },
+    // {
+    //     "key": "shift+alt+r",
+    //     "command": "godot-tool.run_project"
+    // },
+    // {
+    //     "key": "shift+alt+e",
+    //     "command": "godot-tool.open_editor"
+    // },
+    // ---------------------------------------------------------------------------------
+
+    { // 终端面板开启/关闭，以前是ctrl+`
+        "key": "ctrl+i",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    { // 在终端面板中切换终端标签
+        "key": "ctrl+`", // "shift+`",
+        "command": "workbench.action.terminal.focusNext"
+    },
+    { // 智能建议 - 默认为：command+i 或 option+esc
+        "key": "alt+/",
+        "command": "editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
+    },
+    { // 条状到定义 - 默认为：f12
+        "key": "alt+.",
+        "command": "editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    // ---------------------------------------------------------------------------------
+
+    // {
+    //     "key": "alt+backspace",
+    //     "command": "deleteAllLeft"
+    // },
+    // {
+    //     "key": "alt+delete",
+    //     "command": "deleteAllRight"
+    // },
+    // {
+    //     "key": "alt+delete",
+    //     "command": "-notebook.cell.clearOutputs",
+    //     "when": "notebookCellHasOutputs && notebookEditorFocused && !inputFocus"
+    // },
+    // ---------------------------------------------------------------------------------
+
+    // -------------------------------------------------------
+    // vscode-neovim - jj / jk 代替esc
+    // -------------------------------------------------------
+    {
+        "command": "vscode-neovim.compositeEscape1",
+        "key": "j",
+        "when": "neovim.mode == insert && editorTextFocus",
+        "args": "j"
+    },
+    {
+        "command": "vscode-neovim.compositeEscape2",
+        "key": "k",
+        "when": "neovim.mode == insert && editorTextFocus",
+        "args": "k"
+    },
+    // -------------------------------------------------------
+]

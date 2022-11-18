@@ -1,0 +1,242 @@
+{
+    // ==============================
+    // 插件
+    // ==============================
+    // ------------ c# ------------
+    // "omnisharp.monoPath": "/Library/Frameworks/Mono.framework/Versions/Current",
+    // "omnisharp.path": "latest",
+    // 是否显示c#文件的 “reference” 提示
+    "csharp.referencesCodeLens.enabled": false,
+    // 是否禁止提示依赖问题恢复弹窗
+    "csharp.suppressDotnetRestoreNotification": true,
+    // 是否禁用unity项目omnisharp的警告提示
+    "omnisharp.disableMSBuildDiagnosticWarning": true,
+    // ------------ nim lang------------
+    // "nim.buildOnSave": true,
+    "nim.enableNimsuggest": true,
+    "nim.nimsuggestRestartTimeout": 10,
+    "nim.lintOnSave": false,
+    "nim.logNimsuggest": true,
+    // "nim.provider": "lsp",
+    // "nim.nimlsp": "/home/dinge/.nimble/pkgs/nimlsp-0.2.4/nimlsp",
+    // ------------ c++ ------------
+    // "C_Cpp.updateChannel": "Insiders",
+    // ------------ rust ------------
+    "rust-analyzer.procMacro.enable": true,
+    "rust-analyzer.trace.extension": true,
+    "rust-analyzer.lens.implementations": false,
+    "rust-analyzer.inlayHints.enable": false,
+    // "rust-analyzer.inlayHints.parameterHints": false,
+    // "rust-analyzer.inlayHints.typeHints": false,
+    // "rust-analyzer.inlayHints.closureReturnTypeHints": false,
+    // ------------ godot ------------
+    // Godot-tool
+    "godot_tools.gdscript_lsp_server_port": 6008,
+    // GD-Script
+    // "godot_tools.editor_path": "/dinge/software/godot/godot-3.2.3-stable/bin/godot.x11.opt.tools.64.strip",
+    "godot_tools.editor_path": "/usr/bin/godot",
+    "godot.csharp.executablePath": "/Applications/Godot_mono.app/Contents/MacOS/Godot",
+    // ------------ d lang ------------
+    // "d.servedPath": "/home/dinge/.local/share/code-d/bin/serve-d/serve-d",
+    // ------------ go lang ------------
+    "go.useLanguageServer": true,
+    "go.toolsManagement.autoUpdate": true,
+    "[go]": {
+        "editor.insertSpaces": true,
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": false,
+            "source.fixAll": false,
+        },
+        "editor.links": false, // 是否点击链接自动跳转
+    },
+    // ------------ neovim ------------
+    // "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+    // ------------ zig lang -----------------
+    // zls --config --> /Users/dinge/Library/Application\ Support/zls.json
+    // "zls.path": "/Users/dinge/Documents/Core/Workspace/zig/bin/lsp/zls-master/zig-out/bin/zls",
+    // /Users/dinge/Documents/Core/Workspace/zig/bin/lang/zig-macos-aarch64-0.11.0/zig
+    // "zls.zig_exe_path": "",
+    // "zig.zigPath": "",
+    // ================================================================================================
+
+
+    // 粗宋, x12y16pxMaruMonica, ProggySmallTT, ProggySquareTT, 'ProggyVector', 
+    "editor.fontFamily": "'Fixedsys Excelsior', 'Fixedsys Excelsior 3.01', 'Cascadia Code', 'FixedsysTTF', 'Lucida Console', 'UbuntuMono Nerd Font Mono', 'Terminus (TTF)', 'FuraMono Nerd Font', Monaco, 'BitstreamVeraSansMono Nerd Font Mono', 微软雅黑, Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "workbench.iconTheme": "windows-95-icons", // -0.88, //-0.68, // -0.88, // -0.66, // -1.15,
+    "editor.fontSize": 20, //16, //15, //13,
+    "terminal.integrated.fontSize": 20, //16,
+    "editor.wordWrap": "on",
+    "editor.lineHeight": 26,
+    //"editor.scrollBeyondLastLine" : false,
+    // 关闭行号显示
+    // "editor.lineNumbers": "off",
+    // 关闭代码折叠功能
+    // "editor.folding": false,
+    // 如果不使用调试器，禁用glyphMargin
+    // "editor.glyphMargin": false,
+    // "editor.tokenColorCustomizations": {
+    //     "comments": {
+    //         // 设置字体样式 加粗 下划线 斜体等
+    //         "fontStyle": "", // bold italic underline 
+    //         // 设置字体颜色
+    //         "foreground": "#4caee2"
+    //     }, // 注释
+    //     "keywords": "#0a0", // 关键字
+    //     "variables": "#f00", // 变量名
+    //     "strings": "#e2d75dbd", // 字符串
+    //     "functions": "#5b99fcc9", // 函数名
+    //     "numbers": "#AE81FF" // 数字
+    // },
+    // 字符提示线
+    "editor.rulers": [
+        80,
+        120
+    ],
+    // 關閉代碼小地圖
+    "editor.minimap.enabled": false,
+    // 代码块层级直线
+    // "editor.renderIndentGuides": true,
+    "editor.guides.indentation": false,
+    // 是否突出正在活动的代码块层级直线
+    // "editor.highlightActiveIndentGuide": true,
+    "editor.guides.highlightActiveIndentation": false,
+    // 文件树层级直线
+    "workbench.tree.renderIndentGuides": "none",
+    "terminal.integrated.rendererType": "dom",
+    "git.enabled": false,
+    "git.autorefresh": false,
+    "search.followSymlinks": false,
+    "workbench.editor.showTabs": true,
+    "files.exclude": {
+        // "**/.git": true,
+        // "**/.svn": true,
+        // "**/.hg": true,
+        // "**/CVS": true,
+        // "**/.DS_Store": true,
+        // godot
+        "**/*.import": true,
+        // godot.nim
+        // "**/godotapi": true,
+        "**/.nimcache": true,
+    },
+    // 代理 v2ray vpn
+    // "http.proxyStrictSSL": false,
+    // "http.proxy": "http://127.0.0.1:7890",
+    // ==============================
+    // 文件操作相关
+    // ==============================
+    "files.autoSave": "off",
+    // "editor.formatOnType": true,
+    // "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "[nim]": {
+        "editor.tabSize": 2,
+        // 代码块层级直线
+        "editor.guides.indentation": true,
+        // 是否突出正在活动的代码块层级直线
+        "editor.guides.highlightActiveIndentation": true,
+    },
+    "[lua]": {
+        "editor.tabSize": 2,
+        // 代码块层级直线
+        "editor.guides.indentation": true,
+        // 是否突出正在活动的代码块层级直线
+        "editor.guides.highlightActiveIndentation": true,
+    },
+    "[gdscript]": {
+        "editor.tabSize": 4
+    },
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+    // tab键是否使用空格
+    "editor.insertSpaces": true,
+    // 是否根据文件自动配置
+    "editor.detectIndentation": false,
+    // 显示控制字符?
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "none",
+    "vsicons.dontShowNewVersionMessage": true,
+    "cmake.configureOnOpen": true,
+    "telemetry.telemetryLevel": "off",
+    "window.menuBarVisibility": "toggle",
+    "rust-analyzer.cargo.buildScripts.enable": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        },
+        // {
+        //     "before": ["S"],
+        //     "commands": ["workbench.action.files.save"]
+        // },
+        // {
+        //     "before": ["Q"],
+        //     "commands": [":q!"],
+        // }
+    ],
+    "workbench.activityBar.visible": false,
+    "markdown-preview-enhanced.previewTheme": "github-light.css",
+    "zls.check_for_update": false,
+    "workbench.colorTheme": "win95",
+    // ------------ alignment ------------
+    // 自动对其插件
+    // Chars to align
+    "alignment.chars": {
+    	":": {
+    		"spaceBefore": 1,
+    		"spaceAfter": 1
+    	},
+    	"://": {
+    		"spaceBefore": 0,
+    		"spaceAfter": 0
+    	},
+    	"):": {
+    		"spaceBefore": 0,
+    		"spaceAfter": 0
+    	},
+    	"::": {
+    		"spaceBefore": 0,
+    		"spaceAfter": 0
+    	},
+    	"=": {
+    		"spaceBefore": 1,
+    		"spaceAfter": 1
+    	},
+    	"===": {
+    		"spaceBefore": 1,
+    		"spaceAfter": 1
+    	},
+    	"==": {
+    		"spaceBefore": 1,
+    		"spaceAfter": 1
+    	},
+    	"=>": {
+    		"spaceBefore": 1,
+    		"spaceAfter": 1
+    	},
+    	"+=": {
+    		"spaceBefore": 1,
+    		"spaceAfter": 1
+    	},
+    	"-=": {
+    		"spaceBefore": 1,
+    		"spaceAfter": 1
+    	},
+    	"*=": {
+    		"spaceBefore": 1,
+    		"spaceAfter": 1
+    	},
+    	"/=": {
+    		"spaceBefore": 1,
+    		"spaceAfter": 1
+    	},
+    }
+}

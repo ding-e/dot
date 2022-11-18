@@ -26,17 +26,22 @@ macos : [
   網易雲
 
   rustup
-  brew: [
+  brew : [
     tmux
     nvim/nvchad
     nim, nimlsp
     zig - HEAD
     zls(github)
+    sdl2/sdl2_*
 
     clang-format
     stylua
     ripgrep
     fzf
+    cmake
+
+    neofetch
+    tree
   ]
 ]
 

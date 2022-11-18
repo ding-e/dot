@@ -111,9 +111,9 @@ alias vim="nvim"
 #alias vimtutor="LANG=zh_CN.utf-8 vimtutor"
 
 # workspace
-alias dot="cd ~/Documents/Core/Workspace/dot/ && vim"
-alias cnim="cd ~/Documents/Core/Workspace/nim/"
-alias czig="cd ~/Documents/Core/Workspace/zig/"
+alias dot="cd ~/Documents/Workspace/dot/ && vim"
+alias cnim="cd ~/Documents/Workspace/nim/"
+alias czig="cd ~/Documents/Workspace/zig/"
 
 # 解决tmux clear 提示 "terminals database is inaccessible" 问题
 # [x] alias tmux="TERM=xterm-256color tmux"
@@ -153,10 +153,10 @@ function proxy_off() {
 
 # go lang
 # #export GOROOT=/opt/homebrew/Cellar/go/1.17.7/libexec
-# #export GOPATH=/Users/dinge/Documents//Workspace/go
-# #export GOBIN=/Users/dinge/Documents/Core/Workspace/go/bin
+# #export GOPATH=/Users/dinge/Documents/Workspace/go
+# #export GOBIN=/Users/dinge/Documents/Workspace/go/bin
 # #export PATH=$PATH:$GOROOT/bin:$GOBIN
-# export GOPATH=/Users/dinge/Documents/Core/Workspace/go
+# export GOPATH=/Users/dinge/Documents/Workspace/go
 # export GOBIN=$GOPATH/bin
 # export PATH=$PATH:$GOBIN:$GOPATH
 
@@ -169,7 +169,7 @@ function proxy_off() {
 # nim lang
 # 安装nimlsp, 编译nimlsp必须制定源码目录
 # nimble install \
-  # -p:-d:explicitSourcePath:/Users/dinge/Documents/Core/Workspace/nim/lsp/Nim-1.6.8 \
+  # -p:-d:explicitSourcePath:/Users/dinge/Documents/Workspace/nim/lsp/Nim-1.6.8 \
   # nimlsp --verbose
 export NIMBIN=/Users/dinge/.nimble/bin
 export PATH=$PATH:$NIMBIN
@@ -177,14 +177,14 @@ export PATH=$PATH:$NIMBIN
 #export PATH=$PATH:$NIMSUGGEST
 
 # zig lang - brew install zig --HEAD
-# export ZIGBIN=/Users/dinge/Documents/Core/Workspace/zig/bin/lang/zig-macos-aarch64-0.10.0
-#export ZIGBIN=/Users/dinge/Documents/Core/Workspace/zig/bin/lang/zig-macos-aarch64-0.11.0
+# export ZIGBIN=/Users/dinge/Documents/Workspace/zig/bin/lang/zig-macos-aarch64-0.10.0
+#export ZIGBIN=/Users/dinge/Documents/Workspace/zig/bin/lang/zig-macos-aarch64-0.11.0
 #export PATH=$ZIGBIN:$PATH
 
 # zls - zig language server
 # zls -> zls.json path: /Users/dinge/Library/Application\ Support/zls.json
-# export ZLSBIN=/Users/dinge/Documents/Core/Workspace/zig/bin/lsp/zls-0.10.0/zig-out/bin
-export ZLSBIN=/Users/dinge/Documents/Core/Workspace/zig/bin/lsp/zls-master/zig-out/bin
+# export ZLSBIN=/Users/dinge/Documents/Workspace/zig/bin/lsp/zls-0.10.0/zig-out/bin
+export ZLSBIN=/Users/dinge/Documents/Workspace/zig/bin/lsp/zls-master/zig-out/bin
 export PATH=$ZLSBIN:$PATH
 
 # brew

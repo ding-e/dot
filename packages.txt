@@ -1,48 +1,48 @@
 macos : [
-  kitty
-  rectangle
-  chrome
-  snipaste
-  vscode
-  sublime
-  dash
-  aseprite
-  wacom
-  unity
-  godot
-  blender
-  tiled
-  ldtk
-  steam
-  avira
-  lulu
-  radio silence
-  tencent lemon
-  youdao
-  discord
-  wechat
-  qq
-  spotify
-  網易雲
+    kitty
+    rectangle
+    chrome
+    snipaste
+    vscode
+    sublime
+    dash
+    aseprite
+    wacom
+    unity
+    godot
+    blender
+    tiled
+    ldtk
+    steam
+    avira
+    lulu
+    radio silence
+    tencent lemon
+    youdao
+    discord
+    wechat
+    qq
+    spotify
+    網易雲
 
-  rustup
-  brew : [
-    tmux
-    nvim/nvchad
-    nim, nimlsp
-    zig - HEAD
-    zls(github)
-    sdl2/sdl2_*
+    rustup
+    brew : [
+        tmux
+        nvim/nvchad
+        nim, nimlsp
+        zig - HEAD
+        zls(github)
+        sdl2/sdl2_*
 
-    clang-format
-    stylua
-    ripgrep
-    fzf
-    cmake
+        clang-format
+        stylua
+        ripgrep
+        fzf
+        cmake
 
-    neofetch
-    tree
-  ]
+        neofetch
+        tree
+    ]
 ]
 
 arch : [

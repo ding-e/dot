@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# kitty
+ln -sf "$PWD/kitty/kitty.conf" "$HOME/.config/kitty/"
+ln -sf "$PWD/kitty/kitty_search" "$HOME/.config/kitty/"
+
+# tmux
+ln -sf "$PWD/d.tmux.conf" "$HOME/.tmux.conf"
+
 # nvim nvchad
 ln -sf "$PWD/nvim-nvchad/custom" "$HOME/.config/nvim/lua"
 

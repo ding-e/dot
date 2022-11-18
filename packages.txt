@@ -24,6 +24,7 @@ macos : [
     qq
     spotify
     網易雲
+    字由
 
     rustup
     brew : [
@@ -42,6 +43,8 @@ macos : [
 
         neofetch
         tree
+        ranger
+        go
     ]
 ]
 

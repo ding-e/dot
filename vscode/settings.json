@@ -238,5 +238,6 @@
     		"spaceBefore": 1,
     		"spaceAfter": 1
     	},
-    }
+    },
+    "window.zoomLevel": -1
 }

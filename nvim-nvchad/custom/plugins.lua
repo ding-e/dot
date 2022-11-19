@@ -114,10 +114,10 @@ return {
       config = function()
       end
    },
-   -- ['baabelfish/nvim-nim'] = {}
-   -- ['alaviss/nim.nvim'] = {}
-   -- ['wsdjeg/vim-nim'] = {}
-   -- ['zah/nim.vim'] = {}
+   -- ['baabelfish/nvim-nim'] = {},
+   -- ['alaviss/nim.nvim'] = {},
+   -- ['wsdjeg/vim-nim'] = {},
+   -- ['zah/nim.vim'] = {},
 
    -- session / workspace
    ["Shatur/neovim-session-manager"] = {

@@ -69,7 +69,8 @@ M.base_16 = {
    -- 整数、布尔值、常量、XML 属性、标记链接网址
    -- base09 = "#B4B4B9",
    -- base09 = "#7daea3",
-   base09 = "#d3869b",
+   -- base09 = "#d3869b",
+   base09 = "#6d8dad",
 
    -- 类、标记粗体、搜索文本背景
    base0A = "#FFC552",
@@ -94,14 +95,17 @@ M.base_16 = {
 
    -- 已弃用，打开/关闭嵌入式语言标记，例如<?php ?>
    base0F = "#DFDFE5",
-   --
+
    -- base0DINGE = "#d3869b",
    base0DINGE = "#8BCCBF",
+
+   -- base0DINGE2 = "#e0c080",
+   base0DINGE2 = "#FFC552",
 }
 
 M.polish_hl = {
    Statement = { fg = M.base_16.base0A },
-   Type = { fg = M.base_16.base0A },
+   Type = { fg = M.base_16.base0DINGE2 },
    Include = { fg = M.base_16.base0A },
    Keyword = { fg = M.base_16.base0A },
    -- Operator = { fg = M.base_16.base0A },

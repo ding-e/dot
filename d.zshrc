@@ -118,6 +118,7 @@ alias dot="cd $WORKSPACE_PATH/dot/ && vim"
 alias cdot="cd $WORKSPACE_PATH/dot/"
 alias cnim="cd $WORKSPACE_PATH/nim/"
 alias czig="cd $WORKSPACE_PATH/zig/"
+alias crust="cd $WORKSPACE_PATH/rust/"
 alias cvim="cd ~/.config/nvim/"
 alias clocal="cd ~/.local/share/"
 

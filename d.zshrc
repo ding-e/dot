@@ -8,7 +8,9 @@ export ZSH="/Users/dinge/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="lambda"
+ZSH_THEME="dinge"
 # ZSH_THEME="Chicago95"
 # ZSH_THEME="Chicago95_Dinge"
 
@@ -111,9 +113,13 @@ alias vim="nvim"
 #alias vimtutor="LANG=zh_CN.utf-8 vimtutor"
 
 # workspace
-alias dot="cd ~/Documents/Workspace/dot/ && vim"
-alias cnim="cd ~/Documents/Workspace/nim/"
-alias czig="cd ~/Documents/Workspace/zig/"
+export WORKSPACE_PATH=~/Documents/Workspace
+alias dot="cd $WORKSPACE_PATH/dot/ && vim"
+alias cdot="cd $WORKSPACE_PATH/dot/"
+alias cnim="cd $WORKSPACE_PATH/nim/"
+alias czig="cd $WORKSPACE_PATH/zig/"
+alias cvim="cd ~/.config/nvim/"
+alias clocal="cd ~/.local/share/"
 
 # 解决tmux clear 提示 "terminals database is inaccessible" 问题
 # [x] alias tmux="TERM=xterm-256color tmux"
@@ -153,10 +159,10 @@ function proxy_off() {
 
 # go lang
 # #export GOROOT=/opt/homebrew/Cellar/go/1.17.7/libexec
-# #export GOPATH=/Users/dinge/Documents/Workspace/go
-# #export GOBIN=/Users/dinge/Documents/Workspace/go/bin
+# #export GOPATH=$WORKSPACE_PATH/go
+# #export GOBIN=$WORKSPACE_PATH/go/bin
 # #export PATH=$PATH:$GOROOT/bin:$GOBIN
-# export GOPATH=/Users/dinge/Documents/Workspace/go
+# export GOPATH=$WORKSPACE_PATH/go
 # export GOBIN=$GOPATH/bin
 # export PATH=$PATH:$GOBIN:$GOPATH
 
@@ -177,14 +183,14 @@ export PATH=$PATH:$NIMBIN
 #export PATH=$PATH:$NIMSUGGEST
 
 # zig lang - brew install zig --HEAD
-# export ZIGBIN=/Users/dinge/Documents/Workspace/zig/bin/lang/zig-macos-aarch64-0.10.0
-#export ZIGBIN=/Users/dinge/Documents/Workspace/zig/bin/lang/zig-macos-aarch64-0.11.0
+# export ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.10.0
+#export ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.11.0
 #export PATH=$ZIGBIN:$PATH
 
 # zls - zig language server
 # zls -> zls.json path: /Users/dinge/Library/Application\ Support/zls.json
-# export ZLSBIN=/Users/dinge/Documents/Workspace/zig/bin/lsp/zls-0.10.0/zig-out/bin
-export ZLSBIN=/Users/dinge/Documents/Workspace/zig/bin/lsp/zls-master/zig-out/bin
+# export ZLSBIN=$WORKSPACE_PATH/zig/bin/lsp/zls-0.10.0/zig-out/bin
+export ZLSBIN=$WORKSPACE_PATH/zig/bin/lsp/zls-master/zig-out/bin
 export PATH=$ZLSBIN:$PATH
 
 # brew
@@ -196,7 +202,4 @@ export DYLD_LIBRARY_PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$DYLD_LIBRARY_PA
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_INSTALL_CLEANUP=1
-
-# vim
-# export MYVIMRC=/Users/dinge/.config/nvim/init.vim
 

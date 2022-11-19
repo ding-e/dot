@@ -18,6 +18,7 @@ ln -sf "$PWD/d.vimrc" "$HOME/.vimrc"
 # zsh
 ln -sf "$PWD/ohmyzsh/Chicago95.zsh-theme" "$HOME/.oh-my-zsh/themes/"
 ln -sf "$PWD/ohmyzsh/Chicago95_Dinge.zsh-theme" "$HOME/.oh-my-zsh/themes/"
+ln -sf "$PWD/ohmyzsh/dinge.zsh-theme" "$HOME/.oh-my-zsh/themes/"
 ln -sf "$PWD/d.zshrc" "$HOME/.zshrc"
 
 # zls

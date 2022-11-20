@@ -110,9 +110,8 @@ return {
 
    -- nim language
    -- 只代码高亮，配合nimlsp代码提示
-   ['ding-e/nim-highlight'] = {
-      config = function()
-      end
+   ["ding-e/nim-highlight"] = {
+      config = function() end,
    },
    -- ['baabelfish/nvim-nim'] = {},
    -- ['alaviss/nim.nvim'] = {},
@@ -158,6 +157,20 @@ return {
             pattern = "SessionLoadPost",
             group = config_group,
             callback = function()
+
+               -- -- :echo expand('%:e')
+               -- -- :lua require("base46").toggle_theme()
+               -- -- :lua require("nvchad").reload_theme("gruvchad")
+               -- -- 根据文件后缀重置nvchad配色
+               -- local config = require("core.utils").load_config()
+               -- local themes = config.ui.theme_toggle
+               -- local reload_theme = require("nvchad").reload_theme
+               -- if vim.fn.expand "%:e" == "nim" then
+               --    reload_theme("dinge")
+               -- else
+               --    reload_theme(themes[1])
+               -- end
+
                -- require("nvim-tree").toggle(false, true)
                vim.cmd [[
                   " PackerLoad nvim-tree.lua

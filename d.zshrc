@@ -106,6 +106,7 @@ source $ZSH/oh-my-zsh.sh
 
 # -------------- DINGE -------------- #
 alias c="clear"
+alias s="neofetch"
 alias ra="ranger"
 alias vi="/usr/bin/vim"
 alias vim="nvim"
@@ -115,12 +116,13 @@ alias vim="nvim"
 # workspace
 export WORKSPACE_PATH=~/Documents/Workspace
 alias dot="cd $WORKSPACE_PATH/dot/ && vim"
-alias cdot="cd $WORKSPACE_PATH/dot/"
-alias cnim="cd $WORKSPACE_PATH/nim/"
-alias czig="cd $WORKSPACE_PATH/zig/"
-alias crust="cd $WORKSPACE_PATH/rust/"
-alias cvim="cd ~/.config/nvim/"
-alias clocal="cd ~/.local/share/"
+alias gwork="cd $WORKSPACE_PATH/"
+alias gdot="cd $WORKSPACE_PATH/dot/"
+alias gnim="cd $WORKSPACE_PATH/nim/"
+alias gzig="cd $WORKSPACE_PATH/zig/"
+alias grust="cd $WORKSPACE_PATH/rust/"
+alias gvim="cd ~/.config/nvim/"
+alias glocal="cd ~/.local/share/"
 
 # 解决tmux clear 提示 "terminals database is inaccessible" 问题
 # [x] alias tmux="TERM=xterm-256color tmux"

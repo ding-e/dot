@@ -1,7 +1,6 @@
 macos : [
     kitty
     rectangle
-    chrome
     snipaste
     vscode
     sublime
@@ -46,6 +45,14 @@ macos : [
         ranger
         go
         docker
+    ]
+
+    chrome : [
+        Octotree - GitHub code tree
+        Octotree Theme
+        Dark Reader
+        ColorZilla
+        YouTube™ 双字幕
     ]
 ]
 

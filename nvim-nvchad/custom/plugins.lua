@@ -35,6 +35,31 @@ return {
       override_options = overrides.nvimtree,
    },
 
+   ["NvChad/base46"] = {
+      config = function()
+         local ok, base46 = pcall(require, "base46")
+
+         if ok then
+            base46.load_theme()
+
+            -- :echo expand('%:e')           -- 查看當前編輯文件的後綴
+            -- :lua print(vim.fn.getcwd())   -- 查看當前root path
+            -- :lua require("base46").toggle_theme()
+            -- :lua require("nvchad").reload_theme("gruvchad")
+
+            -- 根據當前項目設置nvchad配色
+            local themes = require("core.utils").load_config().ui.theme_toggle
+            local reload_theme = require("nvchad").reload_theme
+            local is_nim = string.find(string.lower(vim.fn.getcwd()), "workspace/nim")
+            if is_nim ~= nil then
+               reload_theme "dinge"
+            else
+               reload_theme(themes[1])
+            end
+         end
+      end,
+   },
+
    -- ---------------------------------------------------
    -- 新装插件
    -- ---------------------------
@@ -161,20 +186,6 @@ return {
             pattern = "SessionLoadPost",
             group = config_group,
             callback = function()
-
-               -- -- :echo expand('%:e')
-               -- -- :lua require("base46").toggle_theme()
-               -- -- :lua require("nvchad").reload_theme("gruvchad")
-               -- -- 根据文件后缀重置nvchad配色
-               -- local config = require("core.utils").load_config()
-               -- local themes = config.ui.theme_toggle
-               -- local reload_theme = require("nvchad").reload_theme
-               -- if vim.fn.expand "%:e" == "nim" then
-               --    reload_theme("dinge")
-               -- else
-               --    reload_theme(themes[1])
-               -- end
-
                -- require("nvim-tree").toggle(false, true)
                vim.cmd [[
                   " PackerLoad nvim-tree.lua

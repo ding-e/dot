@@ -31,6 +31,10 @@ return {
       override_options = overrides.nvterm,
    },
 
+   ["kyazdani42/nvim-tree.lua"] = {
+      override_options = overrides.nvimtree,
+   },
+
    -- ---------------------------------------------------
    -- 新装插件
    -- ---------------------------

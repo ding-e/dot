@@ -45,6 +45,7 @@ macos : [
         tree
         ranger
         go
+        docker
     ]
 ]
 

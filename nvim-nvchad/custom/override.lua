@@ -2,6 +2,17 @@
 
 local M = {}
 
+M.nvimtree = {
+   view = {
+      -- 是否自適應寬度
+      adaptive_size = true,
+      side = "left",
+      width = 25,
+      -- 是否隱藏tree頂部的當前目錄路徑
+      hide_root_folder = true,
+   },
+}
+
 M.nvterm = {
    terminals = {
       list = {},
@@ -42,11 +53,13 @@ M.ui = {
    -- statusline = require "custom.statusline",
 
    -- lazyload it when there are 1+ buffers
-   -- tabufline = {
-   --    enabled = true,
-   --    lazyload = true,
-   --    overriden_modules = nil,
-   -- },
+   tabufline = {
+      enabled = true,
+      lazyload = true,
+      overriden_modules = function()
+         return require "custom.tabufline"
+      end,
+   },
 }
 
 return M

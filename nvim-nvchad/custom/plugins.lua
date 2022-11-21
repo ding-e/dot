@@ -48,13 +48,22 @@ return {
             -- :lua require("nvchad").reload_theme("gruvchad")
 
             -- 根據當前項目設置nvchad配色
-            local themes = require("core.utils").load_config().ui.theme_toggle
+            local config = require("core.utils").load_config()
+            local ws_themes = config.ui.ws_theme_toggle
+            local ws_list = config.ui.ws_list
             local reload_theme = require("nvchad").reload_theme
-            local is_nim = string.find(string.lower(vim.fn.getcwd()), "workspace/nim")
-            if is_nim ~= nil then
-               reload_theme "dinge"
+            local t = 0
+            for _, v in pairs(ws_list) do
+               if nil ~= string.find(string.lower(vim.fn.getcwd()), "workspace/" .. v) then
+                  t = 1
+                  return true
+               end
+            end
+
+            if t == 1 then
+               reload_theme(ws_themes[1]) -- "dinge"
             else
-               reload_theme(themes[1])
+               reload_theme(ws_themes[2])
             end
          end
       end,

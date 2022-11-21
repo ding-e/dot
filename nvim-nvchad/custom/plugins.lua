@@ -56,7 +56,7 @@ return {
             for _, v in pairs(ws_list) do
                if nil ~= string.find(string.lower(vim.fn.getcwd()), "workspace/" .. v) then
                   t = 1
-                  return true
+                  break
                end
             end
             reload_theme(ws_themes[t])

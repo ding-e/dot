@@ -52,19 +52,14 @@ return {
             local ws_themes = config.ui.ws_theme_toggle
             local ws_list = config.ui.ws_list
             local reload_theme = require("nvchad").reload_theme
-            local t = 0
+            local t = 2
             for _, v in pairs(ws_list) do
                if nil ~= string.find(string.lower(vim.fn.getcwd()), "workspace/" .. v) then
                   t = 1
                   return true
                end
             end
-
-            if t == 1 then
-               reload_theme(ws_themes[1]) -- "dinge"
-            else
-               reload_theme(ws_themes[2])
-            end
+            reload_theme(ws_themes[t])
          end
       end,
    },

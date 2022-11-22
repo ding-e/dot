@@ -196,6 +196,10 @@ export PATH=$PATH:$NIMBIN
 export ZLSBIN=$WORKSPACE_PATH/zig/bin/lsp/zls-master/zig-out/bin
 export PATH=$ZLSBIN:$PATH
 
+# mac pkg_uninstall
+# https://github.com/mpapis/pkg_uninstaller
+# export PATH=/Users/dinge/Documents/Tool/pkg_uninstaller:$PATH
+
 # brew
 export PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$PATH
 export CPATH=/opt/homebrew/include:$CPATH

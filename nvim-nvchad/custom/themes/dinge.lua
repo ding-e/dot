@@ -73,14 +73,14 @@ M.base_16 = {
    -- 已弃用，打开/关闭嵌入式语言标记
    base0F = "#DFDFE5",
 
-   -- #e0c080 #7daea3 #d3869b #BFDAFF
-   base0DINGE = "#8BCCBF",
+   -- #e0c080 #7daea3 #8BCCBF #d3869b #BFDAFF
+   base0DINGE = "#d6b676",
    base0DINGE2 = "#FFC552",
 }
 
 M.polish_hl = {
    Statement = { fg = M.base_16.base0A },
-   Type = { fg = M.base_16.base0A },
+   Type = { fg = M.base_16.base0DINGE },
    Include = { fg = M.base_16.base0A },
    Keyword = { fg = M.base_16.base0A },
    -- Operator = { fg = M.base_16.base0DINGE },

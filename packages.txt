@@ -1,50 +1,65 @@
 macos : [
-    kitty
-    rectangle
-    snipaste
     vscode
     sublime
-    dash
+    dash(kapeli.com/dash)
+
     aseprite
     wacom
     unity
     godot
     blender
-    tiled
     ldtk
     steam
+
     avira
-    lulu
     radio silence
     tencent lemon
-    youdao
+
     discord
-    wechat
-    qq
     spotify
-    網易雲
     字由
 
     rustup
+    ohmyzsh
+
     brew : [
+        kitty
+        rectangle
+        lulu
+        tiled
+        iterm2
+        snipaste
+
         tmux
         nvim/nvchad
         nim, nimlsp
         zig - HEAD
         zls(github)
         sdl2/sdl2_*
+        docker
+        go
 
         clang-format
         stylua
         ripgrep
         fzf
-        cmake
 
-        neofetch
+        lux
+        wget
+        cmake
         tree
         ranger
-        go
-        docker
+        neofetch
+    ]
+
+    appstore : [
+        xcode
+        youdao
+        wechat
+        qq
+        網易雲
+        印象筆記
+        即刻轉換
     ]
 
     chrome : [

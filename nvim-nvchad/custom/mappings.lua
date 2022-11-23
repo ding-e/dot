@@ -25,8 +25,8 @@ M.general = {
       -- ["ds"] = { "<cmd> %s/\s\+$ <CR>", "" },
 
       -- 保存/关闭文件
-      ["S"] = { "<cmd> w <CR>", "" },
-      ["Q"] = { "<cmd> q <CR>", "" },
+      ["S"]  = { "<cmd> w <CR>", "" },
+      ["Q"]  = { "<cmd> q <CR>", "" },
       -- 开启/关闭鼠标模式
       ["MO"] = { "<cmd> set mouse=a <CR>", "" },
       ["MC"] = { "<cmd> set mouse= <CR>", "" },
@@ -43,10 +43,10 @@ M.general = {
       ["}"] = { "7k", "" },
 
       -- 标签
-      ["tu"] = { "<cmd> tabe <CR>", "" },
+      ["tu"]  = { "<cmd> tabe <CR>", "" },
       -- 切换标签
-      ["th"] = { "<cmd> -tabnext <CR>", "" },
-      ["tl"] = { "<cmd> +tabnext <CR>", "" },
+      ["th"]  = { "<cmd> -tabnext <CR>", "" },
+      ["tl"]  = { "<cmd> +tabnext <CR>", "" },
       -- 关闭其他标签
       ["tco"] = { "<cmd> tabo <CR>", "" },
 
@@ -57,16 +57,18 @@ M.general = {
       ["sl"] = { "<cmd> nosplitright <CR> <cmd> vsplit <CR>", "" },
 
       -- 调整分屏大小
-      ["<up>"] = { "<cmd> res +5 <CR>", "" },
-      ["<down>"] = { "<cmd> res -5 <CR>", "" },
-      ["<left>"] = { "<cmd> vertical resize -5 <CR>", "" },
+      ["<up>"]    = { "<cmd> res +5 <CR>", "" },
+      ["<down>"]  = { "<cmd> res -5 <CR>", "" },
+      ["<left>"]  = { "<cmd> vertical resize -5 <CR>", "" },
       ["<right>"] = { "<cmd> vertical resize +5 <CR>", "" },
 
       -- 打开仪表盘
-      ["DD"] = { "<cmd> Startify <CR>", "" },
+      -- mhinz/vim-startify
+      ["DD"]         = { "<cmd> Startify <CR>", "" },
       ["<leader>ss"] = { "<cmd> Startify <CR>", "打开startify仪表盘" },
 
       -- 切换文件管理器
+      -- kyazdani42/nvim-tree.lua
       ["TT"] = { "<cmd> NvimTreeToggle <CR>", "切换nvimtree", opts = {} },
       ["<leader>tf"] = { "<cmd> NvimTreeFocus <CR>", "焦点在nvim-tree" },
       ["<leader>tr"] = { "<cmd> NvimTreeRefresh <CR>", "刷新nvim-tree列表" },
@@ -74,10 +76,27 @@ M.general = {
       ["<leader>tl"] = { "<cmd> NvimTreeCollapse <CR>", "折叠所有层级" },
 
       -- jk加速
+      -- rhysd/accelerated-jk
       ["j"] = { "<Plug>(accelerated_jk_gj)", "" },
       ["k"] = { "<Plug>(accelerated_jk_gk)", "" },
       -- ["j"] = { "<Plug>(accelerated_jk_gj_position)", "" },
       -- ["k"] = { "<Plug>(accelerated_jk_gk_position)", "" },
+
+      -- 符號對齊插件
+      -- junegunn/vim-easy-align
+      ['ga'] = { "<Plug>(EasyAlign)", "" },
+         -- 選段對齊冒號 vipga`->`:
+         -- 選段對齊等號 vipga`->`=
+   },
+
+   -- 選擇模式
+   x = {
+      -- 符號對齊插件
+      -- junegunn/vim-easy-align
+      ['ga'] = { "<Plug>(EasyAlign)", "" },
+         -- 選列對齊冒號 ga`->`:
+         -- 選列對齊等號 ga`->`=
+         -- 選列上下對齊所有行列空格 ga*`space`
    },
 }
 

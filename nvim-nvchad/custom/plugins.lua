@@ -49,17 +49,15 @@ return {
 
             -- 根據當前項目設置nvchad配色
             local config = require("core.utils").load_config()
-            local ws_themes = config.ui.ws_theme_toggle
-            local ws_list = config.ui.ws_list
-            local reload_theme = require("nvchad").reload_theme
             local t = 2
-            for _, v in pairs(ws_list) do
-               if nil ~= string.find(string.lower(vim.fn.getcwd()), "workspace/" .. v) then
+            for _, v in pairs(config.ui.workspace_list) do
+               local wt = nil ~= string.find(v, "/") and v or "workspace/" .. v
+               if nil ~= string.find(string.lower(vim.fn.getcwd()), wt) and t ~= 1 then
                   t = 1
                   break
                end
             end
-            reload_theme(ws_themes[t])
+            require("nvchad").reload_theme(config.ui.workspace_theme_toggle[t])
          end
       end,
    },
@@ -95,6 +93,11 @@ return {
          local nscroll = require "neoscroll"
          nscroll.setup()
       end,
+   },
+
+   -- 符號對齊
+   ["junegunn/vim-easy-align"] = {
+      config = function() end,
    },
 
    -- 格式化
@@ -196,7 +199,8 @@ return {
                   " NvimTreeToggle
                   " vertical wincmd l
                   " wincmd w
-                  PackerCompile
+
+                  " PackerCompile
                   Startify
                ]]
             end,

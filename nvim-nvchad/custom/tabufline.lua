@@ -10,7 +10,8 @@ end
 
 return {
    CoverNvimTree = function()
-      return "%#NvimTreeEndOfBuffer#"
+      return "%#NvimTreeNormal#"
+      -- return "%#NvimTreeEndOfBuffer#"
          .. (vim.g.nvimtree_side == "right" and "" or string.rep(" ", getNvimTreeWidth()))
    end,
 }

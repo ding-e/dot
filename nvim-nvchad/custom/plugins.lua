@@ -54,6 +54,7 @@ return {
    },
 
    ["kyazdani42/nvim-tree.lua"] = {
+      after = "nvim-web-devicons",
       override_options = overrides.nvimtree,
    },
 

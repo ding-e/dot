@@ -31,7 +31,9 @@ M.general = {
       ["MO"] = { "<cmd> set mouse=a <CR>", "" },
       ["MC"] = { "<cmd> set mouse= <CR>", "" },
 
+      -- 取消搜索高亮
       ["<leader><CR>"] = { "<cmd> nohlsearch <CR>", "取消搜索高亮" },
+
       -- 移动搜索结果关键字并自动移到屏幕中心
       ["="] = { "nzz", "" },
       ["-"] = { "Nzz", "" },
@@ -43,18 +45,18 @@ M.general = {
       ["}"] = { "7k", "" },
 
       -- 标签
-      ["tu"]  = { "<cmd> tabe <CR>", "" },
+      ["ta"]  = { "<cmd> tabe <CR>", "" },
       -- 切换标签
-      ["th"]  = { "<cmd> -tabnext <CR>", "" },
-      ["tl"]  = { "<cmd> +tabnext <CR>", "" },
+      -- ["th"]  = { "<cmd> -tabnext <CR>", "" },
+      -- ["tl"]  = { "<cmd> +tabnext <CR>", "" },
+      ["th"]  = { "<cmd> tabprevious <CR>", "" },
+      ["tl"]  = { "<cmd> tabnext <CR>", "" },
       -- 关闭其他标签
-      ["tco"] = { "<cmd> tabo <CR>", "" },
+      ["to"] = { "<cmd> tabo <CR>", "" },
 
       -- 快速分屏
-      ["sj"] = { "<cmd> nosplitbelow <CR> <cmd> split <CR>", "" },
-      ["sk"] = { "<cmd> splitbelow <CR> <cmd> split <CR>", "" },
-      ["sh"] = { "<cmd> splitright <CR> <cmd> vsplit <CR>", "" },
-      ["sl"] = { "<cmd> nosplitright <CR> <cmd> vsplit <CR>", "" },
+      ["sj"] = { "<cmd> split <CR>", "" },
+      ["sl"] = { "<cmd> vsplit <CR>", "" },
 
       -- 调整分屏大小
       ["<up>"]    = { "<cmd> res +5 <CR>", "" },

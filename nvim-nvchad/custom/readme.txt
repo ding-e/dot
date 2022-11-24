@@ -16,9 +16,9 @@ treesitter : [
     vim
     lua
 
-    zig
     rust
     c
+    #zig
     #cpp
     #make
     #cmake
@@ -47,7 +47,7 @@ treesitter : [
 
 mason : [
     lua-language-server
-    rust_analyzer
+    rust-analyzer
     clangd
 
     #zls

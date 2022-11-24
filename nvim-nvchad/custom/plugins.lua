@@ -23,6 +23,28 @@ return {
       end,
    },
 
+   ["williamboman/mason.nvim"] = {
+      override_options = {
+         -- 一些默認安裝的lsp
+         ensure_installed = {
+            "lua-language-server",
+            "rust-analyzer",
+            "clangd",
+         },
+      },
+   },
+
+   ["nvim-treesitter/nvim-treesitter"] = {
+      override_options = {
+         -- 一些默認安裝的語法高亮
+         ensure_installed = {
+            "lua",
+            "rust", "c",
+            "toml", "json",
+         },
+      },
+   },
+
    ["NvChad/ui"] = {
       override_options = overrides.ui,
    },
@@ -143,6 +165,7 @@ return {
          vim.g.zig_fmt_autosave = 0
       end,
    },
+   ["ding-e/zig-highlight-enhanced"] = {},
 
    -- nim language
    -- 只代码高亮，配合nimlsp代码提示

@@ -88,6 +88,14 @@ M.polish_hl = {
    Delimiter = { fg = M.base_16.base0A },
    Character = { fg = M.base_16.base0A },
 
+   Macro = { fg = M.base_16.base0A },
+   Structure = { fg = M.base_16.base0A },
+   Exception = { fg = M.base_16.base0A },
+
+   DINGE_HL_OPERATOR = { fg = M.base_16.base0A },
+   DINGE_HL_KEYWORD = { fg = M.base_16.base0A },
+   DINGE_HL_NUMBER = { fg = M.base_16.base09 },
+
    -- Function = { fg = M.base_16.base0A },
    -- Number = { fg = M.base_16.base0DINGE },
 }

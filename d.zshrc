@@ -178,7 +178,7 @@ function proxy_off() {
 # nim lang
 # 安装nimlsp, 编译nimlsp必须制定源码目录
 # nimble install \
-  # -p:-d:explicitSourcePath:/Users/dinge/Documents/Workspace/nim/lsp/Nim-1.6.8 \
+  # -p:-d:explicitSourcePath:/Users/dinge/Documents/Workspace/nim/lsp/Nim-1.6.10 \
   # nimlsp --verbose
 export NIMBIN=/Users/dinge/.nimble/bin
 export PATH=$PATH:$NIMBIN

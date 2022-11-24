@@ -95,8 +95,6 @@ M.polish_hl = {
    DINGE_HL_KEYWORD    = { fg = M.base_16.base0A     },
    DINGE_HL_NUMBER     = { fg = M.base_16.base09     },
 
-   DINGE_HL_OPERATOR_2 = { fg = M.base_16.base05     },
-
    -- Operator            = { fg = M.base_16.base0DINGE },
    -- Function            = { fg = M.base_16.base0A     },
    -- Number              = { fg = M.base_16.base0DINGE },

@@ -165,7 +165,9 @@ return {
          vim.g.zig_fmt_autosave = 0
       end,
    },
-   ["ding-e/zig-highlight-enhanced"] = {},
+   ["ding-e/zig-highlight-enhanced"] = {
+      after = "zig.vim",
+   },
 
    -- nim language
    -- 只代码高亮，配合nimlsp代码提示

@@ -39,8 +39,10 @@ return {
          -- 一些默認安裝的語法高亮
          ensure_installed = {
             "lua",
-            "rust", "c",
-            "toml", "json",
+            "rust",
+            "c",
+            "toml",
+            "json",
          },
       },
    },
@@ -54,7 +56,7 @@ return {
    },
 
    ["kyazdani42/nvim-tree.lua"] = {
-      after = "nvim-web-devicons",
+      -- after = { "ui", "nvim-web-devicons" },
       override_options = overrides.nvimtree,
    },
 
@@ -183,11 +185,8 @@ return {
    -- session / workspace
    ["Shatur/neovim-session-manager"] = {
       -- module = "nvim-tree.lua",
-      -- cmd = { "NvimTreeToggle", "abc" },
-      -- after = "nvim-tree.lua",
-      setup = function()
-         -- vim.cmd [[ PackerLoad nvim-tree.lua ]]
-      end,
+      -- after = { "ui", "nvim-web-devicons" },
+      -- setup = function() end,
       config = function()
          local Path = require "plenary.path"
          require("session_manager").setup {
@@ -223,8 +222,10 @@ return {
                vim.cmd [[
                   " PackerLoad nvim-tree.lua
                   " NvimTreeToggle
+
                   " vertical wincmd l
                   " wincmd w
+                  " noautocmd wincmd p
 
                   " PackerCompile
                   Startify

@@ -3,7 +3,7 @@
 local M = {}
 
 M.nvimtree = {
-   open_on_setup = true,
+   -- open_on_setup = true,
    view = {
       -- 是否自適應寬度
       adaptive_size = true,
@@ -13,7 +13,7 @@ M.nvimtree = {
       hide_root_folder = true,
    },
    git = {
-      enable = true,
+      enable = false,
       ignore = false,
    },
    renderer = {

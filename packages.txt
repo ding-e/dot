@@ -53,6 +53,7 @@ macos : [
     ]
 
     appstore : [
+        hidden bar
         xcode
         youdao
         wechat

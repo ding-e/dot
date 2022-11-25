@@ -227,8 +227,8 @@ return {
                   " wincmd w
                   " noautocmd wincmd p
 
-                  " PackerCompile
                   Startify
+                  PackerCompile
                ]]
             end,
          })

@@ -106,7 +106,7 @@ source $ZSH/oh-my-zsh.sh
 
 # -------------- DINGE -------------- #
 alias c="clear"
-alias s="neofetch"
+alias nf="neofetch"
 alias ra="ranger"
 alias vi="/usr/bin/vim"
 alias vim="nvim"
@@ -186,14 +186,16 @@ export PATH=$PATH:$NIMBIN
 #export PATH=$PATH:$NIMSUGGEST
 
 # zig lang - brew install zig --HEAD
+#          - brew unlink zig && brew link --HEAD zig
 # export ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.10.0
 #export ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.11.0
 #export PATH=$ZIGBIN:$PATH
 
 # zls - zig language server
+#       git clone [-b 0.10.0] --recurse-submodules zls.git && build -Drelease-small
 # zls -> zls.json path: /Users/dinge/Library/Application\ Support/zls.json
-# export ZLSBIN=$WORKSPACE_PATH/zig/bin/lsp/zls-0.10.0/zig-out/bin
-export ZLSBIN=$WORKSPACE_PATH/zig/bin/lsp/zls-master/zig-out/bin
+export ZLSBIN=$WORKSPACE_PATH/zig/bin/lsp/zls-0.10.0/zig-out/bin
+# export ZLSBIN=$WORKSPACE_PATH/zig/bin/lsp/zls-master/zig-out/bin
 export PATH=$ZLSBIN:$PATH
 
 # mac pkg_uninstall

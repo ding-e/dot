@@ -1,0 +1,37 @@
+------------------------------------
+- history:
+------------------
+
+neovim
+# https://github.com/neovim/neovim/wiki/Building-Neovim
+# https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source
+
+sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
+git clone https://github.com/neovim/neovim && cd neovim
+git checkout stable
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
+
+rust & tree-sitter
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+cargo install tree-sitter-cli
+
+
+
+whoami
+
+apt update
+apt install software-properties-common psmisc
+apt install zsh git sudo vim wget htop
+apt install tmux tree ranger fzf neofetch
+apt install stylua ripgrep
+apt install nethogs iftop nload iptraf-ng
+
+
+passwd root
+useradd -m dinge -s /bin/zsh
+
+vim /etc/sudoers
+-> dinge ALL=(ALL:ALL) ALL
+
+

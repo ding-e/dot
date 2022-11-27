@@ -4,6 +4,9 @@ vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 
 -- :FZF 命令使用
 vim.cmd [[ set rtp+=/opt/homebrew/opt/fzf ]]
 
+-- 設置默認shell
+vim.cmd [[ set shell=zsh ]]
+
 -- vim剪切板与系统共享
 vim.cmd [[ set clipboard+=unnamedplus ]]
 

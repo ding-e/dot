@@ -1,0 +1,36 @@
+
+# 拉取鏡像
+docker pull alpine|ubuntu
+# 查看本地鏡像
+docker images
+
+# 查看容器
+docker ps [-a]
+
+# 創建容器
+# https://www.cnblogs.com/yfalcon/p/9044246.html
+docker run -it --name w1 [-u dinge -w /home/dinge --hostname de-docker] alpine:latest [zsh|bash|sh]
+
+# 啟動/停止容器
+docker start (id|name)
+docker stop  (id|name)
+
+# 進入容器
+# https://www.runoob.com/docker/docker-container-usage.html
+# exec: exit掉不會使容器停止
+docker exec -it [-u root -w /home/dinge] w1 (zsh|bash|sh)
+docker attach (id|name)
+
+# 刪除容器
+docker rm (id|name)
+# 刪除所有處於終止狀態的容器
+docker container prune
+
+# 刪除鏡像
+docker rmi (alpine:latest|id)
+
+# 容器導出
+docker export w1 > backup.tar
+# 導入鏡像
+cat backup.tar | docker import - alpine-dinge:v1
+

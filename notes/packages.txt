@@ -29,6 +29,7 @@ macos : [
         tiled
         iterm2
         snipaste
+        docker(cask)
 
         tmux
         nvim/nvchad
@@ -36,7 +37,6 @@ macos : [
         zig - HEAD
         zls(github)
         sdl2/sdl2_*
-        docker
         go
 
         clang-format

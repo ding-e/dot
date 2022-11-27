@@ -1,0 +1,19 @@
+------------------------------------
+- history:
+------------------
+
+whoami
+
+apk update
+apk add zsh git sudo vim neofetch wget
+apk add util-linux
+
+passwd root
+deluser dinge
+addgroup dinge
+adduser dinge -G dinge -s /bin/zsh
+
+vim /etc/sudoers
+-> dinge ALL=(ALL:ALL) ALL
+
+

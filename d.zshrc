@@ -124,6 +124,10 @@ alias grust="cd $WORKSPACE_PATH/rust/"
 alias gvim="cd ~/.config/nvim/"
 alias glocal="cd ~/.local/share/"
 
+# docker
+alias ubuntu="docker exec -it -u dinge -w /home/dinge d1 zsh"
+alias gdocker="cd ~/Desktop/碼頭工人/"
+
 # 解决tmux clear 提示 "terminals database is inaccessible" 问题
 # [x] alias tmux="TERM=xterm-256color tmux"
 #if [ "$TERM" = "tmux-256color" ];then

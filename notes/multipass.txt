@@ -1,0 +1,84 @@
+------------------------------------
+- Multipass
+------------------
+
+doc
+https://multipass.run/install
+https://multipass.run/docs/how-to-guides
+
+snapshots/backup
+https://github.com/canonical/multipass/issues/208
+https://github.com/canonical/multipass/issues/566#issuecomment-641581396
+https://www.beenplus.com/?p=224
+
+mount: source is not readable
+https://askubuntu.com/questions/1281224/multipass-mount-source-is-not-readable
+
+https://zhuanlan.zhihu.com/p/463196975
+https://www.jianshu.com/p/360f491dc878
+https://blog.csdn.net/weixin_45404652/article/details/126001003
+
+==============================================
+
+
+查找可用的鏡像
+multipass find
+
+查看已創建的實例
+multipass list
+
+添加一個實例(第一次需要聯網下載)
+multipass launch -n d1 -c 1 -m 1G -d 10G
+-n, --name: 實例名稱
+-c, --cpus: CPU核心數, 默認: 1
+-m, --mem : 內存大小,  默認: 1G
+-d, --disk: 硬盤大小,  默認: 5G
+
+運行實例下的命令
+multipass exec d1 -- lsb_release -a
+multipass exec d1 -- sudo apt update
+
+進入實例
+multipass shell d1
+
+掛載宿主機上的一個目錄 & 卸載共享目錄
+multipass mount ~/Documents/Share d1:/home/ubuntu/share
+multipass umount d1
+
+停止 & 啟動實例
+multipass stop d1 d2
+multipass start d1
+
+清理
+multipass delete d1
+永久刪除已delete掉的實例
+multipass purge
+
+
+=======================================
+移除所有multipass文件
+brew uninstall --zap multipass
+------------
+sudo su
+rm -rf /var/root/Library/Application\ Support/multipassd
+rm -rf /var/root/Library/Caches/multipassd
+rm -rf /private/var/root/Library/Caches/multipassd
+------------------------------
+
+#rm -rf /var/root/Library/Preferences/multipassd
+#rm -rf /private/var/root/Library/Preferences/multipassd
+------------
+#rm -rf /System/Volumes/Data/private/var/root/Library/Preferences/multipassd
+#rm -rf /System/Volumes/Data/Users/dinge/Library/Application\ Support/multipass-client-certificate
+#rm -rf /System/Volumes/Data/Users/dinge/Library/LaunchAgents/com.canonical.multipass.gui.autostart.plist
+#rm -rf /System/Volumes/Data/Users/dinge/Library/Preferences/Multipass.plist
+------------
+#rm -rf /Users/dinge/Library/Application\ Support/multipass-client-certificate
+#rm -rf /Users/dinge/Library/LaunchAgents/com.canonical.multipass.gui.autostart.plist
+#rm -rf /Users/dinge/Library/Preferences/Multipass.plist
+=======================================
+
+macos下載的鏡像目錄路徑:
+/private/var/root/Library/Caches/multipassd/virtualbox/vault/images
+https://github.com/canonical/multipass/issues/2568
+

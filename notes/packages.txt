@@ -29,7 +29,9 @@ macos : [
         tiled
         iterm2
         snipaste
-        docker(cask)
+
+        #docker(cask)
+        multipass
 
         tmux
         nvim/nvchad

@@ -125,8 +125,9 @@ alias gvim="cd ~/.config/nvim/"
 alias glocal="cd ~/.local/share/"
 
 # docker
-alias ubuntu="docker exec -it -u dinge -w /home/dinge d1 zsh"
-alias gdocker="cd ~/Desktop/碼頭工人/"
+# alias ubuntu="docker exec -it -u dinge -w /home/dinge d1 zsh"
+# alias gdocker="cd ~/Desktop/碼頭工人/"
+alias ubuntu="multipss exec d1 -- sudo docker exec -it -u dinge -w /home/dinge d1 zsh"
 
 # 解决tmux clear 提示 "terminals database is inaccessible" 问题
 # [x] alias tmux="TERM=xterm-256color tmux"

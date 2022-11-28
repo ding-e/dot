@@ -90,26 +90,29 @@ M.general = {
 
       -- 符號對齊插件
       -- junegunn/vim-easy-align
-      ["ga"] = { "<Plug>(EasyAlign)", "" },
       -- 選段對齊冒號 vipga`->`:
       -- 選段對齊等號 vipga`->`=
+      ["ga"] = { "<Plug>(EasyAlign)", "" },
    },
 
    -- 選擇模式
    x = {
       -- 符號對齊插件
       -- junegunn/vim-easy-align
-      ["ga"] = { "<Plug>(EasyAlign)", "" },
       -- 選列對齊冒號 ga`->`:
       -- 選列對齊等號 ga`->`=
       -- 選列上下對齊所有行列空格 ga*`space`
+      ["ga"] = { "<Plug>(EasyAlign)", "" },
    },
 }
 
 -- 重置切换终端快捷键映射
 M.nvterm = {
    t = {
-      ["<C-i><C-i>"] = {
+      -- 禁用ctrl+i按键
+      -- ["<C-i>"] = { "<nop>", "" },
+
+      ["<C-j><C-i>"] = {
          function()
             require("nvterm.terminal").toggle "float"
          end,
@@ -132,7 +135,10 @@ M.nvterm = {
    },
 
    n = {
-      ["<C-i><C-i>"] = {
+      -- 禁用ctrl+i按键
+      ["<C-i>"] = { "<nop>", "" },
+
+      ["<C-j><C-i>"] = {
          function()
             require("nvterm.terminal").toggle "float"
          end,

@@ -1,5 +1,5 @@
 ------------------------------------
-- history:
+- History
 ------------------
 
 neovim
@@ -16,6 +16,11 @@ rust & tree-sitter
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cargo install tree-sitter-cli
 
+docker:
+https://jianshu.com/p/c4c6d1196156
+
+.bashrc
+export TERM="xterm-256color"
 
 
 whoami

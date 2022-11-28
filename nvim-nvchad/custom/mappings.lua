@@ -9,8 +9,11 @@ local M = {}
 M.general = {
    t = {
       -- ["<Esc>"] = { "<cmd> q <CR>", "" },
-      -- 在nvchad里，ctrl+x 终端模式退到终端默认模式
       ["Q"] = { "<cmd> q <CR>", "" },
+
+      -- 在nvchad里，ctrl+x 终端模式退到终端默认模式
+      -- ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" },
+      ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "escape terminal mode" },
    },
 
    i = {
@@ -18,6 +21,7 @@ M.general = {
    },
 
    n = {
+
       -- 禁用s按键
       ["s"] = { "<nop>", "" },
 
@@ -25,8 +29,8 @@ M.general = {
       -- ["ds"] = { "<cmd> %s/\s\+$ <CR>", "" },
 
       -- 保存/关闭文件
-      ["S"]  = { "<cmd> w <CR>", "" },
-      ["Q"]  = { "<cmd> q <CR>", "" },
+      ["S"] = { "<cmd> w <CR>", "" },
+      ["Q"] = { "<cmd> q <CR>", "" },
       -- 开启/关闭鼠标模式
       ["MO"] = { "<cmd> set mouse=a <CR>", "" },
       ["MC"] = { "<cmd> set mouse= <CR>", "" },
@@ -45,12 +49,12 @@ M.general = {
       ["}"] = { "7k", "" },
 
       -- 标签
-      ["ta"]  = { "<cmd> tabe <CR>", "" },
+      ["ta"] = { "<cmd> tabe <CR>", "" },
       -- 切换标签
       -- ["th"]  = { "<cmd> -tabnext <CR>", "" },
       -- ["tl"]  = { "<cmd> +tabnext <CR>", "" },
-      ["th"]  = { "<cmd> tabprevious <CR>", "" },
-      ["tl"]  = { "<cmd> tabnext <CR>", "" },
+      ["th"] = { "<cmd> tabprevious <CR>", "" },
+      ["tl"] = { "<cmd> tabnext <CR>", "" },
       -- 关闭其他标签
       ["to"] = { "<cmd> tabo <CR>", "" },
 
@@ -59,14 +63,14 @@ M.general = {
       ["sl"] = { "<cmd> vsplit <CR>", "" },
 
       -- 调整分屏大小
-      ["<up>"]    = { "<cmd> res +5 <CR>", "" },
-      ["<down>"]  = { "<cmd> res -5 <CR>", "" },
-      ["<left>"]  = { "<cmd> vertical resize -5 <CR>", "" },
+      ["<up>"] = { "<cmd> res +5 <CR>", "" },
+      ["<down>"] = { "<cmd> res -5 <CR>", "" },
+      ["<left>"] = { "<cmd> vertical resize -5 <CR>", "" },
       ["<right>"] = { "<cmd> vertical resize +5 <CR>", "" },
 
       -- 打开仪表盘
       -- mhinz/vim-startify
-      ["DD"]         = { "<cmd> Startify <CR>", "" },
+      ["DD"] = { "<cmd> Startify <CR>", "" },
       ["<leader>ss"] = { "<cmd> Startify <CR>", "打开startify仪表盘" },
 
       -- 切换文件管理器
@@ -86,39 +90,67 @@ M.general = {
 
       -- 符號對齊插件
       -- junegunn/vim-easy-align
-      ['ga'] = { "<Plug>(EasyAlign)", "" },
-         -- 選段對齊冒號 vipga`->`:
-         -- 選段對齊等號 vipga`->`=
+      ["ga"] = { "<Plug>(EasyAlign)", "" },
+      -- 選段對齊冒號 vipga`->`:
+      -- 選段對齊等號 vipga`->`=
    },
 
    -- 選擇模式
    x = {
       -- 符號對齊插件
       -- junegunn/vim-easy-align
-      ['ga'] = { "<Plug>(EasyAlign)", "" },
-         -- 選列對齊冒號 ga`->`:
-         -- 選列對齊等號 ga`->`=
-         -- 選列上下對齊所有行列空格 ga*`space`
+      ["ga"] = { "<Plug>(EasyAlign)", "" },
+      -- 選列對齊冒號 ga`->`:
+      -- 選列對齊等號 ga`->`=
+      -- 選列上下對齊所有行列空格 ga*`space`
    },
 }
 
 -- 重置切换终端快捷键映射
 M.nvterm = {
    t = {
-      ["<C-i>"] = {
+      ["<C-i><C-i>"] = {
          function()
             require("nvterm.terminal").toggle "float"
          end,
-         "   切换浮动终端",
+         "   切換浮動終端",
+      },
+
+      ["<C-h><C-i>"] = {
+         function()
+            require("nvterm.terminal").toggle "horizontal"
+         end,
+         "   切換底部終端",
+      },
+
+      ["<C-v><C-i>"] = {
+         function()
+            require("nvterm.terminal").toggle "vertical"
+         end,
+         "   切換右側終端",
       },
    },
 
    n = {
-      ["<C-i>"] = {
+      ["<C-i><C-i>"] = {
          function()
             require("nvterm.terminal").toggle "float"
          end,
-         "   切换浮动终端",
+         "   切換浮動終端",
+      },
+
+      ["<C-h><C-i>"] = {
+         function()
+            require("nvterm.terminal").toggle "horizontal"
+         end,
+         "   切換底部終端",
+      },
+
+      ["<C-v><C-i>"] = {
+         function()
+            require("nvterm.terminal").toggle "vertical"
+         end,
+         "   切換右側終端",
       },
 
       -- new
@@ -126,14 +158,14 @@ M.nvterm = {
          function()
             require("nvterm.terminal").new "horizontal"
          end,
-         "   新建水平终端",
+         "   新建水平終端",
       },
 
       ["<leader>v"] = {
          function()
             require("nvterm.terminal").new "vertical"
          end,
-         "   新建垂直终端",
+         "   新建垂直終端",
       },
    },
 }

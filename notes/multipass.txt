@@ -28,32 +28,58 @@ multipass find
 multipass list
 
 添加一個實例(第一次需要聯網下載)
-multipass launch -n d1 -c 1 -m 1G -d 10G
+multipass launch -n de-ubuntu -c 1 -m 1G -d 20G
 -n, --name: 實例名稱
 -c, --cpus: CPU核心數, 默認: 1
 -m, --mem : 內存大小,  默認: 1G
 -d, --disk: 硬盤大小,  默認: 5G
 
 運行實例下的命令
-multipass exec d1 -- lsb_release -a
-multipass exec d1 -- sudo apt update
+multipass exec de-ubuntu -- lsb_release -a
+multipass exec de-ubuntu -- sudo apt update
 
 進入實例
-multipass shell d1
+multipass shell de-ubuntu
 
 掛載宿主機上的一個目錄 & 卸載共享目錄
-multipass mount ~/Documents/Share d1:/home/ubuntu/share
-multipass umount d1
+multipass mount ~/Documents/Share de-ubuntu:/home/ubuntu/share
+multipass umount de-ubuntu
 
 停止 & 啟動實例
-multipass stop d1 d2
-multipass start d1
+multipass stop de-ubuntu d2
+multipass start de-ubuntu
 
 清理
-multipass delete d1
+multipass delete de-ubuntu
 永久刪除已delete掉的實例
 multipass purge
 
+
+=======================================
+
+一些問題:
+
+1. 無法修改/刪除默認用戶`ubuntu`
+    所有shell操作,都必須由multipass創建的用戶操作,
+    但是可以創建其他用戶, 並進行ssh連接
+    https://discourse.ubuntu.com/t/shell-command-with-non-default-user/19715
+
+2. 使用連結自己創建的用戶
+    multipass exec <instance> -- sudo -i -u <user>
+    https://github.com/canonical/multipass/issues/1334#issuecomment-715356096
+
+3. 修改現有實例配置
+    https://multipass.run/docs/modify-an-instance#heading--set-the-cpu-ram-or-disk-of-an-instance
+
+
+=======================================
+
+macos實例數據目錄
+/var/root/Library/Application\ Support/multipassd
+
+macos下載的鏡像目錄路徑:
+/private/var/root/Library/Caches/multipassd/virtualbox/vault/images
+https://github.com/canonical/multipass/issues/2568
 
 =======================================
 移除所有multipass文件
@@ -77,8 +103,4 @@ rm -rf /private/var/root/Library/Caches/multipassd
 #rm -rf /Users/dinge/Library/LaunchAgents/com.canonical.multipass.gui.autostart.plist
 #rm -rf /Users/dinge/Library/Preferences/Multipass.plist
 =======================================
-
-macos下載的鏡像目錄路徑:
-/private/var/root/Library/Caches/multipassd/virtualbox/vault/images
-https://github.com/canonical/multipass/issues/2568
 

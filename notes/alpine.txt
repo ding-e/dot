@@ -5,8 +5,20 @@
 whoami
 
 apk update
-apk add zsh git sudo vim neofetch wget
+apk add zsh git sudo wget curl vim neovim tree-sitter-cli
+apk add ranger fzf neofetch tree gcc
+apk add stylua ripgrep
 apk add util-linux
+-----------------------------------
+apk add clang g++ cmake
+-----------------------------------
+aok add tmux htop
+apk add nethogs iftop nload iptraf-ng
+
+# 包含ifconfig
+apk add net-tools
+-----------------------------------
+
 
 passwd root
 deluser dinge
@@ -16,4 +28,16 @@ adduser dinge -G dinge -s /bin/zsh
 vim /etc/sudoers
 -> dinge ALL=(ALL:ALL) ALL
 
+
+=======================================
+
+一些問題:
+
+1.linux arm下的nvim.nvchad
+  (lsp/tree-sitter 二進制文件不支持arm架構,需要自行安裝)
+    刪除覆蓋(plugin.lua) : williamboman/mason.nvim
+    刪除覆蓋(plugin.lua) : nvim-treesitter/nvim-treesitter
+    只保留lua            : jose-elias-alvarez/null-ls.nvim
+
+==============================================
 

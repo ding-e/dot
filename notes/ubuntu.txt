@@ -17,17 +17,20 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cargo install tree-sitter-cli
 
 docker:
+sudo apt install docker.io
+sudo systemctl start docker
 https://jianshu.com/p/c4c6d1196156
 
 .bashrc
 export TERM="xterm-256color"
 
+=======================================
 
 whoami
 
 apt update
 apt install software-properties-common psmisc
-apt install zsh git sudo vim wget htop
+apt install zsh git sudo vim wget htop net-tools
 apt install tmux tree ranger fzf neofetch
 apt install stylua ripgrep
 apt install nethogs iftop nload iptraf-ng
@@ -35,6 +38,7 @@ apt install nethogs iftop nload iptraf-ng
 
 passwd root
 useradd -m dinge -s /bin/zsh
+passwd dinge
 
 vim /etc/sudoers
 -> dinge ALL=(ALL:ALL) ALL

@@ -1,5 +1,9 @@
 #!/bin/sh
 
+
+# 用於mac下的配置連接
+# ===========================================================
+
 # kitty
 ln -sf "$PWD/kitty/kitty.conf" "$HOME/.config/kitty/"
 ln -sf "$PWD/kitty/kitty_search" "$HOME/.config/kitty/"

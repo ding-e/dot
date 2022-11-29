@@ -105,6 +105,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # -------------- DINGE -------------- #
+# term color
+export TERM="xterm-256color"
+
 alias c="clear"
 alias nf="neofetch"
 alias ra="ranger"
@@ -127,7 +130,11 @@ alias glocal="cd ~/.local/share/"
 # docker
 # alias ubuntu="docker exec -it -u dinge -w /home/dinge d1 zsh"
 # alias gdocker="cd ~/Desktop/碼頭工人/"
-alias ubuntu="multipss exec d1 -- sudo docker exec -it -u dinge -w /home/dinge d1 zsh"
+
+# multipass
+alias mp="multipass"
+alias ubuntu="multipass exec de-ubuntu -- sudo -i -u dinge -- tmux"
+alias alpine="multipass exec de-ubuntu -- sudo -i -u dinge -- sudo docker exec -it -u dinge -w /home/dinge d1 zsh"
 
 # 解决tmux clear 提示 "terminals database is inaccessible" 问题
 # [x] alias tmux="TERM=xterm-256color tmux"
@@ -179,6 +186,9 @@ function proxy_off() {
 # alias openfl="haxelib run openfl"
 # alias lime="haxelib run lime"
 # alias flixel="haxelib run flixel-tools"
+
+# npm
+# export PATH="/Users/dinge/Documents/Library/npm-global/bin:$PATH"
 
 # nim lang
 # 安装nimlsp, 编译nimlsp必须制定源码目录

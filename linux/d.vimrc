@@ -120,7 +120,7 @@ set shiftwidth=4
 set softtabstop=4
 
 " 自动缩进
-"set autoindent 
+"set autoindent▫
 
 " 显示行尾的空格
 set list
@@ -151,7 +151,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " 显示行号
 "set nu
 set number
-
 " 重定义行号
 set relativenumber
 
@@ -193,18 +192,6 @@ Plug 'drsooch/gruber-darker-vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-"Plug 'preservim/nerdtree'
-"Plug 'majutsushi/tagbar'
-
-"Plug 'dense-analysis/ale'
-"Plug 'mbbill/undotree'
-
-" Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'tpope/vim-fugitive'
-
-" Plug 'ycm-core/YouCompleteMe'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 "Plug 'fatih/vim-go'
 "Plug 'zah/nim.vim'
 Plug 'ding-e/nim-highlight'
@@ -214,15 +201,6 @@ call plug#end()
 " ----------------------------------
 
 let g:airline_theme='powerlineish'
-"let g:airline_theme='bubblegum'
-"let g:airline_solarized_bg='dark'
-
-"" 切换NERDTree
-"map <F3> :NERDTreeMirror<CR>
-"map <F3> :NERDTreeToggle<CR>
-"
-""  NERDTree打开当前文件所在目录
-"map <F2> :exec("NERDTree ".expand('%:h'))<CR>
 
 " 禁用gruvbox_material主题注释斜体
 let g:gruvbox_material_disable_italic_comment = 1
@@ -232,9 +210,6 @@ if !has('gui_running')
   "let g:gruvbox_transparent_bg=1
   let g:gruvbox_material_transparent_background = 1
 else
-  "set guifont=FixedsysTTF\ Monospaced:h10
-  "set guifont=FixedsysTTF:h11
-  "set guifont=FixedsysTTF
   "set guifont=新宋体:h10
   set guifont=Fixedsys:h10
 
@@ -256,10 +231,21 @@ endif
 
 " 显示颜色色调
 set background=dark
-"set background=light
 
-"colorscheme gruvbox
+"gruvbox GruberDarker
 colorscheme gruvbox-material
 
-"set termguicolors
-"colorscheme GruberDarker
+" 自定義一個命令
+" DeNumber   -> 刪除行號
+" DeNumber 1 -> 顯示行號
+command! -nargs=* DeNumber call s:DeNumber(<q-args>)
+function! s:DeNumber(is_num) abort
+  if a:is_num == 1
+    set number
+    set relativenumber
+  else
+    set nonumber
+    set norelativenumber
+  endif
+endfunction
+

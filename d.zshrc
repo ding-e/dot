@@ -10,9 +10,14 @@ export ZSH="/Users/dinge/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="lambda"
-ZSH_THEME="dinge"
 # ZSH_THEME="Chicago95"
-# ZSH_THEME="Chicago95_Dinge"
+
+# MACOS
+if [ $(uname -o) = "Darwin" ]; then
+  ZSH_THEME="dinge"
+else # LINUX
+  ZSH_THEME="Chicago95_Dinge"
+fi
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -105,44 +110,138 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # -------------- DINGE -------------- #
+
+
+# ========================================================
+# MACOS.START
+if [ $(uname -o) = "Darwin" ]; then
+
+
+    # workspace
+    export WORKSPACE_PATH="$HOME/Documents/Workspace"
+
+    # docker
+    # alias ubuntu="docker exec -it -u dinge -w /home/dinge d1 zsh"
+    # alias gdocker="cd ~/Desktop/碼頭工人/"
+    # -----------------------------
+    # multipass
+    alias mp="multipass"
+    alias ubuntu="multipass exec de-ubuntu -- sudo -i -u dinge -- tmux"
+    alias alpine="multipass exec de-ubuntu -- sudo -i -u dinge -- sudo docker exec -it -u dinge -w /home/dinge d1 zsh"
+
+    # mac pkg_uninstall
+    # https://github.com/mpapis/pkg_uninstaller
+    # export PATH=$HOME/Documents/Tool/pkg_uninstaller:$PATH
+
+    # brew
+    # export PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$PATH
+    # export CPATH=/opt/homebrew/include:$CPATH
+    # export LIBRARY_PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$LIBRARY_PATH
+    # export LD_LIBRARY_PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$LD_LIBRARY_PATH
+    # export DYLD_LIBRARY_PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$DYLD_LIBRARY_PATH
+    #
+    # export HOMEBREW_NO_AUTO_UPDATE=1
+    # export HOMEBREW_NO_INSTALL_CLEANUP=1
+
+
+# MACOS.END
+# ========================================================
+# LINUX.START
+else
+
+
+    # workspace
+    export WORKSPACE_PATH="$HOME/core/workspace"
+
+
+    # 当临时连接的外接键盘，需要再次设置键位
+    # alias keyboardset="xmodmap ~/.Xmodmap"
+
+    # NetworkManager systemd
+    # alias netstart="sudo systemctl start NetworkManager"
+    # alias netstop="sudo systemctl stop NetworkManager"
+
+    # vmware net systemd
+    # alias vmnetstart="sudo systemctl start vmware-networks.service"
+    # alias vmnetstop="sudo systemctl stop vmware-networks.service"
+
+    # vmware usb systemd
+    # alias vmusbstart="sudo systemctl start vmware-usbarbitrator.service"
+    # alias vmnetstop="sudo systemctl stop vmware-usbarbitrator.service"
+
+    # vmware 共享 systemd
+    # alias vmhoststart="sudo systemctl start vmware-hostd.service"
+    # alias vmhoststop="sudo systemctl stop vmware-hostd.service"
+
+    # bluetooth systemd
+    # alias bluestart="sudo systemctl start bluetooth"
+    # alias bluestop="sudo systemctl stop bluetooth"
+
+    # sshd systemd
+    # alias sshstart="sudo systemctl start sshd"
+    # alias sshstop="sudo systemctl stop sshd"
+
+    # docker systemd
+    alias dockerstart="sudo systemctl start docker"
+    alias dockerstop="sudo systemctl stop docker"
+    alias dockerstatus="sudo systemctl status docker"
+    alias docker="sudo docker"
+
+    # ubuntu gdm login page
+    # alias gdmstart="sudo systemctl start gdm"
+    # alias gdmstop="sudo systemctl stop gdm"
+
+    # bin path ---------
+    # # /home/dinge/core/bin
+    # export PATH="$HOME/core/bin:$PATH"
+    # # /home/dinge/.local/bin
+    # export PATH="$HOME/.local/bin:$PATH"
+
+    # clash
+    alias clash="$HOME/core/bin/clash/clash -d $HOME/core/bin/clash/"
+
+    # net cat
+    alias net_hogs="sudo nethogs enp0s1"
+    alias net_iftop="sudo iftop -i enp0s1"
+    alias net_nload="nload enp0s1 -u K"
+    alias net_iptraf="sudo iptraf-ng"
+
+
+fi
+# LINUX.END
+# ========================================================
+
+
 # term color
 export TERM="xterm-256color"
 
 alias c="clear"
 alias nf="neofetch"
 alias ra="ranger"
+
 alias vi="/usr/bin/vim"
 alias vim="nvim"
-#alias vim="TERM=xterm-256color /usr/bin/vim"
-#alias vimtutor="LANG=zh_CN.utf-8 vimtutor"
+# alias vim="TERM=xterm-256color /usr/bin/vim"
+# alias vimtutor="LANG=zh_CN.utf-8 vimtutor"
 
-# workspace
-export WORKSPACE_PATH=~/Documents/Workspace
 alias dot="cd $WORKSPACE_PATH/dot/ && vim"
 alias gwork="cd $WORKSPACE_PATH/"
 alias gdot="cd $WORKSPACE_PATH/dot/"
+
 alias gnim="cd $WORKSPACE_PATH/nim/"
 alias gzig="cd $WORKSPACE_PATH/zig/"
 alias grust="cd $WORKSPACE_PATH/rust/"
-alias gvim="cd ~/.config/nvim/"
-alias glocal="cd ~/.local/share/"
 
-# docker
-# alias ubuntu="docker exec -it -u dinge -w /home/dinge d1 zsh"
-# alias gdocker="cd ~/Desktop/碼頭工人/"
-
-# multipass
-alias mp="multipass"
-alias ubuntu="multipass exec de-ubuntu -- sudo -i -u dinge -- tmux"
-alias alpine="multipass exec de-ubuntu -- sudo -i -u dinge -- sudo docker exec -it -u dinge -w /home/dinge d1 zsh"
+alias gvim="cd $HOME/.config/nvim/"
+alias glocal="cd $HOME/.local/share/"
 
 # 解决tmux clear 提示 "terminals database is inaccessible" 问题
 # [x] alias tmux="TERM=xterm-256color tmux"
-#if [ "$TERM" = "tmux-256color" ];then
+# if [ "$TERM" = "tmux-256color" ];then
 #    #export TERMINFO=/usr/share/terminfo
 #    export TERM=xterm-256color
-#else
-#fi
+# else
+# fi
 
 # vpn
 alias vpnstart="export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5://127.0.0.1:7891;echo \"Set proxy successfully\" "
@@ -171,59 +270,38 @@ function proxy_off() {
 # fzf 模糊搜索
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-
 # go lang
-# #export GOROOT=/opt/homebrew/Cellar/go/1.17.7/libexec
-# #export GOPATH=$WORKSPACE_PATH/go
-# #export GOBIN=$WORKSPACE_PATH/go/bin
-# #export PATH=$PATH:$GOROOT/bin:$GOBIN
-# export GOPATH=$WORKSPACE_PATH/go
-# export GOBIN=$GOPATH/bin
-# export PATH=$PATH:$GOBIN:$GOPATH
+# export GOPATH="$WORKSPACE_PATH/go"
+# export GOBIN="$GOPATH/bin"
+# export PATH=$GOBIN:$GOPATH:$PATH
+
+# npm
+# export PATH="$HOME/Documents/Library/npm-global/bin:$PATH"
 
 # haxe lang
-# #export HAXE_STD_PATH="/opt/homebrew/lib/haxe/std"
+# HAXE_STD_PATH="/opt/homebrew/lib/haxe/std"
 # alias openfl="haxelib run openfl"
 # alias lime="haxelib run lime"
 # alias flixel="haxelib run flixel-tools"
-
-# npm
-# export PATH="/Users/dinge/Documents/Library/npm-global/bin:$PATH"
 
 # nim lang
 # 安装nimlsp, 编译nimlsp必须制定源码目录
 # nimble install \
   # -p:-d:explicitSourcePath:/Users/dinge/Documents/Workspace/nim/lsp/Nim-1.6.10 \
   # nimlsp --verbose
-export NIMBIN=/Users/dinge/.nimble/bin
-export PATH=$PATH:$NIMBIN
-#export NIMSUGGEST=/opt/homebrew/bin/nimsuggest
-#export PATH=$PATH:$NIMSUGGEST
+export NIMBIN="$HOME/.nimble/bin"
+export PATH=$NIMBIN:$PATH
 
 # zig lang - brew install zig --HEAD
 #          - brew unlink zig && brew link --HEAD zig
 # export ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.10.0
-#export ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.11.0
-#export PATH=$ZIGBIN:$PATH
-
+# export ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.11.0
+# export PATH=$ZIGBIN:$PATH
+# --------------------
 # zls - zig language server
 #       git clone [-b 0.10.0] --recurse-submodules zls.git && build -Drelease-small
 # zls -> zls.json path: /Users/dinge/Library/Application\ Support/zls.json
-export ZLSBIN=$WORKSPACE_PATH/zig/bin/lsp/zls-0.10.0/zig-out/bin
-# export ZLSBIN=$WORKSPACE_PATH/zig/bin/lsp/zls-master/zig-out/bin
+export ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls-0.10.0/zig-out/bin"
+# ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls-master/zig-out/bin"
 export PATH=$ZLSBIN:$PATH
-
-# mac pkg_uninstall
-# https://github.com/mpapis/pkg_uninstaller
-# export PATH=/Users/dinge/Documents/Tool/pkg_uninstaller:$PATH
-
-# brew
-export PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$PATH
-export CPATH=/opt/homebrew/include:$CPATH
-export LIBRARY_PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$LIBRARY_PATH
-export LD_LIBRARY_PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$LD_LIBRARY_PATH
-export DYLD_LIBRARY_PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$DYLD_LIBRARY_PATH
-
-export HOMEBREW_NO_AUTO_UPDATE=1
-export HOMEBREW_NO_INSTALL_CLEANUP=1
 

@@ -1,34 +1,68 @@
 #!/bin/sh
 
+cmd=''
 
-# 用於mac下的配置連接
-# ===========================================================
+# sh -c ohmyzsh/omz.sh
+# git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+# --------------------------------
 
-# kitty
-ln -sf "$PWD/kitty/kitty.conf" "$HOME/.config/kitty/"
-ln -sf "$PWD/kitty/kitty_search" "$HOME/.config/kitty/"
+# MACOS
+if [ $(uname -o) = "Darwin" ]; then
 
-# tmux
-ln -sf "$PWD/d.tmux.conf" "$HOME/.tmux.conf"
+  cmd='ln -sf'
 
-# nvim nvchad
-ln -sf "$PWD/nvim-nvchad/custom" "$HOME/.config/nvim/lua"
+  # kitty
+  ${cmd} "$PWD/kitty/kitty.conf" "$HOME/.config/kitty/"
+  ${cmd} "$PWD/kitty/kitty_search" "$HOME/.config/kitty/"
+  # -----------------
 
-# vim
-mkdir "$HOME/.vim/" "$HOME/.vim/autoload" "$HOME/.vim/plugged"
-ln -sf "$PWD/vim/autoload/plug.vim" "$HOME/.vim/autoload/plug.vim"
-ln -sf "$PWD/d.vimrc" "$HOME/.vimrc"
+  # zls
+  ${cmd} "$PWD/zls/zls.json" "$HOME/Library/Application Support/zls.json"
+  # -----------------
+
+  # vscode
+  ${cmd} "$PWD/vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
+  ${cmd} "$PWD/vscode/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json"
+  # -----------------
+
+# LINUX
+else
+
+  cmd='cp'
+
+  # backup
+  mv "$HOME/.zshrc"                 "$HOME/.zshrc.b"
+  # mv "$HOME/.tmux.conf"             "$HOME/.tmux.conf.b"
+  # mv "$HOME/.vimrc"                 "$HOME/.vimrc.b"
+  # mv "$HOME/.vim"                   "$HOME/.vim.b"
+  # mv "$HOME/.config/nvim"           "$HOME/.config/nvim.b"
+  # mv "$HOME/.config/ranger/rc.conf" "$HOME/.config/ranger/rc.config.b"
+  # -----------------
+
+  # ranger
+  ${cmd} "$PWD/ranger/rc.conf" "$HOME/.config/ranger/rc.conf"
+
+# -----------------
+fi
 
 # zsh
-ln -sf "$PWD/ohmyzsh/Chicago95.zsh-theme" "$HOME/.oh-my-zsh/themes/"
-ln -sf "$PWD/ohmyzsh/Chicago95_Dinge.zsh-theme" "$HOME/.oh-my-zsh/themes/"
-ln -sf "$PWD/ohmyzsh/dinge.zsh-theme" "$HOME/.oh-my-zsh/themes/"
-ln -sf "$PWD/d.zshrc" "$HOME/.zshrc"
+${cmd} "$PWD/ohmyzsh/Chicago95.zsh-theme" "$HOME/.oh-my-zsh/themes/"
+${cmd} "$PWD/ohmyzsh/Chicago95_Dinge.zsh-theme" "$HOME/.oh-my-zsh/themes/"
+${cmd} "$PWD/ohmyzsh/dinge.zsh-theme" "$HOME/.oh-my-zsh/themes/"
+${cmd} "$PWD/d.zshrc" "$HOME/.zshrc"
+# -----------------
 
-# zls
-ln -sf "$PWD/zls/zls.json" "$HOME/Library/Application Support/zls.json"
+# tmux
+${cmd} "$PWD/d.tmux.conf" "$HOME/.tmux.conf"
+# -----------------
 
-# vscode
-ln -sf "$PWD/vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
-ln -sf "$PWD/vscode/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json"
+# nvim nvchad
+${cmd} "$PWD/nvim-nvchad/custom" "$HOME/.config/nvim/lua"
+# -----------------
+ 
+# vim
+mkdir "$HOME/.vim/" "$HOME/.vim/autoload" "$HOME/.vim/plugged"
+${cmd} "$PWD/vim/autoload/plug.vim" "$HOME/.vim/autoload/plug.vim"
+${cmd} "$PWD/d.vimrc" "$HOME/.vimrc"
+# -----------------
 

@@ -1,3 +1,19 @@
+
+-- 自定義一個命令
+-- 顯示/隱藏 行號
+-- DeNumber   -> 刪除行號
+-- DeNumber 1 -> 顯示行號
+vim.api.nvim_create_user_command("DeNumber", function(args)
+   if args.args == "1" then
+      vim.cmd [[ set number
+                 set relativenumber ]]
+   else
+      vim.cmd [[ set nonumber
+                 set norelativenumber ]]
+   end
+end, { nargs = "*", desc = "" })
+
+
 -- 打开文件返回上次修改的位置
 vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
 

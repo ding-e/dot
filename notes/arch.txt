@@ -1,9 +1,50 @@
 ------------------------------------
-- History
+- Arch Linux
 ------------------
 
-whoami
+packages : [
+    zsh git sudo wget curl vim neovim
+    ranger fzf neofetch tree tmux htop
+    unzip zip unrar
+    nethogs iftop nload iptraf-ng
+    stylua ripgrep
+    nim, nimble, nimlsp, nimpretty
+    gcc make cmake clang
+    net-tools util-linux
 
+    tree-sitter
+    #nodejs npm
+]
+
+================================================
+
+whoami
 pacman-key --init
+mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.b
+echo "Server = https://mirrors.mit.edu/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 pacman -Syu
+pacman -Q | wc -l
+pacman -Qi neovim
+pacman -Si neovim
+
+passwd root
+userdel dinge
+useradd -m -G wheel -s /bin/zsh dinge
+passwd dinge
+
+/etc/sudoers
+-> dinge ALL=(ALL:ALL) ALL
+
+.bashrc
+-> export TERM="xterm-256color"
+
+
+
+-----------------------
+一些問題:
+
+1.
+
+
+
 

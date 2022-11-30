@@ -13,6 +13,10 @@ https://hub.docker.com/_/archlinux
 apple silicon運行非arm64架構的鏡像
 https://forums.docker.com/t/run-x86-intel-and-arm-based-images-on-apple-silicon-m1-macs/117123
 
+qemu: uncaught target signal 6 (Aborted) - core dumped
+這是qemu的一個BUG
+https://github.com/docker/for-mac/issues/6264#issuecomment-1089088142
+
 ==============================================
 
 

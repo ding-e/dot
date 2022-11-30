@@ -2,7 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/dinge/.oh-my-zsh"
+# export ZSH="/Users/dinge/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -121,14 +122,14 @@ if [ $(uname -o) = "Darwin" ]; then
     export WORKSPACE_PATH="$HOME/Documents/Workspace"
 
     # docker
-    alias arch="docker exec -it -u dinge -w /home/dinge de-arch zsh"
+    # alias archlinux="docker exec -it -u dinge -w /home/dinge de-arch zsh"
     alias alpine="docker exec -it -u dinge -w /home/dinge de-alpine zsh"
-    # alias ubuntu="docker exec -it -u dinge -w /home/dinge de-ubuntu zsh"
+    alias ubuntu="docker exec -it -u dinge -w /home/dinge de-ubuntu zsh"
     alias gdocker="cd ~/Desktop/碼頭工人/"
     # -----------------------------
     # multipass
     alias mp="multipass"
-    alias ubuntu="multipass exec de-ubuntu -- sudo -i -u dinge -- tmux"
+    # alias ubuntu="multipass exec de-ubuntu -- sudo -i -u dinge -- tmux"
     # alias alpine="multipass exec de-ubuntu -- sudo -i -u dinge -- sudo docker exec -it -u dinge -w /home/dinge d1 zsh"
 
     # mac pkg_uninstall
@@ -194,10 +195,13 @@ else
     # alias gdmstop="sudo systemctl stop gdm"
 
     # bin path ---------
-    # # /home/dinge/core/bin
-    # export PATH="$HOME/core/bin:$PATH"
+    # /home/dinge/core/bin
+    export PATH="$HOME/core/bin:$PATH"
     # # /home/dinge/.local/bin
     # export PATH="$HOME/.local/bin:$PATH"
+
+    # lua language server - 不支持musl的linux發行版(alpine), 需要自行編譯
+    export PATH="$HOME/core/bin/lua-language-server:$PATH"
 
     # clash
     alias clash="$HOME/core/bin/clash/clash -d $HOME/core/bin/clash/"

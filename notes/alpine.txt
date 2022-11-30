@@ -1,43 +1,76 @@
 ------------------------------------
-- History
+- Alpine Linux
 ------------------
 
+packages : [
+    zsh git sudo wget curl vim neovim
+    ranger fzf neofetch tree tmux htop
+    unzip zip
+    nethogs iftop nload iptraf-ng
+    stylua ripgrep
+    gcc make cmake clang alpine-sdk
+    net-tools util-linux
+
+    #tree-sitter-cli
+]
+
+================================================
+
 whoami
-
-apk update
-apk add zsh git sudo wget curl vim neovim tree-sitter-cli
-apk add ranger fzf neofetch tree gcc
-apk add stylua ripgrep
-apk add util-linux
------------------------------------
-apk add clang g++ cmake
------------------------------------
-aok add tmux htop
-apk add nethogs iftop nload iptraf-ng
-
-# 包含ifconfig
-apk add net-tools
------------------------------------
-
+apk add/update/upgrade
 
 passwd root
 deluser dinge
 addgroup dinge
 adduser dinge -G dinge -s /bin/zsh
 
-vim /etc/sudoers
+/etc/sudoers
 -> dinge ALL=(ALL:ALL) ALL
 
+.bashrc
+-> export TERM="xterm-256color"
 
-=======================================
 
+
+-----------------------
 一些問題:
 
-1.linux arm下的nvim.nvchad
-  (lsp/tree-sitter 二進制文件不支持arm架構,需要自行安裝)
-    刪除覆蓋(plugin.lua) : williamboman/mason.nvim
-    刪除覆蓋(plugin.lua) : nvim-treesitter/nvim-treesitter
-    只保留lua            : jose-elias-alvarez/null-ls.nvim
+0. nvchad
+移除lsp/tree-sitter/null-ls等語言配置(plugin.lua), 自行編譯安裝所需要的二進制文件
 
-==============================================
+1. lua-language-server 不支持musl的linux發行版, 需要自行編譯
+https://github.com/sumneko/lua-language-server/wiki/Getting-Started#build
+https://github.com/sumneko/lua-language-server/issues/948
+https://github.com/sumneko/lua-language-server/issues/661
+
+    apk add alpine-sdk ninja gcc git
+
+    git clone  --depth=1 https://github.com/sumneko/lua-language-server
+    cd lua-language-server
+    git submodule update --depth 1 --init --recursive
+
+    cd 3rd/luamake
+    ./compile/install.sh
+    cd ../..
+    ./3rd/luamake/luamake rebuild
+
+    ./bin/lua-language-server
+    # ----------------------
+
+    mkdir ./lua-language-server
+    cp -R bin debugger.lua main.lua locale script ./lua-language-server
+    mv ./lua-language-server ~/core/bin/
+    # ----------------------
+
+    echo "export PATH=\"$HOME/core/bin/lua-language-server/bin:\$PATH\"" >> ~/.zshrc
+    source ~/.zshrc
+
+
+
+
+
+================================================
+
+
+
 

@@ -28,10 +28,10 @@ if [ $(uname -o) = "Darwin" ]; then
 # LINUX
 else
 
-  cmd='cp'
+  cmd='cp -R'
 
   # backup
-  mv "$HOME/.zshrc"                 "$HOME/.zshrc.b"
+  # mv "$HOME/.zshrc"                 "$HOME/.zshrc.b"
   # mv "$HOME/.tmux.conf"             "$HOME/.tmux.conf.b"
   # mv "$HOME/.vimrc"                 "$HOME/.vimrc.b"
   # mv "$HOME/.vim"                   "$HOME/.vim.b"
@@ -40,6 +40,7 @@ else
   # -----------------
 
   # ranger
+  mkdir "$HOME/.config/ranger"
   ${cmd} "$PWD/ranger/rc.conf" "$HOME/.config/ranger/rc.conf"
 
 # -----------------

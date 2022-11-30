@@ -167,6 +167,9 @@ exec "nohlsearch"
 " 边搜索边高亮
 set incsearch
 
+" 设置屏幕中间竖条
+" set colorcolumn=80,120
+
 " 忽略大小写搜索
 set ignorecase
 set smartcase

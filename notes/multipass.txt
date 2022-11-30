@@ -78,7 +78,7 @@ macos實例數據目錄
 /var/root/Library/Application\ Support/multipassd
 
 macos下載的鏡像目錄路徑:
-/private/var/root/Library/Caches/multipassd/virtualbox/vault/images
+/private/var/root/Library/Caches/multipassd/qemu/vault/images
 https://github.com/canonical/multipass/issues/2568
 
 =======================================

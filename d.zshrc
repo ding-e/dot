@@ -121,13 +121,15 @@ if [ $(uname -o) = "Darwin" ]; then
     export WORKSPACE_PATH="$HOME/Documents/Workspace"
 
     # docker
-    # alias ubuntu="docker exec -it -u dinge -w /home/dinge d1 zsh"
-    # alias gdocker="cd ~/Desktop/碼頭工人/"
+    alias arch="docker exec -it -u dinge -w /home/dinge de-arch zsh"
+    alias alpine="docker exec -it -u dinge -w /home/dinge de-alpine zsh"
+    # alias ubuntu="docker exec -it -u dinge -w /home/dinge de-ubuntu zsh"
+    alias gdocker="cd ~/Desktop/碼頭工人/"
     # -----------------------------
     # multipass
     alias mp="multipass"
     alias ubuntu="multipass exec de-ubuntu -- sudo -i -u dinge -- tmux"
-    alias alpine="multipass exec de-ubuntu -- sudo -i -u dinge -- sudo docker exec -it -u dinge -w /home/dinge d1 zsh"
+    # alias alpine="multipass exec de-ubuntu -- sudo -i -u dinge -- sudo docker exec -it -u dinge -w /home/dinge d1 zsh"
 
     # mac pkg_uninstall
     # https://github.com/mpapis/pkg_uninstaller

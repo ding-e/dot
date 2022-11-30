@@ -2,8 +2,24 @@
 - Docker
 ------------------
 
+doc
+https://docs.docker.com/
+https://docs.docker.com/desktop/settings/mac/
+
+使用arch官方鏡像啟動後需要初始化密鑰(run後運行一次)
+pacman-key --init
+https://hub.docker.com/_/archlinux
+
+apple silicon運行非arm64架構的鏡像
+https://forums.docker.com/t/run-x86-intel-and-arm-based-images-on-apple-silicon-m1-macs/117123
+
+==============================================
+
+
 # 拉取鏡像
 docker pull alpine|ubuntu
+docker pull archlinux --platform linux/amd64
+
 # 查看本地鏡像
 docker images
 
@@ -12,7 +28,11 @@ docker ps [-a]
 
 # 創建容器
 # https://www.cnblogs.com/yfalcon/p/9044246.html
-docker run -it --name w1 [-u dinge -w /home/dinge --hostname de-docker] alpine:latest [zsh|bash|sh]
+docker run -it --name w1 --hostname de-docker [-u dinge -w /home/dinge] alpine:latest [zsh|bash|sh]
+
+# 創建非ARM容器 : 如果添加--rm參數,則會在容器退出时自动删除
+# --platform  : linux/amd64, linux/arm64, darwin/amd64
+docker run -it --platform linux/amd64 --name w1 --hostname de-arch archlinux:latest bash
 
 # 啟動/停止容器
 docker start (id|name)

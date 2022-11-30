@@ -1,0 +1,9 @@
+------------------------------------
+- History
+------------------
+
+whoami
+
+pacman-key --init
+pacman -Syu
+

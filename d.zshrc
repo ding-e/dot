@@ -200,9 +200,6 @@ else
     # # /home/dinge/.local/bin
     # export PATH="$HOME/.local/bin:$PATH"
 
-    # lua language server - 不支持musl的linux發行版(alpine), 需要自行編譯
-    export PATH="$HOME/core/bin/lua-language-server:$PATH"
-
     # clash
     alias clash="$HOME/core/bin/clash/clash -d $HOME/core/bin/clash/"
 

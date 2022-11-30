@@ -55,15 +55,23 @@ https://github.com/sumneko/lua-language-server/issues/661
     ./3rd/luamake/luamake rebuild
 
     ./bin/lua-language-server
-    # ----------------------
 
-    mkdir ./lua-language-server
-    cp -R bin debugger.lua main.lua locale script ./lua-language-server
-    mv ./lua-language-server ~/core/bin/
-    # ----------------------
+    # ========================================
+    #    將lua lsp必要的文件複製出來,在做path映射
+    #    mkdir ./lua-language-server
+    #    cp -R bin debugger.lua main.lua locale script ./lua-language-server
+    #    mv ./lua-language-server ~/core/bin/
+    #    # ----------------------
+    #    echo "export PATH=\"$HOME/core/bin/lua-language-server/bin:\$PATH\"" >> ~/.zshrc
+    #    source ~/.zshrc
 
-    echo "export PATH=\"$HOME/core/bin/lua-language-server/bin:\$PATH\"" >> ~/.zshrc
-    source ~/.zshrc
+    # ========================================
+        也可以 在nvim下 :MasonInstall lua-language-server 安裝, 然後編譯後將二進制文件替換:
+        mv ~/.local/share/nvim/mason/packages/lua-language-server/extension/server/bin/lua-language-server \
+           ~/.local/share/nvim/mason/packages/lua-language-server/extension/server/bin/lua-language-server.b
+
+        cp ./bin/lua-language-server \
+           ~/.local/share/nvim/mason/packages/lua-language-server/extension/server/bin/
 
 
 

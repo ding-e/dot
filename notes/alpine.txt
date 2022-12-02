@@ -30,6 +30,8 @@ adduser dinge -G dinge -s /bin/zsh
 .bashrc
 -> export TERM="xterm-256color"
 
+#sed -i -e "s/bin\/ash/bin\/zsh/" /etc/passwd
+#export SHELL="/bin/zsh"
 
 
 -----------------------

@@ -156,6 +156,7 @@ else
     # workspace
     export WORKSPACE_PATH="$HOME/core/workspace"
 
+    # export SHELL="/bin/zsh"
 
     # 当临时连接的外接键盘，需要再次设置键位
     # alias keyboardset="xmodmap ~/.Xmodmap"
@@ -216,7 +217,7 @@ fi
 
 
 # term color
-export TERM="xterm-256color"
+#export TERM="xterm-256color"
 
 alias c="clear"
 alias nf="neofetch"

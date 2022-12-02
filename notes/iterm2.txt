@@ -1,0 +1,15 @@
+------------------------------------
+- Item2
+------------------
+
+
+
+一些問題:
+
+1. 禁用在vim下使用鼠標選擇文本複製的時候警告
+https://gitlab.com/gnachman/iterm2/-/issues/8905
+https://zhuanlan.zhihu.com/p/157544571
+解決: defaults write com.googlecode.iterm2 NoSyncNeverAskAboutMouseReportingFrustration -bool true
+
+
+

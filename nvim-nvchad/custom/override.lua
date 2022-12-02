@@ -2,6 +2,49 @@
 
 local M = {}
 
+function Set_icons()
+   local present, devicons = pcall(require, "nvim-web-devicons")
+   if present then
+      require("base46").load_highlight "devicons"
+
+      local icon_theme = require("core.utils").load_config().ui.icon_theme
+      local options = { override = require("nvchad_ui.icons").devicons }
+
+      M.nvimtree.renderer.icons.glyphs.default = ""
+      M.nvimtree.renderer.icons.glyphs.symlink = ""
+      M.nvimtree.renderer.icons.glyphs.folder = {
+         default = "D",
+         empty = "D",
+         empty_open = "D",
+         open = "D",
+         symlink = "L",
+         symlink_open = "L",
+         arrow_open = "",
+         arrow_closed = "",
+      }
+
+      if icon_theme == "none" then
+         options = { default = false, color_icons = false }
+         M.nvimtree.renderer.icons.glyphs.default = "F"
+         M.nvimtree.renderer.icons.glyphs.symlink = "L"
+      elseif icon_theme == "nvchad" then
+         M.nvimtree.renderer.icons.glyphs.folder = {
+            default = "",
+            empty = "",
+            empty_open = "",
+            open = "",
+            symlink = "",
+            symlink_open = "",
+            arrow_open = "",
+            arrow_closed = "",
+         }
+      end
+
+      options = require("core.utils").load_override(options, "kyazdani42/nvim-web-devicons")
+      devicons.setup(options)
+   end
+end
+
 M.nvimtree = {
    -- open_on_setup = true,
    view = {
@@ -25,16 +68,17 @@ M.nvimtree = {
             folder_arrow = true,
             git = true,
          },
+         symlink_arrow = " -> ",
          glyphs = {
-            default = "",
-            symlink = "",
+            default = "F",
+            symlink = "L",
             folder = {
-               default = "",
-               empty = "",
-               empty_open = "",
-               open = "",
-               symlink = "",
-               symlink_open = "",
+               default = "D",
+               empty = "D",
+               empty_open = "D",
+               open = "D",
+               symlink = "L",
+               symlink_open = "L",
                arrow_open = "",
                arrow_closed = "",
             },

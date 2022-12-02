@@ -12,6 +12,10 @@ M.ui = {
    -- 如果當前項目存在workspace_list中使用第一個主題
    -- 否則使用第二個
    workspace_theme_toggle = { "dinge", "gruvchad" },
+
+   -- 圖標相關 (nvim-tree/tabufline)
+   -- "none", "file", "nvchad"
+   icon_theme = "none",
 }
 
 M.mappings = require "custom.mappings"

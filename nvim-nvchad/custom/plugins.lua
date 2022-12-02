@@ -51,12 +51,20 @@ return {
       override_options = overrides.ui,
    },
 
+   ["kyazdani42/nvim-web-devicons"] = {
+      after = "ui",
+      module = "nvim-web-devicons",
+      config = function()
+         Set_icons()
+      end,
+   },
+
    ["NvChad/nvterm"] = {
       override_options = overrides.nvterm,
    },
 
    ["kyazdani42/nvim-tree.lua"] = {
-      -- after = { "ui", "nvim-web-devicons" },
+      after = { "ui", "nvim-web-devicons" },
       override_options = overrides.nvimtree,
    },
 

@@ -25,4 +25,8 @@ M.ui = {
 M.mappings = require "custom.mappings"
 M.plugins = require "custom.plugins"
 
+if M.ui.icon_theme == "file" and os.getenv("TERM_PROGRAM") == "iTerm.app" then
+   M.ui.icon_theme = "nvchad"
+end
+
 return M

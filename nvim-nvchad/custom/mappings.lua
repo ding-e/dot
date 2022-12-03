@@ -110,6 +110,19 @@ M.general = {
    },
 }
 
+-- Pocco81/truezen.nvim
+M.zen = {
+   n = {
+      ["<leader>zn"] = { "<cmd> TZNarrow <CR>", "" },
+      ["<leader>zf"] = { "<cmd> TZFocus <CR>", "" },
+      ["<leader>zm"] = { "<cmd> TZMinimalist <CR>", "" },
+      ["<leader>za"] = { "<cmd> TZAtaraxis <CR>", "" },
+   },
+   x = {
+      ["<leader>zn"] = { ":'<,'>TZNarrow <CR>", "" },
+   },
+}
+
 -- 重置切换终端快捷键映射
 M.nvterm = {
    t = {
@@ -176,6 +189,13 @@ M.nvterm = {
             require("nvterm.terminal").new "vertical"
          end,
          "   新建垂直終端",
+      },
+
+      ["<leader>st"] = {
+         function()
+            vim.cmd [[ DeTerm ]]
+         end,
+         "   新建全屏終端",
       },
    },
 }

@@ -28,3 +28,21 @@ vim.api.nvim_create_user_command("DeCatkey", function(args)
 end, { nargs = "*", desc = "" })
 
 
+-- 添加一個全屏終端(tab)
+-- DeCatkey   -> 查看自定義快捷鍵
+-- DeCatkey 1 -> 查看nvchad快捷鍵
+vim.api.nvim_create_user_command("DeTerm", function(args)
+   if args.args ~= "" then
+      -- 關閉當前所處的標籤
+      vim.cmd [[
+         lua require("nvchad_ui.tabufline").close_buffer()
+         tabc
+      ]]
+   else
+      vim.cmd [[
+         tabe
+         term
+         DeNumber
+      ]]
+   end
+end, { nargs = "*", desc = "" })

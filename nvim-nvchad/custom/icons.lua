@@ -10,13 +10,13 @@ local M = {}
 
 M.tabufline = {
    --             { none,    file  }
-   --             如果 2 == devicons, 則使用nvchad默認的圖標
+   -- 如果buff[2] == devicons, 則使用nvchad默認的圖標
    buff         = { "Ғ",     "Ғ" },
    buff_close   = { "☓",     "☓" },
    tab_close    = { "K",     "K" },
    tab_add      = { "+",     "+" },
    tab_toggle   = { "ℷ",     "<" },
-   theme_toggle = { "Ƚ",     "Ƚ" },
+   theme_toggle = { "Ƚ",     "☻" },
    all_close    = { "CLOSE", "CLOSE" },
 }
 
@@ -25,7 +25,10 @@ M.statusline = { }
 -- է ᴌ Է ℶ ⵃ ℷ λ
 -- ↓ → ↧ ↦ ↴ ↳
 -- ☓ Ƚ Ғ ғ Қ қ ᴋ K
--- ⁻ ⁺ - + • ‣ ‧ ↼
+-- ⁻ ⁺ - + ‣ ‧ ↼
+-- ◦ • ▪ ▫ ◉ ◊ ○ ◌
+-- ● ◐ ◑ ◒ ◓ ◔ ◕ ◖ ◗
+-- ☻ ☽ ☾ ❛ ❜ ♯  
 M.nvtree = {
    --                    { none,   file }
    file_default        = { "F",    "" },

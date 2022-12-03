@@ -259,10 +259,10 @@ return {
    },
 
    -- NeoVim 的焦点模式- 類似vscode的禪模式 - 暂时隐藏状态栏、缓冲线等。
-   -- ["Pocco81/truezen.nvim"] = {
-   --    config = function()
-   --    end
-   -- },
+   ["Pocco81/truezen.nvim"] = {
+      config = function()
+      end
+   },
 
    -- 在命令行下显示缓冲区列表
    -- ["bling/vim-bufferline"] = {},

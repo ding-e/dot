@@ -45,3 +45,16 @@ vim.api.nvim_create_user_command("DeTerm", function(args)
       ]]
    end
 end, { nargs = "*", desc = "" })
+
+
+-- 是否顯示屏幕竪線
+-- DeColorcolumn   -> 開啟 屏幕竪線
+-- DeColorcolumn 1 -> 關閉 屏幕竪線
+vim.api.nvim_create_user_command("DeColorcolumn", function(args)
+   if args.args == "1" then
+      vim.cmd [[ highlight ColorColumn guifg=#1e2122 guibg=#1e2122 ]]
+   else
+      vim.cmd [[ highlight ColorColumn guifg=none guibg=#2c2f30 ]]
+   end
+end, { nargs = "*", desc = "" })
+

@@ -14,7 +14,7 @@ local config = require("core.utils").load_config()
 local icons = require("custom.icons").tabufline
 local icon_index = config.ui.icon_theme == "file" and 2 or 1
 
--------------------------------------------------------- functions ------------------------------------------------------------
+----------------------------------- functions ---------------------------------
 
 local function new_hl(group1, group2)
    local fg = fn.synIDattr(fn.synIDtrans(fn.hlID(group1)), "fg#")
@@ -126,7 +126,7 @@ local function styleBufferTab(nr)
 end
 
 
--------------------------------------------------------- return ------------------------------------------------------------
+----------------------------------- return ---------------------------------
 return {
    CoverNvimTree = function()
       return "%#NvimTreeNormal#"

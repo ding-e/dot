@@ -2,6 +2,7 @@
 -- 插件添加/覆蓋/移除/禁用
 ------------------------------
 
+require "custom.function"
 local overrides = require "custom.override"
 
 return {
@@ -59,7 +60,7 @@ return {
       after = "ui",
       module = "nvim-web-devicons",
       config = function()
-         Set_icons()
+         set_devicons()
       end,
    },
 
@@ -70,7 +71,7 @@ return {
          require("core.lazy_load").gitsigns()
       end,
       config = function()
-         Set_gitsigns()
+         set_gitsigns()
       end,
    },
 
@@ -85,28 +86,7 @@ return {
 
    ["NvChad/base46"] = {
       config = function()
-         local ok, base46 = pcall(require, "base46")
-
-         if ok then
-            base46.load_theme()
-
-            -- :echo expand('%:e')           -- 查看當前編輯文件的後綴
-            -- :lua print(vim.fn.getcwd())   -- 查看當前root path
-            -- :lua require("base46").toggle_theme()
-            -- :lua require("nvchad").reload_theme("gruvchad")
-
-            -- 根據當前項目設置nvchad配色
-            local config = require("core.utils").load_config()
-            local t = 2
-            for _, v in pairs(config.ui.workspace_list) do
-               local wt = nil ~= string.find(v, "/") and v or "workspace/" .. v
-               if nil ~= string.find(string.lower(vim.fn.getcwd()), wt) and t ~= 1 then
-                  t = 1
-                  break
-               end
-            end
-            require("nvchad").reload_theme(config.ui.workspace_theme_toggle[t])
-         end
+         set_base46()
       end,
    },
 
@@ -128,6 +108,13 @@ return {
       end,
    },
 
+   -- NeoVim 的焦点模式- 類似vscode的禪模式 - 暂时隐藏状态栏、缓冲线等。
+   ["Pocco81/truezen.nvim"] = {
+      config = function()
+         set_truezen()
+      end,
+   },
+
    -- 加速jk
    ["rhysd/accelerated-jk"] = {
       config = function()
@@ -138,8 +125,7 @@ return {
    -- 平滑滚动 <C-u>, <C-d>, <C-b>, <C-f>, <C-y>, <C-e>, zt, zz, zb
    ["karb94/neoscroll.nvim"] = {
       config = function()
-         local nscroll = require "neoscroll"
-         nscroll.setup()
+         require("neoscroll").setup()
       end,
    },
 
@@ -147,35 +133,6 @@ return {
    ["junegunn/vim-easy-align"] = {
       config = function() end,
    },
-
-   -- 格式化
-   ["jose-elias-alvarez/null-ls.nvim"] = {
-      after = "nvim-lspconfig",
-      config = function()
-         -- require("custom.plugins.null-ls").setup()
-         local null_ls = require "null-ls"
-         local b = null_ls.builtins
-         local sources = {
-            -- 具体支持语言
-            -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-
-            -- lua
-            b.formatting.stylua,
-            -- b.diagnostics.luacheck.with { extra_args = { "--global vim" } },
-            -- zig
-            b.formatting.zigfmt,
-            -- nim
-            b.formatting.nimpretty,
-            -- clang
-            b.formatting.clang_format.with { extra_args = { "--style", "{IndentWidth: 4}" } },
-         }
-         null_ls.setup {
-            debug = true,
-            sources = sources,
-         }
-      end,
-   },
-   -- ["jose-elias-alvarez/null-ls.nvim"] = false,
 
    -- editor config - .editorconfig
    -- https://editorconfig.org
@@ -211,57 +168,32 @@ return {
       -- after = { "ui", "nvim-web-devicons" },
       -- setup = function() end,
       config = function()
-         local Path = require "plenary.path"
-         require("session_manager").setup {
-            sessions_dir = Path:new(vim.fn.stdpath "data", "sessions"),
-            path_replacer = "__",
-            colon_replacer = "++",
-            -- autoload_mode = require("session_manager.config").AutoloadMode.LastSession,
-            autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir,
-            autosave_last_session = true,
-            autosave_ignore_not_normal = true,
-            autosave_ignore_dirs = {},
-            autosave_ignore_filetypes = { "gitcommit" },
-            autosave_ignore_buftypes = {},
-            autosave_only_in_session = false,
-            max_path_length = 80,
-         }
-
-         -- 使用session插件，当打开vim时是否自动打开nvim-tree
-         -- vim.cmd [[
-         --    augroup _open_nvim_tree
-         --       autocmd! * <buffer>
-         --       autocmd SessionLoadPost * silent! lua require("nvim-tree").toggle(false, true)
-         --    augroup end
-         -- ]]
-
-         -- A global group for all your config autocommands
-         local config_group = vim.api.nvim_create_augroup("MyConfigGroup", {})
-         vim.api.nvim_create_autocmd({ "User" }, {
-            pattern = "SessionLoadPost",
-            group = config_group,
-            callback = function()
-               -- require("nvim-tree").toggle(false, true)
-               vim.cmd [[
-                  " PackerLoad nvim-tree.lua
-                  " NvimTreeToggle
-
-                  " vertical wincmd l
-                  " wincmd w
-                  " noautocmd wincmd p
-
-                  Startify
-                  PackerCompile
-               ]]
-            end,
-         })
+         set_session()
       end,
    },
 
-   -- NeoVim 的焦点模式- 類似vscode的禪模式 - 暂时隐藏状态栏、缓冲线等。
-   ["Pocco81/truezen.nvim"] = {
+   -- 格式化
+   ["jose-elias-alvarez/null-ls.nvim"] = {
+      after = "nvim-lspconfig",
       config = function()
-      end
+         -- require("custom.plugins.null-ls").setup()
+         local null_ls = require "null-ls"
+         local b = null_ls.builtins
+         -- 具体支持语言
+         -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
+         local sources = {
+            -- lua
+            b.formatting.stylua,
+            -- b.diagnostics.luacheck.with { extra_args = { "--global vim" } },
+            -- zig
+            b.formatting.zigfmt,
+            -- nim
+            b.formatting.nimpretty,
+            -- clang
+            b.formatting.clang_format.with { extra_args = { "--style", "{IndentWidth: 4}" } },
+         }
+         null_ls.setup { debug = true, sources = sources }
+      end,
    },
 
    -- 在命令行下显示缓冲区列表

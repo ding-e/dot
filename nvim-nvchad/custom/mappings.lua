@@ -113,13 +113,14 @@ M.general = {
 -- Pocco81/truezen.nvim
 M.zen = {
    n = {
-      ["<leader>zn"] = { "<cmd> TZNarrow <CR>", "" },
-      ["<leader>zf"] = { "<cmd> TZFocus <CR>", "" },
-      ["<leader>zm"] = { "<cmd> TZMinimalist <CR>", "" },
-      ["<leader>za"] = { "<cmd> TZAtaraxis <CR>", "" },
+      ["<leader>za"] = { "<cmd> TZAtaraxis <CR>", "禪模式" },
+      ["<leader>zn"] = { "<cmd> TZNarrow <CR>", "禪模式-打開當前行" },
+
+      ["<leader>zf"] = { "<cmd> TZFocus <CR>", "當有分屏時全屏" },
+      ["<leader>zm"] = { "<cmd> TZMinimalist <CR>", "隱藏行號/狀態欄/標籤列" },
    },
    x = {
-      ["<leader>zn"] = { ":'<,'>TZNarrow <CR>", "" },
+      ["<leader>zn"] = { ":'<,'>TZNarrow <CR>", "禪模式-打開所選行" },
    },
 }
 

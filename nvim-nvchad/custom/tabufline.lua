@@ -95,7 +95,8 @@ end
 local function styleBufferTab(nr)
    -- local close_btn = "%" .. nr .. "@TbKillBuf@ %X"
    -- 根據自定義設置buff list 關閉按鈕圖標
-   local close_btn = "%" .. nr .. "@TbKillBuf@K %X"
+   -- local close_btn = "%" .. nr .. "@TbKillBuf@K %X"
+   local close_btn = "%" .. nr .. "@TbKillBuf@☓ %X"
    if config.ui.icon_theme ~= "none" then
       close_btn = "%" .. nr .. "@TbKillBuf@ %X"
    end
@@ -117,6 +118,8 @@ local function styleBufferTab(nr)
    return name
 end
 
+
+-------------------------------------------------------- return ------------------------------------------------------------
 return {
    CoverNvimTree = function()
       return "%#NvimTreeNormal#"
@@ -174,7 +177,8 @@ return {
             -- 根據自定義設置tab關閉按鈕圖標
             result = result .. ("%" .. i .. "@TbGotoTab@" .. tab_hl .. i .. " ")
             if config.ui.icon_theme ~= "nvchad" then
-               result = (i == fn.tabpagenr() and result .. "%#TbLineTabCloseBtn#" .. "%@TbTabClose@K %X") or result
+               -- result = (i == fn.tabpagenr() and result .. "%#TbLineTabCloseBtn#" .. "%@TbTabClose@K %X") or result
+               result = (i == fn.tabpagenr() and result .. "%#TbLineTabCloseBtn#" .. "%@TbTabClose@☓ %X") or result
             else
                result = (i == fn.tabpagenr() and result .. "%#TbLineTabCloseBtn#" .. "%@TbTabClose@ %X") or result
             end
@@ -206,9 +210,12 @@ return {
    buttons = function()
       -- local toggle_themeBtn = "%@TbToggle_theme@%#TbLineThemeToggleBtn#" .. vim.g.toggle_theme_icon .. "%X"
       -- local CloseAllBufsBtn = "%@TbCloseAllBufs@%#TbLineCloseAllBufsBtn#" .. "  " .. "%X"
-      -- 根據自定義設置tab收納展開按鈕圖標
-      local toggle_themeBtn = "%@TbToggle_theme@%#TbLineThemeToggleBtn#" .. " T " .. "%X"
+
+      -- local toggle_themeBtn = "%@TbToggle_theme@%#TbLineThemeToggleBtn#" .. " T " .. "%X"
+      local toggle_themeBtn = "%@TbToggle_theme@%#TbLineThemeToggleBtn#" .. " ℷ " .. "%X"
       -- local toggle_themeBtn = "%@TbToggle_theme@%#TbLineThemeToggleBtn#" .. " TOGGLE " .. "%X"
+
+      -- 根據自定義設置tab收納展開按鈕圖標
       local CloseAllBufsBtn = "%@TbCloseAllBufs@%#TbLineCloseAllBufsBtn#" .. " CLOSE " .. "%X"
       if config.ui.icon_theme == "nvchad" then
          toggle_themeBtn = "%@TbToggle_theme@%#TbLineThemeToggleBtn#" .. vim.g.toggle_theme_icon .. "%X"

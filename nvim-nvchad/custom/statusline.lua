@@ -78,10 +78,15 @@ M.git = function()
    -- local changed = (git_status.changed and git_status.changed ~= 0) and ("  " .. git_status.changed) or ""
    -- local removed = (git_status.removed and git_status.removed ~= 0) and ("  " .. git_status.removed) or ""
    -- local branch_name = "   " .. git_status.head .. " "
-   local added = (git_status.added and git_status.added ~= 0) and (" ADDED " .. git_status.added) or ""
-   local changed = (git_status.changed and git_status.changed ~= 0) and (" CHANGED " .. git_status.changed) or ""
-   local removed = (git_status.removed and git_status.removed ~= 0) and (" REMOVED " .. git_status.removed) or ""
-   local branch_name = " BARANCH " .. git_status.head .. " "
+
+   -- ("%#St_lspWarning#" .. " ADDED " .. git_status.added .. "") or ""
+   -- ("%#St_lspHints#" .. " CHANGED " .. git_status.changed .. "") or ""
+   -- ("%#St_lspError#" .. " REMOVED " .. git_status.removed .. "") or ""
+   -- "%#St_lspInfo#" .. " BARANCH " .. git_status.head .. ""
+   local added = (git_status.added and git_status.added ~= 0) and (" ADDED " .. git_status.added .. "") or ""
+   local changed = (git_status.changed and git_status.changed ~= 0) and (" CHANGED " .. git_status.changed .. "") or ""
+   local removed = (git_status.removed and git_status.removed ~= 0) and (" REMOVED " .. git_status.removed .. "") or ""
+   local branch_name = " BARANCH " .. git_status.head .. ""
 
    return "%#St_gitIcons#" .. branch_name .. added .. changed .. removed
 end

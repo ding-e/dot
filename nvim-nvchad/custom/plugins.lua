@@ -59,6 +59,17 @@ return {
       end,
    },
 
+   -- git stuff
+   ["lewis6991/gitsigns.nvim"] = {
+      ft = "gitcommit",
+      setup = function()
+         require("core.lazy_load").gitsigns()
+      end,
+      config = function()
+         Set_gitsigns()
+      end,
+   },
+
    ["NvChad/nvterm"] = {
       override_options = overrides.nvterm,
    },

@@ -1,0 +1,2 @@
+macos13開始刪除了左上角圖標菜單下的網絡位置
+https://discussions.apple.com/thread/254340086

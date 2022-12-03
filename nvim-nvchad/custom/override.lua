@@ -1,7 +1,9 @@
 -- 覆盖插件配置
-
+local utils = require "core.utils"
+local load_override = require("core.utils").load_override
 local M = {}
 
+-------------------------------------------------------- functions ------------------------------------------------------------
 function Set_icons()
    local present, devicons = pcall(require, "nvim-web-devicons")
    if present then
@@ -19,6 +21,11 @@ function Set_icons()
          open = "D",
          symlink = "L",
          symlink_open = "L",
+
+         -- է ᴌ Է ℶ ⵃ ℷ λ
+         -- ↓ → ↧ ↦ ↴ ↳
+         -- ☓
+         -- ⁻ ⁺ - +
          arrow_open = "",
          arrow_closed = "",
       }
@@ -40,11 +47,48 @@ function Set_icons()
          }
       end
 
-      options = require("core.utils").load_override(options, "kyazdani42/nvim-web-devicons")
+      options = load_override(options, "kyazdani42/nvim-web-devicons")
       devicons.setup(options)
    end
 end
 
+-- gitsigns-usage
+function Set_gitsigns ()
+   local present, gitsigns = pcall(require, "gitsigns")
+
+   if not present then
+      return
+   end
+
+   require("base46").load_highlight "git"
+
+   local options = {
+      -- 行號下的git圖標設置
+      signs = {
+         -- add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
+         -- change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
+         -- delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
+         -- topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
+         -- changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
+
+         add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
+         change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
+         delete = { hl = "DiffDelete", text = "D", numhl = "GitSignsDeleteNr" },
+         topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
+         changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
+      },
+      on_attach = function(bufnr)
+         utils.load_mappings("gitsigns", { buffer = bufnr })
+      end,
+   }
+
+   options = load_override(options, "lewis6991/gitsigns.nvim")
+   gitsigns.setup(options)
+end
+
+
+
+-------------------------------------------------------- return ------------------------------------------------------------
 M.nvimtree = {
    -- open_on_setup = true,
    view = {

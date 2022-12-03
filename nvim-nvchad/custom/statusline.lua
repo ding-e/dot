@@ -1,3 +1,7 @@
+------------------------------------
+-- 覆蓋nvchad ui模塊的底部狀態欄
+----------------------------------
+
 local fn = vim.fn
 local sep_style = vim.g.statusline_sep_style
 local separators = (type(sep_style) == "table" and sep_style)

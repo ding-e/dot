@@ -1,3 +1,7 @@
+------------------------------------
+-- nvchad 自定義配置
+---------------------------
+
 local M = {}
 
 M.ui = {
@@ -15,7 +19,7 @@ M.ui = {
 
    -- 圖標相關 (nvim-tree/tabufline)
    -- "none", "file", "nvchad"
-   icon_theme = "none",
+   icon_theme = "file",
 }
 
 M.mappings = require "custom.mappings"

@@ -1,7 +1,12 @@
--- 覆盖插件配置
+------------------------------------
+-- 覆盖nvchad模塊/插件的配置
+------------------------------
+
 local utils = require "core.utils"
 local load_override = require("core.utils").load_override
 local M = {}
+
+local custom_icons = require("custom.icons")
 
 -------------------------------------------------------- functions ------------------------------------------------------------
 function Set_icons()
@@ -9,41 +14,28 @@ function Set_icons()
    if present then
       require("base46").load_highlight "devicons"
 
-      local icon_theme = require("core.utils").load_config().ui.icon_theme
+      local config = require("core.utils").load_config()
+      local icon_index = config.ui.icon_theme == "file" and 2 or 1
+
       local options = { override = require("nvchad_ui.icons").devicons }
+      local glyphs = M.nvimtree.renderer.icons.glyphs
+      local icons = custom_icons.nvtree
 
-      M.nvimtree.renderer.icons.glyphs.default = ""
-      M.nvimtree.renderer.icons.glyphs.symlink = ""
-      M.nvimtree.renderer.icons.glyphs.folder = {
-         default = "D",
-         empty = "D",
-         empty_open = "D",
-         open = "D",
-         symlink = "L",
-         symlink_open = "L",
+      if config.ui.icon_theme ~= "nvchad" then
+         if config.ui.icon_theme == "none" then options = { default = false, color_icons = false } end
+         M.nvimtree.renderer.icons.symlink_arrow = custom_icons.nvtree.symlink_arrow[icon_index]
+         glyphs.default  = custom_icons.nvtree.file_default[icon_index]
+         glyphs.symlink  = icons.symlink[icon_index]
+         glyphs.folder   = {
+            default      = icons.folder_default[icon_index],
+            empty        = icons.folder_empty[icon_index],
+            empty_open   = icons.folder_empty_open[icon_index],
+            open         = icons.folder_open[icon_index],
+            symlink      = icons.folder_symlink[icon_index],
+            symlink_open = icons.folder_symlink_open[icon_index],
 
-         -- է ᴌ Է ℶ ⵃ ℷ λ
-         -- ↓ → ↧ ↦ ↴ ↳
-         -- ☓
-         -- ⁻ ⁺ - +
-         arrow_open = "",
-         arrow_closed = "",
-      }
-
-      if icon_theme == "none" then
-         options = { default = false, color_icons = false }
-         M.nvimtree.renderer.icons.glyphs.default = "F"
-         M.nvimtree.renderer.icons.glyphs.symlink = "L"
-      elseif icon_theme == "nvchad" then
-         M.nvimtree.renderer.icons.glyphs.folder = {
-            default = "",
-            empty = "",
-            empty_open = "",
-            open = "",
-            symlink = "",
-            symlink_open = "",
-            arrow_open = "",
-            arrow_closed = "",
+            arrow_open   = icons.folder_arrow_open[icon_index],
+            arrow_closed = icons.folder_arrow_closed[icon_index],
          }
       end
 
@@ -62,20 +54,24 @@ function Set_gitsigns ()
 
    require("base46").load_highlight "git"
 
+   local config = require("core.utils").load_config()
+   local icon_index = config.ui.icon_theme == "none" and 1 or 2
+   local icons = custom_icons.gitsigns
+
    local options = {
       -- 行號下的git圖標設置
       signs = {
          -- add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
          -- change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
-         -- delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
+         -- -- delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
+         -- delete = { hl = "DiffDelete", text = "D", numhl = "GitSignsDeleteNr" },
          -- topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
          -- changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
-
-         add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
-         change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
-         delete = { hl = "DiffDelete", text = "D", numhl = "GitSignsDeleteNr" },
-         topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
-         changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
+         add = { hl = "DiffAdd", text = icons.add[icon_index], numhl = "GitSignsAddNr" },
+         change = { hl = "DiffChange", text = icons.change[icon_index], numhl = "GitSignsChangeNr" },
+         delete = { hl = "DiffDelete", text = icons.delete[icon_index], numhl = "GitSignsDeleteNr" },
+         topdelete = { hl = "DiffDelete", text = icons.topdelete[icon_index], numhl = "GitSignsDeleteNr" },
+         changedelete = { hl = "DiffChangeDelete", text = icons.changedelete[icon_index], numhl = "GitSignsChangeNr" },
       },
       on_attach = function(bufnr)
          utils.load_mappings("gitsigns", { buffer = bufnr })
@@ -112,17 +108,17 @@ M.nvimtree = {
             folder_arrow = true,
             git = true,
          },
-         symlink_arrow = " -> ",
+         symlink_arrow = " ➛ ",
          glyphs = {
-            default = "F",
-            symlink = "L",
+            default = "",
+            symlink = "",
             folder = {
-               default = "D",
-               empty = "D",
-               empty_open = "D",
-               open = "D",
-               symlink = "L",
-               symlink_open = "L",
+               default = "",
+               empty = "",
+               empty_open = "",
+               open = "",
+               symlink = "",
+               symlink_open = "",
                arrow_open = "",
                arrow_closed = "",
             },

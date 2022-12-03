@@ -1,4 +1,57 @@
+------------------------------------
+-- 自定義ui模塊/ui插件 圖標
+----------------------------
+
 local M = {}
+
+
+------------------------------------------------
+-- 自定義
+
+M.tabufline = {
+   --             { none,    file  }
+   --             如果 2 == devicons, 則使用nvchad默認的圖標
+   buff         = { "Ғ",     "Ғ" },
+   buff_close   = { "☓",     "☓" },
+   tab_close    = { "K",     "K" },
+   tab_add      = { "+",     "+" },
+   tab_toggle   = { "ℷ",     "<" },
+   theme_toggle = { "Ƚ",     "Ƚ" },
+   all_close    = { "CLOSE", "CLOSE" },
+}
+
+M.statusline = { }
+
+-- է ᴌ Է ℶ ⵃ ℷ λ
+-- ↓ → ↧ ↦ ↴ ↳
+-- ☓ Ƚ Ғ ғ Қ қ ᴋ K
+-- ⁻ ⁺ - + • ‣ ‧ ↼
+M.nvtree = {
+   --                    { none,   file }
+   file_default        = { "F",    "" },
+   symlink             = { "L",    "" },
+   symlink_arrow       = { " -> ", " ➛ " },
+
+   folder_default      = { "D",    "D" },
+   folder_empty        = { "D",    "D" },
+   folder_empty_open   = { "D",    "D" },
+   folder_open         = { "D",    "D" },
+   folder_symlink      = { "L",    "L" },
+   folder_symlink_open = { "L",    "L" },
+   folder_arrow_open   = { "",    "", },
+   folder_arrow_closed = { "",    "" },
+}
+
+M.gitsigns = {
+   --             { none,   file }
+   add          = { "│",    "│" },
+   change       = { "│",    "│" },
+   delete       = { "D",    "" },
+   topdelete    = { "‾",    "‾" },
+   changedelete = { "~",    "~" },
+}
+
+------------------------------------------------
 
 M.lspkind = {
    Namespace = "",
@@ -39,170 +92,6 @@ M.lspkind = {
    Watch = " ",
    Package = "",
    Copilot = " ",
-}
-
-M.statusline_separators = {
-   default = {
-      left = "",
-      right = " ",
-   },
-
-   round = {
-      left = "",
-      right = "",
-   },
-
-   block = {
-      left = "█",
-      right = "█",
-   },
-
-   arrow = {
-      left = "",
-      right = "",
-   },
-}
-
-M.devicons = {
-   default_icon = {
-      icon = "",
-      name = "Default",
-   },
-
-   c = {
-      icon = "",
-      name = "c",
-   },
-
-   css = {
-      icon = "",
-      name = "css",
-   },
-
-   deb = {
-      icon = "",
-      name = "deb",
-   },
-
-   Dockerfile = {
-      icon = "",
-      name = "Dockerfile",
-   },
-
-   html = {
-      icon = "",
-      name = "html",
-   },
-
-   jpeg = {
-      icon = "",
-      name = "jpeg",
-   },
-
-   jpg = {
-      icon = "",
-      name = "jpg",
-   },
-
-   js = {
-      icon = "",
-      name = "js",
-   },
-
-   kt = {
-      icon = "󱈙",
-      name = "kt",
-   },
-
-   lock = {
-      icon = "",
-      name = "lock",
-   },
-
-   lua = {
-      icon = "",
-      name = "lua",
-   },
-
-   mp3 = {
-      icon = "",
-      name = "mp3",
-   },
-
-   mp4 = {
-      icon = "",
-      name = "mp4",
-   },
-
-   out = {
-      icon = "",
-      name = "out",
-   },
-
-   png = {
-      icon = "",
-      name = "png",
-   },
-
-   py = {
-      icon = "",
-      name = "py",
-   },
-
-   ["robots.txt"] = {
-      icon = "ﮧ",
-      name = "robots",
-   },
-
-   toml = {
-      icon = "",
-      name = "toml",
-   },
-
-   ts = {
-      icon = "ﯤ",
-      name = "ts",
-   },
-
-   ttf = {
-      icon = "",
-      name = "TrueTypeFont",
-   },
-
-   rb = {
-      icon = "",
-      name = "rb",
-   },
-
-   rpm = {
-      icon = "",
-      name = "rpm",
-   },
-
-   vue = {
-      icon = "﵂",
-      name = "vue",
-   },
-
-   woff = {
-      icon = "",
-      name = "WebOpenFontFormat",
-   },
-
-   woff2 = {
-      icon = "",
-      name = "WebOpenFontFormat2",
-   },
-
-   xz = {
-      icon = "",
-      name = "xz",
-   },
-
-   zip = {
-      icon = "",
-      name = "zip",
-   },
 }
 
 return M

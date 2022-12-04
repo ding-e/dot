@@ -85,54 +85,6 @@ function set_gitsigns()
    gitsigns.setup(options)
 end
 
--- Shatur/neovim-session-manager
-function set_session()
-   local Path = require "plenary.path"
-   require("session_manager").setup {
-      sessions_dir = Path:new(vim.fn.stdpath "data", "sessions"),
-      path_replacer = "__",
-      colon_replacer = "++",
-      -- autoload_mode = require("session_manager.config").AutoloadMode.LastSession,
-      autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir,
-      autosave_last_session = true,
-      autosave_ignore_not_normal = true,
-      autosave_ignore_dirs = {},
-      autosave_ignore_filetypes = { "gitcommit" },
-      autosave_ignore_buftypes = {},
-      autosave_only_in_session = false,
-      max_path_length = 80,
-   }
-
-   -- 使用session插件，当打开vim时是否自动打开nvim-tree
-   -- vim.cmd [[
-   --    augroup _open_nvim_tree
-   --       autocmd! * <buffer>
-   --       autocmd SessionLoadPost * silent! lua require("nvim-tree").toggle(false, true)
-   --    augroup end
-   -- ]]
-
-   -- A global group for all your config autocommands
-   local config_group = vim.api.nvim_create_augroup("MyConfigGroup", {})
-   vim.api.nvim_create_autocmd({ "User" }, {
-      pattern = "SessionLoadPost",
-      group = config_group,
-      callback = function()
-         -- require("nvim-tree").toggle(false, true)
-         vim.cmd [[
-            " PackerLoad nvim-tree.lua
-            " NvimTreeToggle
-
-            " vertical wincmd l
-            " wincmd w
-            " noautocmd wincmd p
-
-            Startify
-            PackerCompile
-         ]]
-      end,
-   })
-end
-
 -- folke/zen-mode.nvim
 function set_zenmode()
    require("zen-mode").setup {
@@ -179,6 +131,17 @@ function set_zenmode()
       },
       on_open = function(win) end,
       on_close = function() end,
+   }
+end
+
+-- session / workspace
+-- folke/persistence.nvim
+function set_session()
+   require("persistence").setup {
+      -- directory where session files are saved
+      dir = vim.fn.expand(vim.fn.stdpath "config" .. "/sessions/"),
+      -- sessionoptions used for saving
+      options = { "buffers", "curdir", "tabpages", "winsize" },
    }
 end
 
@@ -252,3 +215,51 @@ function set_base46()
       require("nvchad").reload_theme(config.ui.workspace_theme_toggle[t])
    end
 end
+
+-- -- Shatur/neovim-session-manager
+-- function set_neovim_session()
+--    local Path = require "plenary.path"
+--    require("session_manager").setup {
+--       sessions_dir = Path:new(vim.fn.stdpath "data", "sessions"),
+--       path_replacer = "__",
+--       colon_replacer = "++",
+--       -- autoload_mode = require("session_manager.config").AutoloadMode.LastSession,
+--       autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir,
+--       autosave_last_session = true,
+--       autosave_ignore_not_normal = true,
+--       autosave_ignore_dirs = {},
+--       autosave_ignore_filetypes = { "gitcommit" },
+--       autosave_ignore_buftypes = {},
+--       autosave_only_in_session = false,
+--       max_path_length = 80,
+--    }
+--
+--    -- 使用session插件，当打开vim时是否自动打开nvim-tree
+--    -- vim.cmd [[
+--    --    augroup _open_nvim_tree
+--    --       autocmd! * <buffer>
+--    --       autocmd SessionLoadPost * silent! lua require("nvim-tree").toggle(false, true)
+--    --    augroup end
+--    -- ]]
+--
+--    -- A global group for all your config autocommands
+--    local config_group = vim.api.nvim_create_augroup("MyConfigGroup", {})
+--    vim.api.nvim_create_autocmd({ "User" }, {
+--       pattern = "SessionLoadPost",
+--       group = config_group,
+--       callback = function()
+--          -- require("nvim-tree").toggle(false, true)
+--          vim.cmd [[
+--             " PackerLoad nvim-tree.lua
+--             " NvimTreeToggle
+--
+--             " vertical wincmd l
+--             " wincmd w
+--             " noautocmd wincmd p
+--
+--             Startify
+--             PackerCompile
+--          ]]
+--       end,
+--    })
+-- end

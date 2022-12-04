@@ -95,10 +95,30 @@ return {
    -- ---------------------------
 
    -- 仪表盘
-   ["mhinz/vim-startify"] = {},
-
-   -- 仪表盘
+   ["mhinz/vim-startify"] = {
+      -- config = function()
+      --    vim.g.startify_session_dir = "$HOME/.config/nvim/session/"
+      -- end,
+   },
    -- ["goolord/alpha-nvim"] = { disable = false },
+
+   -- session / workspace
+   -- 如果當前bur list, 沒有打開buf, 則不保存
+   -- 在nvchad打開Startify的時候,馬上關閉(目前buf list數量為0), 則不保存session
+   ["ding-e/persistence.nvim"] = {
+   -- ["folke/persistence.nvim"] = {
+      config = function()
+         set_session()
+      end,
+   },
+   -- ["Shatur/neovim-session-manager"] = {
+   --    -- module = "nvim-tree.lua",
+   --    -- after = { "ui", "nvim-web-devicons" },
+   --    -- setup = function() end,
+   --    config = function()
+   --       set_neovim_session()
+   --    end,
+   -- },
 
    -- mac下自动切换输入法
    ["ybian/smartim"] = {
@@ -108,16 +128,15 @@ return {
       end,
    },
 
-   -- NeoVim 的焦点模式- 類似vscode的禪模式 - 暂时隐藏状态栏、缓冲线等。
-   ["Pocco81/truezen.nvim"] = {
-      config = function()
-         set_truezen()
-      end,
-   },
-
+   -- 類似vscode的禪模式 - 暂时隐藏状态栏、缓冲线等。
    ["folke/zen-mode.nvim"] = {
       config = function()
          set_zenmode()
+      end,
+   },
+   ["Pocco81/truezen.nvim"] = {
+      config = function()
+         set_truezen()
       end,
    },
 
@@ -167,16 +186,6 @@ return {
    -- ['alaviss/nim.nvim'] = {},
    -- ['wsdjeg/vim-nim'] = {},
    -- ['zah/nim.vim'] = {},
-
-   -- session / workspace
-   ["Shatur/neovim-session-manager"] = {
-      -- module = "nvim-tree.lua",
-      -- after = { "ui", "nvim-web-devicons" },
-      -- setup = function() end,
-      config = function()
-         set_session()
-      end,
-   },
 
    -- 格式化
    ["jose-elias-alvarez/null-ls.nvim"] = {

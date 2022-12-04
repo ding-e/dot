@@ -123,7 +123,7 @@ if [ $(uname -o) = "Darwin" ]; then
 
     # docker
     # alias archlinux="docker exec -it -u dinge -w /home/dinge de-arch zsh"
-    alias alpine="docker exec -it -u dinge -w /home/dinge de-alpine zsh"
+    alias alpine="docker exec -it -u dinge -w /home/dinge w1 zsh"
     alias ubuntu="docker exec -it -u dinge -w /home/dinge de-ubuntu zsh"
     alias gdocker="cd ~/Desktop/碼頭工人/"
     # -----------------------------

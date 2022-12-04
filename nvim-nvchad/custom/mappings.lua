@@ -13,7 +13,7 @@ local M = {}
 M.general = {
    t = {
       -- ["<Esc>"] = { "<cmd> q <CR>", "" },
-      ["Q"] = { "<cmd> q <CR>", "" },
+      ["Q"] = { "<CMD> q <CR>", "" },
 
       -- 在nvchad里，ctrl+x 终端模式退到终端默认模式
       -- ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" },
@@ -33,14 +33,14 @@ M.general = {
       -- ["ds"] = { "<cmd> %s/\s\+$ <CR>", "" },
 
       -- 保存/关闭文件
-      ["S"] = { "<cmd> w <CR>", "" },
-      ["Q"] = { "<cmd> q <CR>", "" },
+      ["S"] = { "<CMD> w <CR>", "" },
+      ["Q"] = { "<CMD> q <CR>", "" },
       -- 开启/关闭鼠标模式
-      ["MO"] = { "<cmd> set mouse=a <CR>", "" },
-      ["MC"] = { "<cmd> set mouse= <CR>", "" },
+      ["MO"] = { "<CMD> set mouse=a <CR>", "" },
+      ["MC"] = { "<CMD> set mouse= <CR>", "" },
 
       -- 取消搜索高亮
-      ["<leader><CR>"] = { "<cmd> nohlsearch <CR>", "取消搜索高亮" },
+      ["<leader><CR>"] = { "<CMD> nohlsearch <CR>", "取消搜索高亮" },
 
       -- 移动搜索结果关键字并自动移到屏幕中心
       ["="] = { "nzz", "" },
@@ -55,35 +55,35 @@ M.general = {
       -- 标签
       ["ta"] = { "<cmd> tabe <CR>", "" },
       -- 切换标签
-      -- ["th"]  = { "<cmd> -tabnext <CR>", "" },
-      -- ["tl"]  = { "<cmd> +tabnext <CR>", "" },
-      ["th"] = { "<cmd> tabprevious <CR>", "" },
-      ["tl"] = { "<cmd> tabnext <CR>", "" },
+      -- ["th"]  = { "<CMD> -tabnext <CR>", "" },
+      -- ["tl"]  = { "<CMD> +tabnext <CR>", "" },
+      ["th"] = { "<CMD> tabprevious <CR>", "" },
+      ["tl"] = { "<CMD> tabnext <CR>", "" },
       -- 关闭其他标签
-      ["to"] = { "<cmd> tabo <CR>", "" },
+      ["to"] = { "<CMD> tabo <CR>", "" },
 
       -- 快速分屏
-      ["sj"] = { "<cmd> split <CR>", "" },
+      ["sj"] = { "<CMD> split <CR>", "" },
       ["sl"] = { "<cmd> vsplit <CR>", "" },
 
       -- 调整分屏大小
-      ["<up>"] = { "<cmd> res +5 <CR>", "" },
-      ["<down>"] = { "<cmd> res -5 <CR>", "" },
-      ["<left>"] = { "<cmd> vertical resize -5 <CR>", "" },
-      ["<right>"] = { "<cmd> vertical resize +5 <CR>", "" },
+      ["<up>"] = { "<CMD> res +5 <CR>", "" },
+      ["<down>"] = { "<CMD> res -5 <CR>", "" },
+      ["<left>"] = { "<CMD> vertical resize -5 <CR>", "" },
+      ["<right>"] = { "<CMD> vertical resize +5 <CR>", "" },
 
       -- 打开仪表盘
       -- mhinz/vim-startify
-      ["DD"] = { "<cmd> Startify <CR>", "" },
-      ["<leader>ss"] = { "<cmd> Startify <CR>", "打开startify仪表盘" },
+      ["DD"] = { "<CMD> Startify <CR>", "" },
+      ["<leader>ss"] = { "<CMD> Startify <CR>", "打开startify仪表盘" },
 
       -- 切换文件管理器
       -- kyazdani42/nvim-tree.lua
-      ["TT"] = { "<cmd> NvimTreeToggle <CR>", "切换nvimtree", opts = {} },
-      ["<leader>tf"] = { "<cmd> NvimTreeFocus <CR>", "焦点在nvim-tree" },
-      ["<leader>tr"] = { "<cmd> NvimTreeRefresh <CR>", "刷新nvim-tree列表" },
-      ["<leader>tn"] = { "<cmd> NvimTreeFindFile <CR>", "定位文件所在nvim-tree位置" },
-      ["<leader>tl"] = { "<cmd> NvimTreeCollapse <CR>", "折叠所有层级" },
+      ["TT"] = { "<CMD> NvimTreeToggle <CR>", "切换nvimtree", opts = {} },
+      ["<leader>tf"] = { "<CMD> NvimTreeFocus <CR>", "焦点在nvim-tree" },
+      ["<leader>tr"] = { "<CMD> NvimTreeRefresh <CR>", "刷新nvim-tree列表" },
+      ["<leader>tn"] = { "<CMD> NvimTreeFindFile <CR>", "定位文件所在nvim-tree位置" },
+      ["<leader>tl"] = { "<CMD> NvimTreeCollapse <CR>", "折叠所有层级" },
 
       -- jk加速
       -- rhysd/accelerated-jk
@@ -110,24 +110,46 @@ M.general = {
    },
 }
 
+-- folke/persistence.nvim
+M.session = {
+   n = {
+      ["<leader>qs"] = {
+         "<CMD> lua require('persistence').load() <CR>",
+         "session: 恢复当前目录的会话",
+      },
+      ["<leader>ql"] = {
+         "<CMD> lua require('persistence').load({ last = true }) <CR>",
+         "session: 恢复上次会话",
+      },
+      ["<leader>qd"] = {
+         "<CMD> lua require('persistence').stop() <CR>",
+         "session: 退出时不会保存会话",
+      },
+   },
+}
+
 -- Pocco81/truezen.nvim
 M.zen = {
    n = {
-      -- ["<leader>za"] = { "<cmd> TZAtaraxis <CR>", "禪模式" },
-      ["<leader>zz"] = { "<cmd> ZenMode <CR>", "禪模式" },
+      -- ["<leader>za"] = { "<CMD> TZAtaraxis <CR>", "禪模式" },
+      ["<leader>zz"] = { "<CMD> ZenMode <CR>", "禪模式" },
       ["<leader>ze"] = {
-         function() require("zen-mode").toggle { window = { width = 0.85, }, } end,
-         "禪模式: width = 85%"
+         function()
+            require("zen-mode").toggle { window = { width = 0.85 } }
+         end,
+         "禪模式: width = 85%",
       },
       ["<leader>zi"] = {
-         function() require("zen-mode").toggle { window = { width = 0.5, }, } end,
-         "禪模式: width = 50%"
+         function()
+            require("zen-mode").toggle { window = { width = 0.5 } }
+         end,
+         "禪模式: width = 50%",
       },
 
-      ["<leader>zn"] = { "<cmd> TZNarrow <CR>", "禪模式-打開當前行" },
+      ["<leader>zn"] = { "<CMD> TZNarrow <CR>", "禪模式-打開當前行" },
 
-      ["<leader>zf"] = { "<cmd> TZFocus <CR>", "當有分屏時全屏" },
-      ["<leader>zm"] = { "<cmd> TZMinimalist <CR>", "隱藏行號/狀態欄/標籤列" },
+      ["<leader>zf"] = { "<CMD> TZFocus <CR>", "當有分屏時全屏" },
+      ["<leader>zm"] = { "<CMD> TZMinimalist <CR>", "隱藏行號/狀態欄/標籤列" },
    },
    x = {
       ["<leader>zn"] = { ":'<,'>TZNarrow <CR>", "禪模式-打開所選行" },

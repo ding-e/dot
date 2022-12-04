@@ -113,7 +113,17 @@ M.general = {
 -- Pocco81/truezen.nvim
 M.zen = {
    n = {
-      ["<leader>za"] = { "<cmd> TZAtaraxis <CR>", "禪模式" },
+      -- ["<leader>za"] = { "<cmd> TZAtaraxis <CR>", "禪模式" },
+      ["<leader>zz"] = { "<cmd> ZenMode <CR>", "禪模式" },
+      ["<leader>ze"] = {
+         function() require("zen-mode").toggle { window = { width = 0.85, }, } end,
+         "禪模式: width = 85%"
+      },
+      ["<leader>zi"] = {
+         function() require("zen-mode").toggle { window = { width = 0.5, }, } end,
+         "禪模式: width = 50%"
+      },
+
       ["<leader>zn"] = { "<cmd> TZNarrow <CR>", "禪模式-打開當前行" },
 
       ["<leader>zf"] = { "<cmd> TZFocus <CR>", "當有分屏時全屏" },

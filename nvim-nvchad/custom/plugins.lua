@@ -115,6 +115,12 @@ return {
       end,
    },
 
+   ["folke/zen-mode.nvim"] = {
+      config = function()
+         set_zenmode()
+      end,
+   },
+
    -- 加速jk
    ["rhysd/accelerated-jk"] = {
       config = function()

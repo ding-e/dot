@@ -1,5 +1,5 @@
 -- 關閉全局小寫開頭函數提示
----@diagnostic disable: lowercase-global
+---@diagnostic disable: lowercase-global, unused-local
 --https://github.com/sumneko/lua-language-server/blob/master/locale/zh-tw/meta.lua
 
 local utils = require "core.utils"
@@ -133,45 +133,98 @@ function set_session()
    })
 end
 
+-- folke/zen-mode.nvim
+function set_zenmode()
+   require("zen-mode").setup {
+      window = {
+         -- zen背景, 為1,則使用編輯背景一樣顏色
+         backdrop = 0.95,
+         -- zen寬高
+         -- 等於1: 窗口大小
+         -- 小於1: 窗口百分比
+         -- 大於1: 使用該數值作為寬高
+         width = 126,
+         height = 1,
+         options = {
+            -- signcolumn = "yes",    -- 顯示git修改
+            -- number = true,         -- 顯示行號
+            -- relativenumber = true, -- 顯示行號
+            -- cursorline = true,     -- 禁用光標行
+            -- cursorcolumn = false,  -- 禁用光標列
+            -- foldcolumn = "0",      -- 禁用折疊
+            -- list = true,           -- 顯示空白字符
+         },
+      },
+      plugins = {
+         options = {
+            enabled = false,
+            ruler = true,
+            showcmd = true,
+         },
+         -- folke/twilight.nvim
+         twilight = { enabled = true },
+         -- 是否禁用gitsigns
+         gitsigns = { enabled = false },
+         -- 是否禁用tmux狀態欄
+         tmux = { enabled = false },
+         -- this will change the font size on kitty when in zen mode
+         -- to make this work, you need to set the following kitty options:
+         -- - allow_remote_control socket-only
+         -- - listen_on unix:/tmp/kitty
+         kitty = {
+            -- 禁用
+            enabled = true,
+            font = "+4",
+         },
+      },
+      on_open = function(win) end,
+      on_close = function() end,
+   }
+end
+
 -- Pocco81/truezen.nvim
 function set_truezen()
-   -- require("true-zen").setup {
-   --    modes = {
-   --       ataraxis = {
-   --          callbacks = {
-   --             open_pre = function() end,
-   --             open_pos = function()
-   --                -- -- 打開後調用
-   --                -- -- :hi ColorColumn
-   --                -- -- 默認打開禪模式, 會關閉屏幕竪線, 將其開啟
-   --                -- vim.cmd [[
-   --                --    DeNumber 1
-   --                --    highlight ColorColumn guifg=none guibg=#2c2f30
-   --                -- ]]
-   --             end,
-   --             close_pre = nil,
-   --             close_pos = nil,
-   --          },
-   --       },
-   --
-   --       narrow = {
-   --          callbacks = {
-   --             open_pre = nil,
-   --             open_pos = function()
-   --                -- -- :hi ColorColumn
-   --                -- -- narrow模式會打開禪模式, 禪模式下的callbacks也會被調用
-   --                -- -- narrow下關閉屏幕竪線
-   --                -- vim.cmd [[
-   --                --    DeNumber
-   --                --    highlight ColorColumn guifg=#1e2122 guibg=#1e2122
-   --                -- ]]
-   --             end,
-   --             close_pre = nil,
-   --             close_pos = nil,
-   --          },
-   --       },
-   --    },
-   -- }
+   require("true-zen").setup {
+      modes = {
+         ataraxis = {
+            minimum_writing_area = { -- minimum size of main window
+               width = 100,
+               height = 44,
+            },
+            callbacks = {
+               open_pre = function() end,
+               open_pos = function()
+                  -- -- 打開後調用
+                  -- -- :hi ColorColumn
+                  -- -- 默認打開禪模式, 會關閉屏幕竪線, 將其開啟
+                  -- vim.cmd [[
+                  --    DeNumber 1
+                  --    highlight ColorColumn guifg=none guibg=#2c2f30
+                  -- ]]
+               end,
+               close_pre = nil,
+               close_pos = nil,
+            },
+         },
+
+         narrow = {
+            callbacks = {
+               open_pre = nil,
+               open_pos = function()
+                  -- -- :hi ColorColumn
+                  -- -- narrow模式會打開禪模式, 禪模式下的callbacks也會被調用
+                  -- -- narrow下關閉屏幕竪線
+                  -- vim.cmd [[
+                  --    DeNumber
+                  --    highlight ColorColumn guifg=#1e2122 guibg=#1e2122
+                  -- ]]
+               end,
+               close_pre = nil,
+               close_pos = nil,
+            },
+         },
+      },
+   }
 end
 
 -- NvChad/base46

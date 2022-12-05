@@ -3,7 +3,6 @@
 ------------------------------
 
 require "custom.function"
-local overrides = require "custom.override"
 
 return {
 
@@ -20,7 +19,6 @@ return {
    -- leader快捷键菜单
    ["folke/which-key.nvim"] = { disable = false },
 
-   -- 自定义lsp配置
    ["neovim/nvim-lspconfig"] = {
       config = function()
          require "plugins.configs.lspconfig"
@@ -30,7 +28,7 @@ return {
 
    ["williamboman/mason.nvim"] = {
       override_options = {
-         -- 一些默認安裝的lsp
+         -- 默認安裝
          ensure_installed = {
             "lua-language-server",
             "rust-analyzer",
@@ -41,7 +39,7 @@ return {
 
    ["nvim-treesitter/nvim-treesitter"] = {
       override_options = {
-         -- 一些默認安裝的語法高亮
+         -- 默認安裝
          ensure_installed = {
             "lua",
             "rust",
@@ -59,12 +57,12 @@ return {
    },
 
    ["NvChad/ui"] = {
-      override_options = overrides.ui,
+      override_options = set_ui(),
    },
 
    ["kyazdani42/nvim-tree.lua"] = {
       after = { "ui", "nvim-web-devicons" },
-      override_options = overrides.nvimtree(),
+      override_options = set_nvimtree(),
    },
 
    ["kyazdani42/nvim-web-devicons"] = {
@@ -75,7 +73,6 @@ return {
       end,
    },
 
-   -- git stuff
    ["lewis6991/gitsigns.nvim"] = {
       ft = "gitcommit",
       setup = function()
@@ -87,7 +84,7 @@ return {
    },
 
    ["NvChad/nvterm"] = {
-      override_options = overrides.nvterm,
+      override_options = set_nvterm(),
    },
 
    -- ---------------------------------------------------

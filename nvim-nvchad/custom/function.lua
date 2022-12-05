@@ -1,17 +1,90 @@
+------------------------------------
+-- 覆盖nvchad模塊/插件的配置
+------------------------------
+
 -- 關閉全局小寫開頭函數提示
----@diagnostic disable: lowercase-global, unused-local
+---@diagnostic disable: lowercase-global
 --https://github.com/sumneko/lua-language-server/blob/master/locale/zh-tw/meta.lua
 
+-- 合併2個或多個table
+-- 參數1:
+-- • error: 抛出错误
+-- • keep : 使用最左边地图的值
+-- • force: 使用最右边地图的值
+-- local merge_tb = vim.tbl_deep_extend
+
 local utils = require "core.utils"
-local load_override = require("core.utils").load_override
-local custom_icons = require "custom.icons"
+
 local config = require "custom.config"
+local icons = require "custom.icons"
+local icon_index = config.icon_theme == "file" and 2 or 1
 
 ----------------------------------- functions ---------------------------------
+-- kyazdani42/nvim-tree.lua
+function set_nvimtree()
+   -- local opt = merge_tb("force", {}, config.nvtree["opt"] or {}) or {}
+   local opt = {
+      -- open_on_setup = true,
+      view = {
+         -- 是否自適應寬度
+         adaptive_size = true,
+         side = "left",
 
--- nvim-web-devicons
+         -- 是否隱藏tree頂部的當前目錄路徑
+         hide_root_folder = true,
+      },
+      git = {
+         enable = false,
+         ignore = false,
+      },
+      renderer = {
+         icons = {
+            show = {
+               file = true,
+               folder = true,
+               folder_arrow = true,
+               git = true,
+            },
+         },
+         highlight_git = false,
+      },
+   }
+   local nvimtree_icons = icons.nvimtree
+
+   if config.icon_theme ~= "nvchad" then
+      opt.renderer.icons.symlink_arrow = nvimtree_icons.symlink_arrow[icon_index]
+      opt.renderer.icons.glyphs = {
+         default = nvimtree_icons.file_default[icon_index],
+         symlink = nvimtree_icons.symlink[icon_index],
+         folder  = {
+            default      = nvimtree_icons.folder_default[icon_index],
+            empty        = nvimtree_icons.folder_empty[icon_index],
+            empty_open   = nvimtree_icons.folder_empty_open[icon_index],
+            open         = nvimtree_icons.folder_open[icon_index],
+            symlink      = nvimtree_icons.folder_symlink[icon_index],
+            symlink_open = nvimtree_icons.folder_symlink_open[icon_index],
+
+            arrow_open   = nvimtree_icons.folder_arrow_open[icon_index],
+            arrow_closed = nvimtree_icons.folder_arrow_closed[icon_index],
+         },
+         git = {
+            unstaged  = nvimtree_icons.git_unstaged[icon_index],
+            staged    = nvimtree_icons.git_staged[icon_index],
+            unmerged  = nvimtree_icons.git_unmerged[icon_index],
+            renamed   = nvimtree_icons.git_renamed[icon_index],
+            untracked = nvimtree_icons.git_untracked[icon_index],
+            deleted   = nvimtree_icons.git_deleted[icon_index],
+            ignored   = nvimtree_icons.git_ignored[icon_index],
+         }
+      }
+   end
+   return opt
+end
+
+-- kyazdani42/nvim-web-devicons
 function set_devicons()
    local present, devicons = pcall(require, "nvim-web-devicons")
+
    if present then
       require("base46").load_highlight "devicons"
 
@@ -20,12 +93,70 @@ function set_devicons()
          options = { default = false, color_icons = false }
       end
 
-      options = load_override(options, "kyazdani42/nvim-web-devicons")
+      options = utils.load_override(options, "kyazdani42/nvim-web-devicons")
       devicons.setup(options)
    end
 end
 
--- gitsigns-usage
+-- NvChad/ui
+function set_ui()
+   local opt = {
+      statusline = {
+         separator_style = "block", -- default/round/block/arrow
+         -- or
+         -- custom separators
+         -- separator_style = {
+         --    left = " ",
+         --    right = "",
+         --  },
+
+         overriden_modules = function()
+            return require "custom.statusline"
+         end,
+      },
+      -- statusline = require "custom.statusline",
+
+      -- lazyload it when there are 1+ buffers
+      tabufline = {
+         enabled = true,
+         lazyload = false,
+         overriden_modules = function()
+            return require "custom.tabufline"
+         end,
+      },
+   }
+   return opt
+end
+
+-- NvChad/nvterm
+function set_nvterm()
+   local opt = {
+      terminals = {
+         list = {},
+         type_opts = {
+            float = {
+               relative = "editor",
+               row = 0.16,
+               col = 0.1,
+               width = 0.8,
+               height = 0.66,
+               border = "single",
+            },
+            horizontal = { location = "rightbelow", split_ratio = 0.3 },
+            vertical = { location = "rightbelow", split_ratio = 0.5 },
+         },
+      },
+      behavior = {
+         close_on_exit = true,
+         auto_insert = true,
+      },
+      enable_new_mappings = true,
+   }
+
+   return opt
+end
+
+-- lewis6991/gitsigns.nvim
 function set_gitsigns()
    local present, gitsigns = pcall(require, "gitsigns")
 
@@ -35,18 +166,12 @@ function set_gitsigns()
 
    require("base46").load_highlight "git"
 
-   local icon_index = config.icon_theme == "none" and 1 or 2
-   local gitsigns_icons = custom_icons.gitsigns
+   local gitsigns_icons = icons.gitsigns
+   icon_index = config.icon_theme == "none" and 1 or 2
 
    local options = {
       -- 行號下的git圖標設置
       signs = {
-         -- add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
-         -- change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
-         -- -- delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
-         -- delete = { hl = "DiffDelete", text = "D", numhl = "GitSignsDeleteNr" },
-         -- topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
-         -- changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
          add = { hl = "DiffAdd", text = gitsigns_icons.add[icon_index], numhl = "GitSignsAddNr" },
          change = { hl = "DiffChange", text = gitsigns_icons.change[icon_index], numhl = "GitSignsChangeNr" },
          delete = { hl = "DiffDelete", text = gitsigns_icons.delete[icon_index], numhl = "GitSignsDeleteNr" },
@@ -58,7 +183,7 @@ function set_gitsigns()
       end,
    }
 
-   options = load_override(options, "lewis6991/gitsigns.nvim")
+   options = utils.load_override(options, "lewis6991/gitsigns.nvim")
    gitsigns.setup(options)
 end
 

@@ -4,10 +4,6 @@
 
 local M = {}
 
-
-------------------------------------------------
--- 自定義
-
 M.tabufline = {
    --             { none,    file  }
    -- 如果buff[2] == devicons, 則使用nvchad默認的圖標
@@ -29,7 +25,7 @@ M.statusline = { }
 -- ◦ • ▪ ▫ ◉ ◊ ○ ◌
 -- ● ◐ ◑ ◒ ◓ ◔ ◕ ◖ ◗
 -- ☻ ☽ ☾ ❛ ❜ ♯  
-M.nvtree = {
+M.nvimtree = {
    --                    { none,   file }
    file_default        = { "F",    "" },
    symlink             = { "L",    "" },
@@ -43,6 +39,14 @@ M.nvtree = {
    folder_symlink_open = { "L",    "L" },
    folder_arrow_open   = { "",    "", },
    folder_arrow_closed = { "",    "" },
+
+   git_unstaged        = { "✗",    "✗" },
+   git_staged          = { "✓",    "✓" },
+   git_unmerged        = { "",    "" },
+   git_renamed         = { "➜",    "➜" },
+   git_untracked       = { "★",    "★" },
+   git_deleted         = { "",    "" },
+   git_ignored         = { "◌",    "◌" },
 }
 
 M.gitsigns = {
@@ -53,8 +57,6 @@ M.gitsigns = {
    topdelete    = { "‾",    "‾" },
    changedelete = { "~",    "~" },
 }
-
-------------------------------------------------
 
 M.lspkind = {
    Namespace = "",

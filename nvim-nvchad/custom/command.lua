@@ -15,7 +15,6 @@ vim.api.nvim_create_user_command("DeNumber", function(args)
    end
 end, { nargs = "*", desc = "" })
 
-
 -- 查看快捷鍵
 -- DeCatkey   -> 查看自定義快捷鍵
 -- DeCatkey 1 -> 查看nvchad快捷鍵
@@ -26,7 +25,6 @@ vim.api.nvim_create_user_command("DeCatkey", function(args)
       vim.cmd [[ vsp $HOME/.config/nvim/lua/custom/mappings.lua ]]
    end
 end, { nargs = "*", desc = "" })
-
 
 -- 添加一個全屏終端(tab)
 -- DeTerm   -> 新建標籤並創建終端
@@ -46,7 +44,6 @@ vim.api.nvim_create_user_command("DeTerm", function(args)
    end
 end, { nargs = "*", desc = "" })
 
-
 -- 是否顯示屏幕竪線
 -- DeColorcolumn   -> 開啟 屏幕竪線
 -- DeColorcolumn 1 -> 關閉 屏幕竪線
@@ -57,4 +54,3 @@ vim.api.nvim_create_user_command("DeColorcolumn", function(args)
       vim.cmd [[ highlight ColorColumn guifg=none guibg=#2c2f30 ]]
    end
 end, { nargs = "*", desc = "" })
-

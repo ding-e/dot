@@ -10,7 +10,7 @@ local isBufValid = require("nvchad_ui.tabufline").isBufValid
 vim.g.TbTabsToggled = 0
 
 -- local config = require("core.utils").load_config()
-local config = require("custom.config")
+local config = require "custom.config"
 
 local tab_icons = require("custom.icons").tabufline
 local icon_index = config.icon_theme == "file" and 2 or 1
@@ -47,9 +47,8 @@ local function add_fileInfo(name, bufnr)
       -- local icon, icon_hl = devicons.get_icon(name, string.match(name, "%a+$"))
       -- 根據自定義設置buff list 文件圖標
       local icon, icon_hl = devicons.get_icon(name, string.match(name, "%a+$"))
-      if (config.icon_theme == "none")
-         or (config.icon_theme == "file" and tab_icons.buff[2] ~= "devicons") then
-            icon, icon_hl = tab_icons.buff[icon_index], ""
+      if (config.icon_theme == "none") or (config.icon_theme == "file" and tab_icons.buff[2] ~= "devicons") then
+         icon, icon_hl = tab_icons.buff[icon_index], ""
       end
 
       if not icon then
@@ -106,7 +105,7 @@ local function styleBufferTab(nr)
    -- 根據自定義設置buff list 關閉按鈕圖標
    local close_btn = "%" .. nr .. "@TbKillBuf@ %X"
    if config.icon_theme ~= "nvchad" then
-     close_btn = "%" .. nr .. "@TbKillBuf@" .. tab_icons.buff_close[icon_index] .. " %X"
+      close_btn = "%" .. nr .. "@TbKillBuf@" .. tab_icons.buff_close[icon_index] .. " %X"
    end
 
    local name = (#api.nvim_buf_get_name(nr) ~= 0) and fn.fnamemodify(api.nvim_buf_get_name(nr), ":t") or " No Name "
@@ -125,7 +124,6 @@ local function styleBufferTab(nr)
 
    return name
 end
-
 
 ----------------------------------- return ---------------------------------
 return {
@@ -185,13 +183,13 @@ return {
             -- result = (i == fn.tabpagenr() and result .. "%#TbLineTabCloseBtn#" .. "%@TbTabClose@ %X") or result
             -- 根據自定義設置tab關閉按鈕圖標
             if config.icon_theme ~= "nvchad" then
-               result = (i == fn.tabpagenr()
-                  and result .. "%#TbLineTabCloseBtn#" .. "%@TbTabClose@" .. tab_icons.tab_close[icon_index] .. " %X")
-                  or result
+               result = (
+                  i == fn.tabpagenr()
+                  and result .. "%#TbLineTabCloseBtn#" .. "%@TbTabClose@" .. tab_icons.tab_close[icon_index] .. " %X"
+               ) or result
             else
                result = (i == fn.tabpagenr() and result .. "%#TbLineTabCloseBtn#" .. "%@TbTabClose@ %X") or result
             end
-
          end
 
          -- local new_tabtn = "%#TblineTabNewBtn#" .. "%@TbNewTab@  %X"
@@ -208,7 +206,7 @@ return {
          -- 根據自定義設置tab收納展開按鈕圖標
          if config.icon_theme ~= "nvchad" then
             return vim.g.TbTabsToggled == 1
-               and tabstoggleBtn:gsub("()", { [36] = tab_icons.tab_toggle[icon_index] .. " " })
+                  and tabstoggleBtn:gsub("()", { [36] = tab_icons.tab_toggle[icon_index] .. " " })
                or new_tabtn .. tabstoggleBtn .. result
          else
             return vim.g.TbTabsToggled == 1 and tabstoggleBtn:gsub("()", { [36] = " " })
@@ -224,8 +222,16 @@ return {
       local toggle_themeBtn = "%@TbToggle_theme@%#TbLineThemeToggleBtn#" .. vim.g.toggle_theme_icon .. "%X"
       local CloseAllBufsBtn = "%@TbCloseAllBufs@%#TbLineCloseAllBufsBtn#" .. "  " .. "%X"
       if config.icon_theme ~= "nvchad" then
-         toggle_themeBtn = "%@TbToggle_theme@%#TbLineThemeToggleBtn#" .. " " .. tab_icons.theme_toggle[icon_index] .. " " .. "%X"
-         CloseAllBufsBtn = "%@TbCloseAllBufs@%#TbLineCloseAllBufsBtn#" .. " " .. tab_icons.all_close[icon_index] .. " " .. "%X"
+         toggle_themeBtn = "%@TbToggle_theme@%#TbLineThemeToggleBtn#"
+            .. " "
+            .. tab_icons.theme_toggle[icon_index]
+            .. " "
+            .. "%X"
+         CloseAllBufsBtn = "%@TbCloseAllBufs@%#TbLineCloseAllBufsBtn#"
+            .. " "
+            .. tab_icons.all_close[icon_index]
+            .. " "
+            .. "%X"
       end
 
       return toggle_themeBtn .. CloseAllBufsBtn

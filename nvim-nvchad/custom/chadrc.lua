@@ -2,7 +2,7 @@
 -- nvchad 自定義配置
 ---------------------------
 
-local config = require("custom.config")
+local config = require "custom.config"
 
 local M = {}
 

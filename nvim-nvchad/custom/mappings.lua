@@ -41,12 +41,16 @@ M.general = {
             -- 查看tree是否已打開
             -- print(require("nvim-tree.view").is_visible())
 
-            if vim.fn.expand('%') ~= "NvimTree_1"
+            if
+               vim.fn.expand "%" ~= "NvimTree_1"
                and require("nvim-tree.view").is_visible() == true
-                  and vim.fn.winnr("$") < 3
-            then vim.cmd [[ NvimTreeClose ]] end
+               and vim.fn.winnr "$" < 3
+            then
+               vim.cmd [[ NvimTreeClose ]]
+            end
             vim.cmd [[ q ]]
-         end, ""
+         end,
+         "",
       },
 
       -- 开启/关闭鼠标模式
@@ -85,7 +89,11 @@ M.general = {
       ["<down>"] = { "<CMD> res -5 <CR>", "" },
       ["<left>"] = { "<CMD> vertical resize -5 <CR>", "" },
       ["<right>"] = { "<CMD> vertical resize +5 <CR>", "" },
+   },
+}
 
+M.plugin = {
+   n = {
       -- 打开仪表盘
       -- mhinz/vim-startify
       ["DD"] = { "<CMD> Startify <CR>", "" },
@@ -130,10 +138,12 @@ M.session = {
       ["<leader>sd"] = {
          function()
             local buf_list_len = vim.fn.len(vim.fn.getbufinfo { buflisted = 1 })
-            if (buf_list_len == 0)
-              or (buf_list_len == 1
-                and (vim.api.nvim_buf_get_name(0) == "" or vim.api.nvim_buf_line_count(0) == 1))
-            then require("nvchad_ui.tabufline").close_buffer() end
+            if
+               (buf_list_len == 0)
+               or (buf_list_len == 1 and (vim.api.nvim_buf_get_name(0) == "" or vim.api.nvim_buf_line_count(0) == 1))
+            then
+               require("nvchad_ui.tabufline").close_buffer()
+            end
             -- if buf_list_len == 0 then require("nvchad_ui.tabufline").close_buffer() end
             require("persistence").load()
             require("nvim-tree").toggle(false, true)
@@ -170,11 +180,11 @@ M.zen = {
          "禪模式: width = 50%",
       },
 
-      ["<leader>zn"] = { "<CMD> TZNarrow <CR>", "禪模式-打開當前行" },
-
       ["<leader>zf"] = { "<CMD> TZFocus <CR>", "當有分屏時全屏" },
       ["<leader>zm"] = { "<CMD> TZMinimalist <CR>", "隱藏行號/狀態欄/標籤列" },
+      ["<leader>zn"] = { "<CMD> TZNarrow <CR>", "禪模式-打開當前行" },
    },
+
    x = {
       ["<leader>zn"] = { ":'<,'>TZNarrow <CR>", "禪模式-打開所選行" },
    },

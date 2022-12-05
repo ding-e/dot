@@ -1,9 +1,9 @@
 ------------------------------------
 -- 覆盖nvchad模塊/插件的配置
 ------------------------------
+---@diagnostic disable: lowercase-global, undefined-global
 
--- 關閉全局小寫開頭函數提示
----@diagnostic disable: lowercase-global
+-- 關閉語言服務器的提示
 --https://github.com/sumneko/lua-language-server/blob/master/locale/zh-tw/meta.lua
 
 -- 合併2個或多個table
@@ -56,26 +56,26 @@ function set_nvimtree()
       opt.renderer.icons.glyphs = {
          default = nvimtree_icons.file_default[icon_index],
          symlink = nvimtree_icons.symlink[icon_index],
-         folder  = {
-            default      = nvimtree_icons.folder_default[icon_index],
-            empty        = nvimtree_icons.folder_empty[icon_index],
-            empty_open   = nvimtree_icons.folder_empty_open[icon_index],
-            open         = nvimtree_icons.folder_open[icon_index],
-            symlink      = nvimtree_icons.folder_symlink[icon_index],
+         folder = {
+            default = nvimtree_icons.folder_default[icon_index],
+            empty = nvimtree_icons.folder_empty[icon_index],
+            empty_open = nvimtree_icons.folder_empty_open[icon_index],
+            open = nvimtree_icons.folder_open[icon_index],
+            symlink = nvimtree_icons.folder_symlink[icon_index],
             symlink_open = nvimtree_icons.folder_symlink_open[icon_index],
 
-            arrow_open   = nvimtree_icons.folder_arrow_open[icon_index],
+            arrow_open = nvimtree_icons.folder_arrow_open[icon_index],
             arrow_closed = nvimtree_icons.folder_arrow_closed[icon_index],
          },
          git = {
-            unstaged  = nvimtree_icons.git_unstaged[icon_index],
-            staged    = nvimtree_icons.git_staged[icon_index],
-            unmerged  = nvimtree_icons.git_unmerged[icon_index],
-            renamed   = nvimtree_icons.git_renamed[icon_index],
+            unstaged = nvimtree_icons.git_unstaged[icon_index],
+            staged = nvimtree_icons.git_staged[icon_index],
+            unmerged = nvimtree_icons.git_unmerged[icon_index],
+            renamed = nvimtree_icons.git_renamed[icon_index],
             untracked = nvimtree_icons.git_untracked[icon_index],
-            deleted   = nvimtree_icons.git_deleted[icon_index],
-            ignored   = nvimtree_icons.git_ignored[icon_index],
-         }
+            deleted = nvimtree_icons.git_deleted[icon_index],
+            ignored = nvimtree_icons.git_ignored[icon_index],
+         },
       }
    end
    return opt
@@ -165,18 +165,37 @@ function set_gitsigns()
    end
 
    require("base46").load_highlight "git"
-
    local gitsigns_icons = icons.gitsigns
    icon_index = config.icon_theme == "none" and 1 or 2
 
    local options = {
       -- 行號下的git圖標設置
       signs = {
-         add = { hl = "DiffAdd", text = gitsigns_icons.add[icon_index], numhl = "GitSignsAddNr" },
-         change = { hl = "DiffChange", text = gitsigns_icons.change[icon_index], numhl = "GitSignsChangeNr" },
-         delete = { hl = "DiffDelete", text = gitsigns_icons.delete[icon_index], numhl = "GitSignsDeleteNr" },
-         topdelete = { hl = "DiffDelete", text = gitsigns_icons.topdelete[icon_index], numhl = "GitSignsDeleteNr" },
-         changedelete = { hl = "DiffChangeDelete", text = gitsigns_icons.changedelete[icon_index], numhl = "GitSignsChangeNr" },
+         add = {
+            hl = "DiffAdd",
+            text = gitsigns_icons.add[icon_index],
+            numhl = "GitSignsAddNr",
+         },
+         change = {
+            hl = "DiffChange",
+            text = gitsigns_icons.change[icon_index],
+            numhl = "GitSignsChangeNr",
+         },
+         delete = {
+            hl = "DiffDelete",
+            text = gitsigns_icons.delete[icon_index],
+            numhl = "GitSignsDeleteNr",
+         },
+         topdelete = {
+            hl = "DiffDelete",
+            text = gitsigns_icons.topdelete[icon_index],
+            numhl = "GitSignsDeleteNr",
+         },
+         changedelete = {
+            hl = "DiffChangeDelete",
+            text = gitsigns_icons.changedelete[icon_index],
+            numhl = "GitSignsChangeNr",
+         },
       },
       on_attach = function(bufnr)
          utils.load_mappings("gitsigns", { buffer = bufnr })
@@ -236,17 +255,6 @@ function set_zenmode()
    }
 end
 
--- session / workspace
--- folke/persistence.nvim
-function set_session()
-   require("persistence").setup {
-      -- directory where session files are saved
-      dir = vim.fn.expand(vim.fn.stdpath "config" .. "/sessions/"),
-      -- sessionoptions used for saving
-      options = { "buffers", "curdir", "tabpages", "winsize" },
-   }
-end
-
 -- Pocco81/truezen.nvim
 function set_truezen()
    require("true-zen").setup {
@@ -292,6 +300,27 @@ function set_truezen()
    }
 end
 
+-- jose-elias-alvarez/null-ls.nvim
+-- 具体支持语言
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
+function set_nullls()
+   -- require("custom.plugins.null-ls").setup()
+   local null_ls = require "null-ls"
+   local b = null_ls.builtins
+   local sources = {
+      -- lua
+      b.formatting.stylua,
+      -- b.diagnostics.luacheck.with { extra_args = { "--global vim" } },
+      -- zig
+      b.formatting.zigfmt,
+      -- nim
+      b.formatting.nimpretty,
+      -- clang
+      b.formatting.clang_format.with { extra_args = { "--style", "{IndentWidth: 4}" } },
+   }
+   null_ls.setup { debug = true, sources = sources }
+end
+
 -- NvChad/base46
 function set_base46()
    local ok, base46 = pcall(require, "base46")
@@ -315,6 +344,17 @@ function set_base46()
       end
       require("nvchad").reload_theme(config.workspace_theme_toggle[t])
    end
+end
+
+-- session / workspace
+-- folke/persistence.nvim
+function set_session()
+   require("persistence").setup {
+      -- directory where session files are saved
+      dir = vim.fn.expand(vim.fn.stdpath "config" .. "/sessions/"),
+      -- sessionoptions used for saving
+      options = { "buffers", "curdir", "tabpages", "winsize" },
+   }
 end
 
 -- -- Shatur/neovim-session-manager

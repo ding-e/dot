@@ -35,7 +35,7 @@ lspconfig.nimls.setup {
       "nimlsp",
    },
    filetypes = { "nim" },
-   root_dir  = lspconfig.util.root_pattern("*.nim"),
+   root_dir = lspconfig.util.root_pattern "*.nim",
    single_file_support = true,
 }
 

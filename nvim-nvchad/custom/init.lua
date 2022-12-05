@@ -2,7 +2,7 @@
 -- 全局配置
 -------------
 
-require("custom.command")
+require "custom.command"
 
 -- 打开文件返回上次修改的位置
 vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
@@ -71,4 +71,3 @@ vim.cmd [[ set noundofile ]]
 -- 退出终端模式
 -- 在nvcard->core->mappings.lua 下，已经设置了ctrl+x退出终端模式
 -- vim.cmd [[ tnoremap <C-q> <C-\><C-n> ]]
-

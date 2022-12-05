@@ -16,9 +16,13 @@ local M = {
    -- 圖標相關 (nvim-tree/tabufline)
    -- "none", "file", "nvchad"
    icon_theme = "file",
+
+   -- mason, tree-sitter
+   mason_list = { "lua-language-server", "rust-analyzer", "clangd" },
+   sitter_list = { "lua", "rust", "c" },
 }
 
-if M.icon_theme == "file" and os.getenv("TERM_PROGRAM") == "iTerm.app" then
+if M.icon_theme == "file" and os.getenv "TERM_PROGRAM" == "iTerm.app" then
    M.icon_theme = "nvchad"
 end
 

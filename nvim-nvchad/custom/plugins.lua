@@ -3,62 +3,16 @@
 ------------------------------
 
 require "custom.function"
+local config = require "custom.config"
 
 return {
-
-   -- ---------------------------------------------------
-   -- 移除插件
-   -- ---------------------------
-
-   -- ["lukas-reineke/indent-blankline.nvim"] = false,
-
-   -- ---------------------------------------------------
+   -----------------------------------------------------
    -- 覆盖nvchad插件
-   -- ---------------------------
+   -----------------------------
+   -- ["lukas-reineke/indent-blankline.nvim"] = false,
 
    -- leader快捷键菜单
    ["folke/which-key.nvim"] = { disable = false },
-
-   ["neovim/nvim-lspconfig"] = {
-      config = function()
-         require "plugins.configs.lspconfig"
-         require "custom.lspconfig"
-      end,
-   },
-
-   ["williamboman/mason.nvim"] = {
-      override_options = {
-         -- 默認安裝
-         ensure_installed = {
-            "lua-language-server",
-            "rust-analyzer",
-            "clangd",
-         },
-      },
-   },
-
-   ["nvim-treesitter/nvim-treesitter"] = {
-      override_options = {
-         -- 默認安裝
-         ensure_installed = {
-            "lua",
-            "rust",
-            "c",
-            "toml",
-            "json",
-         },
-      },
-   },
-
-   ["NvChad/base46"] = {
-      config = function()
-         set_base46()
-      end,
-   },
-
-   ["NvChad/ui"] = {
-      override_options = set_ui(),
-   },
 
    ["kyazdani42/nvim-tree.lua"] = {
       after = { "ui", "nvim-web-devicons" },
@@ -83,38 +37,47 @@ return {
       end,
    },
 
-   ["NvChad/nvterm"] = {
-      override_options = set_nvterm(),
+   ["NvChad/ui"] = { override_options = set_ui() },
+   ["NvChad/nvterm"] = { override_options = set_nvterm() },
+   ["NvChad/base46"] = {
+      config = function()
+         set_base46()
+      end,
    },
 
-   -- ---------------------------------------------------
+   ["neovim/nvim-lspconfig"] = {
+      config = function()
+         require "plugins.configs.lspconfig"
+         require "custom.lspconfig"
+      end,
+   },
+
+   ["williamboman/mason.nvim"] = {
+      override_options = { ensure_installed = config.mason_list },
+   },
+
+   ["nvim-treesitter/nvim-treesitter"] = {
+      override_options = { ensure_installed = config.sitter_list },
+   },
+
+   -----------------------------------------------------
    -- 新装插件
-   -- ---------------------------
+   -----------------------------
 
    -- 仪表盘
-   ["mhinz/vim-startify"] = {
-      -- config = function()
-      --    vim.g.startify_session_dir = "$HOME/.config/nvim/session/"
-      -- end,
-   },
+   -- vim.g.startify_session_dir = "$HOME/.config/nvim/session/"
+   ["mhinz/vim-startify"] = {},
    -- ["goolord/alpha-nvim"] = { disable = false },
 
    -- session / workspace
+   -- folke/persistence.nvim
    -- 如果當前bur list, 沒有打開buf, 則不保存
    -- 在nvchad打開Startify的時候,馬上關閉(目前buf list數量為0), 則不保存session
-   ["ding-e/persistence.nvim"] = {
-   -- ["folke/persistence.nvim"] = {
-      config = function()
-         set_session()
-      end,
-   },
+   ["ding-e/persistence.nvim"] = { config = set_session() },
    -- ["Shatur/neovim-session-manager"] = {
-   --    -- module = "nvim-tree.lua",
    --    -- after = { "ui", "nvim-web-devicons" },
    --    -- setup = function() end,
-   --    config = function()
-   --       set_neovim_session()
-   --    end,
+   --    config = set_neovim_session()
    -- },
 
    -- mac下自动切换输入法
@@ -126,43 +89,35 @@ return {
    },
 
    -- 類似vscode的禪模式 - 暂时隐藏状态栏、缓冲线等。
-   ["folke/zen-mode.nvim"] = {
-      config = function()
-         set_zenmode()
-      end,
-   },
-   ["Pocco81/truezen.nvim"] = {
-      config = function()
-         set_truezen()
-      end,
-   },
+   ["folke/zen-mode.nvim"] = { config = set_zenmode() },
+   ["Pocco81/truezen.nvim"] = { config = set_truezen() },
 
    -- 加速jk
-   ["rhysd/accelerated-jk"] = {
-      config = function()
-         -- vim.g.accelerated_jk_acceleration_limit = 300
-      end,
-   },
+   -- vim.g.accelerated_jk_acceleration_limit = 300
+   ["rhysd/accelerated-jk"] = {},
 
    -- 平滑滚动 <C-u>, <C-d>, <C-b>, <C-f>, <C-y>, <C-e>, zt, zz, zb
-   ["karb94/neoscroll.nvim"] = {
-      config = function()
-         require("neoscroll").setup()
-      end,
-   },
-
-   -- 符號對齊
-   ["junegunn/vim-easy-align"] = {
-      config = function() end,
-   },
+   ["karb94/neoscroll.nvim"] = { config = require("neoscroll").setup() },
 
    -- editor config - .editorconfig
    -- https://editorconfig.org
    -- ["editorconfig/editorconfig-vim"] = {},
    ["gpanders/editorconfig.nvim"] = {},
 
+   -- 格式化
+   ["jose-elias-alvarez/null-ls.nvim"] = {
+      after = "nvim-lspconfig",
+      config = function()
+         set_nullls()
+      end,
+   },
+
+   -- 符號對齊
+   ["junegunn/vim-easy-align"] = {},
+
    -- zig language
    -- tree-sitter - TSInstall zig
+   ["ding-e/zig-highlight-enhanced"] = { after = "zig.vim" },
    ["ziglang/zig.vim"] = {
       config = function()
          -- 关闭保存自动格式化
@@ -170,43 +125,16 @@ return {
          vim.g.zig_fmt_autosave = 0
       end,
    },
-   ["ding-e/zig-highlight-enhanced"] = {
-      after = "zig.vim",
-   },
 
    -- nim language
    -- 只代码高亮，配合nimlsp代码提示
-   ["ding-e/nim-highlight"] = {
-      config = function() end,
-   },
+   ["ding-e/nim-highlight"] = {},
    -- ['baabelfish/nvim-nim'] = {},
    -- ['alaviss/nim.nvim'] = {},
    -- ['wsdjeg/vim-nim'] = {},
    -- ['zah/nim.vim'] = {},
 
-   -- 格式化
-   ["jose-elias-alvarez/null-ls.nvim"] = {
-      after = "nvim-lspconfig",
-      config = function()
-         -- require("custom.plugins.null-ls").setup()
-         local null_ls = require "null-ls"
-         local b = null_ls.builtins
-         -- 具体支持语言
-         -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-         local sources = {
-            -- lua
-            b.formatting.stylua,
-            -- b.diagnostics.luacheck.with { extra_args = { "--global vim" } },
-            -- zig
-            b.formatting.zigfmt,
-            -- nim
-            b.formatting.nimpretty,
-            -- clang
-            b.formatting.clang_format.with { extra_args = { "--style", "{IndentWidth: 4}" } },
-         }
-         null_ls.setup { debug = true, sources = sources }
-      end,
-   },
+   -- ========================================================================
 
    -- 在命令行下显示缓冲区列表
    -- ["bling/vim-bufferline"] = {},

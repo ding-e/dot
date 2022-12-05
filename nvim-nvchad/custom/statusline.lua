@@ -51,7 +51,9 @@ M.mode = function()
 end
 
 M.fileInfo = function()
-   local icon = "  "
+   -- local icon = "  "
+   -- local icon = " ☻ "
+   local icon = " ғ "
    local filename = (fn.expand "%" == "" and "Empty ") or fn.expand "%:t"
 
    if filename ~= "Empty " then

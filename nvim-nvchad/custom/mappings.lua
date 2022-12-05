@@ -34,7 +34,13 @@ M.general = {
 
       -- 保存/关闭文件
       ["S"] = { "<CMD> w <CR>", "" },
-      ["Q"] = { "<CMD> q <CR>", "" },
+      ["Q"] = {
+         function()
+            vim.cmd [[ NvimTreeClose ]]
+            vim.cmd [[ q ]]
+         end, ""
+      },
+
       -- 开启/关闭鼠标模式
       ["MO"] = { "<CMD> set mouse=a <CR>", "" },
       ["MC"] = { "<CMD> set mouse= <CR>", "" },
@@ -113,15 +119,25 @@ M.general = {
 -- folke/persistence.nvim
 M.session = {
    n = {
-      ["<leader>qs"] = {
-         "<CMD> lua require('persistence').load() <CR>",
+      ["<leader>sd"] = {
+         function()
+            local buf_list_len = vim.fn.len(vim.fn.getbufinfo { buflisted = 1 })
+            if (buf_list_len == 0)
+              or (buf_list_len == 1
+                and (vim.api.nvim_buf_get_name(0) == "" or vim.api.nvim_buf_line_count(0) == 1))
+            then require("nvchad_ui.tabufline").close_buffer() end
+            -- if buf_list_len == 0 then require("nvchad_ui.tabufline").close_buffer() end
+            require("persistence").load()
+            require("nvim-tree").toggle(false, true)
+         end,
          "session: 恢复当前目录的会话",
       },
-      ["<leader>ql"] = {
+
+      ["<leader>sl"] = {
          "<CMD> lua require('persistence').load({ last = true }) <CR>",
          "session: 恢复上次会话",
       },
-      ["<leader>qd"] = {
+      ["<leader>sc"] = {
          "<CMD> lua require('persistence').stop() <CR>",
          "session: 退出时不会保存会话",
       },

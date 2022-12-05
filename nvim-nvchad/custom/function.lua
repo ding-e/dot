@@ -5,41 +5,19 @@
 local utils = require "core.utils"
 local load_override = require("core.utils").load_override
 local custom_icons = require "custom.icons"
+local config = require "custom.config"
 
 ----------------------------------- functions ---------------------------------
 
--- nvim-web-devicons, nvim-tree.lua icon
+-- nvim-web-devicons
 function set_devicons()
    local present, devicons = pcall(require, "nvim-web-devicons")
    if present then
       require("base46").load_highlight "devicons"
 
-      local config = require("core.utils").load_config()
-      local icon_index = config.ui.icon_theme == "file" and 2 or 1
-
-      local nvimtree_icons = require("custom.override").nvimtree.renderer.icons
       local options = { override = require("nvchad_ui.icons").devicons }
-      local glyphs = nvimtree_icons.glyphs
-      local icons = custom_icons.nvtree
-
-      if config.ui.icon_theme ~= "nvchad" then
-         if config.ui.icon_theme == "none" then
-            options = { default = false, color_icons = false }
-         end
-         nvimtree_icons.symlink_arrow = custom_icons.nvtree.symlink_arrow[icon_index]
-         glyphs.default = custom_icons.nvtree.file_default[icon_index]
-         glyphs.symlink = icons.symlink[icon_index]
-         glyphs.folder = {
-            default = icons.folder_default[icon_index],
-            empty = icons.folder_empty[icon_index],
-            empty_open = icons.folder_empty_open[icon_index],
-            open = icons.folder_open[icon_index],
-            symlink = icons.folder_symlink[icon_index],
-            symlink_open = icons.folder_symlink_open[icon_index],
-
-            arrow_open = icons.folder_arrow_open[icon_index],
-            arrow_closed = icons.folder_arrow_closed[icon_index],
-         }
+      if config.icon_theme == "none" then
+         options = { default = false, color_icons = false }
       end
 
       options = load_override(options, "kyazdani42/nvim-web-devicons")
@@ -57,9 +35,8 @@ function set_gitsigns()
 
    require("base46").load_highlight "git"
 
-   local config = require("core.utils").load_config()
-   local icon_index = config.ui.icon_theme == "none" and 1 or 2
-   local icons = custom_icons.gitsigns
+   local icon_index = config.icon_theme == "none" and 1 or 2
+   local gitsigns_icons = custom_icons.gitsigns
 
    local options = {
       -- 行號下的git圖標設置
@@ -70,11 +47,11 @@ function set_gitsigns()
          -- delete = { hl = "DiffDelete", text = "D", numhl = "GitSignsDeleteNr" },
          -- topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
          -- changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
-         add = { hl = "DiffAdd", text = icons.add[icon_index], numhl = "GitSignsAddNr" },
-         change = { hl = "DiffChange", text = icons.change[icon_index], numhl = "GitSignsChangeNr" },
-         delete = { hl = "DiffDelete", text = icons.delete[icon_index], numhl = "GitSignsDeleteNr" },
-         topdelete = { hl = "DiffDelete", text = icons.topdelete[icon_index], numhl = "GitSignsDeleteNr" },
-         changedelete = { hl = "DiffChangeDelete", text = icons.changedelete[icon_index], numhl = "GitSignsChangeNr" },
+         add = { hl = "DiffAdd", text = gitsigns_icons.add[icon_index], numhl = "GitSignsAddNr" },
+         change = { hl = "DiffChange", text = gitsigns_icons.change[icon_index], numhl = "GitSignsChangeNr" },
+         delete = { hl = "DiffDelete", text = gitsigns_icons.delete[icon_index], numhl = "GitSignsDeleteNr" },
+         topdelete = { hl = "DiffDelete", text = gitsigns_icons.topdelete[icon_index], numhl = "GitSignsDeleteNr" },
+         changedelete = { hl = "DiffChangeDelete", text = gitsigns_icons.changedelete[icon_index], numhl = "GitSignsChangeNr" },
       },
       on_attach = function(bufnr)
          utils.load_mappings("gitsigns", { buffer = bufnr })
@@ -203,16 +180,15 @@ function set_base46()
       -- :lua require("nvchad").reload_theme("gruvchad")
 
       -- 根據當前項目設置nvchad配色
-      local config = require("core.utils").load_config()
       local t = 2
-      for _, v in pairs(config.ui.workspace_list) do
+      for _, v in pairs(config.workspace_list) do
          local wt = nil ~= string.find(v, "/") and v or "workspace/" .. v
          if nil ~= string.find(string.lower(vim.fn.getcwd()), wt) and t ~= 1 then
             t = 1
             break
          end
       end
-      require("nvchad").reload_theme(config.ui.workspace_theme_toggle[t])
+      require("nvchad").reload_theme(config.workspace_theme_toggle[t])
    end
 end
 

@@ -52,8 +52,19 @@ return {
       },
    },
 
+   ["NvChad/base46"] = {
+      config = function()
+         set_base46()
+      end,
+   },
+
    ["NvChad/ui"] = {
       override_options = overrides.ui,
+   },
+
+   ["kyazdani42/nvim-tree.lua"] = {
+      after = { "ui", "nvim-web-devicons" },
+      override_options = overrides.nvimtree(),
    },
 
    ["kyazdani42/nvim-web-devicons"] = {
@@ -77,17 +88,6 @@ return {
 
    ["NvChad/nvterm"] = {
       override_options = overrides.nvterm,
-   },
-
-   ["kyazdani42/nvim-tree.lua"] = {
-      after = { "ui", "nvim-web-devicons" },
-      override_options = overrides.nvimtree,
-   },
-
-   ["NvChad/base46"] = {
-      config = function()
-         set_base46()
-      end,
    },
 
    -- ---------------------------------------------------

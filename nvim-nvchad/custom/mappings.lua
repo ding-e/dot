@@ -36,7 +36,15 @@ M.general = {
       ["S"] = { "<CMD> w <CR>", "" },
       ["Q"] = {
          function()
-            vim.cmd [[ NvimTreeClose ]]
+            -- 獲取當前有多少個分屏
+            -- print(vim.fn.winnr("$"))
+            -- 查看tree是否已打開
+            -- print(require("nvim-tree.view").is_visible())
+
+            if vim.fn.expand('%') ~= "NvimTree_1"
+               and require("nvim-tree.view").is_visible() == true
+                  and vim.fn.winnr("$") < 3
+            then vim.cmd [[ NvimTreeClose ]] end
             vim.cmd [[ q ]]
          end, ""
       },

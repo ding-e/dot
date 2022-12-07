@@ -152,6 +152,8 @@ if [ $(uname -o) = "Darwin" ]; then
 # LINUX.START
 else
 
+    # term color
+    export TERM="xterm-256color"
 
     # workspace
     export WORKSPACE_PATH="$HOME/core/workspace"
@@ -216,9 +218,6 @@ fi
 # ========================================================
 
 
-# term color
-#export TERM="xterm-256color"
-
 alias c="clear"
 alias nf="neofetch"
 alias ra="ranger"
@@ -249,7 +248,7 @@ alias glocal="cd $HOME/.local/share/"
 
 # vpn
 alias vpnstart="export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5://127.0.0.1:7891;echo \"Set proxy successfully\" "
-alias vpnstop="unset http_proxy;unset https_proxy;unset all_proxy;echo \"Unset proxy successfully\" " 
+alias vpnstop="unset http_proxy;unset https_proxy;unset all_proxy;echo \"Unset proxy successfully\" "
 alias ipcn="curl myip.ipip.net"
 alias ip="curl ip.sb"
 

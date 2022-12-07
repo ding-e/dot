@@ -11,9 +11,14 @@ packages : [
     nim, nimble, nimlsp, nimpretty
     gcc make cmake clang
     net-tools util-linux
+    ufw openssh
 
     tree-sitter
     #nodejs npm
+
+    Parallels tools : [
+        linux-headers dkms
+    ]
 ]
 
 ================================================
@@ -29,7 +34,9 @@ pacman -Si neovim
 
 passwd root
 userdel dinge
-useradd -m -G wheel -s /bin/zsh dinge
+groupadd dinge
+#useradd -m -G wheel -s /bin/zsh dinge
+useradd -m -G dinge -s /bin/zsh dinge
 passwd dinge
 
 /etc/sudoers

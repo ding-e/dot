@@ -23,9 +23,9 @@ function __get_prefix_chicago95_zsh() {
 
 PROMPT='%{$fg_bold[white]%}$(__get_prefix_chicago95_zsh):$(__msdos_pwd)$(git_prompt_info)>%{$reset_color%} '
 
-#zsh_theme_git_prompt_prefix=":("
-#zsh_theme_git_prompt_suffix=")"
-zsh_theme_git_prompt_prefix=":"
-zsh_theme_git_prompt_suffix=""
+#ZSH_THEME_GIT_PROMPT_PREFIX=":("
+#ZSH_THEME_GIT_PROMPT_SUFFIX=")"
+ZSH_THEME_GIT_PROMPT_PREFIX=":"
+ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_DIRTY=""
 ZSH_THEME_GIT_PROMPT_CLEAN=""

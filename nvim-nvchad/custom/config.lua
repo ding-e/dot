@@ -4,7 +4,7 @@
 
 local M = {
 
-   theme = "gruvchad",
+   theme = "gruvchad", -- one_light
    theme_toggle = { "gruvchad", "dinge" },
 
    -- 項目列表

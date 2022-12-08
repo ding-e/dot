@@ -20,6 +20,19 @@ local icons = require "custom.icons"
 local icon_index = config.icon_theme == "file" and 2 or 1
 
 ----------------------------------- functions ---------------------------------
+-- mbbill/undotree
+function set_undotree()
+   -- 顯示在右邊
+   vim.g.undotree_WindowLayout = 3
+   -- 寬度
+   vim.g.undotree_SplitWidth = 50 --30
+   -- 修改/刪除/添加高亮
+   vim.g.undotree_HighlightChangedWithSign = 1
+   vim.g.undotree_HighlightSyntaxChange = "DiffChange"
+   vim.g.undotree_HighlightSyntaxAdd = "DiffAdd"
+   vim.g.undotree_HighlightSyntaxDel = "DiffDelete"
+end
+
 -- kyazdani42/nvim-tree.lua
 function set_nvimtree()
    -- local opt = merge_tb("force", {}, config.nvtree["opt"] or {}) or {}

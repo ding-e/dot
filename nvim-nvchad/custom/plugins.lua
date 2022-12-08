@@ -104,6 +104,10 @@ return {
    -- ["editorconfig/editorconfig-vim"] = {},
    ["gpanders/editorconfig.nvim"] = {},
 
+   -- 歷史修改紀錄
+   -- https://github.com/mbbill/undotree/blob/master/plugin/undotree.vim
+   ["mbbill/undotree"] = { config = set_undotree() },
+
    -- 格式化
    ["jose-elias-alvarez/null-ls.nvim"] = {
       after = "nvim-lspconfig",
@@ -162,12 +166,6 @@ return {
    --     -- vim.g.BufKillActionWhenBufferDisplayedInAnotherWindow = 'kill'
    --
    --   end
-   -- },
-
-   -- 历史修改记录
-   -- ["mbbill/undotree"] = {
-   --   opt = true,
-   --   cmd = "UndotreeToggle",
    -- },
 
    -- 多光标

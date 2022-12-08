@@ -38,17 +38,27 @@ M.general = {
          function()
             -- 獲取當前有多少個分屏
             -- print(vim.fn.winnr("$"))
-            -- 查看tree是否已打開
+            -- 查看nvimtree是否已打開
             -- print(require("nvim-tree.view").is_visible())
+            -- 查看undotree是否已打開
+            -- echo call undotree#UndotreeIsVisible()
+            -- lua print(vim.fn['undotree#UndotreeIsVisible']())
 
-            if
-               vim.fn.expand "%" ~= "NvimTree_1"
-               and require("nvim-tree.view").is_visible() == true
-               and vim.fn.winnr "$" < 3
-            then
-               vim.cmd [[ NvimTreeClose ]]
+            local tree_isopen = require("nvim-tree.view").is_visible() == true
+            local undo_isopen = vim.fn["undotree#UndotreeIsVisible"]() == 1
+            local curr_is_tree = vim.fn.expand "%" == "NvimTree_1"
+            local curr_is_undo = vim.fn.expand "%" == "undotree_2"
+            local curr_is_diff = vim.fn.expand "%" == "diffpanel_3"
+
+            if curr_is_tree then vim.cmd [[ NvimTreeClose ]]
+            elseif curr_is_undo or curr_is_diff then vim.cmd [[ UndotreeHide ]]
+            elseif not curr_is_tree and not curr_is_undo and not curr_is_diff then
+               if tree_isopen and vim.fn.winnr "$" < 3 then vim.cmd [[ NvimTreeClose ]] end
+               if undo_isopen and vim.fn.winnr "$" < 4 then vim.cmd [[ UndotreeHide ]] end
+               if tree_isopen and undo_isopen and vim.fn.winnr "$" < 5 then
+                  vim.cmd [[ NvimTreeClose ]] vim.cmd [[ UndotreeHide ]] end
+               vim.cmd [[ q ]]
             end
-            vim.cmd [[ q ]]
          end,
          "",
       },
@@ -107,6 +117,15 @@ M.plugin = {
       ["<leader>tn"] = { "<CMD> NvimTreeFindFile <CR>", "定位文件所在nvim-tree位置" },
       ["<leader>tl"] = { "<CMD> NvimTreeCollapse <CR>", "折叠所有层级" },
 
+      -- 歷史編輯管理器
+      -- mbbill/undotree
+      ["<leader>ud"] = { "<CMD> UndotreeToggle <CR>", "切换undo-tree" },
+
+      -- Gitsigns
+      -- lewis6991/gitsigns.nvim
+      ["<leader>gf"] = { "<CMD> Gitsigns diffthis <CR>", "對比當前文件" },
+      ["<leader>gd"] = { "<CMD> Gitsigns toggle_deleted <CR>", "最近已刪除的代碼" },
+
       -- jk加速
       -- rhysd/accelerated-jk
       ["j"] = { "<Plug>(accelerated_jk_gj)", "" },
@@ -138,12 +157,9 @@ M.session = {
       ["<leader>sd"] = {
          function()
             local buf_list_len = vim.fn.len(vim.fn.getbufinfo { buflisted = 1 })
-            if
-               (buf_list_len == 0)
+            if (buf_list_len == 0)
                or (buf_list_len == 1 and (vim.api.nvim_buf_get_name(0) == "" or vim.api.nvim_buf_line_count(0) == 1))
-            then
-               require("nvchad_ui.tabufline").close_buffer()
-            end
+            then require("nvchad_ui.tabufline").close_buffer() end
             -- if buf_list_len == 0 then require("nvchad_ui.tabufline").close_buffer() end
             require("persistence").load()
             require("nvim-tree").toggle(false, true)

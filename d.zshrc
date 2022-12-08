@@ -12,12 +12,21 @@ export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="lambda"
 # ZSH_THEME="Chicago95"
+# ZSH_THEME="random"
+# ZSH_THEME="kiwi"
+# ZSH_THEME="fox"
 
 # MACOS
 if [ $(uname -o) = "Darwin" ]; then
-  ZSH_THEME="dinge"
+ZSH_THEME="dinge"
 else # LINUX
-  ZSH_THEME="Chicago95_Dinge"
+if [ $(uname -n) = "de-ubuntu" ]; then
+ZSH_THEME="norm"
+elif [ $(uname -n) = "de-alpine" ]; then
+ZSH_THEME="Chicago95_Dinge"
+else
+ZSH_THEME="robbyrussell"
+fi
 fi
 
 # Set list of themes to pick from when loading at random
@@ -113,110 +122,123 @@ source $ZSH/oh-my-zsh.sh
 # -------------- DINGE -------------- #
 
 
-# ========================================================
+# =========================================================
 # MACOS.START
 if [ $(uname -o) = "Darwin" ]; then
 
 
-    # workspace
-    export WORKSPACE_PATH="$HOME/Documents/Workspace"
+# workspace
+export WORKSPACE_PATH="$HOME/Documents/Workspace"
 
-    # docker
-    # alias archlinux="docker exec -it -u dinge -w /home/dinge de-arch zsh"
-    alias alpine="docker exec -it -u dinge -w /home/dinge w1 zsh"
-    alias ubuntu="docker exec -it -u dinge -w /home/dinge de-ubuntu zsh"
-    alias gdocker="cd ~/Desktop/碼頭工人/"
-    # -----------------------------
-    # multipass
-    alias mp="multipass"
-    # alias ubuntu="multipass exec de-ubuntu -- sudo -i -u dinge -- tmux"
-    # alias alpine="multipass exec de-ubuntu -- sudo -i -u dinge -- sudo docker exec -it -u dinge -w /home/dinge d1 zsh"
+# docker
+# alias archlinux="docker exec -it -u dinge -w /home/dinge de-arch zsh"
+alias alpine="docker exec -it -u dinge -w /home/dinge w1 zsh"
+alias ubuntu="docker exec -it -u dinge -w /home/dinge de-ubuntu zsh"
+alias gdocker="cd ~/Desktop/碼頭工人/"
+# -----------------------------
+# multipass
+alias mp="multipass"
+# alias ubuntu="multipass exec de-ubuntu -- sudo -i -u dinge -- tmux"
+# alias alpine="multipass exec de-ubuntu -- sudo -i -u dinge -- docker exec -it -u dinge -w /home/dinge d1 zsh"
 
-    # mac pkg_uninstall
-    # https://github.com/mpapis/pkg_uninstaller
-    # export PATH=$HOME/Documents/Tool/pkg_uninstaller:$PATH
+# mac pkg_uninstall
+# https://github.com/mpapis/pkg_uninstaller
+# export PATH=$HOME/Documents/Tool/pkg_uninstaller:$PATH
 
-    # brew
-    # export PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$PATH
-    # export CPATH=/opt/homebrew/include:$CPATH
-    # export LIBRARY_PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$LIBRARY_PATH
-    # export LD_LIBRARY_PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$LD_LIBRARY_PATH
-    # export DYLD_LIBRARY_PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$DYLD_LIBRARY_PATH
-    #
-    # export HOMEBREW_NO_AUTO_UPDATE=1
-    # export HOMEBREW_NO_INSTALL_CLEANUP=1
+# brew
+# export PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$PATH
+# export CPATH=/opt/homebrew/include:$CPATH
+# export LIBRARY_PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$LIBRARY_PATH
+# export LD_LIBRARY_PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$LD_LIBRARY_PATH
+# export DYLD_LIBRARY_PATH=/opt/homebrew/Cellar:/opt/homebrew/lib:$DYLD_LIBRARY_PATH
+#
+# export HOMEBREW_NO_AUTO_UPDATE=1
+# export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 
 # MACOS.END
-# ========================================================
+# =========================================================
 # LINUX.START
 else
 
-    # term color
-    export TERM="xterm-256color"
 
-    # workspace
-    export WORKSPACE_PATH="$HOME/core/workspace"
+# workspace
+export WORKSPACE_PATH="$HOME/core/workspace"
 
-    # export SHELL="/bin/zsh"
+# export SHELL="/bin/zsh"
 
-    # 当临时连接的外接键盘，需要再次设置键位
-    # alias keyboardset="xmodmap ~/.Xmodmap"
+# 当临时连接的外接键盘，需要再次设置键位
+# alias keyboardset="xmodmap ~/.Xmodmap"
 
-    # NetworkManager systemd
-    # alias netstart="sudo systemctl start NetworkManager"
-    # alias netstop="sudo systemctl stop NetworkManager"
+# NetworkManager systemd
+# alias netstart="sudo systemctl start NetworkManager"
+# alias netstop="sudo systemctl stop NetworkManager"
 
-    # vmware net systemd
-    # alias vmnetstart="sudo systemctl start vmware-networks.service"
-    # alias vmnetstop="sudo systemctl stop vmware-networks.service"
+# vmware net systemd
+# alias vmnetstart="sudo systemctl start vmware-networks.service"
+# alias vmnetstop="sudo systemctl stop vmware-networks.service"
 
-    # vmware usb systemd
-    # alias vmusbstart="sudo systemctl start vmware-usbarbitrator.service"
-    # alias vmnetstop="sudo systemctl stop vmware-usbarbitrator.service"
+# vmware usb systemd
+# alias vmusbstart="sudo systemctl start vmware-usbarbitrator.service"
+# alias vmnetstop="sudo systemctl stop vmware-usbarbitrator.service"
 
-    # vmware 共享 systemd
-    # alias vmhoststart="sudo systemctl start vmware-hostd.service"
-    # alias vmhoststop="sudo systemctl stop vmware-hostd.service"
+# vmware 共享 systemd
+# alias vmhoststart="sudo systemctl start vmware-hostd.service"
+# alias vmhoststop="sudo systemctl stop vmware-hostd.service"
 
-    # bluetooth systemd
-    # alias bluestart="sudo systemctl start bluetooth"
-    # alias bluestop="sudo systemctl stop bluetooth"
+# bluetooth systemd
+# alias bluestart="sudo systemctl start bluetooth"
+# alias bluestop="sudo systemctl stop bluetooth"
 
-    # sshd systemd
-    # alias sshstart="sudo systemctl start sshd"
-    # alias sshstop="sudo systemctl stop sshd"
+# sshd systemd
+# alias sshstart="sudo systemctl start sshd"
+# alias sshstop="sudo systemctl stop sshd"
 
-    # docker systemd
-    alias dockerstart="sudo systemctl start docker"
-    alias dockerstop="sudo systemctl stop docker"
-    alias dockerstatus="sudo systemctl status docker"
-    alias docker="sudo docker"
+# docker systemd
+alias dockerstart="sudo systemctl start docker"
+alias dockerstop="sudo systemctl stop docker"
+alias dockerdisable="sudo systemctl disable docker"
+alias dockerstatus="sudo systemctl status docker"
+# alias docker="sudo docker"
+alias dockersocketstop="sudo systemctl stop docker.socket"
+alias dockersocketdisable="sudo systemctl stop docker.socket"
 
-    # ubuntu gdm login page
-    # alias gdmstart="sudo systemctl start gdm"
-    # alias gdmstop="sudo systemctl stop gdm"
+# docker
+# alias archlinux="docker exec -it -u dinge -w /home/dinge de-arch zsh"
+alias alpine="docker exec -it -u dinge -w /home/dinge w1 zsh"
+# alias ubuntu="docker exec -it -u dinge -w /home/dinge de-ubuntu zsh"
 
-    # bin path ---------
-    # /home/dinge/core/bin
-    export PATH="$HOME/core/bin:$PATH"
-    # # /home/dinge/.local/bin
-    # export PATH="$HOME/.local/bin:$PATH"
+# ubuntu gdm login page
+# alias gdmstart="sudo systemctl start gdm"
+# alias gdmstop="sudo systemctl stop gdm"
 
-    # clash
-    alias clash="$HOME/core/bin/clash/clash -d $HOME/core/bin/clash/"
+# bin path ---------
+# /home/dinge/core/bin
+export PATH="$HOME/core/bin:$PATH"
+# # /home/dinge/.local/bin
+# export PATH="$HOME/.local/bin:$PATH"
 
-    # net cat
-    alias net_hogs="sudo nethogs enp0s1"
-    alias net_iftop="sudo iftop -i enp0s1"
-    alias net_nload="nload enp0s1 -u K"
-    alias net_iptraf="sudo iptraf-ng"
+# clash
+alias clash="$HOME/core/bin/clash/clash -d $HOME/core/bin/clash/"
+
+# net cat
+alias net_hogs="sudo nethogs enp0s1"
+alias net_iftop="sudo iftop -i enp0s1"
+alias net_nload="nload enp0s1 -u K"
+alias net_iptraf="sudo iptraf-ng"
+
+# npm
+export PATH="$HOME/core/library/npm-global/bin:$PATH"
 
 
 fi
 # LINUX.END
-# ========================================================
+# =========================================================
 
+
+# term color
+# export TERM="screen-256color"
+export TERM="xterm-256color"
 
 alias c="clear"
 alias nf="neofetch"
@@ -277,9 +299,6 @@ function proxy_off() {
 # export GOPATH="$WORKSPACE_PATH/go"
 # export GOBIN="$GOPATH/bin"
 # export PATH=$GOBIN:$GOPATH:$PATH
-
-# npm
-# export PATH="$HOME/Documents/Library/npm-global/bin:$PATH"
 
 # haxe lang
 # HAXE_STD_PATH="/opt/homebrew/lib/haxe/std"

@@ -7,9 +7,8 @@ packages : [
     ranger fzf neofetch tree tmux htop
     unzip zip unrar
     nethogs iftop nload iptraf-ng
-    stylua ripgrep
     gcc make cmake clang
-    net-tools util-linux
+    net-tools util-linux ripgrep
     ufw openssh
 
     software-properties-common psmisc
@@ -41,12 +40,25 @@ locale-gen
    LANGUAGE="zh_HK:zh"
 -------------------------
 
+service --all-status
+service ssh enable
+service ufw enable
+
+sudo ufw allow 22
+sudo ufw allow 8080
+-------------------------
+
 docker
 sudo apt install docker.io
 sudo systemctl start docker
 https://jianshu.com/p/c4c6d1196156
 
-
+docker免sudo
+groupadd docker
+gpasswd -a ${USER} docker
+service docker restart
+newgrp - docker
+https://www.jb51.net/article/208613.htm
 
 -----------------------
 一些問題:
@@ -74,11 +86,3 @@ https://jianshu.com/p/c4c6d1196156
 
     共享目錄在: /media/psf
     ln -sf /media/psf/ /home/dinge/share
-
-    service status --all-status
-    service ssh enable
-    service ufw enable
-
-    sudo ufw enable
-    sudo ufw allow 22
-

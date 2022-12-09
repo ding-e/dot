@@ -97,23 +97,21 @@ end
 -- kyazdani42/nvim-web-devicons
 function set_devicons()
    local present, devicons = pcall(require, "nvim-web-devicons")
-
-   if present then
-      require("base46").load_highlight "devicons"
-
-      local options = { override = require("nvchad_ui.icons").devicons }
-      if config.icon_theme == "none" then
-         options = { default = false, color_icons = false }
-      end
-
-      options = utils.load_override(options, "kyazdani42/nvim-web-devicons")
-      devicons.setup(options)
+   if not present then
+      return
    end
+
+   require("base46").load_highlight "devicons"
+
+   local opt = config.icon_theme == "none" and { default = false, color_icons = false }
+      or { override = require("nvchad_ui.icons").devicons }
+
+   devicons.setup(utils.load_override(opt, "kyazdani42/nvim-web-devicons"))
 end
 
 -- NvChad/ui
 function set_ui()
-   local opt = {
+   return {
       statusline = {
          separator_style = "block", -- default/round/block/arrow
          -- or
@@ -138,12 +136,11 @@ function set_ui()
          end,
       },
    }
-   return opt
 end
 
 -- NvChad/nvterm
 function set_nvterm()
-   local opt = {
+   return {
       terminals = {
          list = {},
          type_opts = {
@@ -165,14 +162,11 @@ function set_nvterm()
       },
       enable_new_mappings = true,
    }
-
-   return opt
 end
 
 -- lewis6991/gitsigns.nvim
 function set_gitsigns()
    local present, gitsigns = pcall(require, "gitsigns")
-
    if not present then
       return
    end
@@ -181,7 +175,7 @@ function set_gitsigns()
    local gitsigns_icons = icons.gitsigns
    icon_index = config.icon_theme == "none" and 1 or 2
 
-   local options = {
+   gitsigns.setup(utils.load_override({
       -- 行號下的git圖標設置
       signs = {
          add = {
@@ -213,10 +207,7 @@ function set_gitsigns()
       on_attach = function(bufnr)
          utils.load_mappings("gitsigns", { buffer = bufnr })
       end,
-   }
-
-   options = utils.load_override(options, "lewis6991/gitsigns.nvim")
-   gitsigns.setup(options)
+   }, "lewis6991/gitsigns.nvim"))
 end
 
 -- folke/zen-mode.nvim
@@ -320,43 +311,45 @@ function set_nullls()
    -- require("custom.plugins.null-ls").setup()
    local null_ls = require "null-ls"
    local b = null_ls.builtins
-   local sources = {
-      -- lua
-      b.formatting.stylua,
-      -- b.diagnostics.luacheck.with { extra_args = { "--global vim" } },
-      -- zig
-      b.formatting.zigfmt,
-      -- nim
-      b.formatting.nimpretty,
-      -- clang
-      b.formatting.clang_format.with { extra_args = { "--style", "{IndentWidth: 4}" } },
+   null_ls.setup {
+      debug = true,
+      sources = {
+         -- lua
+         b.formatting.stylua,
+         -- b.diagnostics.luacheck.with { extra_args = { "--global vim" } },
+         -- zig
+         b.formatting.zigfmt,
+         -- nim
+         b.formatting.nimpretty,
+         -- clang
+         b.formatting.clang_format.with { extra_args = { "--style", "{IndentWidth: 4}" } },
+      },
    }
-   null_ls.setup { debug = true, sources = sources }
 end
 
 -- NvChad/base46
 function set_base46()
    local ok, base46 = pcall(require, "base46")
-
-   if ok then
-      base46.load_theme()
-
-      -- :echo expand('%:e')           -- 查看當前編輯文件的後綴
-      -- :lua print(vim.fn.getcwd())   -- 查看當前root path
-      -- :lua require("base46").toggle_theme()
-      -- :lua require("nvchad").reload_theme("gruvchad")
-
-      -- 根據當前項目設置nvchad配色
-      local t = 2
-      for _, v in pairs(config.workspace_list) do
-         local wt = nil ~= string.find(v, "/") and v or "workspace/" .. v
-         if nil ~= string.find(string.lower(vim.fn.getcwd()), wt) and t ~= 1 then
-            t = 1
-            break
-         end
-      end
-      require("nvchad").reload_theme(config.workspace_theme_toggle[t])
+   if not ok then
+      return
    end
+
+   base46.load_theme()
+   -- :echo expand('%:e')           -- 查看當前編輯文件的後綴
+   -- :lua print(vim.fn.getcwd())   -- 查看當前root path
+   -- :lua require("base46").toggle_theme()
+   -- :lua require("nvchad").reload_theme("gruvchad")
+
+   -- 根據當前項目設置nvchad配色
+   local t = 2
+   for _, v in pairs(config.workspace_list) do
+      local wt = nil ~= string.find(v, "/") and v or "workspace/" .. v
+      if nil ~= string.find(string.lower(vim.fn.getcwd()), wt) and t ~= 1 then
+         t = 1
+         break
+      end
+   end
+   require("nvchad").reload_theme(config.workspace_theme_toggle[t])
 end
 
 -- session / workspace

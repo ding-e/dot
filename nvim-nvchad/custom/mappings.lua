@@ -99,6 +99,12 @@ M.general = {
       ["<down>"] = { "<CMD> res -5 <CR>", "" },
       ["<left>"] = { "<CMD> vertical resize -5 <CR>", "" },
       ["<right>"] = { "<CMD> vertical resize +5 <CR>", "" },
+
+      -- LSP
+      -- :lua print(vim.inspect(vim.lsp.get_active_clients()))
+      -- :lua print(vim.inspect(vim.lsp.buf_get_clients()))
+      ["<leader>ls"] = { "<CMD> LspStart <CR>", "啟動LSP服務" },
+      ["<leader>lr"] = { "<CMD> LspStop <CR><CMD> LspStart <CR>", "重啟LSP服務" },
    },
 }
 
@@ -108,6 +114,9 @@ M.plugin = {
       -- mhinz/vim-startify
       ["DD"] = { "<CMD> Startify <CR>", "" },
       ["<leader>ss"] = { "<CMD> Startify <CR>", "打开startify仪表盘" },
+
+      -- FZF
+      ["<leader>fz"] = { "<CMD> FZF <CR>", "fzf文件搜索" },
 
       -- 切换文件管理器
       -- kyazdani42/nvim-tree.lua

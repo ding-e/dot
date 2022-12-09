@@ -82,6 +82,8 @@ return {
 
    -- mac下自动切换输入法
    ["ybian/smartim"] = {
+      -- 忽略updates/syncs
+      lock = true,
       config = function()
          -- https://blog.51cto.com/u_15273875/3858820
          vim.g.smartim_default = "com.apple.keylayout.ABC"

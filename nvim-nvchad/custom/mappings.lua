@@ -13,11 +13,12 @@ local M = {}
 M.general = {
    t = {
       -- ["<Esc>"] = { "<cmd> q <CR>", "" },
-      ["Q"] = { "<CMD> q <CR>", "" },
+      ["WW"] = { "<CMD> q <CR>", "" },
 
       -- 在nvchad里，ctrl+x 终端模式退到终端默认模式
       -- ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" },
       ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "escape terminal mode" },
+      ["AA"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "escape terminal mode" },
    },
 
    i = {

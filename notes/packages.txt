@@ -2,6 +2,7 @@ macos : [
     vscode
     sublime
     dash(kapeli.com/dash)
+    RDM(avibrazil/RDM)
 
     aseprite
     wacom

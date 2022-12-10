@@ -1,0 +1,141 @@
+
+關於字體設計的博客
+-------------------
+https://blog.justfont.com/
+
+https://blog.justfont.com/2017/08/chinese-bitmap-font
+https://blog.justfont.com/2012/11/字體始終取決於載體-下/
+https://blog.justfont.com/2012/11/字體始終取決於載體-下/13_windows31/
+
+https://zhuanlan.zhihu.com/p/37334387
+
+https://www.maoken.com/?s=像素
+https://diaowinner.itch.io
+------------------------------------
+
+圖標:
+--------------
+https://github.com/stark/siji
+
+
+編程字體:
+--------------
+Fixedsys Excelsior
+https://github.com/kika/fixedsys
+
+More/Less Perfect DOS VGA
+https://github.com/ding-e/Chicago95/tree/master/Fonts/vga_font
+
+Terminus
+https://files.ax86.net/terminus-ttf/files/latest/
+https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Terminus
+
+TamZen
+https://github.com/sunaku/tamzen-font
+
+Nixedsys
+https://github.com/ntwk/nixedsys-font
+
+Proggy
+https://github.com/bluescan/proggyfonts
+
+Cozette
+https://github.com/slavfox/Cozette
+------------------------------------
+
+
+
+中文像素字體:
+-------------------
+缝合怪像素字体 / Fusion Pixel Font
+https://github.com/TakWolf/fusion-pixel-font
+
+最像素 / Zpix Font
+https://github.com/SolidZORO/zpix-pixel-font
+
+方舟像素字体 / Ark Pixel Font
+https://github.com/TakWolf/ark-pixel-font
+
+像素Silver: 一种适合用于小游戏的免费商用像素字体
+https://poppyworks.itch.io/silver
+
+汉字库像素字体 / HZK Pixel Font
+https://github.com/TakWolf/hzk-pixel-font
+
+凤凰点阵体
+https://timothyqiu.itch.io/vonwaon-bitmap
+
+中文像素字体 / Mplus HZK 12
+https://github.com/Luckeee/mplus_hzk_12
+
+中文像素字体 / Chinese Pixel Font
+https://purestudio.itch.io/ipix
+
+观致8px字体 - 基于Misaki
+https://www.maoken.com/freefonts/11358.html
+
+俐方體11號 / Cubic 11
+https://github.com/ACh-K/Cubic-11
+
+寒蝉点阵体 / Chill-Bitmap
+https://github.com/Warren2060/Chill-Bitmap
+
+莫妮卡像素圆体：追求由像素形成的曲线美 免费商用
+https://booth.pm/ja/items/2958237
+https://www.maoken.com/freefonts/15534.html
+------------------
+
+台北字体：Diaowinner出品 第四款点阵化的免费商用像素宋体字形
+https://diaowinner.itch.io/taipei-fonts
+
+坊宋：Diaowinner出品 第三款点阵化的免费商用像素宋体字形
+https://diaowinner.itch.io/fonsung
+
+柳宋：把宋体进行点阵化的免费商用像素汉字字体
+https://diaowinner.itch.io/lyusung
+
+粗宋：把宋体进行点阵化的免费商用像素汉字字体
+https://diaowinner.itch.io/chusung
+------------------
+
+其他:
+https://github.com/DWNfonts/MuzaiPixel
+https://diaowinner.itch.io/galmuri-extended
+https://github.com/scott0107000/BoutiqueBitmap7x7
+http://unifoundry.com/unifont/index.html
+https://opengameart.org/content/lanapixel-localization-friendly-pixel-font
+------------------------------------
+
+
+
+日文像素字體:
+-------------------
+美咲フォント
+https://littlelimit.net/misaki.htm
+
+10×10点字体 ベストテン FONT
+https://flopdesign.booth.pm/items/2747965
+
+K8x12像素体
+https://littlelimit.net/k8x12.htm
+------------------------------------
+
+
+
+韓文像素字體:
+-------------------
+DOS-style Font
+https://github.com/hurss/fonts
+
+Galmuri
+https://github.com/quiple/galmuri
+------------------------------------
+
+
+
+工具:
+--------------
+字體合併
+https://github.com/nowar-fonts/Warcraft-Font-Merger
+------------------------------------
+

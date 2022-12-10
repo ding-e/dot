@@ -10,3 +10,20 @@ https://www.jianshu.com/p/e7973a948d87
 
 Mac-ifconfig输出注释
 https://www.jianshu.com/p/77226040a12e
+
+
+RDM
+https://github.com/avibrazil/RDM
+    arm:
+    https://github.com/avibrazil/RDM/issues/57
+    ---------------------
+    Makefile:
+    -> ARCH_FLAGS=-arch x86_64 -arch arm64
+    utils.h:
+    -> #import <CoreGraphics/CGDirectDisplay.h>
+       #import <CoreGraphics/CGDisplayConfiguration.h>
+    ---------
+    make
+    make RDM.app
+    mv RDM.app /Application/
+    ---------------------

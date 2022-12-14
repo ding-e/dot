@@ -2,7 +2,9 @@
 關於字體設計的博客
 -------------------
 https://blog.justfont.com/
+https://founder.acgvlyric.org/iu/doku.php/造字:index
 
+https://founder.acgvlyric.org/iu/doku.php/造字:電腦中文字型尋跡_點陣字
 https://blog.justfont.com/2017/08/chinese-bitmap-font
 https://blog.justfont.com/2012/11/字體始終取決於載體-下/
 https://blog.justfont.com/2012/11/字體始終取決於載體-下/13_windows31/
@@ -137,5 +139,6 @@ https://github.com/quiple/galmuri
 --------------
 字體合併
 https://github.com/nowar-fonts/Warcraft-Font-Merger
+https://github.com/nowar-fonts/Warcraft-Font-Merger/issues/3
 ------------------------------------
 

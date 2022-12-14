@@ -141,6 +141,12 @@ alias mp="multipass"
 # alias ubuntu="multipass exec de-ubuntu -- sudo -i -u dinge -- tmux"
 # alias alpine="multipass exec de-ubuntu -- sudo -i -u dinge -- docker exec -it -u dinge -w /home/dinge d1 zsh"
 
+# 配置 /etc/apache2/httpd.conf
+# 默认根目录: /Library/WebServer/Documents/
+alias apachestart="sudo apachectl start"
+alias apachestop="sudo apachectl stop"
+alias apacherestart="sudo apachectl restart"
+
 # mac pkg_uninstall
 # https://github.com/mpapis/pkg_uninstaller
 # export PATH=$HOME/Documents/Tool/pkg_uninstaller:$PATH
@@ -256,6 +262,7 @@ alias gdot="cd $WORKSPACE_PATH/dot/"
 alias gnim="cd $WORKSPACE_PATH/nim/"
 alias gzig="cd $WORKSPACE_PATH/zig/"
 alias grust="cd $WORKSPACE_PATH/rust/"
+alias gweb="cd $WORKSPACE_PATH/web/www/"
 
 alias gvim="cd $HOME/.config/nvim/"
 alias glocal="cd $HOME/.local/share/"

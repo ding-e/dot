@@ -29,7 +29,7 @@ M.nvimtree = {
    --                    { none,   file }
    file_default        = { "F",    "" },
    symlink             = { "L",    "" },
-   symlink_arrow       = { " -> ", " ➛ " },
+   symlink_arrow       = { " -> ", " -> " },
 
    folder_default      = { "D",    "D" },
    folder_empty        = { "D",    "D" },

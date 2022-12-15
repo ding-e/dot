@@ -2,6 +2,7 @@
 -- 全局配置
 -------------
 
+require "custom.autocmd"
 require "custom.command"
 
 -- 打开文件返回上次修改的位置

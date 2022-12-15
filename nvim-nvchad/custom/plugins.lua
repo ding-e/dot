@@ -1,6 +1,8 @@
 ------------------------------------
 -- 插件添加/覆蓋/移除/禁用
 ------------------------------
+-- Awesome plugins for Neovim
+-- https://nvimluau.dev
 
 require "custom.function"
 local config = require "custom.config"
@@ -112,6 +114,7 @@ return {
 
    -- 格式化
    ["jose-elias-alvarez/null-ls.nvim"] = {
+      -- disable = true,
       after = "nvim-lspconfig",
       config = function()
          set_nullls()

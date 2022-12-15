@@ -263,8 +263,31 @@ end
 function set_truezen()
    require("true-zen").setup {
       modes = {
+         minimalist = {
+            ignored_buf_types = { "nofile" },
+            options = {
+               number = true,         -- false
+               relativenumber = true, -- false
+               signcolumn = "yes",    -- no
+               -- statusline = "%!v:lua.require('nvchad_ui').statusline()",
+
+               showtabline = 0,
+               cmdheight = 1,
+               laststatus = 0,
+               showcmd = false,
+               showmode = false,
+               ruler = false,
+               numberwidth = 1,
+            },
+            callbacks = {
+               open_pre = nil,
+               open_pos = nil,
+               close_pre = nil,
+               close_pos = nil,
+            },
+         },
          ataraxis = {
-            minimum_writing_area = { -- minimum size of main window
+            minimum_writing_area = {
                width = 100,
                height = 44,
             },

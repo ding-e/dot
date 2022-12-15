@@ -10,6 +10,17 @@ local M = {}
 --    },
 -- }
 
+M.sendCommand = {
+   n = {
+      -- ["<leader>cc"] = {
+      --    function()
+      --       require("nvterm.terminal").send("clear && g++ -o out " .. vim.fn.expand "%" .. " && ./out", "vertical")
+      --    end,
+      --    "compile & run a cpp file",
+      -- },
+   },
+}
+
 M.general = {
    t = {
       -- ["<Esc>"] = { "<cmd> q <CR>", "" },
@@ -26,6 +37,8 @@ M.general = {
    },
 
    n = {
+      -- 命令行模式
+      [";"] = { ":", "command mode", opts = { nowait = true } },
 
       -- 禁用s按键
       ["s"] = { "<nop>", "" },
@@ -51,13 +64,21 @@ M.general = {
             local curr_is_undo = vim.fn.expand "%" == "undotree_2"
             local curr_is_diff = vim.fn.expand "%" == "diffpanel_3"
 
-            if curr_is_tree then vim.cmd [[ NvimTreeClose ]]
-            elseif curr_is_undo or curr_is_diff then vim.cmd [[ UndotreeHide ]]
+            if curr_is_tree then
+               vim.cmd [[ NvimTreeClose ]]
+            elseif curr_is_undo or curr_is_diff then
+               vim.cmd [[ UndotreeHide ]]
             elseif not curr_is_tree and not curr_is_undo and not curr_is_diff then
-               if tree_isopen and vim.fn.winnr "$" < 3 then vim.cmd [[ NvimTreeClose ]] end
-               if undo_isopen and vim.fn.winnr "$" < 4 then vim.cmd [[ UndotreeHide ]] end
+               if tree_isopen and vim.fn.winnr "$" < 3 then
+                  vim.cmd [[ NvimTreeClose ]]
+               end
+               if undo_isopen and vim.fn.winnr "$" < 4 then
+                  vim.cmd [[ UndotreeHide ]]
+               end
                if tree_isopen and undo_isopen and vim.fn.winnr "$" < 5 then
-                  vim.cmd [[ NvimTreeClose ]] vim.cmd [[ UndotreeHide ]] end
+                  vim.cmd [[ NvimTreeClose ]]
+                  vim.cmd [[ UndotreeHide ]]
+               end
                vim.cmd [[ q ]]
             end
          end,
@@ -104,6 +125,7 @@ M.general = {
       -- LSP
       -- :lua print(vim.inspect(vim.lsp.get_active_clients()))
       -- :lua print(vim.inspect(vim.lsp.buf_get_clients()))
+      -- :lua print(vim.api.nvim_get_current_buf())
       ["<leader>ls"] = { "<CMD> LspStart <CR>", "啟動LSP服務" },
       ["<leader>lr"] = { "<CMD> LspStop <CR><CMD> LspStart <CR>", "重啟LSP服務" },
    },
@@ -167,9 +189,12 @@ M.session = {
       ["<leader>sd"] = {
          function()
             local buf_list_len = vim.fn.len(vim.fn.getbufinfo { buflisted = 1 })
-            if (buf_list_len == 0)
+            if
+               (buf_list_len == 0)
                or (buf_list_len == 1 and (vim.api.nvim_buf_get_name(0) == "" or vim.api.nvim_buf_line_count(0) == 1))
-            then require("nvchad_ui.tabufline").close_buffer() end
+            then
+               require("nvchad_ui.tabufline").close_buffer()
+            end
             -- if buf_list_len == 0 then require("nvchad_ui.tabufline").close_buffer() end
             require("persistence").load()
             require("nvim-tree").toggle(false, true)
@@ -191,21 +216,21 @@ M.session = {
 -- Pocco81/truezen.nvim
 M.zen = {
    n = {
-      -- ["<leader>za"] = { "<CMD> TZAtaraxis <CR>", "禪模式" },
-      ["<leader>zz"] = { "<CMD> ZenMode <CR>", "禪模式" },
+      ["<leader>zz"] = { "<CMD> ZenMode <CR>", "禪模式 (zen-mode)" },
       ["<leader>ze"] = {
          function()
             require("zen-mode").toggle { window = { width = 0.85 } }
          end,
-         "禪模式: width = 85%",
+         "禪模式: width = 85% (zen-mode)",
       },
       ["<leader>zi"] = {
          function()
             require("zen-mode").toggle { window = { width = 0.5 } }
          end,
-         "禪模式: width = 50%",
+         "禪模式: width = 50% (zen-mode)",
       },
 
+      ["<leader>za"] = { "<CMD> TZAtaraxis <CR>", "禪模式 (truezen)" },
       ["<leader>zf"] = { "<CMD> TZFocus <CR>", "當有分屏時全屏" },
       ["<leader>zm"] = { "<CMD> TZMinimalist <CR>", "隱藏行號/狀態欄/標籤列" },
       ["<leader>zn"] = { "<CMD> TZNarrow <CR>", "禪模式-打開當前行" },

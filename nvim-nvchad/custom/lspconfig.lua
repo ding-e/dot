@@ -37,6 +37,32 @@ lspconfig.nimls.setup {
    filetypes = { "nim" },
    root_dir = lspconfig.util.root_pattern "*.nim",
    single_file_support = true,
+   on_init = function(_)
+      -- 檢測到nim lsp (nimls) 崩潰, 馬上啟動
+      -- https://www.reddit.com/r/neovim/comments/uvwdzy/lsp_servers_are_crashing/
+      -- https://neovim.io/doc/user/lua.html#lua-loop
+      local timer = vim.loop.new_timer()
+      timer:start(
+         2000,
+         2000,
+         vim.schedule_wrap(function()
+            local active_clients = vim.lsp.get_active_clients()
+            local lsp_names = {}
+            for _, lsp in pairs(active_clients) do
+               table.insert(lsp_names, lsp.name)
+            end
+
+            if not vim.tbl_contains(lsp_names, "nimls") then
+               -- print(vim.inspect(lsp_names))
+               vim.notify("nimlsp exits", vim.log.levels.WARN)
+               timer:close()
+
+               -- vim.cmd [[LspStop nim]]
+               vim.cmd [[LspStart nim]]
+            end
+         end)
+      )
+   end,
 }
 
 -- c language

@@ -58,6 +58,24 @@ M.gitsigns = {
    changedelete = { "~",    "~" },
 }
 
+M.devicons = {
+   nim = {
+      -- icon = "",
+      icon = "",
+      color = "#f3d400",
+      cterm_color = "220",
+      name = "Nim",
+   },
+
+   nimble = {
+      -- icon = "",
+      icon = "",
+      color = "#f3d400",
+      cterm_color = "220",
+      name = "Nimble",
+   },
+}
+
 M.lspkind = {
    Namespace     = "",
    Text          = " ",

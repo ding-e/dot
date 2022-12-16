@@ -11,7 +11,7 @@
 -- • error: 抛出错误
 -- • keep : 使用最左边地图的值
 -- • force: 使用最右边地图的值
--- local merge_tb = vim.tbl_deep_extend
+local merge_tb = vim.tbl_deep_extend
 
 local utils = require "core.utils"
 
@@ -104,7 +104,9 @@ function set_devicons()
    require("base46").load_highlight "devicons"
 
    local opt = config.icon_theme == "none" and { default = false, color_icons = false }
-      or { override = require("nvchad_ui.icons").devicons }
+      -- or { override = require("nvchad_ui.icons").devicons }
+      -- or { override = icons.devicons }
+      or { override = merge_tb("force", require("nvchad_ui.icons").devicons, icons["devicons"] or {}) }
 
    devicons.setup(utils.load_override(opt, "kyazdani42/nvim-web-devicons"))
 end
@@ -266,9 +268,9 @@ function set_truezen()
          minimalist = {
             ignored_buf_types = { "nofile" },
             options = {
-               number = true,         -- false
+               number = true, -- false
                relativenumber = true, -- false
-               signcolumn = "yes",    -- no
+               signcolumn = "yes", -- no
                -- statusline = "%!v:lua.require('nvchad_ui').statusline()",
 
                showtabline = 0,

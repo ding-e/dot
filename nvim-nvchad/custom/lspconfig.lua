@@ -57,8 +57,8 @@ lspconfig.nimls.setup {
                vim.notify("nimlsp exits", vim.log.levels.WARN)
                timer:close()
 
-               -- vim.cmd [[LspStop nim]]
-               vim.cmd [[LspStart nim]]
+               -- vim.cmd [[ LspStop ]]
+               vim.cmd [[ LspStart ]]
             end
          end)
       )

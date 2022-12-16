@@ -40,8 +40,12 @@ else
   # -----------------
 
   # ranger
-  mkdir "$HOME/.config/ranger"
+  mkdir -p "$HOME/.config/ranger"
   ${cmd} "$PWD/ranger/rc.conf" "$HOME/.config/ranger/rc.conf"
+
+  # npm
+  mkdir -p "$HOME/core/library" "$HOME/core/library/npm-global" "$HOME/core/library/npm-cache"
+  ${cmd} "$PWD/other/d.npmrc" "$HOME/.npmrc"
 
 # -----------------
 fi
@@ -62,7 +66,7 @@ ${cmd} "$PWD/nvim-nvchad/custom" "$HOME/.config/nvim/lua"
 # -----------------
  
 # vim
-mkdir "$HOME/.vim/" "$HOME/.vim/autoload" "$HOME/.vim/plugged"
+mkdir -p "$HOME/.vim/" "$HOME/.vim/autoload" "$HOME/.vim/plugged"
 ${cmd} "$PWD/vim/autoload/plug.vim" "$HOME/.vim/autoload/plug.vim"
 ${cmd} "$PWD/d.vimrc" "$HOME/.vimrc"
 # -----------------

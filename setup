@@ -63,8 +63,9 @@ ${cmd} "$PWD/d.tmux.conf" "$HOME/.tmux.conf"
 
 # nvim nvchad
 ${cmd} "$PWD/nvim-nvchad/custom" "$HOME/.config/nvim/lua"
+${cmd} "$PWD/nvim-nvchad/after" "$HOME/.config/nvim"
 # -----------------
- 
+
 # vim
 mkdir -p "$HOME/.vim/" "$HOME/.vim/autoload" "$HOME/.vim/plugged"
 ${cmd} "$PWD/vim/autoload/plug.vim" "$HOME/.vim/autoload/plug.vim"

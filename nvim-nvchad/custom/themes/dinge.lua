@@ -83,6 +83,7 @@ M.polish_hl = {
    Type                = { fg = M.base_16.base0DINGE },
    Include             = { fg = M.base_16.base0A     },
    Keyword             = { fg = M.base_16.base0A     },
+   -- Typedef             = { fg = M.base_16.base0D },
 
    Delimiter           = { fg = M.base_16.base0A     },
    Character           = { fg = M.base_16.base0A     },

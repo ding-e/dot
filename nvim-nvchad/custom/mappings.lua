@@ -123,9 +123,6 @@ M.general = {
       ["<right>"] = { "<CMD> vertical resize +5 <CR>", "" },
 
       -- LSP
-      -- :lua print(vim.inspect(vim.lsp.get_active_clients()))
-      -- :lua print(vim.inspect(vim.lsp.buf_get_clients()))
-      -- :lua print(vim.api.nvim_get_current_buf())
       ["<leader>ls"] = { "<CMD> LspStart <CR>", "啟動LSP服務" },
       ["<leader>lr"] = { "<CMD> LspStop <CR><CMD> LspStart <CR>", "重啟LSP服務" },
    },

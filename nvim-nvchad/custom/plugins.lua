@@ -126,7 +126,7 @@ return {
 
    -- zig language
    -- tree-sitter - TSInstall zig
-   ["ding-e/zig-highlight-enhanced"] = { after = "zig.vim" },
+   -- ["ding-e/zig-highlight-enhanced"] = { after = "zig.vim" },
    ["ziglang/zig.vim"] = {
       config = function()
          -- 关闭保存自动格式化
@@ -137,7 +137,7 @@ return {
 
    -- nim language
    -- 只代码高亮，配合nimlsp代码提示
-   ["ding-e/nim-highlight"] = {},
+   -- ["ding-e/nim-highlight"] = {},
    -- ['baabelfish/nvim-nim'] = {},
    -- ['alaviss/nim.nvim'] = {},
    -- ['wsdjeg/vim-nim'] = {},

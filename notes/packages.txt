@@ -36,7 +36,7 @@ macos : [
 
         tmux
         nvim/nvchad
-        nim, nimlsp
+        nim, nimlangserver | nimlsp
         zig - HEAD
         zls(github)
         sdl2/sdl2_*

@@ -314,6 +314,7 @@ function proxy_off() {
 # alias flixel="haxelib run flixel-tools"
 
 # nim lang
+# langserver : nimble install nimlangserver
 # 安装nimlsp, 编译nimlsp必须制定源码目录
 # nimble install \
   # -p:-d:explicitSourcePath:/Users/dinge/Documents/Workspace/nim/lsp/Nim-1.6.10 \

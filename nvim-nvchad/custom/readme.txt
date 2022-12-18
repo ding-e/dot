@@ -9,7 +9,7 @@ mac command : [
     fzf
     ripgrep
     zig, zls
-    nim, nimble, nimlsp, nimpretty
+    nim, nimble, nimlangserver | nimlsp, nimpretty
 ]
 
 treesitter : [

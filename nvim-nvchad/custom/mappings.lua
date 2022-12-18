@@ -124,7 +124,8 @@ M.general = {
 
       -- LSP
       ["<leader>ls"] = { "<CMD> LspStart <CR>", "啟動LSP服務" },
-      ["<leader>lr"] = { "<CMD> LspStop <CR><CMD> LspStart <CR>", "重啟LSP服務" },
+      ["<leader>lr"] = { "<CMD> LspRestart <CR>", "重啟LSP服務" },
+      ["<leader>lk"] = { "<CMD> LspStop <CR>", "關閉LSP服務" },
    },
 }
 

@@ -86,3 +86,12 @@ https://www.jb51.net/article/208613.htm
 
     共享目錄在: /media/psf
     ln -sf /media/psf/ /home/dinge/share
+
+3. Parallels 觸摸板滾動快問題:
+    https://forum.parallels.com/threads/trackpad-scrolling-is-too-fast-and-frequently-uncontrollable.346338/page-2
+    進入.pvm 修改 config.pvs
+    在<SmoothScrolling dyn_lists="">
+        <Enabled>0</Enabled>
+        改為
+        <Enabled>1</Enabled>
+

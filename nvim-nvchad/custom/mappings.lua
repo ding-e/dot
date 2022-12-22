@@ -215,13 +215,19 @@ M.session = {
 M.zen = {
    n = {
       ["<leader>zz"] = { "<CMD> ZenMode <CR>", "禪模式 (zen-mode)" },
+      ["<leader>zi"] = {
+         function()
+            require("zen-mode").toggle { window = { width = 88 } }
+         end,
+         "禪模式: width = 88 (zen-mode)",
+      },
       ["<leader>ze"] = {
          function()
             require("zen-mode").toggle { window = { width = 0.85 } }
          end,
          "禪模式: width = 85% (zen-mode)",
       },
-      ["<leader>zi"] = {
+      ["<leader>zo"] = {
          function()
             require("zen-mode").toggle { window = { width = 0.5 } }
          end,

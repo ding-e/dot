@@ -222,7 +222,7 @@ function set_zenmode()
          -- 等於1: 窗口大小
          -- 小於1: 窗口百分比
          -- 大於1: 使用該數值作為寬高
-         width = 126,
+         width = 128,
          height = 1,
          options = {
             -- signcolumn = "yes",    -- 顯示git修改

@@ -42,15 +42,16 @@ lspconfig.nimls.setup {
       os.execute "killall nimsuggest"
    end,
    on_init = function(_)
-      -- local timer = vim.loop.new_timer()
-      -- timer:start(
-      --    20 * 60 * 1000,
-      --    0,
-      --    vim.schedule_wrap(function()
-      --       timer:close()
-      --       vim.cmd [[ LspRestart ]]
-      --    end)
-      -- )
+      local timer = vim.loop.new_timer()
+      timer:start(
+         20 * 60 * 1000,
+         0,
+         vim.schedule_wrap(function()
+            timer:close()
+            vim.cmd [[ LspStop ]]
+            vim.cmd [[ LspStart ]]
+         end)
+      )
       -------------------------------------------------------------------------
       -- 檢測到nim lsp (nimls) 崩潰, 馬上啟動
       -- https://www.reddit.com/r/neovim/comments/uvwdzy/lsp_servers_are_crashing/

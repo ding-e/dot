@@ -1,0 +1,79 @@
+
+!!! ====================================
+
+!Xft.dpi: 192
+!Xft.dpi: 180
+!Xft.dpi: 168
+!Xft.dpi: 144
+!Xft.dpi: 120
+Xft.dpi: 96
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+!Xcursor.size: 16
+
+!!! ====================================
+
+!! ----  Nord -------
+!rofi.color-enabled: true
+!rofi.color-window: #2E3440, #8EBBBA, #3A4151
+!rofi.color-normal: #2E3440, #8EBBBA, #2E3440, #2E3440, #ffffff
+!rofi.color-active: #2E3440, #8EBBBA, #2E3440, #2E3440, #ffffff
+!rofi.color-urgent: #2E3440, #8EBBBA, #2E3440, #2E3440, #ffffff
+
+!! ----  Win95 -------
+rofi.color-enabled: true
+rofi.color-window: #000000, #000080, #000080
+rofi.color-normal: #000000, #71747C, #000000, #000000, #ffffff
+rofi.color-active: #000000, #71747C, #000000, #000000, #ffffff
+rofi.color-urgent: #000000, #71747C, #000000, #000000, #ffffff
+
+!! Separator style (none, dash, solid)
+rofi.separator-style: solid
+rofi.sidebar-mode: false
+rofi.lines: 5
+!rofi.font: TerminessTTF Nerd Font Mono 10.5
+!rofi.font: Source Code Pro 10.5
+!rofi.font: BitstreamVeraSansMono Nerd Font Mono 10.5
+rofi.font: Terminus 10
+!rofi.font: Terminus 8
+rofi.bw: 1
+rofi.columns: 3
+rofi.padding: 5
+rofi.fixed-num-lines: true
+rofi.hide-scrollbar: true
+rofi.width: 40
+
+!!! ====================================
+
+XTerm*background:        #222D31
+XTerm*foreground:        #d8d8d8
+XTerm*pointerColor:      #1ABB9B
+!XTerm*faceName:          Fixed
+!XTerm*faceSize:          11
+XTerm*reverseVideo:      on
+XTerm*selectToClipboard: true
+
+!!! ====================================
+
+! The Terminus font uses the following X-names:
+! -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1
+! -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
+! -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
+! -xos4-terminus-medium-r-normal--20-200-72-72-c-100-iso10646-1
+! -xos4-terminus-medium-r-normal--22-220-72-72-c-110-iso10646-1
+! -xos4-terminus-medium-r-normal--24-240-72-72-c-120-iso10646-1
+! -xos4-terminus-medium-r-normal--28-280-72-72-c-140-iso10646-1
+! -xos4-terminus-medium-r-normal--32-320-72-72-c-160-iso10646-1
+! -xos4-terminus-bold-r-normal--12-120-72-72-c-60-iso10646-1
+! -xos4-terminus-bold-r-normal--14-140-72-72-c-80-iso10646-1
+! -xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso10646-1
+! -xos4-terminus-bold-r-normal--20-200-72-72-c-100-iso10646-1
+! -xos4-terminus-bold-r-normal--24-240-72-72-c-120-iso10646-1
+! -xos4-terminus-bold-r-normal--28-280-72-72-c-140-iso10646-1
+! -xos4-terminus-bold-r-normal--32-320-72-72-c-160-iso10646-1
+

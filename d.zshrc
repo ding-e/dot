@@ -20,9 +20,9 @@ export ZSH="$HOME/.oh-my-zsh"
 if [ $(uname -o) = "Darwin" ]; then
 ZSH_THEME="dinge"
 else # LINUX
-if [ $(uname -n) = "de-ubuntu" ]; then
+if [ $(uname -n) = "de-alpine" ]; then
 ZSH_THEME="norm"
-elif [ $(uname -n) = "de-alpine" ]; then
+elif [ $(uname -n) = "de-arch" ] || [ $(uname -n) = "de-ubuntu" ]; then
 ZSH_THEME="Chicago95_Dinge"
 else
 ZSH_THEME="robbyrussell"

@@ -1,6 +1,15 @@
+------------------------------------
+- MacOS
+------------------
+
+顯示/關閉隱藏文件
+command + shift + .
+
+------------------
 macos13開始刪除了左上角圖標菜單下的網絡位置
 https://discussions.apple.com/thread/254340086
 
+------------------
 ifconfig
 networksetup -listallhardwareports
 https://blog.csdn.net/yangziluomu/article/details/75043171
@@ -11,7 +20,7 @@ https://www.jianshu.com/p/e7973a948d87
 Mac-ifconfig输出注释
 https://www.jianshu.com/p/77226040a12e
 
-
+------------------
 RDM
 https://github.com/avibrazil/RDM
     arm:

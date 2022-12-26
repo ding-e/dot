@@ -3,40 +3,179 @@
 ------------------
 
 packages : [
-    zsh git sudo wget curl vim neovim
-    ranger fzf neofetch tree tmux htop
-    unzip zip unrar
-    nethogs iftop nload iptraf-ng
-    stylua ripgrep
-    nim, nimble, nimlsp, nimpretty
-    gcc make cmake clang
-    net-tools util-linux
-    ufw openssh
 
-    tree-sitter
-    #nodejs npm
+    base base-devel linux linux-firmware
 
-    Parallels tools : [
-        linux-headers dkms
-    ]
+    zsh git wget neofetch neovim vim
+    tree htop tmux zip unzip unrar
+    net-tools dhcpcd fzf ripgrep ufw
+    man man-pages-zh_tw man-pages-zh_cn
+
+    xorg-server xorg-xinit xorg-xsetroot
+    xorg-xrandr xorg-xinput libxft
+    dmenu rofi alacritty feh picom ranger
+    trayer
+
+    ------------------
+    thunar tumbler catfish
+    lxappearance mousepad
+    volumeicon gufw
+
+    # [x] https://wiki.archlinuxcn.org/wiki/Xorg
+    # [x] xf86-video-fbdev
+    xf86-video-vesa
+
+    ------------------
+    gvfs thunar-volman gvfs-mtp thunar-archive-plugin thunar-media-tags-plugin
+
+    chromium firefox kitty
+    file-roller nitrogen dunst gcolor3
+    xfce4-power-manager xfce4-screensaver
+
+    ------------------
+    xautolock wireless_tools network-manager-applet
+    pulseaudio pulseaudio-alsa
+    acpilight alsa-utils acpi yay
+
+    ------------------
+    # xorg-mkfontscale xorg-xfontsel xorg-xlsfonts
+    # nethogs iftop nload iptraf-ng
+    # util-linux
+    # openssh
+
+    # stylua nim nimlangserver
+
+    # ---------------------------
+    # xfce4 xfce4-whiskermenu-plugin
+    # xfce4-pulseaudio-plugin xfce4-netload-plugin
 ]
 
 ================================================
 
-whoami
+git clone https://github.com/ding-e/dot.arch
+牆紙
+cd dot.arch
+mkdir ~/.dwm && cp -R wallpapers ~/.dwm/
+
+https://suckless.org/
+sudo make clean install
+morc_menu, dwm.win95, st, surf, slock
+
+---------------------------
+font
+terminus-font -> setfont ter-132n
+wqy-bitmapfont wqy-microhei ttf-ubuntu-font-family ttf-ubuntumono-nerd
+----------------
+cd ~/.local/share/fonts && wget https://github.com/kika/fixedsys/releases/download/v3.02.9/FSEX302.ttf
+
+================================================
+
+fedora : [
+    dnf info/install/update/upgrade
+    https://packages.fedoraproject.org/
+    ---------------------------
+    libX11-devel libXft-devel libXinerama-devel
+]
+
+ubuntu : [
+    apt install/update/upgrade
+    ---------------------------
+    software-properties-common psmisc
+]
+
+---------------------------
+xinit
+https://wiki.archlinuxcn.org/wiki/Xinit
+cat /etc/X11/xinit/xinitrc
+
+---------------------------
+theme & lxappearance
+git clone https://github.com/grassmunk/Chicago95
+mkdir -p ~/.local/share/themes ~/.local/share/icons ~/.local/share/fonts
+cp -R Chicago95/Cursors/* ~/.local/share/icons/
+cp -R Chicago95/Icons/* ~/.local/share/icons/
+cp -R Chicago95/Theme/* ~/.local/share/themes/
+cp -R Chicago95/Fonts/* ~/.local/share/fonts/
+
+---------------------------
+thunar
+// thunar 添加搜索功能
+1、安装catfish
+sudo pacman -S catfish
+2、配置thunar，添加［自定义动作］
+打开 Thunar 后，点击 Edit -> Configure custom actions... -> 点击 + 号
+
+内容填写如下：
+Name: Search
+Description: Find files or folders
+Command: catfish --path=%f
+Icon: 点击 "No icon" 按钮，在顶端列表中选择 "action icons"，从下面的图标中选择 Search 图标
+再转到右边的 Appearance Conditons 选项卡，"File Pattern" 处填写 "*"，同时勾选上 "Directories"。
+
+---------------------------
+suckless
+git clone https://git.suckless.org/dwm
+git clone https://git.suckless.org/st
+git clone https://git.suckless.org/surf
+git clone https://git.suckless.org/slock
+
+patch < xxx.diffj
+cd dwm && sudo make clean install
+
+autostart 改用最新版
+    路徑: ~/.dwm/autostart.sh
+
+awesomebar 改用最新版
+    以前是: awesomebar-20200829-6.2
+            + theniceboy/dwm-hide-and-restore-win.diff
+
+防止鼠标下的程序自动获取焦点
+https://wiki.archlinuxcn.org/zh-hans/Dwm
+    注释掉dwm.c中的如下代码：
+    [EnterNotify] = enternotify,
+
+---------------------------
+morc_menu
+https://github.com/Boruch-Baum/morc_menu
+
+---------------------------
+gufw & ufw
+systemctl enable ufw && systemctl start ufw
+service --all-status
+service sshd enable
+service ufw enable
+
+sudo ufw allow 22
+sudo ufw allow 8080
+
+---------------------------
 pacman-key --init
 mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.b
-echo "Server = https://mirrors.mit.edu/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
+# echo "Server = https://mirrors.mit.edu/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
 pacman -Syu
 pacman -Q | wc -l
 pacman -Qi neovim
 pacman -Si neovim
 
+================================================
+
+whoami
+sudo auditctl -e0
+
+---------------------------
+/etc/local.gen
+-> zh_HK.UTF-8 UTF-8
+locale-ge
+
+/etc/default/locale
+-> LANG="zh_HK.UTF-8"
+   LANGUAGE="zh_HK:zh"
+
+---------------------------
 passwd root
 userdel dinge
 groupadd dinge
-#useradd -m -G wheel -s /bin/zsh dinge
-useradd -m -G dinge -s /bin/zsh dinge
+useradd -m -g dinge -s /bin/zsh dinge
 passwd dinge
 
 /etc/sudoers
@@ -45,13 +184,94 @@ passwd dinge
 .bashrc
 -> export TERM="xterm-256color"
 
+-----------------------
+注销
+pkill -kill -u username
 
+-----------------------
+docker
+sudo apt install docker.io
+sudo systemctl start docker
+https://jianshu.com/p/c4c6d1196156
+
+docker免sudo
+groupadd docker
+gpasswd -a ${USER} docker
+service docker restart
+newgrp - docker
+https://www.jb51.net/article/208613.htm
+
+-----------------------
+HDPI
+https://wiki.archlinuxcn.org/wiki/HiDPI#X_Server
+https://wiki.archlinuxcn.org/wiki/Xorg#显示大小和_DPI
+xrdb -query | grep dpi
+# 默認: 96, 120 (25% higher), 144 (50% higher), 168 (75% higher), 192 (100% higher)
+vim ~/.Xresources
+    Xft.dpi: 144
+    Xft.autohint: 0
+    Xft.lcdfilter:  lcddefaul
+    Xft.hintstyle:  hintfull
+    Xft.hinting: 1
+    Xft.antialias: 1
+    Xft.rgba: rgb
+xrdb -merge ~/.Xresources
+
+鼠標大小
+https://bbs.archlinux.org/viewtopic.php?id=251847
+https://wiki.archlinux.org/title/Cursor_themes#X_resources
+vim ~/.Xresources
+    Xcursor.size: 16
+
+-----------------------
+GNOME & GDM
+https://help.gnome.org/admin/system-admin-guide/stable/autostart-applications.html.en
+開機啟動: /etc/xdg/autostart/
+
+gdm登錄界面: /usr/share/xsessions/
 
 -----------------------
 一些問題:
 
-1.
+0.neovim
+    https://github.com/neovim/neovim/wiki/Building-Neovim
+    https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source
 
+    sudo apt-get install ninja-build gettext libtool libtool-bin autoconf
+    sudo apt-get install automake cmake g++ pkg-config unzip curl doxygen
+    git clone https://github.com/neovim/neovim && cd neovim
+    git checkout stable
+    make CMAKE_BUILD_TYPE=RelWithDebInfo
+    sudo make install
 
+    rust & tree-sitter
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    cargo install tree-sitter-cli
 
+1.Parallels Tools:
+    https://download.parallels.com/desktop/v18/docs/zh_CN.lproj/32789.htm
+
+    sudo pacman -S linux-headers dkms
+    sudo mount /dev/cdrom /mnt
+    sudo ./install
+
+    共享目錄在:
+    ubuntu: /media/psf
+    arch: /mnt/psf
+    ln -sf /mnt/psf/ /home/dinge/share
+
+    服務:
+    systemctl enable/disable/status prltoolsd.service
+
+    cli:
+    /usr/bin/prlcc &
+    #/usr/bin/ptiagent --info &
+
+2. Parallels 觸摸板滾動快問題:
+    https://forum.parallels.com/threads/trackpad-scrolling-is-too-fast-and-frequently-uncontrollable.346338/page-2
+    進入.pvm 修改 config.pvs
+    在<SmoothScrolling dyn_lists="">
+        <Enabled>0</Enabled>
+        改為
+        <Enabled>1</Enabled>
 

@@ -251,6 +251,9 @@ gdm登錄界面: /usr/share/xsessions/
 1.Parallels Tools:
     https://download.parallels.com/desktop/v18/docs/zh_CN.lproj/32789.htm
 
+    tools iso路徑:
+    /Applications/Parallels Desktop.app/Contents/Resources/Tools/prl-tools-lin-arm.iso
+
     sudo pacman -S linux-headers dkms
     sudo mount /dev/cdrom /mnt
     sudo ./install

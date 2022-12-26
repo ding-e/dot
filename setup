@@ -41,7 +41,7 @@ else
 
   # ranger
   mkdir -p "$HOME/.config/ranger"
-  ${cmd} "$PWD/arch/config/ranger/*" "$HOME/.config/ranger/"
+  ${cmd} "$PWD/arch/config/ranger/rc.conf" "$HOME/.config/ranger/"
 
   # npm
   mkdir -p "$HOME/core/library" "$HOME/core/library/npm-global" "$HOME/core/library/npm-cache"
@@ -55,15 +55,16 @@ else
 
     # dwm script & wallpapers -> ding-e/dot.arch
     mkdir -p "$HOME/.dwm"
-    ${cmd} "$PWD/arch/dwm/*" "$HOME/.dwm/"
+    ${cmd} "$PWD/arch/dwm/autostart.sh" "$HOME/.dwm/"
+    ${cmd} "$PWD/arch/dwm/scripts" "$HOME/.dwm/"
 
     # alacritty
     mkdir -p "$HOME/.config/alacritty"
-    ${cmd} "$PWD/arch/config/alacritty/*" "$HOME/.config/alacritty/"
+    ${cmd} "$PWD/arch/config/alacritty/alacritty.yml" "$HOME/.config/alacritty/"
 
     # morc_menua & dmenu
     mkdir -p "$HOME/.config/morc_menu"
-    ${cmd} "$PWD/arch/config/morc_menu/*" "$HOME/.config/morc_menu/"
+    ${cmd} "$PWD/arch/config/morc_menu/morc_menu_v1.conf" "$HOME/.config/morc_menu/"
     ${cmd} "$PWD/arch/config/d.dmenurc" "$HOME/.config/dmenurc"
 
     # sound

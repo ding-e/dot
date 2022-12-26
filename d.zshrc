@@ -224,6 +224,9 @@ export PATH="$HOME/core/bin:$PATH"
 # # /home/dinge/.local/bin
 # export PATH="$HOME/.local/bin:$PATH"
 
+# parallels共享目錄
+alias gshare="cd $HOME/share/linux/"
+
 # clash
 alias clash="$HOME/core/bin/clash/clash -d $HOME/core/bin/clash/"
 

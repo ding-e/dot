@@ -101,7 +101,16 @@ return {
    ["rhysd/accelerated-jk"] = {},
 
    -- 平滑滚动 <C-u>, <C-d>, <C-b>, <C-f>, <C-y>, <C-e>, zt, zz, zb
-   ["karb94/neoscroll.nvim"] = { config = require("neoscroll").setup() },
+   ["karb94/neoscroll.nvim"] = {
+      config = function()
+         local present, neoscroll = pcall(require, "neoscroll")
+         if not present then
+            return
+         end
+
+         neoscroll.setup()
+      end,
+   },
 
    -- editor config - .editorconfig
    -- https://editorconfig.org

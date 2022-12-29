@@ -14,13 +14,14 @@ packages : [
     xorg-server xorg-xinit xorg-xsetroot
     xorg-xrandr xorg-xinput libxft
     dmenu rofi alacritty feh picom ranger
-    trayer
+    trayer alsa-utils acpi dunst
+    qutebrowser firefox
 
-    ------------------
-    thunar tumbler catfish
+    thunar tumbler file-roller
     lxappearance mousepad
     volumeicon gufw
 
+    ------------------
     # [x] https://wiki.archlinuxcn.org/wiki/Xorg
     # [x] xf86-video-fbdev
     xf86-video-vesa
@@ -28,14 +29,13 @@ packages : [
     ------------------
     gvfs thunar-volman gvfs-mtp thunar-archive-plugin thunar-media-tags-plugin
 
-    chromium firefox kitty
-    file-roller nitrogen dunst gcolor3
+    chromium kitty catfish gcolor3
     xfce4-power-manager xfce4-screensaver
 
     ------------------
     xautolock wireless_tools network-manager-applet
     pulseaudio pulseaudio-alsa
-    acpilight alsa-utils acpi yay
+    acpilight nitrogen
 
     ------------------
     # xorg-mkfontscale xorg-xfontsel xorg-xlsfonts

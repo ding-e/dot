@@ -214,7 +214,12 @@ end
 
 -- folke/zen-mode.nvim
 function set_zenmode()
-   require("zen-mode").setup {
+   local present, zenmode = pcall(require, "zen-mode")
+   if not present then
+      return
+   end
+
+   zenmode.setup {
       window = {
          -- zen背景, 為1,則使用編輯背景一樣顏色
          backdrop = 0.95,
@@ -263,7 +268,12 @@ end
 
 -- Pocco81/truezen.nvim
 function set_truezen()
-   require("true-zen").setup {
+   local present, truezen = pcall(require, "true-zen")
+   if not present then
+      return
+   end
+
+   truezen.setup {
       modes = {
          minimalist = {
             ignored_buf_types = { "nofile" },
@@ -333,8 +343,13 @@ end
 -- 具体支持语言
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 function set_nullls()
+   local present, null_ls = pcall(require, "null-ls")
+   if not present then
+      return
+   end
+
    -- require("custom.plugins.null-ls").setup()
-   local null_ls = require "null-ls"
+   -- local null_ls = require "null-ls"
    local b = null_ls.builtins
    null_ls.setup {
       debug = true,
@@ -380,7 +395,12 @@ end
 -- session / workspace
 -- folke/persistence.nvim
 function set_session()
-   require("persistence").setup {
+   local present, persistence = pcall(require, "persistence")
+   if not present then
+      return
+   end
+
+   persistence.setup {
       -- directory where session files are saved
       dir = vim.fn.expand(vim.fn.stdpath "config" .. "/sessions/"),
       -- sessionoptions used for saving

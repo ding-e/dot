@@ -20,6 +20,7 @@ packages : [
     thunar tumbler file-roller
     lxappearance mousepad
     volumeicon gufw
+    xfce4-taskmanager
 
     ------------------
     # [x] https://wiki.archlinuxcn.org/wiki/Xorg
@@ -27,10 +28,12 @@ packages : [
     xf86-video-vesa
 
     ------------------
-    gvfs thunar-volman gvfs-mtp thunar-archive-plugin thunar-media-tags-plugin
+    gvfs thunar-volman gvfs-mtp
+    thunar-archive-plugin thunar-media-tags-plugin
 
     chromium kitty catfish gcolor3
     xfce4-power-manager xfce4-screensaver
+    gnome-system-monitor deepin-system-monitor
 
     ------------------
     xautolock wireless_tools network-manager-applet

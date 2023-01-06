@@ -97,6 +97,17 @@ cp -R Chicago95/Icons/* ~/.local/share/icons/
 cp -R Chicago95/Theme/* ~/.local/share/themes/
 cp -R Chicago95/Fonts/* ~/.local/share/fonts/
 
+# gtk下右键菜单没有边框
+cp dot/arch/other/gtk-menu.css ~/.local/share/themes/Chicago95/gtk-3.24/gtk-menu.css
+
+# vim ~/.local/share/themes/Chicago95/gtk-3.24/gtk-menu.css
+# 1. menuitem > window, window > menu: padding: 0px; -> 改为 padding: 3px 3px;
+# 2. menu { -> 加 border: 1px solid @border_shade;
+# 3. menu separator { -> 注释所有, 并加上 margin-left: 1px; margin-right: 1px;
+#                                         margin-top: 3px; margin-bottom: 3px;
+#                                         border-top: 1px solid @border_shade;
+#                                         border-bottom: 1px solid @border_bright;
+
 ---------------------------
 thunar
 // thunar 添加搜索功能

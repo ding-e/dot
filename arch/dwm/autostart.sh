@@ -10,7 +10,8 @@ xrandr --output Virtual-1 --mode 1920x1200
 
 # feh 设置墙纸
 # firejail --net=none feh --bg-fill /home/dinge/core/picture/xp-bg.jpg
-feh --bg-fill /home/dinge/.dwm/wallpapers/xp.jpg
+# feh --bg-fill /home/dinge/.dwm/wallpapers/xp.jpg
+feh --bg-fill /home/dinge/.dwm/wallpapers/c.jpg
 
 # dwm status
 #xsetroot -name " [ USER ${USER}  DATE $(date +%Y.%m.%d\ %H:%M:%S) ]"

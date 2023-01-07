@@ -54,6 +54,12 @@ else
     ${cmd} "$PWD/arch/d.xprofile" "$HOME/.xprofile"
     ${cmd} "$PWD/arch/config/user-dirs.dirs" "$HOME/.config/user-dirs.dirs"
 
+    # gtk
+    mkdir -p "$HOME/.config/gtk-3.0"
+    ${cmd} "$PWD/arch/config/gtk-3.0/gtk.css" "$HOME/.config/gtk-3.0/"
+    ${cmd} "$PWD/arch/config/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/"
+    ${cmd} "$PWD/arch/config/gtk-3.0/d.bookmarks" "$HOME/.config/gtk-3.0/bookmarks"
+
     # dwm script & wallpapers -> ding-e/dot.arch
     mkdir -p "$HOME/.dwm"
     ${cmd} "$PWD/arch/dwm/autostart.sh" "$HOME/.dwm/"

@@ -30,7 +30,7 @@ bash /home/dinge/.dwm/scripts/dwm-status/dwm-status.sh &
 picom -bCG --shadow-opacity=0.0 --fade-in-step=1.0 --fade-out-step=1.0 --fade-delta=1 --menu-opacity=1.0
 
 # 音量gui
-# volumeicon &
+volumeicon &
 # firejail --net=none volumeicon &
 
 # 启动 fcitx

@@ -14,7 +14,7 @@ packages : [
     xorg-server xorg-xinit xorg-xsetroot
     xorg-xrandr xorg-xinput libxft
     dmenu rofi alacritty feh picom ranger
-    trayer alsa-utils acpi dunst
+    trayer alsa-utils pavucontrol acpi dunst
     firefox chromium
 
     thunar tumbler file-roller
@@ -112,6 +112,27 @@ cp dot/arch/other/gtk-menu.css ~/.local/share/themes/Chicago95/gtk-3.24/gtk-menu
 #                                         margin-top: 3px; margin-bottom: 3px;
 #                                         border-top: 1px solid @border_shade;
 #                                         border-bottom: 1px solid @border_bright;
+
+---------------------------
+HDPI
+~/.dwm/autostart.sh                              # 1920x1200
+    xrandr --output Virtual-1 --mode 2560x1600
+~/.Xresources                                    # 96
+    Xft.dpi: 144
+~/.config/dmenurc                                # Terminus-14
+    DMENU_FN="FixedsysExcelsior-14"
+~/.config/rofi/config.rasi                       # Terminus 10
+    font: "FixedsysExcelsior 18";
+~/.config/rofi/dinge.rasi                        # width: 700px;
+    window { width: 1000px; }
+~/.config/gtk-3.0/setting.ini                    # Ubuntu 9
+    gtk-font-name=Fixedsys Excelsior 10
+~/core/software/dwm.win95/config.h               # Terminus:size=14
+    fonts[]     = { "Fixedsys Excelsior:size=14", ... };
+    dmenufont[] = "Fixedsys Excelsior:size=14";
+~/core/software/st.win95/config.h                # Terminus:pixelsize=18
+    // *font = "Terminus:pixelsize=30: ...";
+    *font    = "Fixedsys Excelsior:pixelsize=30: ...";
 
 ---------------------------
 thunar

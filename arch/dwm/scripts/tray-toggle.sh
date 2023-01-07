@@ -20,7 +20,8 @@ if [ "$result" == "" ]; then
   #eval  "trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype request --width 112 --height 16 --distance 2 --margin 2 --padding 5 --iconspacing 8 --SetDockType false --tint 0x000000 &"
   #eval  "firejail --net=none trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype request --width 112 --height 16 --distance 2 --margin 2 --padding 5 --iconspacing 8 --SetDockType false --tint 0x000000 &"
 
-  eval  "firejail --net=none trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype request --width 112 --height 16 --distance 18 --margin 2 --padding 5 --iconspacing 8 --SetDockType false --tint 0x000000 &"
+  # eval  "firejail --net=none trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype request --width 112 --height 16 --distance 18 --margin 2 --padding 5 --iconspacing 8 --SetDockType false --tint 0x000000 &"
+  eval  "trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype request --width 112 --height 16 --distance 18 --margin 2 --padding 5 --iconspacing 8 --SetDockType false --tint 0x000000 &"
 
 else
   killall trayer

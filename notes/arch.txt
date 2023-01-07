@@ -6,7 +6,7 @@ packages : [
 
     base base-devel linux linux-firmware
 
-    zsh git wget neofetch neovim vim
+    zsh git wget neofetch neovim vim xclip
     tree htop tmux zip unzip unrar
     net-tools dhcpcd fzf ripgrep ufw
     man man-pages-zh_tw man-pages-zh_cn
@@ -15,12 +15,15 @@ packages : [
     xorg-xrandr xorg-xinput libxft
     dmenu rofi alacritty feh picom ranger
     trayer alsa-utils acpi dunst
-    qutebrowser firefox
+    firefox chromium
 
     thunar tumbler file-roller
     lxappearance mousepad
     volumeicon gufw
-    xfce4-taskmanager
+    xfce4-taskmanager viewnior
+    fcitx5-im fcitx5-chinese-addons fcitx5-chewing
+
+    stylua nim nimlangserver
 
     ------------------
     # [x] https://wiki.archlinuxcn.org/wiki/Xorg
@@ -31,9 +34,10 @@ packages : [
     gvfs thunar-volman gvfs-mtp
     thunar-archive-plugin thunar-media-tags-plugin
 
-    chromium kitty catfish gcolor3
+    kitty catfish gcolor3 qutebrowser
     xfce4-power-manager xfce4-screensaver
     gnome-system-monitor deepin-system-monitor
+    flameshot vlc
 
     ------------------
     xautolock wireless_tools network-manager-applet
@@ -45,8 +49,6 @@ packages : [
     # nethogs iftop nload iptraf-ng
     # util-linux
     # openssh
-
-    # stylua nim nimlangserver
 
     # ---------------------------
     # xfce4 xfce4-whiskermenu-plugin
@@ -126,6 +128,18 @@ Command: catfish --path=%f
 Icon: 点击 "No icon" 按钮，在顶端列表中选择 "action icons"，从下面的图标中选择 Search 图标
 再转到右边的 Appearance Conditons 选项卡，"File Pattern" 处填写 "*"，同时勾选上 "Directories"。
 
+--------------
+thunar当前目录打开终端
+    Open Terminal Here
+    Example for a custom action
+    /usr/bin/alacritty
+
+---------------------------
+chromium 翻譯問題
+vim /etc/hosts
+    # Fix Google Translate CN
+    74.125.137.90 translate.googleapis.com
+
 ---------------------------
 suckless
 git clone https://git.suckless.org/dwm
@@ -170,6 +184,9 @@ pacman -Syu
 pacman -Q | wc -l
 pacman -Qi neovim
 pacman -Si neovim
+
+# 卸載孤立包
+sudo pacman -R $(pacman -Qtdq)
 
 ================================================
 

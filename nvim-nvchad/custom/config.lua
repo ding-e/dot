@@ -24,6 +24,8 @@ local M = {
 
 if M.icon_theme == "file" and os.getenv "TERM_PROGRAM" == "iTerm.app" then
    M.icon_theme = "nvchad"
+elseif io.popen("uname -n", "r"):read "*l" == "de-arch" then
+   M.icon_theme = "none"
 end
 
 return M

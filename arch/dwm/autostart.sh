@@ -33,7 +33,7 @@ picom -bCG --shadow-opacity=0.0 --fade-in-step=1.0 --fade-out-step=1.0 --fade-de
 # firejail --net=none volumeicon &
 
 # 启动 fcitx
-#fcitx &
+fcitx5 &
 # firejail --net=none 2>/dev/null fcitx &
 #firejail --net=none fcitx &
 

@@ -51,6 +51,7 @@ else
     # xorg
     ${cmd} "$PWD/arch/d.xinitrc" "$HOME/.xinitrc"
     ${cmd} "$PWD/arch/d.Xresources" "$HOME/.Xresources"
+    ${cmd} "$PWD/arch/d.xprofile" "$HOME/.xprofile"
     ${cmd} "$PWD/arch/config/user-dirs.dirs" "$HOME/.config/user-dirs.dirs"
 
     # dwm script & wallpapers -> ding-e/dot.arch

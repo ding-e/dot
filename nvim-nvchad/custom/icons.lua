@@ -12,7 +12,7 @@ M.tabufline = {
    tab_close    = { "K",     "K" },
    tab_add      = { "+",     "+" },
    tab_toggle   = { "ℷ",     "<" },
-   theme_toggle = { "Ƚ",     "☻" },
+   theme_toggle = { "T",     "☻" },
    all_close    = { "CLOSE", "CLOSE" },
 }
 

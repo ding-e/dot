@@ -224,8 +224,16 @@ export PATH="$HOME/core/bin:$PATH"
 # # /home/dinge/.local/bin
 # export PATH="$HOME/.local/bin:$PATH"
 
+alias open="thunar"
+
+# 注销dinge
+alias kdinge="pkill -kill -u dinge"
+
 # parallels共享目錄
 alias gshare="cd $HOME/share/linux/"
+
+# dwm脚本启动目录
+alias gscript="cd $HOME/.dwm/"
 
 # clash
 alias clash="$HOME/core/bin/clash/clash -d $HOME/core/bin/clash/"

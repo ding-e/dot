@@ -3,8 +3,8 @@
 #/usr/bin/prlcc &
 #/usr/bin/ptiagent --info &
 
-#xrandr --output Virtual-1 --mode 2560x1600
-xrandr --output Virtual-1 --mode 1920x1200
+xrandr --output Virtual-1 --mode 2560x1600
+# xrandr --output Virtual-1 --mode 1920x1200
 #xrandr --output Virtual-1 --mode 1680x1050
 #xrandr --output Virtual-1 --mode 1440x900
 

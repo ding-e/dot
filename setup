@@ -74,6 +74,9 @@ else
     ${cmd} "$PWD/arch/config/morc_menu/morc_menu_v1.conf" "$HOME/.config/morc_menu/"
     ${cmd} "$PWD/arch/config/d.dmenurc" "$HOME/.config/dmenurc"
 
+    # chromium scale
+    ${cmd} "$PWD/arch/config/chromium-flags.conf" "$HOME/.config/"
+
     # rofi
     mkdir -p "$HOME/.config/rofi"
     ${cmd} "$PWD/arch/config/rofi/config.rasi" "$HOME/.config/rofi/"

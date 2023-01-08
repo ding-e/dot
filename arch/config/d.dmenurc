@@ -30,7 +30,8 @@
 #DMENU_FN="Consolas-10"
 #DMENU_FN="Terminus-8"
 #DMENU_FN="Dina-6"
-DMENU_FN="Terminus-14"
+# DMENU_FN="Terminus-14"
+DMENU_FN="FixedsysExcelsior-10"
 
 ## background colour for unselected menu-items
 DMENU_NB="#000000"

@@ -20,8 +20,8 @@
     gruvbox-dark-bg0:          #000000;
     gruvbox-dark-bg0-soft:     #000000;
     gruvbox-dark-bg3:          #000080;
-    gruvbox-dark-fg0:          #fbf1c7;
-    gruvbox-dark-fg1:          #ebdbb2;
+    gruvbox-dark-fg0:          #ffffff; /* #fbf1c7; */
+    gruvbox-dark-fg1:          #ffffff; /* #ebdbb2; */
     gruvbox-dark-red-dark:     #cc241d;
     gruvbox-dark-red-light:    #fb4934;
     gruvbox-dark-yellow-dark:  #d79921;
@@ -68,7 +68,8 @@ listview {
 }
 
 window {
-    width: 700px;
+    /* width: 700px; */
+    width: 1000px;
 }
 
 element {

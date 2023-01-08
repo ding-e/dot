@@ -298,8 +298,8 @@ print_volume_light() {
 # 音量 macos m1 vmware arm ubuntu 和 当前时间
 print_volume_datetime() {
   # 音量
-  volume=$(amixer -M get Master | egrep 'Mono: Playback' | egrep -o '[0-9]+%' | egrep -o '[0-9]+')
-  if  [ "$(amixer -M get Master | egrep 'Mono: Playback' | egrep -o 'off')" = "off" ]; then
+  volume=$(amixer -M get Master | egrep 'Front Left' | egrep -o '[0-9]+%' | egrep -o '[0-9]+')
+  if  [ "$(amixer -M get Master | egrep 'Front Left' | egrep -o 'off')" = "off" ]; then
     volume="M $volume"
   fi
 

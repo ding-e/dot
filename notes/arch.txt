@@ -14,7 +14,8 @@ packages : [
     xorg-server xorg-xinit xorg-xsetroot
     xorg-xrandr xorg-xinput libxft
     dmenu rofi alacritty feh picom ranger
-    trayer alsa-utils pavucontrol acpi dunst
+    trayer acpi dunst
+    alsa-utils pavucontrol pulseaudio pulseaudio-alsa
     firefox chromium
 
     thunar tumbler file-roller
@@ -114,25 +115,44 @@ cp dot/arch/other/gtk-menu.css ~/.local/share/themes/Chicago95/gtk-3.24/gtk-menu
 #                                         border-bottom: 1px solid @border_bright;
 
 ---------------------------
-HDPI
+HiDPI:
 ~/.dwm/autostart.sh                              # 1920x1200
     xrandr --output Virtual-1 --mode 2560x1600
 ~/.Xresources                                    # 96
-    Xft.dpi: 144
+    Xft.dpi: 192
 ~/.config/dmenurc                                # Terminus-14
-    DMENU_FN="FixedsysExcelsior-14"
+    DMENU_FN="FixedsysExcelsior-10"
 ~/.config/rofi/config.rasi                       # Terminus 10
-    font: "FixedsysExcelsior 18";
+    font: "Fixedsys Excelsior 9"
+    dpi: 192;
 ~/.config/rofi/dinge.rasi                        # width: 700px;
     window { width: 1000px; }
-~/.config/gtk-3.0/setting.ini                    # Ubuntu 9
-    gtk-font-name=Fixedsys Excelsior 10
+~/.config/gtk-3.0/setting.ini                    # Ubuntu 8
+    gtk-font-name=Ubuntu 9
 ~/core/software/dwm.win95/config.h               # Terminus:size=14
-    fonts[]     = { "Fixedsys Excelsior:size=14", ... };
-    dmenufont[] = "Fixedsys Excelsior:size=14";
+    fonts   = { "Fixedsys Excelsior:size=10", "Microsoft YaHei:size=7:style=bold" };
+    dmenufont = "Fixedsys Excelsior:size=10";
 ~/core/software/st.win95/config.h                # Terminus:pixelsize=18
-    // *font = "Terminus:pixelsize=30: ...";
-    *font    = "Fixedsys Excelsior:pixelsize=30: ...";
+    font  = "Fixedsys Excelsior:pixelsize=28
+    font2 = "Microsoft YaHei:pixelsize=19:style=bold
+~/.config/alacritty/alacritty.yml                # size: 14.0
+    size: 10.0
+
+-----------------
+瀏覽器:
+https://wiki.archlinuxcn.org/wiki/HiDPI#Firefox
+    chromium:
+        vim ~/.config/chromium-flags.conf
+            --force-device-scale-factor=1.5
+    firefox:
+        about:config -> layout.css.devPixelsPerPx -> 1.5
+
+-----------------
+# gtk & qt & font
+~/.xprofile
+    export GDK_SCALE=2
+    export GDK_DPI_SCALE=0.5
+    export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
 ---------------------------
 thunar
@@ -242,7 +262,8 @@ pkill -kill -u username
 
 -----------------------
 docker
-sudo apt install docker.io
+# ubuntu: docker.io
+sudo pacman install docker
 sudo systemctl start docker
 https://jianshu.com/p/c4c6d1196156
 

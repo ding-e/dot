@@ -7,7 +7,7 @@ packages : [
     base base-devel linux linux-firmware
 
     zsh git wget neofetch neovim vim xclip
-    tree htop tmux zip unzip unrar
+    tree htop tmux zip unzip unrar bc
     net-tools dhcpcd fzf ripgrep ufw
     man man-pages-zh_tw man-pages-zh_cn
 
@@ -39,10 +39,17 @@ packages : [
     xfce4-power-manager xfce4-screensaver
     gnome-system-monitor deepin-system-monitor
     flameshot vlc
+    polkit polkit-gnome
+    qt5ct kvantum-qt5
+
+    firejail firetools docker
+    rustup go
+
+    nodejs npm
+    # [ -g npm-check-updates live-server typescript ]
 
     ------------------
     xautolock wireless_tools network-manager-applet
-    pulseaudio pulseaudio-alsa
     acpilight nitrogen
 
     ------------------
@@ -54,6 +61,14 @@ packages : [
     # ---------------------------
     # xfce4 xfce4-whiskermenu-plugin
     # xfce4-pulseaudio-plugin xfce4-netload-plugin
+
+    firefox : [
+        Windows Classic Blue, ClassicWindows
+
+        TWP - Translate Web Pages, 側邊翻譯
+        NoScript, AdBlocker Ultimate, Proxy SwitchyOmega
+        windowed-fullscreen-video, YouTube™ 双字幕
+    ]
 ]
 
 ================================================
@@ -65,7 +80,23 @@ mkdir ~/.dwm && cp -R wallpapers ~/.dwm/
 
 https://suckless.org/
 sudo make clean install
-morc_menu, dwm.win95, st, surf, slock
+morc_menu, dwm.win95, st.win95
+surf, slock
+
+---------------------------
+fcitx5 theme
+cp -R dot.arch/themes/fcitx5-win95/* ~/.local/share/fcitx5/themes/
+1.vim ~/.config/fcitx5/conf/classicui.conf
+    Theme=fcitx5-win95
+# 1. 配置->附加组件->经典用户界面->主題->fcitx5-win95
+2. 配置->附加组件->拼音->勾选在程序中显示预编辑文本
+https://www.cnblogs.com/maicss/p/15056420.html
+
+vim ~/.xprofile
+    export GTK_IM_MODULE=fcitx
+    export QT_IM_MODULE=fcitx
+    export XMODIFIERS=@im=fcitx
+fcitx5 &
 
 ---------------------------
 font
@@ -88,6 +119,12 @@ ubuntu : [
     ---------------------------
     software-properties-common psmisc
 ]
+
+---------------------------
+源: https://mirrors.tuna.tsinghua.edu.cn/help/archlinuxarm/
+sudo vim /etc/pacman.d/mirrorlist
+    Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/$arch/$repo
+sudo pacman -Syyu
 
 ---------------------------
 xinit
@@ -188,7 +225,7 @@ git clone https://git.suckless.org/st
 git clone https://git.suckless.org/surf
 git clone https://git.suckless.org/slock
 
-patch < xxx.diffj
+patch < xxx.diff
 cd dwm && sudo make clean install
 
 autostart 改用最新版
@@ -216,6 +253,22 @@ service ufw enable
 
 sudo ufw allow 22
 sudo ufw allow 8080
+
+---------------------------
+aur & opensnitch
+# https://github.com/evilsocket/opensnitch/wiki/Installation
+# https://aur.archlinux.org/packages?O=0&SeB=nd&K=opensnitch
+
+git clone https://aur.archlinux.org/opensnitch
+cd opensnitch
+makepkg -si
+---------------
+sudo systemctl enable --now opensnitchd
+sudo systemctl start opensnitchd
+
+---------------------------
+snap
+# https://snapcraft.io/docs/installing-snap-on-arch-linux
 
 ---------------------------
 pacman-key --init

@@ -17,14 +17,25 @@ create_cmd("DeNumber", function(args)
    end
 end, { nargs = "*", desc = "" })
 
--- 查看快捷鍵
--- DeCatkey   -> 查看自定義快捷鍵
--- DeCatkey 1 -> 查看nvchad快捷鍵
-create_cmd("DeCatkey", function(args)
+-- 查看nvim快捷鍵
+-- DeNvimKey   -> 查看自定義快捷鍵
+-- DeNvimKey 1 -> 查看nvchad快捷鍵
+create_cmd("DeNvimKey", function(args)
    if args.args == "1" then
       vim.cmd [[ vsp $HOME/.config/nvim/lua/core/mappings.lua ]]
    else
       vim.cmd [[ vsp $HOME/.config/nvim/lua/custom/mappings.lua ]]
+   end
+end, { nargs = "*", desc = "" })
+
+-- 查看dwm快捷鍵
+-- DeDwmKey   -> 查看dwm快捷鍵
+-- DeDwmKey 1 ->
+create_cmd("DeDwmKey", function(args)
+   if args.args == "1" then
+      vim.cmd [[ vsp $HOME/core/software/dwm.win95/config.h ]]
+   else
+      vim.cmd [[ vsp $HOME/core/software/dwm.win95/config.h ]]
    end
 end, { nargs = "*", desc = "" })
 

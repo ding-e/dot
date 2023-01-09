@@ -2,26 +2,17 @@
 
 result=$(ps ax|grep -v grep|grep trayer)
 if [ "$result" == "" ]; then
-  # dwm status top
-  #eval  "trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype request --width 20 --height 20 --distance 2 --margin 2 --padding 5 --iconspacing 5 --SetDockType false --tint 0x2E3440 &"
-
-  # dwm status bottom 
-#  eval  "trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype request --width 20 --height 20 --distance 19 --margin 2 --padding 5 --iconspacing 5 --SetDockType false --tint 0x2E3440 &"
-
-  #eval  "trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype pixel --width 112 --height 16 --distance 2 --margin 2 --padding 5 --iconspacing 5 --SetDockType false --tint 0x2E3440 &"
-
-  #eval  "trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype request --width 112 --height 16 --distance 2 --margin 2 --padding 5 --iconspacing 5 --SetDockType false --tint 0x2E3440 &"
-  #eval  "trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype request --width 112 --height 16 --distance 19 --margin 2 --padding 5 --iconspacing 5 --SetDockType false --tint 0x2E3440 &"
-
   # --- Nord ---
   #eval  "trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype request --width 112 --height 16 --distance 2 --margin 2 --padding 5 --iconspacing 5 --SetDockType false --tint 0x2E3440 &"
 
   # --- Win95 ---
-  #eval  "trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype request --width 112 --height 16 --distance 2 --margin 2 --padding 5 --iconspacing 8 --SetDockType false --tint 0x000000 &"
-  #eval  "firejail --net=none trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype request --width 112 --height 16 --distance 2 --margin 2 --padding 5 --iconspacing 8 --SetDockType false --tint 0x000000 &"
-
   # eval  "firejail --net=none trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype request --width 112 --height 16 --distance 18 --margin 2 --padding 5 --iconspacing 8 --SetDockType false --tint 0x000000 &"
-  eval  "trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype request --width 112 --height 16 --distance 18 --margin 2 --padding 5 --iconspacing 8 --SetDockType false --tint 0x000000 &"
+
+  # Xft.dpi: 96
+  # eval  "trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype request --width 112 --height 16 --distance 18 --margin 2 --padding 5 --iconspacing 8 --SetDockType false --tint 0x000000 &"
+
+  # Xft.dpi: 192
+  eval  "trayer --transparent true --alpha 0 --expand false --edge bottom --align right --widthtype request --distance 31 --margin 2 --padding 5 --iconspacing 8 --SetDockType false --tint 0x000000 &"
 
 else
   killall trayer

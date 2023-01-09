@@ -2,6 +2,54 @@
 - MacOS
 ------------------
 
+packages: [
+
+    vscode sublime
+    dash(kapeli.com/dash)
+    RDM(avibrazil/RDM)
+
+    steam aseprite wacom
+    unity godot blender ldtk
+    avira, radio silence, tencent lemon
+
+    discord spotify
+    字由
+    rustup ohmyzsh
+
+    brew : [
+        kitty rectangle lulu tiled iterm2 snipaste
+
+        #docker(cask)
+        multipass
+
+        tmux nvim/nvchad
+        nim, nimlangserver | nimlsp
+        zig - HEAD, zls(github)
+        sdl2/sdl2_*
+        go
+
+        clang-format stylua ripgrep fzf
+        lux wget cmake tree ranger neofetch
+    ]
+
+    appstore : [
+        hidden bar
+        xcode
+        youdao wechat qq
+        網易雲 印象筆記 即刻轉換
+    ]
+
+    chrome : [
+        Octotree - GitHub code tree
+        Octotree Theme
+        Dark Reader
+        ColorZilla
+        YouTube™ 双字幕
+    ]
+]
+
+================================================
+
 顯示/關閉隱藏文件
 command + shift + .
 

@@ -4,6 +4,6 @@
 sleep 3m
 
 while true; do
-  bash /home/dinge/core/scripts/dwm-scripts/wp-change.sh &
+  bash /home/dinge/.dwm/scripts/wp-change.sh &
   sleep 3m
 done

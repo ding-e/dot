@@ -8,7 +8,8 @@
 WORKSPACE=$(dirname $(readlink -f "$0") || (cd "$(dirname "$0")";pwd))
 
 # 导入状态的函数库
-source ${WORKSPACE}/func.sh
+#source ${WORKSPACE}/func.sh
+source ${WORKSPACE}/../func.sh
 
 S_ICON_3="[ "
 S_ICON_4=" ]"

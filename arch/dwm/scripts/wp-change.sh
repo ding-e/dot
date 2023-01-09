@@ -1,5 +1,7 @@
 #!/bin/bash
 
-# feh --recursive --randomize --bg-fill /home/dinge/core/picture/wallpapers/view
-# feh --recursive --randomize --bg-fill /home/dinge/core/picture/wallpapers/change
-firejail --net=none feh --recursive --randomize --bg-fill /home/dinge/core/picture/wallpapers/change
+# feh --recursive --randomize --bg-fill /home/dinge/.dwm/wallpapers/view
+# firejail --net=none feh --recursive --randomize --bg-fill /home/dinge/.dwm/wallpapers/change
+
+feh --randomize --bg-fill /home/dinge/.dwm/wallpapers/change
+

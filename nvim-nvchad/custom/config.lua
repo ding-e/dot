@@ -1,6 +1,7 @@
 ------------------------------------
 -- 自定義配置項
 ---------------------------
+---@diagnostic disable: lowercase-global, undefined-global
 
 local M = {
 

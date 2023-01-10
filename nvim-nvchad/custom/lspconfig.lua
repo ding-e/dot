@@ -1,6 +1,7 @@
 ------------------------------------
 -- LSP Config
 --------------
+---@diagnostic disable: lowercase-global, undefined-global
 
 ------------------------------
 -- 重置lua/ui/lsp.lua设置下的行数中（错误/警告等）代码检查图标

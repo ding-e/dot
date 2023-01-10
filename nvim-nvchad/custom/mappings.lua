@@ -1,6 +1,7 @@
 ------------------------------------
 -- 自定義快捷鍵
 -------------------
+---@diagnostic disable: lowercase-global, undefined-global
 
 local M = {}
 

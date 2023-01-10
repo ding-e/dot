@@ -404,3 +404,15 @@ gdm登錄界面: /usr/share/xsessions/
         改為
         <Enabled>1</Enabled>
 
+3. firefox 禁止連接總是彈出新窗口
+    https://zhuanlan.zhihu.com/p/362005322
+    1. about:config
+        browser.link.open_newwindow -> 3
+        browser.link.open_newwindow.restriction -> 2
+
+4. nvim clangd - arm
+    https://github.com/clangd/clangd/issues/514
+
+5. dwm下的中括號鍵位[和] 名稱
+    https://www.reddit.com/r/suckless/comments/raku5c/how_to_use_square_brackets_for_a_key_binding_in/
+    XK_bracketleft / XK_bracketright

@@ -1,6 +1,8 @@
 ------------------------------------
 -- 插件添加/覆蓋/移除/禁用
 ------------------------------
+---@diagnostic disable: lowercase-global, undefined-global
+
 -- Awesome plugins for Neovim
 -- https://nvimluau.dev
 

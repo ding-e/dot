@@ -1,6 +1,7 @@
 ------------------------------------
 -- 覆蓋nvchad ui模塊的頂部標籤列表
 -----------------------------------
+---@diagnostic disable: lowercase-global, undefined-global, undefined-field
 
 local api = vim.api
 local devicons_present, devicons = pcall(require, "nvim-web-devicons")

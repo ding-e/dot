@@ -1,6 +1,7 @@
 ------------------------------------
 -- 自定義ui模塊/ui插件 圖標
 ----------------------------
+---@diagnostic disable: lowercase-global, undefined-global
 
 local M = {}
 

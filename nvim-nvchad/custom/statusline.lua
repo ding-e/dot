@@ -1,6 +1,7 @@
 ------------------------------------
 -- 覆蓋nvchad ui模塊的底部狀態欄
 ----------------------------------
+---@diagnostic disable: lowercase-global, undefined-global
 
 local fn = vim.fn
 local sep_style = vim.g.statusline_sep_style

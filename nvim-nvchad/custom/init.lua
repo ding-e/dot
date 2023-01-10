@@ -1,6 +1,7 @@
 ------------------------------------
 -- 全局配置
 -------------
+---@diagnostic disable: lowercase-global, undefined-global
 
 require "custom.autocmd"
 require "custom.command"

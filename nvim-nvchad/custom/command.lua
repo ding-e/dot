@@ -1,6 +1,7 @@
 ------------------------------------
 -- 自定義命令
 ------------------
+---@diagnostic disable: lowercase-global, undefined-global
 
 local create_cmd = vim.api.nvim_create_user_command
 

@@ -1,6 +1,8 @@
 ------------------------------------
 -- 自動命令
 ------------------
+---@diagnostic disable: lowercase-global, undefined-global
+
 -- https://zhuanlan.zhihu.com/p/557199534
 
 -- BufWinEnter（创建默认窗口）

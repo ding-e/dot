@@ -1,6 +1,7 @@
 ------------------------------------
 -- nvchad 自定義配置
 ---------------------------
+---@diagnostic disable: lowercase-global, undefined-global
 
 local config = require "custom.config"
 

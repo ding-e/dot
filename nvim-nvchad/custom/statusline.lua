@@ -54,7 +54,8 @@ end
 M.fileInfo = function()
    -- local icon = "  "
    -- local icon = " ☻ "
-   local icon = " ғ "
+   -- local icon = " ғ "
+   local icon = " F "
    local filename = (fn.expand "%" == "" and "Empty ") or fn.expand "%:t"
 
    if filename ~= "Empty " then
@@ -65,9 +66,8 @@ M.fileInfo = function()
       --    local ft_icon = devicons.get_icon(filename)
       --    icon = (ft_icon ~= nil and " " .. ft_icon) or ""
       -- end
-      icon = " "
-
-      filename = " " .. filename .. " "
+      -- filename = " " .. filename .. " "
+      filename = "" .. filename .. " "
    end
 
    return "%#St_file_info#" .. icon .. filename .. "%#St_file_sep#" .. sep_r

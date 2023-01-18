@@ -9,23 +9,23 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="lambda"
-# ZSH_THEME="Chicago95"
-# ZSH_THEME="random"
-# ZSH_THEME="kiwi"
-# ZSH_THEME="fox"
+ZSH_THEME="robbyrussell"
 
 # MACOS
-if [ $(uname -o) = "Darwin" ]; then
+if [[ $(uname -o) = "Darwin" ]]; then
 ZSH_THEME="dinge"
 else # LINUX
-if [ $(uname -n) = "de-alpine" ]; then
+if [[ $(uname -n) = "de-alpine" ]]; then
 ZSH_THEME="norm"
-elif [ $(uname -n) = "de-arch" ] || [ $(uname -n) = "de-ubuntu" ]; then
+elif [[ $(uname -n) = "de-arch" ]] || [[ $(uname -n) = "de-ubuntu" ]]; then
 ZSH_THEME="Chicago95_Dinge"
-else
-ZSH_THEME="robbyrussell"
+if [[ ${VIMRUNTIME} != "" ]]; then
+ZSH_THEME="dinge2"
+fi
+# ZSH_THEME="dinge2"
+# if [[ ${TERM_PROGRAM} = "tmux" ]]; then
+# ZSH_THEME="Chicago95_Dinge"
+# fi
 fi
 fi
 
@@ -124,7 +124,7 @@ source $ZSH/oh-my-zsh.sh
 
 # =========================================================
 # MACOS.START
-if [ $(uname -o) = "Darwin" ]; then
+if [[ $(uname -o) = "Darwin" ]]; then
 
 
 # workspace
@@ -277,6 +277,10 @@ alias gweb="cd $WORKSPACE_PATH/web/www/"
 
 alias gvim="cd $HOME/.config/nvim/"
 alias glocal="cd $HOME/.local/share/"
+
+# 批量删除当前目录下的所有.DS_Store文件
+alias deldsstore="find . -name \".DS_Store\" -exec rm {} \;"
+alias finddsstore="find . -name \".DS_Store\""
 
 # 解决tmux clear 提示 "terminals database is inaccessible" 问题
 # [x] alias tmux="TERM=xterm-256color tmux"

@@ -258,12 +258,6 @@ M.nvterm = {
          end,
          "   切換浮動終端",
       },
-      ["<leader>ji"] = {
-         function()
-            require("nvterm.terminal").toggle "float"
-         end,
-         "   切換浮動終端",
-      },
 
       ["<C-h><C-i>"] = {
          function()
@@ -271,20 +265,8 @@ M.nvterm = {
          end,
          "   切換底部終端",
       },
-      ["<leader>hi"] = {
-         function()
-            require("nvterm.terminal").toggle "horizontal"
-         end,
-         "   切換底部終端",
-      },
 
       ["<C-v><C-i>"] = {
-         function()
-            require("nvterm.terminal").toggle "vertical"
-         end,
-         "   切換右側終端",
-      },
-      ["<leader>vi"] = {
          function()
             require("nvterm.terminal").toggle "vertical"
          end,

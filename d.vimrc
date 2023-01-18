@@ -197,8 +197,8 @@ Plug 'vim-airline/vim-airline-themes'
 
 "Plug 'fatih/vim-go'
 "Plug 'zah/nim.vim'
-Plug 'ding-e/nim-highlight'
-Plug 'ziglang/zig.vim'
+"Plug 'ding-e/nim-highlight'
+"Plug 'ziglang/zig.vim'
 
 call plug#end()
 " ----------------------------------

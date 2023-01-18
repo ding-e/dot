@@ -93,6 +93,7 @@ fi
 ${cmd} "$PWD/ohmyzsh/Chicago95.zsh-theme" "$HOME/.oh-my-zsh/themes/"
 ${cmd} "$PWD/ohmyzsh/Chicago95_Dinge.zsh-theme" "$HOME/.oh-my-zsh/themes/"
 ${cmd} "$PWD/ohmyzsh/dinge.zsh-theme" "$HOME/.oh-my-zsh/themes/"
+${cmd} "$PWD/ohmyzsh/dinge2.zsh-theme" "$HOME/.oh-my-zsh/themes/"
 ${cmd} "$PWD/d.zshrc" "$HOME/.zshrc"
 # -----------------
 

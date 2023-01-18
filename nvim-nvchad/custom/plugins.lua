@@ -18,12 +18,12 @@ return {
    -- leader快捷键菜单
    ["folke/which-key.nvim"] = { disable = false },
 
-   ["kyazdani42/nvim-tree.lua"] = {
+   ["nvim-tree/nvim-tree.lua"] = {
       after = { "ui", "nvim-web-devicons" },
       override_options = set_nvimtree(),
    },
 
-   ["kyazdani42/nvim-web-devicons"] = {
+   ["nvim-tree/nvim-web-devicons"] = {
       after = "ui",
       module = "nvim-web-devicons",
       config = function()

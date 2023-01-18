@@ -12,7 +12,7 @@ packages : [
     man man-pages-zh_tw man-pages-zh_cn
 
     xorg-server xorg-xinit xorg-xsetroot
-    xorg-xrandr xorg-xinput libxft
+    xorg-xrandr xorg-xinput xorg-xev libxft
     dmenu rofi alacritty feh picom ranger
     trayer acpi dunst
     alsa-utils pavucontrol pulseaudio pulseaudio-alsa
@@ -24,6 +24,7 @@ packages : [
     xfce4-taskmanager viewnior
     fcitx5-im fcitx5-chinese-addons fcitx5-chewing
 
+    cmake llvm clang ninja
     stylua nim nimlangserver
 
     ------------------
@@ -213,12 +214,6 @@ thunar当前目录打开终端
     /usr/bin/alacritty
 
 ---------------------------
-chromium 翻譯問題
-vim /etc/hosts
-    # Fix Google Translate CN
-    74.125.137.90 translate.googleapis.com
-
----------------------------
 suckless
 git clone https://git.suckless.org/dwm
 git clone https://git.suckless.org/st
@@ -240,9 +235,32 @@ https://wiki.archlinuxcn.org/zh-hans/Dwm
     注释掉dwm.c中的如下代码：
     [EnterNotify] = enternotify,
 
+DWM下的中括號鍵位[和] 名稱
+https://reddit.com/r/suckless/comments/raku5c/how_to_use_square_brackets_for_a_key_binding_in/
+    XK_bracketleft / XK_bracketright
+
 ---------------------------
 morc_menu
 https://github.com/Boruch-Baum/morc_menu
+
+---------------------------
+nvchad
+https://nvchad.com/
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
+
+nvim clangd - arm
+https://github.com/clangd/clangd/issues/514
+
+-----------------
+ohmyzsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+zsh脚本条件判断
+https://linuxhint.com/if-else-conditionals-zsh-script/
+
+-----------------
+rustup
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 ---------------------------
 gufw & ufw
@@ -288,11 +306,15 @@ whoami
 sudo auditctl -e0
 
 ---------------------------
-/etc/local.gen
+/etc/locale.gen
 -> zh_HK.UTF-8 UTF-8
 locale-ge
 
-/etc/default/locale
+arch   : /etc/locale.conf
+-> #LANG=en_US.UTF-8
+   LANG=zh_HK.UTF-8
+
+ubuntu : /etc/default/locale
 -> LANG="zh_HK.UTF-8"
    LANGUAGE="zh_HK:zh"
 
@@ -410,9 +432,8 @@ gdm登錄界面: /usr/share/xsessions/
         browser.link.open_newwindow -> 3
         browser.link.open_newwindow.restriction -> 2
 
-4. nvim clangd - arm
-    https://github.com/clangd/clangd/issues/514
+4. chromium 翻譯問題
+    vim /etc/hosts
+        # Fix Google Translate CN
+        74.125.137.90 translate.googleapis.com
 
-5. dwm下的中括號鍵位[和] 名稱
-    https://www.reddit.com/r/suckless/comments/raku5c/how_to_use_square_brackets_for_a_key_binding_in/
-    XK_bracketleft / XK_bracketright

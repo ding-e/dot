@@ -222,9 +222,14 @@ print_wifi() {
   echo -e "${S_ICON_3}WIFI $(get_wifi_name)${S_ICON_4}"
 }
 
-# 时间
+# 月份 & 时间
 print_datetime() {
   echo -e "${S_ICON_3}DATE $(get_date 2) $(get_time)${S_ICON_4}"
+}
+
+# 时间
+print_time() {
+  echo -e "${S_ICON_3}TIME $(get_time)${S_ICON_4}"
 }
 
 # 磁盘使用情况
@@ -334,19 +339,22 @@ print_packages_up_info() {
 # ======================================================
 
 print_status_type_1() {
-    # intel / amd cpu 
+    # intel / amd cpu
     #echo -e "${S_LEFT_SPACE}$(print_wifi_speed)${S_ICON_1}$(print_mem)${S_ICON_1}$(print_wifi_datetime)${S_RIGHT_SPACE}"
 
-    # vmware m1 arm
-    echo -e "${S_LEFT_SPACE}$(print_wifi_speed)${S_ICON_1}$(print_mem)${S_ICON_1}$(print_volume_datetime)${S_RIGHT_SPACE}"
+    # 虛擬機
+    # echo -e "${S_LEFT_SPACE}$(print_wifi_speed)${S_ICON_1}$(print_mem)${S_ICON_1}$(print_volume_datetime)${S_RIGHT_SPACE}"
+    echo -e "${S_LEFT_SPACE}$(print_wifi_speed)${S_ICON_1}$(print_mem)${S_ICON_1}$(print_time)${S_RIGHT_SPACE}"
+    # echo -e "${S_LEFT_SPACE}$(print_wifi_speed)${S_ICON_1}$(print_mem)${S_RIGHT_SPACE}"
 }
 
 print_status_type_2() {
-    # intel / amd cpu 
+    # intel / amd cpu
     #echo -e "${S_LEFT_SPACE}$(print_wifi_speed)${S_ICON_1}$(print_root_disk)${S_ICON_1}$(print_battery_temperature)${S_ICON_1}$(print_volume_light)${S_RIGHT_SPACE}"
 
-    # vmware m1 arm
-    echo -e "${S_LEFT_SPACE}$(print_wifi_speed)${S_ICON_1}$(print_mem)${S_ICON_1}$(print_root_disk)${S_ICON_1}$(print_volume_datetime)${S_RIGHT_SPACE}"
+    # 虛擬機
+    # echo -e "${S_LEFT_SPACE}$(print_wifi_speed)${S_ICON_1}$(print_mem)${S_ICON_1}$(print_root_disk)${S_ICON_1}$(print_volume_datetime)${S_RIGHT_SPACE}"
+    echo -e "${S_LEFT_SPACE}$(print_root_disk)${S_ICON_1}$(print_volume_datetime)${S_RIGHT_SPACE}"
 }
 
 

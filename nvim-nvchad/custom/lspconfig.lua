@@ -15,7 +15,41 @@ lspSymbol("Hint", " H")
 lspSymbol("Warn", " W")
 ------------------------------
 
-local on_attach = require("plugins.configs.lspconfig").on_attach
+-- local on_attach = require("plugins.configs.lspconfig").on_attach
+local on_attach = function(client, bufnr)
+   require("plugins.configs.lspconfig").on_attach(client, bufnr)
+
+   -- lsp錯誤信息 - 光標懸停時浮動顯示 - (錯誤信息也可以使用folke/trouble.nvim)
+   -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization \
+   --                   #show-line-diagnostics-automatically-in-hover-window
+   -- vim.api.nvim_create_autocmd("CursorHold", {
+   --    buffer = bufnr,
+   --    callback = function()
+   --       local opts = {
+   --          focusable = false,
+   --          close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+   --          border = "rounded",
+   --          source = "always",
+   --          prefix = " ",
+   --          scope = "cursor",
+   --       }
+   --       vim.diagnostic.open_float(nil, opts)
+   --    end,
+   -- })
+end
+--------------------
+-- 禁用lsp错误信息在当前行末显示
+-- https://github.com/neovim/nvim-lspconfig/issues/662
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+   vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = false,
+      signs = true,
+      update_in_insert = false,
+      underline = true,
+   }
+)
+-------------------------------------
+
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
@@ -116,13 +150,11 @@ lspconfig.clangd.setup {
    filetypes = { "c", "cpp", "h", "hpp", "objc" },
    -- rootPatterns = { ".git", "compile_flags.txt", "compile_commands.json" },
    -- handlers = {
-   --    ["textDocument/publishDiagnostics"] =
-   --       vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-   --          virtual_text = true,
-   --          signs = true,
-   --          underline = true,
-   --          update_in_insert = false,
-   --       }),
+   --    ["textDocument/publishDiagnostics"] = vim.lsp.with(
+   --       vim.lsp.diagnostic.on_publish_diagnostics, {
+   --          virtual_text = true, signs = true, underline = true, update_in_insert = false,
+   --       }
+   --    ),
    -- },
 }
 
@@ -130,22 +162,18 @@ lspconfig.clangd.setup {
 lspconfig.rust_analyzer.setup {
    on_attach = on_attach,
    capabilities = capabilities,
+   -- handlers = {
+   --    ["textDocument/publishDiagnostics"] = vim.lsp.with(
+   --       vim.lsp.diagnostic.on_publish_diagnostics, {
+   --          virtual_text = false, signs = true, underline = true, update_in_insert = false,
+   --       }
+   --    ),
+   -- },
    -- settings = {
    --    ["rust-analyzer"] = {
-   --       imports = {
-   --          granularity = {
-   --             group = "module",
-   --          },
-   --          prefix = "self",
-   --       },
-   --       cargo = {
-   --          buildScripts = {
-   --             enable = true,
-   --          },
-   --       },
-   --       procMacro = {
-   --          enable = true,
-   --       },
+   --       imports = { granularity = { group = "module", }, prefix = "self", },
+   --       cargo = { buildScripts = { enable = true, }, },
+   --       procMacro = { enable = true, },
    --    },
    -- },
 }

@@ -20,7 +20,7 @@ ZSH_THEME="norm"
 elif [[ $(uname -n) = "de-arch" ]] || [[ $(uname -n) = "de-ubuntu" ]]; then
 ZSH_THEME="Chicago95_Dinge"
 if [[ ${VIMRUNTIME} != "" ]]; then
-ZSH_THEME="dinge2"
+ZSH_THEME="dinge-minimal"
 fi
 # ZSH_THEME="dinge2"
 # if [[ ${TERM_PROGRAM} = "tmux" ]]; then

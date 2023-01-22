@@ -185,6 +185,21 @@ https://wiki.archlinuxcn.org/wiki/HiDPI#Firefox
     firefox:
         about:config -> layout.css.devPixelsPerPx -> 1.5
 
+-------
+如果使用更高dpi(240/288)，firefox下的ui字體顯示會很小
+    firefox:
+        https://wiki.archlinux.org/title/Firefox/Tweaks#Configure_the_DPI_value
+            about:config ->
+                browser.display.os-zoom-behavior -> 0
+                layout.css.devPixelsPerPx        -> 1.68~1.75
+                ui.textScaleFactor               -> 96~110
+
+         about:config路徑:
+             ~/.mozilla/firefox/xxx.default-release/prefs.js
+    chromium:
+        vim ~/.config/chromium-flags.conf
+            --force-device-scale-factor=2
+
 -----------------
 # gtk & qt & font
 ~/.xprofile
@@ -273,6 +288,24 @@ sudo ufw allow 22
 sudo ufw allow 8080
 
 ---------------------------
+chromium
+隱藏滾動條
+    chrome://flags/#overlay-scrollbars -> enable
+
+翻譯問題
+    vim /etc/hosts
+        # Fix Google Translate CN
+        74.125.137.90 translate.googleapis.com
+
+---------------------------
+firefox
+禁止連接總是彈出新窗口
+    https://zhuanlan.zhihu.com/p/362005322
+    1. about:config
+        browser.link.open_newwindow -> 3
+        browser.link.open_newwindow.restriction -> 2
+
+---------------------------
 aur & opensnitch
 # https://github.com/evilsocket/opensnitch/wiki/Installation
 # https://aur.archlinux.org/packages?O=0&SeB=nd&K=opensnitch
@@ -350,7 +383,7 @@ newgrp - docker
 https://www.jb51.net/article/208613.htm
 
 -----------------------
-HDPI
+.Xresources - HiDPI
 https://wiki.archlinuxcn.org/wiki/HiDPI#X_Server
 https://wiki.archlinuxcn.org/wiki/Xorg#显示大小和_DPI
 xrdb -query | grep dpi
@@ -425,15 +458,4 @@ gdm登錄界面: /usr/share/xsessions/
         <Enabled>0</Enabled>
         改為
         <Enabled>1</Enabled>
-
-3. firefox 禁止連接總是彈出新窗口
-    https://zhuanlan.zhihu.com/p/362005322
-    1. about:config
-        browser.link.open_newwindow -> 3
-        browser.link.open_newwindow.restriction -> 2
-
-4. chromium 翻譯問題
-    vim /etc/hosts
-        # Fix Google Translate CN
-        74.125.137.90 translate.googleapis.com
 

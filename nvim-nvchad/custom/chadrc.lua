@@ -10,6 +10,7 @@ local M = {}
 M.ui = {
    theme = config.theme,
    theme_toggle = config.theme_toggle,
+   transparency = false,
 }
 
 M.mappings = require "custom.mappings"

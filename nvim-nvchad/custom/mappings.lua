@@ -39,7 +39,7 @@ M.general = {
 
    n = {
       -- 命令行模式
-      [";"] = { ":", "command mode", opts = { nowait = true } },
+      -- [";"] = { ":", "command mode", opts = { nowait = true } },
 
       -- 禁用s按键
       ["s"] = { "<nop>", "" },
@@ -122,11 +122,98 @@ M.general = {
       ["<down>"] = { "<CMD> res -5 <CR>", "" },
       ["<left>"] = { "<CMD> vertical resize -5 <CR>", "" },
       ["<right>"] = { "<CMD> vertical resize +5 <CR>", "" },
+   },
+}
 
+local diagnostic_opts = {
+   -- focusable = false,
+   -- close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+   -- border = "rounded", source = "always", prefix = " ", scope = "cursor",
+
+   border = "rounded",
+   scope = "line",
+}
+-- 重写nvchad lsp快捷键
+M.lspconfig = {
+   plugin = true,
+   -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
+
+   n = {
       -- LSP
-      ["<leader>ls"] = { "<CMD> LspStart <CR>", "啟動LSP服務" },
-      ["<leader>lr"] = { "<CMD> LspRestart <CR>", "重啟LSP服務" },
-      ["<leader>lk"] = { "<CMD> LspStop <CR>", "關閉LSP服務" },
+      ["<leader>lps"] = { "<CMD> LspStart <CR>", "啟動LSP服務" },
+      ["<leader>lpr"] = { "<CMD> LspRestart <CR>", "重啟LSP服務" },
+      ["<leader>lpk"] = { "<CMD> LspStop <CR>", "關閉LSP服務" },
+
+      ["K"] = {
+         function()
+            vim.lsp.buf.hover()
+         end,
+         "顯示數據結構信息 - lsp hover",
+      },
+
+      ["<leader>e"] = {
+         function()
+            vim.diagnostic.open_float(nil, diagnostic_opts)
+         end,
+         "浮動顯示錯誤信息 - floating diagnostic",
+      },
+
+      ["[d"] = {
+         function()
+            vim.diagnostic.goto_prev { float = diagnostic_opts }
+         end,
+         "跳轉到上一個錯誤 - goto prev",
+      },
+
+      -- 原: d]
+      ["]d"] = {
+         function()
+            vim.diagnostic.goto_next { float = diagnostic_opts }
+         end,
+         "跳轉到下一個錯誤 - goto_next",
+      },
+
+      ["<leader>q"] = {
+         function()
+            vim.diagnostic.setloclist()
+         end,
+         "底部顯示錯誤列表 - diagnostic setloclist",
+      },
+
+      ["gD"] = {
+         function()
+            vim.lsp.buf.declaration()
+         end,
+         "跳轉到聲明 - lsp declaration",
+      },
+
+      ["gd"] = {
+         function()
+            vim.lsp.buf.definition()
+         end,
+         "跳轉到定義 - lsp definition",
+      },
+
+      ["gi"] = {
+         function()
+            vim.lsp.buf.implementation()
+         end,
+         "跳轉到實現 - lsp implementation",
+      },
+
+      ["gr"] = {
+         function()
+            vim.lsp.buf.references()
+         end,
+         "跳轉到參考 - lsp references",
+      },
+
+      ["<leader>ra"] = {
+         function()
+            require("nvchad_ui.renamer").open()
+         end,
+         "修改名稱 - lsp rename",
+      },
    },
 }
 

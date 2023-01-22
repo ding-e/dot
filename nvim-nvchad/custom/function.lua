@@ -357,13 +357,10 @@ function set_nullls()
          -- lua
          b.formatting.stylua,
          -- b.diagnostics.luacheck.with { extra_args = { "--global vim" } },
-         -- rust
+
          b.formatting.rustfmt,
-         -- zig
          b.formatting.zigfmt,
-         -- nim
          b.formatting.nimpretty,
-         -- clang
          b.formatting.clang_format.with { extra_args = { "--style", "{IndentWidth: 4}" } },
       },
    }

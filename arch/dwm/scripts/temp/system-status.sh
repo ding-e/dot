@@ -1,4 +1,5 @@
-#!/bin/bash   
+#!/bin/bash
+
 # -- 注意：因为ubuntu默认使用bash，
 # -- 如果使用sh声明的话，将会无法使用source加载脚本
 # -- 具体参考：https://www.cnblogs.com/luego/p/11684311.html
@@ -8,8 +9,7 @@
 WORKSPACE=$(dirname $(readlink -f "$0") || (cd "$(dirname "$0")";pwd))
 
 # 导入状态的函数库
-#source ${WORKSPACE}/func.sh
-source ${WORKSPACE}/../func.sh
+source ${WORKSPACE}/dwm-status/func.sh
 
 S_ICON_3="[ "
 S_ICON_4=" ]"

@@ -278,9 +278,13 @@ alias gweb="cd $WORKSPACE_PATH/web/www/"
 alias gvim="cd $HOME/.config/nvim/"
 alias glocal="cd $HOME/.local/share/"
 
+# 天氣 (chubin/wttr.in)
+alias wttr="curl 'wttr.in/?lang=zh'"
+alias wttr_s="curl 'wttr.in/?lang=zh&format=4'"
+
 # 批量删除当前目录下的所有.DS_Store文件
-alias deldsstore="find . -name \".DS_Store\" -exec rm {} \;"
-alias finddsstore="find . -name \".DS_Store\""
+alias deldsstore="find . -name '.DS_Store' -exec rm {} \;"
+alias finddsstore="find . -name '.DS_Store'"
 
 # 解决tmux clear 提示 "terminals database is inaccessible" 问题
 # [x] alias tmux="TERM=xterm-256color tmux"

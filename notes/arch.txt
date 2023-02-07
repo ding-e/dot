@@ -61,11 +61,12 @@ packages : [
 
     # ---------------------------
     # xfce4 xfce4-whiskermenu-plugin
-    # xfce4-pulseaudio-plugin xfce4-netload-plugin
+    # xfce4-pulseudio-plugin xfce4-netload-plugin
 
     firefox : [
         Windows Classic Blue, ClassicWindows
 
+        Auto Tab Discard
         TWP - Translate Web Pages, 側邊翻譯
         NoScript, AdBlocker Ultimate, Proxy SwitchyOmega
         windowed-fullscreen-video, YouTube™ 双字幕

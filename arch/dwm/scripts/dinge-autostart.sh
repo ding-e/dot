@@ -5,9 +5,8 @@
 这是多行注释
 '
 
-/home/dinge/.dwm/scripts/tray-toggle.sh &
-
-/home/dinge/.dwm/scripts/wp-autochange.sh &
+# /home/dinge/.dwm/scripts/tray-toggle.sh &
+# /home/dinge/.dwm/scripts/wp-autochange.sh &
 
 #qv2ray &
 #firejail qv2ray &

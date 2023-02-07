@@ -186,6 +186,7 @@ set wildmenu
 call plug#begin('~/.vim/plugged')
 
 Plug 'mhinz/vim-startify'
+Plug 'scrooloose/nerdcommenter'
 
 " Plug 'Dave-Elec/gruvbox'
 Plug 'sainnhe/gruvbox-material'
@@ -204,6 +205,10 @@ call plug#end()
 " ----------------------------------
 
 let g:airline_theme='powerlineish'
+
+" 注释的时候自动加个空格
+let g:NERDSpaceDelims=1
+map <LEADER>/ <LEADER>c<SPACE>
 
 " 禁用gruvbox_material主题注释斜体
 let g:gruvbox_material_disable_italic_comment = 1

@@ -283,7 +283,7 @@ M.session = {
             end
             -- if buf_list_len == 0 then require("nvchad_ui.tabufline").close_buffer() end
             require("persistence").load()
-            require("nvim-tree").toggle(false, true)
+            -- require("nvim-tree").toggle(false, true)
          end,
          "session: 恢复当前目录的会话",
       },

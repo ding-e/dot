@@ -43,7 +43,8 @@ packages : [
     polkit polkit-gnome
     qt5ct kvantum-qt5
 
-    firejail firetools docker
+    firejail firetools
+    opensnitch docker
     rustup go
 
     nodejs npm
@@ -61,7 +62,7 @@ packages : [
 
     # ---------------------------
     # xfce4 xfce4-whiskermenu-plugin
-    # xfce4-pulseudio-plugin xfce4-netload-plugin
+    # xfce4-pulseaudio-plugin xfce4-netload-plugin
 
     firefox : [
         Windows Classic Blue, ClassicWindows
@@ -75,7 +76,9 @@ packages : [
 
 ================================================
 
+git clone --recursive https://github.com/ding-e/dot
 git clone https://github.com/ding-e/dot.arch
+
 牆紙
 cd dot.arch
 mkdir ~/.dwm && cp -R wallpapers ~/.dwm/
@@ -307,16 +310,26 @@ firefox
         browser.link.open_newwindow.restriction -> 2
 
 ---------------------------
-aur & opensnitch
+aur & opensnitch-git
 # https://github.com/evilsocket/opensnitch/wiki/Installation
 # https://aur.archlinux.org/packages?O=0&SeB=nd&K=opensnitch
 
-git clone https://aur.archlinux.org/opensnitch
-cd opensnitch
+git clone https://aur.archlinux.org/opensnitch-git.git
+cd opensnitch-git
 makepkg -si
 ---------------
 sudo systemctl enable --now opensnitchd
 sudo systemctl start opensnitchd
+
+---------------------------
+spotify (x86_64) - aur
+# https://aur.archlinux.org/packages/spotify
+
+# 手动倒入密钥
+curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | gpg --import -
+git clone https://aur.archlinux.org/spotify.git
+cd spotify
+makepkg -si
 
 ---------------------------
 snap

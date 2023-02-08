@@ -69,6 +69,16 @@ Mac-ifconfig输出注释
 https://www.jianshu.com/p/77226040a12e
 
 ------------------
+# 获取parallel - macos下载地址
+/Applications/Parallels\ Desktop.app/Contents/MacOS/prl_macvm_create --getipswurl
+
+# 将ipsw文件装macvm
+# /Applications/Parallels\ Desktop.app/Contents/MacOS/prl_macvm_create <path_to_ipsw> <path_to_macVM> --disksize <bytes>
+/Applications/Parallels\ Desktop.app/Contents/MacOS/prl_macvm_create ~/Downloads/UniversalMac_12.5.1_21G83_Restore.ipsw ~/Parallels/macOS.macvm --disksize 80000000000
+
+# https://www.zhihu.com/question/438860536/answer/2844367339?utm_source=zhihu
+
+------------------
 RDM
 https://github.com/avibrazil/RDM
     arm:

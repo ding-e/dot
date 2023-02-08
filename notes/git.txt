@@ -1,0 +1,43 @@
+------------------------------------
+- GIT
+------------------
+
+https://zhuanlan.zhihu.com/p/404615843
+
+---------------------
+# 现有本地项目添加子模块
+# git submodule add $url $dir_path
+    git submodule add https://github.com/trygveaa/kitty-kitten-search kitty/kitty_search
+
+---------------------
+# 克隆远程包含子模块项目
+git clone https://github.com/ding-e/dot
+# git submodule init && git submodule update
+git submodule update --init --recursive
+
+或者:
+git clone --recursive https://github.com/ding-e/dot
+
+---------------------
+# 查看当前项目有哪些子模块
+git submodule
+
+---------------------
+# 更新项目内子模块到最新版本：
+git submodule update
+
+# 更新子模块为远程项目的最新版本
+git submodule update --remote
+
+---------------------
+# 删除子模块
+git rm --cached kitty/kitty_search
+rm -rf kitty/kitty_search
+vim .gitmodules
+    删除 [submodule "kitty/kitty_search"] 字段
+vim .git/config
+    删除 [submodule "kitty/kitty_search"] 字段
+rm -rf .git/modules/kitty/kitty_search
+
+
+

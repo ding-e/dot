@@ -90,11 +90,11 @@ surf, slock
 
 ---------------------------
 fcitx5 theme
-cp -R dot.arch/themes/fcitx5-win95/* ~/.local/share/fcitx5/themes/
+cp -R dot.arch/themes/fcitx5-win95 ~/.local/share/fcitx5/themes/
 1.vim ~/.config/fcitx5/conf/classicui.conf
     Theme=fcitx5-win95
 # 1. 配置->附加组件->经典用户界面->主題->fcitx5-win95
-2. 配置->附加组件->拼音->勾选在程序中显示预编辑文本
+2. 配置->附加组件->拼音->取消勾选在程序中显示预编辑文本
 https://www.cnblogs.com/maicss/p/15056420.html
 
 vim ~/.xprofile
@@ -135,6 +135,13 @@ sudo pacman -Syyu
 xinit
 https://wiki.archlinuxcn.org/wiki/Xinit
 cat /etc/X11/xinit/xinitrc
+
+---------------------------
+dunst
+https://wiki.archlinux.org/title/Dunst
+    cp /etc/dunst/dunstrc ~/.config/dunst
+    killall dunst
+    notify-send "test..."
 
 ---------------------------
 theme & lxappearance
@@ -350,7 +357,9 @@ sudo pacman -R $(pacman -Qtdq)
 ================================================
 
 whoami
-sudo auditctl -e0
+
+sudo auditctl -e 0
+sudo auditctl -D
 
 ---------------------------
 /etc/locale.gen

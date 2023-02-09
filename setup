@@ -69,6 +69,10 @@ else
     mkdir -p "$HOME/.config/alacritty"
     ${cmd} "$PWD/arch/config/alacritty/alacritty.yml" "$HOME/.config/alacritty/"
 
+    # dunst
+    mkdir -p "$HOME/.config/dunst"
+    ${cmd} "$PWD/arch/config/dunst/d.dunstrc" "$HOME/.config/dunst/dunstrc"
+
     # morc_menua & dmenu
     mkdir -p "$HOME/.config/morc_menu"
     ${cmd} "$PWD/arch/config/morc_menu/morc_menu_v1.conf" "$HOME/.config/morc_menu/"

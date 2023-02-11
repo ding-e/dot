@@ -472,6 +472,7 @@ gdm登錄界面: /usr/share/xsessions/
 
     cli:
     /usr/bin/prlcc &
+    /usr/bin/prlcp &
     #/usr/bin/ptiagent --info &
 
 2. Parallels 觸摸板滾動快問題:

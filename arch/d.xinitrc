@@ -51,7 +51,10 @@ fi
 # -----------------------------------------------------------------------
 
 # Parallels Tools
+# 动态显示分辨率
 /usr/bin/prlcc &
+# 同步剪贴板
+/usr/bin/prlcp &
 #/usr/bin/ptiagent --info &
 
 # 屏蔽错误输出

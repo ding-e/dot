@@ -135,6 +135,9 @@ return {
    -- 符號對齊
    ["junegunn/vim-easy-align"] = {},
 
+   -- godot gdscript
+   ["habamax/vim-godot"] = {},
+
    -- zig language
    -- tree-sitter - TSInstall zig
    -- ["ding-e/zig-highlight-enhanced"] = { after = "zig.vim" },

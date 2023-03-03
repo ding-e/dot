@@ -1,0 +1,34 @@
+------------------------------------
+- Godot
+------------------
+
+命令行
+sudo ln -s /Applications/Godot.app/Contents/MacOS/Godot /usr/local/bin/godot
+
+godot使用neovim
+
+点击gdscript图标，在nvim缓冲区打开文件:
+# https://github.com/mhinz/neovim-remote
+brew install neovim-remote
+
+格式化:
+# https://github.com/Scony/godot-gdscript-toolkit
+# Godot 4:
+pip3 install "gdtoolkit==4.*"
+# Godot 3:
+pip3 install "gdtoolkit==3.*"
+
+
+设置外部编辑器
+# https://github.com/habamax/vim-godot/issues/46
+路径: /opt/homebrew/bin/nvr
+参数: {file} (默认)
+----
+进入项目目录
+NVIM_LISTEN_ADDRESS=/tmp/nvimsockeyt nvim
+
+-----------------------
+一些問題:
+
+1. godot4语言服务器端口为: 6005
+   vim-godot默认lsp默认设置的端口为: 6008 (godot3)

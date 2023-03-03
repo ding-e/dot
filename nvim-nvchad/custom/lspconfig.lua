@@ -62,6 +62,16 @@ for _, lsp in ipairs(servers) do
    }
 end
 
+lspconfig.gdscript.setup {
+   on_attach = on_attach,
+   capabilities = capabilities,
+   flags = {
+      debounce_text_changes = 150,
+   },
+   filetypes = { "gd", "gdscript", "gdscript3" },
+    -- cmd = {"ncat", "localhost", "6008"}
+}
+
 -- nim language
 lspconfig.nimls.setup {
    on_attach = on_attach,

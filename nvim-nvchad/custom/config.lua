@@ -9,7 +9,7 @@ local M = {
    theme_toggle = { "gruvchad", "dinge" },
 
    -- 項目列表
-   workspace_list = { "nim", "dot", "zig", "nvim", ".config/nvim" },
+   workspace_list = { "nim", "dot", "zig", "nvim", "godot", ".config/nvim" },
    -- 如果當前項目存在workspace_list中使用第一個主題
    -- 否則使用第二個
    workspace_theme_toggle = { "dinge", "gruvchad" },

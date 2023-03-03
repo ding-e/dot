@@ -278,6 +278,9 @@ alias gweb="cd $WORKSPACE_PATH/web/www/"
 alias gvim="cd $HOME/.config/nvim/"
 alias glocal="cd $HOME/.local/share/"
 
+# NVIM_LISTEN_ADDRESS=/tmp/nvimsockeyt nvim
+alias ggodot="cd $WORKSPACE_PATH/godot/"
+
 # 天氣 (chubin/wttr.in)
 alias wttr="curl 'wttr.in/?lang=zh'"
 alias wttr_s="curl 'wttr.in/?lang=zh&format=4'"

@@ -358,6 +358,7 @@ function set_nullls()
          b.formatting.stylua,
          -- b.diagnostics.luacheck.with { extra_args = { "--global vim" } },
 
+         b.formatting.gdformat,
          b.formatting.rustfmt,
          b.formatting.zigfmt,
          b.formatting.nimpretty,

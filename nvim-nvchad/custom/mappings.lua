@@ -428,6 +428,23 @@ M.nvterm = {
    },
 }
 
+M.godot = {
+   n = {
+      -- ["<leader>gl"] = { "<CMD> GodotRunLast <CR>", "Godot-运行最后一个场景" },
+      -- ["<leader>gr"] = { "<CMD> GodotRun <CR>", "Godot-运行特定场景/主场景" },
+      -- ["<leader>gc"] = { "<CMD> GodotRunCurrent <CR>", "Godot-运行当前场景" },
+      -- ["<leader>gz"] = { "<CMD> GodotRunFZF <CR>", "Godot-FZF查找并运行场景" },
+
+      -- ["<leader>gr"] = { "<CMD> !godot <CR>", "Godot-运行特定场景/主场景" },
+      ["<leader>gr"] = {
+         function()
+            require("nvterm.terminal").send("clear && godot", "vertical")
+         end,
+         "Godot-运行主场景",
+      },
+   },
+}
+
 return M
 
 --  ========================

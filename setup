@@ -4,6 +4,9 @@ cmd=''
 
 # sh -c ohmyzsh/omz.sh
 # git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+
+# nvchad 1.0:
+# git clone https://github.com/ding-e/NvChad-1.0 ~/.config/nvim --depth 1
 # --------------------------------
 
 # MACOS

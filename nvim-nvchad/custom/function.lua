@@ -108,7 +108,7 @@ function set_devicons()
       -- or { override = icons.devicons }
       or { override = merge_tb("force", require("nvchad_ui.icons").devicons, icons["devicons"] or {}) }
 
-   devicons.setup(utils.load_override(opt, "kyazdani42/nvim-web-devicons"))
+   devicons.setup(utils.load_override(opt, "nvim-tree/nvim-web-devicons"))
 end
 
 -- NvChad/ui

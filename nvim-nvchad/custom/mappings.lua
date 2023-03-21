@@ -15,6 +15,8 @@ M.sendCommand = {
    n = {
       -- ["<leader>cc"] = {
       --    function()
+      -- require("nvterm.terminal").show "vertical"
+      -- require("nvterm.terminal").hide "vertical"
       --       require("nvterm.terminal").send("clear && g++ -o out " .. vim.fn.expand "%" .. " && ./out", "vertical")
       --    end,
       --    "compile & run a cpp file",
@@ -428,19 +430,26 @@ M.nvterm = {
    },
 }
 
-M.godot = {
+M.game = {
    n = {
       -- ["<leader>gl"] = { "<CMD> GodotRunLast <CR>", "Godot-运行最后一个场景" },
       -- ["<leader>gr"] = { "<CMD> GodotRun <CR>", "Godot-运行特定场景/主场景" },
       -- ["<leader>gc"] = { "<CMD> GodotRunCurrent <CR>", "Godot-运行当前场景" },
       -- ["<leader>gz"] = { "<CMD> GodotRunFZF <CR>", "Godot-FZF查找并运行场景" },
-
       -- ["<leader>gr"] = { "<CMD> !godot <CR>", "Godot-运行特定场景/主场景" },
+
       ["<leader>gr"] = {
          function()
-            require("nvterm.terminal").send("clear && godot", "vertical")
+            local cmd = "clear"
+            if os.execute "find project.godot > /dev/null" == 0 then
+               cmd = cmd .. " && godot"
+            elseif os.execute "find .luarc.json > /dev/null" == 0
+               and os.execute "find main.lua > /dev/null" == 0 then
+               cmd = cmd .. " && love ."
+            end
+            require("nvterm.terminal").send(cmd, "vertical")
          end,
-         "Godot-运行主场景",
+         "根据当前项目特征-运行特定引擎",
       },
    },
 }

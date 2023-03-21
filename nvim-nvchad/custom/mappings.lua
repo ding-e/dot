@@ -3,6 +3,7 @@
 -------------------
 ---@diagnostic disable: lowercase-global, undefined-global
 
+local config = require "custom.config"
 local M = {}
 
 -- M.disabled = {
@@ -440,16 +441,21 @@ M.game = {
 
       ["<leader>gr"] = {
          function()
-            local cmd = "clear"
-            if os.execute "find project.godot > /dev/null" == 0 then
-               cmd = cmd .. " && godot"
-            elseif os.execute "find .luarc.json > /dev/null" == 0
-               and os.execute "find main.lua > /dev/null" == 0 then
-               cmd = cmd .. " && love ."
+            local cmd, c, f = "", "", nil
+            for _, v in pairs(config.game_project_cmd) do
+               f = io.open(v[1], "r")
+               if nil ~= f then
+                  c = f:read "*a"
+                  f:close()
+                  cmd = "" ~= v[2] and (nil ~= string.find(c, v[2]) and v[3] or "") or v[3]
+                  break
+               end
             end
-            require("nvterm.terminal").send(cmd, "vertical")
+            if "" ~= cmd then
+               require("nvterm.terminal").send(cmd, "vertical")
+            end
          end,
-         "根据当前项目特征-运行特定引擎",
+         "运行游戏项目",
       },
    },
 }

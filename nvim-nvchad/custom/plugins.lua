@@ -139,6 +139,9 @@ return {
    -- godot gdscript
    ["habamax/vim-godot"] = {},
 
+   -- ["leafo/moonscript-vim"] = {},
+   -- ["svermeulen/nvim-moonmaker"] = {},
+
    -- zig language
    -- tree-sitter - TSInstall zig
    -- ["ding-e/zig-highlight-enhanced"] = { after = "zig.vim" },

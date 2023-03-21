@@ -113,6 +113,7 @@ ${cmd} "$PWD/d.tmux.conf" "$HOME/.tmux.conf"
 mkdir -p "$HOME/.config/nvim/" "$HOME/.config/nvim/lua"
 ${cmd} "$PWD/nvim-nvchad/custom" "$HOME/.config/nvim/lua"
 ${cmd} "$PWD/nvim-nvchad/after" "$HOME/.config/nvim"
+${cmd} "$PWD/d.editorconfig" "$HOME/.editorconfig"
 # -----------------
 
 # vim

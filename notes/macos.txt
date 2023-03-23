@@ -24,7 +24,7 @@ packages: [
 
         tmux nvim/nvchad
         nim, nimlangserver | nimlsp
-        zig - HEAD, zls(github)
+        zig - HEAD, zls
         sdl2/sdl2_*
         go
 

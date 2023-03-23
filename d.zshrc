@@ -353,7 +353,7 @@ export PATH=$NIMBIN:$PATH
 # zls - zig language server
 #       git clone [-b 0.10.0] --recurse-submodules zls.git && build -Drelease-small
 # zls -> zls.json path: /Users/dinge/Library/Application\ Support/zls.json
-export ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls-0.10.0/zig-out/bin"
-# ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls-master/zig-out/bin"
-export PATH=$ZLSBIN:$PATH
+# export ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls-0.10.0/zig-out/bin"
+# # ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls-master/zig-out/bin"
+# export PATH=$ZLSBIN:$PATH
 

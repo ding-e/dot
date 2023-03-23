@@ -18,10 +18,10 @@ local M = {
    -- "none", "file", "nvchad"
    icon_theme = "file",
 
-   -- 根据当前项目特征指定对应有游戏引擎运行
+   -- 根据当前项目特征指定对应游戏引擎运行
    game_project_cmd = {
-      { ".luarc.json", "love2d", "clear && love ." },
-      { "project.godot", "", "clear && godot" },
+      love = { ".luarc.json", "love2d", "clear && love .", init = true },
+      godot = { "project.godot", "", "clear && godot", init = false },
    },
 
    -- mason, tree-sitter

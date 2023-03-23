@@ -342,21 +342,21 @@ M.nvterm = {
       -- 禁用ctrl+i按键
       -- ["<C-i>"] = { "<nop>", "" },
 
-      ["<C-j><C-i>"] = {
+      ["<C-j><C-k>"] = {
          function()
             require("nvterm.terminal").toggle "float"
          end,
          "   切換浮動終端",
       },
 
-      ["<C-h><C-i>"] = {
+      ["<C-h><C-k>"] = {
          function()
             require("nvterm.terminal").toggle "horizontal"
          end,
          "   切換底部終端",
       },
 
-      ["<C-v><C-i>"] = {
+      ["<C-v><C-k>"] = {
          function()
             require("nvterm.terminal").toggle "vertical"
          end,
@@ -368,39 +368,21 @@ M.nvterm = {
       -- 禁用ctrl+i按键
       ["<C-i>"] = { "<nop>", "" },
 
-      ["<C-j><C-i>"] = {
-         function()
-            require("nvterm.terminal").toggle "float"
-         end,
-         "   切換浮動終端",
-      },
-      ["<leader>ji"] = {
+      ["<C-j><C-k>"] = {
          function()
             require("nvterm.terminal").toggle "float"
          end,
          "   切換浮動終端",
       },
 
-      ["<C-h><C-i>"] = {
-         function()
-            require("nvterm.terminal").toggle "horizontal"
-         end,
-         "   切換底部終端",
-      },
-      ["<leader>hi"] = {
+      ["<C-h><C-k>"] = {
          function()
             require("nvterm.terminal").toggle "horizontal"
          end,
          "   切換底部終端",
       },
 
-      ["<C-v><C-i>"] = {
-         function()
-            require("nvterm.terminal").toggle "vertical"
-         end,
-         "   切換右側終端",
-      },
-      ["<leader>vi"] = {
+      ["<C-v><C-k>"] = {
          function()
             require("nvterm.terminal").toggle "vertical"
          end,
@@ -427,6 +409,17 @@ M.nvterm = {
             vim.cmd [[ DeTerm ]]
          end,
          "   新建全屏終端",
+      },
+   },
+}
+
+M.lang = {
+   n = {
+      ["<leader>kn"] = {
+         function()
+            os.execute "killall nimsuggest"
+         end,
+         "kill掉所有nimsuggest进程",
       },
    },
 }

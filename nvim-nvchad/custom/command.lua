@@ -3,6 +3,8 @@
 ------------------
 ---@diagnostic disable: lowercase-global, undefined-global
 
+local config = require "custom.config"
+local utils = require "custom.utils"
 local create_cmd = vim.api.nvim_create_user_command
 
 -- 顯示/隱藏 行號
@@ -66,5 +68,28 @@ create_cmd("DeColorcolumn", function(args)
       vim.cmd [[ highlight ColorColumn guifg=#1e2122 guibg=#1e2122 ]]
    else
       vim.cmd [[ highlight ColorColumn guifg=none guibg=#2c2f30 ]]
+   end
+end, { nargs = "*", desc = "" })
+
+-- 为游戏项目生产预设文件
+-- DeProjectinit $config.game_project_cmd key
+create_cmd("DeProjectinit", function(args)
+   local c, l = string.gsub(args.args, "^%s*(.-)%s*$", "%1"), ""
+   local len, i = utils.table_len(config.game_project_cmd), 0
+   local template_path = "~/.config/nvim/lua/custom/template/"
+   for k, v in pairs(config.game_project_cmd) do
+      if false ~= v.init then
+         if c == k then
+            os.execute("cp " .. template_path .. v[1] .. " . 2>/dev/null")
+            break
+         end
+         l = l .. k .. " "
+         i = i + 1
+      else
+         len = len - 1
+      end
+      if i >= len then
+         print("ERROR - 目前可初始化的项目: [ " .. l .. "]")
+      end
    end
 end, { nargs = "*", desc = "" })

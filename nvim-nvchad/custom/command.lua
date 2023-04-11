@@ -80,7 +80,7 @@ create_cmd("DeProjectinit", function(args)
    for k, v in pairs(config.game_project_cmd) do
       if false ~= v.init then
          if c == k then
-            os.execute("cp " .. template_path .. v[1] .. " . 2>/dev/null")
+            os.execute("cp " .. template_path .. k .. "/. . 2>/dev/null")
             break
          end
          l = l .. k .. " "

@@ -125,6 +125,9 @@ M.general = {
       ["<down>"] = { "<CMD> res -5 <CR>", "" },
       ["<left>"] = { "<CMD> vertical resize -5 <CR>", "" },
       ["<right>"] = { "<CMD> vertical resize +5 <CR>", "" },
+
+      -- 打开当前文件目录
+      ["<leader>op"] = { "<CMD>lua os.execute(\"open \" .. vim.fn.expand('%:p:h')) <CR>", "打开当前文件目录" },
    },
 }
 
@@ -366,7 +369,7 @@ M.nvterm = {
 
    n = {
       -- 禁用ctrl+i按键
-      ["<C-i>"] = { "<nop>", "" },
+      -- ["<C-i>"] = { "<nop>", "" },
 
       ["<C-j><C-k>"] = {
          function()

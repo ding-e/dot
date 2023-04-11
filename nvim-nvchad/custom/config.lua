@@ -9,7 +9,8 @@ local M = {
    theme_toggle = { "gruvchad", "dinge" },
 
    -- 項目列表
-   workspace_list = { "nim", "dot", "zig", "nvim", "godot", ".config/nvim" },
+   workspace_list = { "nim", "dot", "zig", "nvim",
+                      "love2d", "godot", ".config/nvim" },
    -- 如果當前項目存在workspace_list中使用第一個主題
    -- 否則使用第二個
    workspace_theme_toggle = { "dinge", "gruvchad" },
@@ -17,6 +18,9 @@ local M = {
    -- 圖標相關 (nvim-tree/tabufline)
    -- "none", "file", "nvchad"
    icon_theme = "file",
+
+   -- nvimtree是否自適應寬度
+   tree_adaptive_size = false,
 
    -- 根据当前项目特征指定对应游戏引擎运行
    game_project_cmd = {

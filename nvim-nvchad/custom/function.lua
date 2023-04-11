@@ -40,7 +40,7 @@ function set_nvimtree()
       -- open_on_setup = true,
       view = {
          -- 是否自適應寬度
-         adaptive_size = true,
+         adaptive_size = config.tree_adaptive_size,
          side = "left",
 
          -- 是否隱藏tree頂部的當前目錄路徑

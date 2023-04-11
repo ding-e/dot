@@ -124,6 +124,26 @@ return {
    -- https://github.com/mbbill/undotree/blob/master/plugin/undotree.vim
    ["mbbill/undotree"] = { config = set_undotree() },
 
+   -- 翻译
+   -- ["uga-rosa/translate.nvim"] = {
+   --    config = function()
+   --       require("translate").setup {
+   --          defalut = {
+   --             command = "deepl_free",
+   --             output = "floating",
+   --          },
+   --          preset = {
+   --             output = {
+   --                insert = {
+   --                   base = "top",
+   --                   off = -1,
+   --                },
+   --             },
+   --          },
+   --       }
+   --    end,
+   -- },
+
    -- 格式化
    ["jose-elias-alvarez/null-ls.nvim"] = {
       -- disable = true,

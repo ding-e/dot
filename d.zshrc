@@ -273,6 +273,7 @@ alias gdot="cd $WORKSPACE_PATH/dot/"
 alias gnim="cd $WORKSPACE_PATH/nim/"
 alias gzig="cd $WORKSPACE_PATH/zig/"
 alias grust="cd $WORKSPACE_PATH/rust/"
+alias glove="cd $WORKSPACE_PATH/love2d/"
 alias gweb="cd $WORKSPACE_PATH/web/www/"
 
 alias gvim="cd $HOME/.config/nvim/"
@@ -347,13 +348,13 @@ export PATH=$NIMBIN:$PATH
 # zig lang - brew install zig --HEAD
 #          - brew unlink zig && brew link --HEAD zig
 # export ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.10.0
-# export ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.11.0
-# export PATH=$ZIGBIN:$PATH
+export ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.11.0
+export PATH=$ZIGBIN:$PATH
 # --------------------
 # zls - zig language server
 #       git clone [-b 0.10.0] --recurse-submodules zls.git && build -Drelease-small
 # zls -> zls.json path: /Users/dinge/Library/Application\ Support/zls.json
 # export ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls-0.10.0/zig-out/bin"
-# # ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls-master/zig-out/bin"
-# export PATH=$ZLSBIN:$PATH
+ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls-master/zig-out/bin"
+export PATH=$ZLSBIN:$PATH
 

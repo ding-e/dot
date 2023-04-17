@@ -83,7 +83,8 @@ M.polish_hl = {
    Type                = { fg = M.base_16.base0DINGE },
    Include             = { fg = M.base_16.base0A     },
    Keyword             = { fg = M.base_16.base0A     },
-   -- Typedef             = { fg = M.base_16.base0D },
+   Special             = { fg = M.base_16.base0A     },
+   Constant            = { fg = M.base_16.base09     },
 
    Delimiter           = { fg = M.base_16.base0A     },
    Character           = { fg = M.base_16.base0A     },
@@ -97,8 +98,9 @@ M.polish_hl = {
    DINGE_HL_NUMBER     = { fg = M.base_16.base09     },
 
    -- Operator            = { fg = M.base_16.base0DINGE },
-   Function            = { fg = M.base_16.base0A     },
+   -- Function            = { fg = M.base_16.base0A     },
    -- Number              = { fg = M.base_16.base0DINGE },
+   -- Typedef             = { fg = M.base_16.base0D },
 }
 
 vim.opt.bg = "dark"

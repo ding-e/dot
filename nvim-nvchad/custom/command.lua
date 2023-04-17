@@ -32,19 +32,18 @@ create_cmd("DeNvimKey", function(args)
 end, { nargs = "*", desc = "" })
 
 -- 查看dwm快捷鍵
--- DeDwmKey   -> 查看dwm快捷鍵
--- DeDwmKey 1 ->
-create_cmd("DeDwmKey", function(args)
-   if args.args == "1" then
-      vim.cmd [[ vsp $HOME/core/software/dwm.win95/config.h ]]
-   else
-      vim.cmd [[ vsp $HOME/core/software/dwm.win95/config.h ]]
-   end
+create_cmd("DeDwmKey", function()
+   vim.cmd [[ vsp $HOME/core/software/dwm.win95/config.h ]]
+end, { nargs = "*", desc = "" })
+
+-- 打开nvchad config.lua
+create_cmd("DeNvchadConfig", function()
+   vim.cmd [[ e $HOME/.config/nvim/lua/custom/config.lua ]]
 end, { nargs = "*", desc = "" })
 
 -- 添加一個全屏終端(tab)
 -- DeTerm   -> 新建標籤並創建終端
--- deTerm 1 -> 關閉當前所處的標籤
+-- DeTerm 1 -> 關閉當前所處的標籤
 create_cmd("DeTerm", function(args)
    if args.args ~= "" then
       vim.cmd [[
@@ -76,7 +75,7 @@ end, { nargs = "*", desc = "" })
 create_cmd("DeProjectinit", function(args)
    local c, l = string.gsub(args.args, "^%s*(.-)%s*$", "%1"), ""
    local len, i = utils.table_len(config.game_project_cmd), 0
-   local template_path = "~/.config/nvim/lua/custom/template/"
+   local template_path = "$HOME/.config/nvim/lua/custom/template/"
    for k, v in pairs(config.game_project_cmd) do
       if false ~= v.init then
          if c == k then

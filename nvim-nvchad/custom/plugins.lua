@@ -62,6 +62,11 @@ return {
 
    ["nvim-treesitter/nvim-treesitter"] = {
       override_options = { ensure_installed = config.sitter_list },
+      -- config = function()
+      --    -- 关闭保存自动格式化
+      --    -- leader+fm 格式化
+      --    vim.g.zig_fmt_autosave = 0
+      -- end,
    },
 
    -----------------------------------------------------
@@ -165,6 +170,7 @@ return {
    -- zig language
    -- tree-sitter - TSInstall zig
    -- ["ding-e/zig-highlight-enhanced"] = { after = "zig.vim" },
+   ["$HOME/.config/nvim/lua/custom/plugins/zig-highlight"] = { after = "zig.vim" },
    ["ziglang/zig.vim"] = {
       config = function()
          -- 关闭保存自动格式化

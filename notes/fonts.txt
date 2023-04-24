@@ -1,6 +1,9 @@
 
 關於字體設計的博客
 -------------------
+https://justfont.com
+https://justfont.com/education/typefun
+
 https://blog.justfont.com/
 https://founder.acgvlyric.org/iu/doku.php/造字:index
 
@@ -98,6 +101,11 @@ https://diaowinner.itch.io/lyusung
 
 粗宋：把宋体进行点阵化的免费商用像素汉字字体
 https://diaowinner.itch.io/chusung
+------------------
+
+jf open 粉圓:
+https://github.com/justfont/open-huninn-font
+https://justfont.com/huninn
 ------------------
 
 其他:

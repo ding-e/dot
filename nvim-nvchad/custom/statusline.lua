@@ -153,7 +153,12 @@ M.cwd = function()
    local dir_icon = "%#St_cwd_icon#" .. fn.fnamemodify(fn.getcwd(), ":t")
    local dir_name = " "
 
-   return (vim.o.columns > 120 and ("%#St_cwd_sep#" .. sep_l .. dir_icon .. dir_name)) or ""
+   -- return (vim.o.columns > 120 and ("%#St_cwd_sep#" .. sep_l .. dir_icon .. dir_name)) or ""
+   local cwd = (vim.o.columns > 120 and ("%#St_cwd_sep#" .. sep_l .. dir_icon .. dir_name)) or ""
+
+   -- 时间
+   local current_time = "%#St_cwd_text#" .. " " .. os.date('%H:%M') .. " "
+   return current_time .. cwd
 end
 
 M.cursor_position = function()

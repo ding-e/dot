@@ -304,9 +304,10 @@ chromium
     chrome://flags/#overlay-scrollbars -> enable
 
 翻譯問題
-    vim /etc/hosts
-        # Fix Google Translate CN
-        74.125.137.90 translate.googleapis.com
+    https://github.com/FilipePS/Traduzir-paginas-web
+    #vim /etc/hosts
+    #    # Fix Google Translate CN
+    #    74.125.137.90 translate.googleapis.com
 
 ---------------------------
 firefox

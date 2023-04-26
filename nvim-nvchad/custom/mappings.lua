@@ -4,6 +4,7 @@
 ---@diagnostic disable: lowercase-global, undefined-global
 
 local config = require "custom.config"
+---@type MappingsTable
 local M = {}
 
 -- M.disabled = {
@@ -250,18 +251,21 @@ M.plugin = {
       ["<leader>gf"] = { "<CMD> Gitsigns diffthis <CR>", "對比當前文件" },
       ["<leader>gd"] = { "<CMD> Gitsigns toggle_deleted <CR>", "最近已刪除的代碼" },
 
-      -- jk加速
-      -- rhysd/accelerated-jk
-      ["j"] = { "<Plug>(accelerated_jk_gj)", "" },
-      ["k"] = { "<Plug>(accelerated_jk_gk)", "" },
-      -- ["j"] = { "<Plug>(accelerated_jk_gj_position)", "" },
-      -- ["k"] = { "<Plug>(accelerated_jk_gk_position)", "" },
+      -- -- jk加速
+      -- -- rhysd/accelerated-jk
+      -- ["j"] = { "<Plug>(accelerated_jk_gj)", "" },
+      -- ["k"] = { "<Plug>(accelerated_jk_gk)", "" },
+      -- -- ["j"] = { "<Plug>(accelerated_jk_gj_position)", "" },
+      -- -- ["k"] = { "<Plug>(accelerated_jk_gk_position)", "" },
 
       -- 符號對齊插件
       -- junegunn/vim-easy-align
       -- 選段對齊冒號 vipga`->`:
       -- 選段對齊等號 vipga`->`=
       ["ga"] = { "<Plug>(EasyAlign)", "" },
+
+      -- 切换主题
+      ["<leader>tt"] = { function () require("base46").toggle_theme() end, "切换主题"},
    },
 
    -- 選擇模式

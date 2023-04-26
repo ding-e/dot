@@ -103,6 +103,6 @@ M.polish_hl = {
    -- Typedef             = { fg = M.base_16.base0D },
 }
 
-vim.opt.bg = "dark"
--- M = require("base46").override_theme(M, "gruvchad")
+M.type = "dark"
+M = require("base46").override_theme(M, "gruvchad")
 return M

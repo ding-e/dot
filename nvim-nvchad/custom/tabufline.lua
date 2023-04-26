@@ -6,17 +6,34 @@
 local api = vim.api
 local devicons_present, devicons = pcall(require, "nvim-web-devicons")
 local fn = vim.fn
-local isBufValid = require("nvchad_ui.tabufline").isBufValid
 
-vim.g.TbTabsToggled = 0
+dofile(vim.g.base46_cache .. "tbline")
 
--- local config = require("core.utils").load_config()
+local isBufValid = function(bufnr)
+   return vim.api.nvim_buf_is_valid(bufnr) and vim.bo[bufnr].buflisted
+end
+
 local config = require "custom.config"
 
 local tab_icons = require("custom.icons").tabufline
 local icon_index = config.icon_theme == "file" and 2 or 1
+---------------------------------------------------------- btn onclick functions ----------------------------------------------
 
------------------------------------ functions ---------------------------------
+vim.cmd "function! TbGoToBuf(bufnr,b,c,d) \n execute 'b'..a:bufnr \n endfunction"
+
+vim.cmd [[
+   function! TbKillBuf(bufnr,b,c,d)
+        call luaeval('require("nvchad_ui.tabufline").close_buffer(_A)', a:bufnr)
+  endfunction]]
+
+vim.cmd "function! TbNewTab(a,b,c,d) \n tabnew \n endfunction"
+vim.cmd "function! TbGotoTab(tabnr,b,c,d) \n execute a:tabnr ..'tabnext' \n endfunction"
+vim.cmd "function! TbTabClose(a,b,c,d) \n lua require('nvchad_ui.tabufline').closeAllBufs('closeTab') \n endfunction"
+vim.cmd "function! TbCloseAllBufs(a,b,c,d) \n lua require('nvchad_ui.tabufline').closeAllBufs() \n endfunction"
+vim.cmd "function! TbToggle_theme(a,b,c,d) \n lua require('base46').toggle_theme() \n endfunction"
+vim.cmd "function! TbToggleTabs(a,b,c,d) \n let g:TbTabsToggled = !g:TbTabsToggled | redrawtabline \n endfunction"
+
+-------------------------------------------------------- functions ------------------------------------------------------------
 
 local function new_hl(group1, group2)
    local fg = fn.synIDattr(fn.synIDtrans(fn.hlID(group1)), "fg#")
@@ -53,11 +70,9 @@ local function add_fileInfo(name, bufnr)
       end
 
       if not icon then
-         icon, icon_hl = devicons.get_icon "default_icon"
+         icon = ""
+         icon_hl = "DevIconDefault"
       end
-
-      -- padding around bufname; 24 = bufame length (icon + filename)
-      local padding = (24 - #name - 5) / 2
 
       icon = (
          api.nvim_get_current_buf() == bufnr and new_hl(icon_hl, "TbLineBufOn") .. " " .. icon
@@ -94,7 +109,11 @@ local function add_fileInfo(name, bufnr)
          end
       end
 
-      name = (#name > 18 and string.sub(name, 1, 16) .. "..") or name
+      -- padding around bufname; 24 = bufame length (icon + filename)
+      local padding = (24 - #name - 5) / 2
+      local maxname_len = 16
+
+      name = (#name > maxname_len and string.sub(name, 1, 14) .. "..") or name
       name = (api.nvim_get_current_buf() == bufnr and "%#TbLineBufOn# " .. name) or ("%#TbLineBufOff# " .. name)
 
       return string.rep(" ", padding) .. icon .. name .. string.rep(" ", padding)
@@ -102,7 +121,7 @@ local function add_fileInfo(name, bufnr)
 end
 
 local function styleBufferTab(nr)
-   -- -- local close_btn = "%" .. nr .. "@TbKillBuf@ %X"
+   -- local close_btn = "%" .. nr .. "@TbKillBuf@  %X"
    -- 根據自定義設置buff list 關閉按鈕圖標
    local close_btn = "%" .. nr .. "@TbKillBuf@ %X"
    if config.icon_theme ~= "nvchad" then
@@ -115,126 +134,139 @@ local function styleBufferTab(nr)
    -- color close btn for focused / hidden  buffers
    if nr == api.nvim_get_current_buf() then
       close_btn = (vim.bo[0].modified and "%" .. nr .. "@TbKillBuf@%#TbLineBufOnModified# ")
-         or ("%#TbLineBufOnClose#" .. close_btn)
+          or ("%#TbLineBufOnClose#" .. close_btn)
       name = "%#TbLineBufOn#" .. name .. close_btn
    else
       close_btn = (vim.bo[nr].modified and "%" .. nr .. "@TbKillBuf@%#TbBufLineBufOffModified# ")
-         or ("%#TbLineBufOffClose#" .. close_btn)
+          or ("%#TbLineBufOffClose#" .. close_btn)
       name = "%#TbLineBufOff#" .. name .. close_btn
    end
 
    return name
 end
 
------------------------------------ return ---------------------------------
-return {
-   CoverNvimTree = function()
-      return "%#NvimTreeNormal#"
-         -- return "%#NvimTreeEndOfBuffer#"
-         .. (vim.g.nvimtree_side == "right" and "" or string.rep(" ", getNvimTreeWidth()))
-   end,
+---------------------------------------------------------- components ------------------------------------------------------------
+local M = {}
 
-   bufferlist = function()
-      local buffers = {} -- buffersults
-      local available_space = vim.o.columns - getNvimTreeWidth() - getBtnsWidth()
-      local current_buf = api.nvim_get_current_buf()
-      local has_current = false -- have we seen current buffer yet?
+M.CoverNvimTree = function()
+   return "%#NvimTreeNormal#" .. (vim.g.nvimtree_side == "right" and "" or string.rep(" ", getNvimTreeWidth()))
+end
 
-      -- show buffer index numbers
-      if vim.g.tbufpick_showNums then
-         for index, value in ipairs(vim.g.visibuffers) do
-            -- DINGE_TODO
-            -- local name = value:gsub("", "(" .. index .. ")")
-            local name = value:gsub("C", "(" .. index .. ")C")
+M.bufferlist = function()
+   local buffers = {} -- buffersults
+   local available_space = vim.o.columns - getNvimTreeWidth() - getBtnsWidth()
+   local current_buf = api.nvim_get_current_buf()
+   local has_current = false -- have we seen current buffer yet?
 
-            table.insert(buffers, name)
-         end
-         return table.concat(buffers) .. "%#TblineFill#" .. "%=" -- buffers + empty space
+   -- show buffer index numbers
+   if vim.g.tbufpick_showNums then
+      for index, value in ipairs(vim.g.visibuffers) do
+         -- local name = value:gsub("", "(" .. index .. ")")
+         local name = value:gsub("C", "(" .. index .. ")C")
+         table.insert(buffers, name)
       end
-
-      vim.g.bufirst = 0
-      for _, bufnr in ipairs(vim.t.bufs) do
-         if isBufValid(bufnr) then
-            if ((#buffers + 1) * 21) > available_space then
-               if has_current then
-                  break
-               end
-
-               vim.g.bufirst = vim.g.bufirst + 1
-               table.remove(buffers, 1)
-            end
-
-            has_current = (bufnr == current_buf and true) or has_current
-            table.insert(buffers, styleBufferTab(bufnr))
-         end
-      end
-
-      vim.g.visibuffers = buffers
       return table.concat(buffers) .. "%#TblineFill#" .. "%=" -- buffers + empty space
-   end,
+   end
 
-   tablist = function()
-      local result, number_of_tabs = "", fn.tabpagenr "$"
-
-      if number_of_tabs > 1 then
-         for i = 1, number_of_tabs, 1 do
-            local tab_hl = ((i == fn.tabpagenr()) and "%#TbLineTabOn# ") or "%#TbLineTabOff# "
-
-            result = result .. ("%" .. i .. "@TbGotoTab@" .. tab_hl .. i .. " ")
-            -- result = (i == fn.tabpagenr() and result .. "%#TbLineTabCloseBtn#" .. "%@TbTabClose@ %X") or result
-            -- 根據自定義設置tab關閉按鈕圖標
-            if config.icon_theme ~= "nvchad" then
-               result = (
-                  i == fn.tabpagenr()
-                  and result .. "%#TbLineTabCloseBtn#" .. "%@TbTabClose@" .. tab_icons.tab_close[icon_index] .. " %X"
-               ) or result
-            else
-               result = (i == fn.tabpagenr() and result .. "%#TbLineTabCloseBtn#" .. "%@TbTabClose@ %X") or result
+   vim.g.bufirst = 0
+   for _, bufnr in ipairs(vim.t.bufs) do
+      if isBufValid(bufnr) then
+         if ((#buffers + 1) * 21) > available_space then
+            if has_current then
+               break
             end
+
+            vim.g.bufirst = vim.g.bufirst + 1
+            table.remove(buffers, 1)
          end
 
-         -- local new_tabtn = "%#TblineTabNewBtn#" .. "%@TbNewTab@  %X"
-         -- 根據自定義設置添加tab按鈕圖標
-         local new_tabtn = "%#TblineTabNewBtn#" .. "%@TbNewTab@  %X"
-         if config.icon_theme ~= "nvchad" then
-            new_tabtn = "%#TblineTabNewBtn#" .. "%@TbNewTab@ " .. tab_icons.tab_add[icon_index] .. "%X"
-         end
+         has_current = (bufnr == current_buf and true) or has_current
+         table.insert(buffers, styleBufferTab(bufnr))
+      end
+   end
 
-         local tabstoggleBtn = "%@TbToggleTabs@ %#TBTabTitle# TABS %X"
+   vim.g.visibuffers = buffers
+   return table.concat(buffers) .. "%#TblineFill#" .. "%=" -- buffers + empty space
+end
 
-         -- return vim.g.TbTabsToggled == 1 and tabstoggleBtn:gsub("()", { [36] = " " })
-         --    or new_tabtn .. tabstoggleBtn .. result
-         -- 根據自定義設置tab收納展開按鈕圖標
+vim.g.TbTabsToggled = 0
+
+M.tablist = function()
+   local result, number_of_tabs = "", fn.tabpagenr "$"
+
+   if number_of_tabs > 1 then
+      for i = 1, number_of_tabs, 1 do
+         local tab_hl = ((i == fn.tabpagenr()) and "%#TbLineTabOn# ") or "%#TbLineTabOff# "
+         result = result .. ("%" .. i .. "@TbGotoTab@" .. tab_hl .. i .. " ")
+
+         -- result = (i == fn.tabpagenr() and result .. "%#TbLineTabCloseBtn#" .. "%@TbTabClose@ %X") or result
+         -- 根據自定義設置tab關閉按鈕圖標
          if config.icon_theme ~= "nvchad" then
-            return vim.g.TbTabsToggled == 1
-                  and tabstoggleBtn:gsub("()", { [36] = tab_icons.tab_toggle[icon_index] .. " " })
-               or new_tabtn .. tabstoggleBtn .. result
+            result = (
+               i == fn.tabpagenr()
+               and result .. "%#TbLineTabCloseBtn#" .. "%@TbTabClose@" .. tab_icons.tab_close[icon_index] .. " %X"
+            ) or result
          else
-            return vim.g.TbTabsToggled == 1 and tabstoggleBtn:gsub("()", { [36] = " " })
-               or new_tabtn .. tabstoggleBtn .. result
+            result = (i == fn.tabpagenr() and result .. "%#TbLineTabCloseBtn#" .. "%@TbTabClose@ %X") or result
          end
       end
-   end,
 
-   buttons = function()
-      -- local toggle_themeBtn = "%@TbToggle_theme@%#TbLineThemeToggleBtn#" .. vim.g.toggle_theme_icon .. "%X"
-      -- local CloseAllBufsBtn = "%@TbCloseAllBufs@%#TbLineCloseAllBufsBtn#" .. "  " .. "%X"
-      -- 根據自定義設置tab收納展開按鈕圖標
-      local toggle_themeBtn = "%@TbToggle_theme@%#TbLineThemeToggleBtn#" .. vim.g.toggle_theme_icon .. "%X"
-      local CloseAllBufsBtn = "%@TbCloseAllBufs@%#TbLineCloseAllBufsBtn#" .. "  " .. "%X"
+      -- local new_tabtn = "%#TblineTabNewBtn#" .. "%@TbNewTab@  %X"
+      -- 根據自定義設置添加tab按鈕圖標
+      local new_tabtn = "%#TblineTabNewBtn#" .. "%@TbNewTab@  %X"
       if config.icon_theme ~= "nvchad" then
-         toggle_themeBtn = "%@TbToggle_theme@%#TbLineThemeToggleBtn#"
-            .. " "
-            .. tab_icons.theme_toggle[icon_index]
-            .. " "
-            .. "%X"
-         CloseAllBufsBtn = "%@TbCloseAllBufs@%#TbLineCloseAllBufsBtn#"
-            .. " "
-            .. tab_icons.all_close[icon_index]
-            .. " "
-            .. "%X"
+         new_tabtn = "%#TblineTabNewBtn#" .. "%@TbNewTab@ " .. tab_icons.tab_add[icon_index] .. "%X"
       end
 
-      return toggle_themeBtn .. CloseAllBufsBtn
-   end,
-}
+      local tabstoggleBtn = "%@TbToggleTabs@ %#TBTabTitle# TABS %X"
+
+      -- return vim.g.TbTabsToggled == 1 and tabstoggleBtn:gsub("()", { [36] = " " })
+      --     or new_tabtn .. tabstoggleBtn .. result
+      -- 根據自定義設置tab收納展開按鈕圖標
+      if config.icon_theme ~= "nvchad" then
+         return vim.g.TbTabsToggled == 1
+             and tabstoggleBtn:gsub("()", { [36] = tab_icons.tab_toggle[icon_index] .. " " })
+             or new_tabtn .. tabstoggleBtn .. result
+      else
+         return vim.g.TbTabsToggled == 1 and tabstoggleBtn:gsub("()", { [36] = " " })
+             or new_tabtn .. tabstoggleBtn .. result
+      end
+   end
+end
+
+M.buttons = function()
+   -- local toggle_themeBtn = "%@TbToggle_theme@%#TbLineThemeToggleBtn#" .. vim.g.toggle_theme_icon .. "%X"
+   -- local CloseAllBufsBtn = "%@TbCloseAllBufs@%#TbLineCloseAllBufsBtn#" .. "  " .. "%X"
+
+   -- 根據自定義設置tab收納展開按鈕圖標
+   local toggle_themeBtn = "%@TbToggle_theme@%#TbLineThemeToggleBtn#" .. vim.g.toggle_theme_icon .. "%X"
+   local CloseAllBufsBtn = "%@TbCloseAllBufs@%#TbLineCloseAllBufsBtn#" .. "  " .. "%X"
+   if config.icon_theme ~= "nvchad" then
+      toggle_themeBtn = "%@TbToggle_theme@%#TbLineThemeToggleBtn#"
+          .. " "
+          .. tab_icons.theme_toggle[icon_index]
+          .. " "
+          .. "%X"
+      CloseAllBufsBtn = "%@TbCloseAllBufs@%#TbLineCloseAllBufsBtn#"
+          .. " "
+          .. tab_icons.all_close[icon_index]
+          .. " "
+          .. "%X"
+   end
+
+   return toggle_themeBtn .. CloseAllBufsBtn
+end
+
+M.run = function()
+   local modules = require "nvchad_ui.tabufline.modules"
+   local opts = require("core.utils").load_config().ui.tabufline
+
+   -- merge user modules :D
+   if opts.overriden_modules then
+      modules = vim.tbl_deep_extend("force", modules, opts.overriden_modules())
+   end
+
+   local result = modules.bufferlist() .. (modules.tablist() or "") .. modules.buttons()
+   return (vim.g.nvimtree_side == "left") and modules.CoverNvimTree() .. result or result .. modules.CoverNvimTree()
+end
+return M

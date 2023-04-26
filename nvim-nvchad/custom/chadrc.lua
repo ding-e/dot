@@ -3,14 +3,17 @@
 ---------------------------
 ---@diagnostic disable: lowercase-global, undefined-global
 
-local config = require "custom.config"
-
+-- -@type ChadrcConfig
 local M = {}
+
+local config = require "custom.config"
+-- Path to overriding theme and highlights files
+local highlights = require "custom.highlights"
 
 M.options = {
    nvChad = {
       update_url = "https://github.com/NvChad/NvChad",
-      update_branch = "main",
+      update_branch = "2.0",
    },
 }
 
@@ -18,9 +21,29 @@ M.ui = {
    theme = config.theme,
    theme_toggle = config.theme_toggle,
    transparency = false,
+
+   hl_override = highlights.override,
+   hl_add = highlights.add,
+
+   statusline = {
+      -- theme = "minimal", -- "default" -- "vscode",
+      separator_style = "block", -- default/round/block/arrow
+      overriden_modules = function()
+         return require "custom.statusline"
+      end,
+   },
+
+   -- lazyload it when there are 1+ buffers
+   tabufline = {
+      enabled = true,
+      lazyload = false,
+      overriden_modules = function()
+         return require "custom.tabufline"
+      end,
+   },
 }
 
 M.mappings = require "custom.mappings"
-M.plugins = require "custom.plugins"
+M.plugins = "custom.plugins"
 
 return M

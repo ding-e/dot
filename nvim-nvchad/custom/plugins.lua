@@ -6,67 +6,64 @@
 -- Awesome plugins for Neovim
 -- https://nvimluau.dev
 
-require "custom.function"
 local config = require "custom.config"
+require "custom.function"
 
-return {
+---@type NvPluginSpec[]
+local plugins = {
+
    -----------------------------------------------------
    -- 覆盖nvchad插件
    -----------------------------
-   -- ["lukas-reineke/indent-blankline.nvim"] = false,
-
    -- leader快捷键菜单
-   ["folke/which-key.nvim"] = { disable = false },
-
-   ["nvim-tree/nvim-tree.lua"] = {
-      after = { "ui", "nvim-web-devicons" },
-      override_options = set_nvimtree(),
+   {
+      "folke/which-key.nvim",
+      enabled = true,
    },
 
-   ["nvim-tree/nvim-web-devicons"] = {
-      after = "ui",
-      module = "nvim-web-devicons",
-      config = function()
-         set_devicons()
+   {
+      "nvim-tree/nvim-tree.lua",
+      opts = set_nvimtree_opt(),
+   },
+   {
+      "nvim-tree/nvim-web-devicons",
+      opts = set_devicons_opt(),
+   },
+
+   {
+      "NvChad/nvterm",
+      init = function()
+         require("core.utils").load_mappings "nvterm"
+      end,
+      config = function(_, opts)
+         set_nvterm(opts)
       end,
    },
 
-   ["lewis6991/gitsigns.nvim"] = {
-      ft = "gitcommit",
-      setup = function()
-         require("core.lazy_load").gitsigns()
-      end,
-      config = function()
-         set_gitsigns()
-      end,
-   },
-
-   ["NvChad/ui"] = { override_options = set_ui() },
-   ["NvChad/nvterm"] = { override_options = set_nvterm() },
-   ["NvChad/base46"] = {
-      config = function()
-         set_base46()
-      end,
-   },
-
-   ["neovim/nvim-lspconfig"] = {
+   {
+      "neovim/nvim-lspconfig",
+      dependencies = {
+         -- format & linting
+         {
+            "jose-elias-alvarez/null-ls.nvim",
+            config = function()
+               set_nullls()
+            end,
+         },
+      },
       config = function()
          require "plugins.configs.lspconfig"
          require "custom.lspconfig"
-      end,
+      end, -- Override to setup mason-lspconfig
    },
 
-   ["williamboman/mason.nvim"] = {
-      override_options = { ensure_installed = config.mason_list },
+   {
+      "williamboman/mason.nvim",
+      opts = { ensure_installed = config.mason_list },
    },
-
-   ["nvim-treesitter/nvim-treesitter"] = {
-      override_options = { ensure_installed = config.sitter_list },
-      -- config = function()
-      --    -- 关闭保存自动格式化
-      --    -- leader+fm 格式化
-      --    vim.g.zig_fmt_autosave = 0
-      -- end,
+   {
+      "nvim-treesitter/nvim-treesitter",
+      opts = { ensure_installed = config.sitter_list },
    },
 
    -----------------------------------------------------
@@ -75,14 +72,19 @@ return {
 
    -- 仪表盘
    -- vim.g.startify_session_dir = "$HOME/.config/nvim/session/"
-   ["mhinz/vim-startify"] = {},
+   { "mhinz/vim-startify", lazy = false },
    -- ["goolord/alpha-nvim"] = { disable = false },
 
    -- session / workspace
    -- folke/persistence.nvim
    -- 如果當前bur list, 沒有打開buf, 則不保存
    -- 在nvchad打開Startify的時候,馬上關閉(目前buf list數量為0), 則不保存session
-   ["ding-e/persistence.nvim"] = { config = set_session() },
+   {
+      "ding-e/persistence.nvim",
+      config = function()
+         set_session()
+      end,
+   },
    -- ["Shatur/neovim-session-manager"] = {
    --    -- after = { "ui", "nvim-web-devicons" },
    --    -- setup = function() end,
@@ -90,10 +92,12 @@ return {
    -- },
 
    -- mac下自动切换输入法
-   ["ybian/smartim"] = {
+   {
+      "ybian/smartim",
       -- 忽略updates/syncs
       -- lock = true,
       commit = "d73dc7b361966762d74254a1ba52d29dd83d5fd3",
+      lazy = false,
       config = function()
          -- https://blog.51cto.com/u_15273875/3858820
          vim.g.smartim_default = "com.apple.keylayout.ABC"
@@ -101,15 +105,26 @@ return {
    },
 
    -- 類似vscode的禪模式 - 暂时隐藏状态栏、缓冲线等。
-   ["folke/zen-mode.nvim"] = { config = set_zenmode() },
-   ["Pocco81/truezen.nvim"] = { config = set_truezen() },
+   {
+      "folke/zen-mode.nvim",
+      config = function()
+         set_zenmode()
+      end,
+   },
+   {
+      "Pocco81/truezen.nvim",
+      config = function()
+         set_truezen()
+      end,
+   },
 
    -- 加速jk
    -- vim.g.accelerated_jk_acceleration_limit = 300
-   ["rhysd/accelerated-jk"] = {},
+   { "rhysd/accelerated-jk" },
 
    -- 平滑滚动 <C-u>, <C-d>, <C-b>, <C-f>, <C-y>, <C-e>, zt, zz, zb
-   ["karb94/neoscroll.nvim"] = {
+   {
+      "karb94/neoscroll.nvim",
       config = function()
          local present, neoscroll = pcall(require, "neoscroll")
          if not present then
@@ -123,11 +138,58 @@ return {
    -- editor config - .editorconfig
    -- https://editorconfig.org
    -- ["editorconfig/editorconfig-vim"] = {},
-   ["gpanders/editorconfig.nvim"] = {},
+   { "gpanders/editorconfig.nvim" },
 
    -- 歷史修改紀錄
    -- https://github.com/mbbill/undotree/blob/master/plugin/undotree.vim
-   ["mbbill/undotree"] = { config = set_undotree() },
+   {
+      "mbbill/undotree",
+      lazy = false,
+      config = function()
+         set_undotree()
+      end,
+   },
+
+   -- 格式化
+   {
+      "jose-elias-alvarez/null-ls.nvim",
+      -- disable = true,
+      after = "nvim-lspconfig",
+      config = function()
+         set_nullls()
+      end,
+   },
+
+   -- 符號對齊
+   { "junegunn/vim-easy-align" },
+
+   -- godot gdscript
+   { "habamax/vim-godot" },
+
+   -- ["leafo/moonscript-vim"] = {},
+   -- ["svermeulen/nvim-moonmaker"] = {},
+
+   -- zig language
+   -- tree-sitter - TSInstall zig
+   -- ["ding-e/zig-highlight-enhanced"] = { after = "zig.vim" },
+   -- TODO...
+   -- ["$HOME/.config/nvim/lua/custom/plugins/zig-highlight"] = { after = "zig.vim" },
+   {
+      "ziglang/zig.vim",
+      config = function()
+         -- 关闭保存自动格式化
+         -- leader+fm 格式化
+         vim.g.zig_fmt_autosave = 0
+      end,
+   },
+
+   -- nim language
+   -- 只代码高亮，配合nimlsp代码提示
+   -- ["ding-e/nim-highlight"] = {},
+   -- ['baabelfish/nvim-nim'] = {},
+   -- ['alaviss/nim.nvim'] = {},
+   -- ['wsdjeg/vim-nim'] = {},
+   -- ['zah/nim.vim'] = {},
 
    -- 翻译
    -- ["uga-rosa/translate.nvim"] = {
@@ -148,44 +210,6 @@ return {
    --       }
    --    end,
    -- },
-
-   -- 格式化
-   ["jose-elias-alvarez/null-ls.nvim"] = {
-      -- disable = true,
-      after = "nvim-lspconfig",
-      config = function()
-         set_nullls()
-      end,
-   },
-
-   -- 符號對齊
-   ["junegunn/vim-easy-align"] = {},
-
-   -- godot gdscript
-   ["habamax/vim-godot"] = {},
-
-   -- ["leafo/moonscript-vim"] = {},
-   -- ["svermeulen/nvim-moonmaker"] = {},
-
-   -- zig language
-   -- tree-sitter - TSInstall zig
-   -- ["ding-e/zig-highlight-enhanced"] = { after = "zig.vim" },
-   ["$HOME/.config/nvim/lua/custom/plugins/zig-highlight"] = { after = "zig.vim" },
-   ["ziglang/zig.vim"] = {
-      config = function()
-         -- 关闭保存自动格式化
-         -- leader+fm 格式化
-         vim.g.zig_fmt_autosave = 0
-      end,
-   },
-
-   -- nim language
-   -- 只代码高亮，配合nimlsp代码提示
-   -- ["ding-e/nim-highlight"] = {},
-   -- ['baabelfish/nvim-nim'] = {},
-   -- ['alaviss/nim.nvim'] = {},
-   -- ['wsdjeg/vim-nim'] = {},
-   -- ['zah/nim.vim'] = {},
 
    -- ========================================================================
 
@@ -270,3 +294,5 @@ return {
    --   cmd = "TableModeToggle",
    -- },
 }
+
+return plugins

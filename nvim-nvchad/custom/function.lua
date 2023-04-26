@@ -9,8 +9,8 @@
 -- 合併2個或多個table
 -- 參數1:
 -- • error: 抛出错误
--- • keep : 使用最左边地图的值
--- • force: 使用最右边地图的值
+-- • keep : 使用最左边table的值
+-- • force: 使用最右边table的值
 local merge_tb = vim.tbl_deep_extend
 
 local utils = require "core.utils"
@@ -18,8 +18,25 @@ local utils = require "core.utils"
 local config = require "custom.config"
 local icons = require "custom.icons"
 local icon_index = config.icon_theme == "file" and 2 or 1
+----------------------------------------------------
 
------------------------------------ functions ---------------------------------
+function reset_workspace_theme()
+   -- 根據當前項目設置nvchad配色
+   local t = 2
+   for _, v in pairs(config.workspace_list) do
+      local wt = nil ~= string.find(v, "/") and v or "workspace/" .. v
+      if nil ~= string.find(string.lower(vim.fn.getcwd()), wt) and t ~= 1 then
+         t = 1
+         break
+      end
+   end
+
+   vim.g.nvchad_theme = config.workspace_theme_toggle[t]
+   require("base46").load_all_highlights()
+end
+-- reset_workspace_theme()
+----------------------------------------------------
+
 -- mbbill/undotree
 function set_undotree()
    -- 顯示在右邊
@@ -34,7 +51,7 @@ function set_undotree()
 end
 
 -- kyazdani42/nvim-tree.lua
-function set_nvimtree()
+function set_nvimtree_opt()
    -- local opt = merge_tb("force", {}, config.nvtree["opt"] or {}) or {}
    local opt = {
       -- open_on_setup = true,
@@ -42,15 +59,14 @@ function set_nvimtree()
          -- 是否自適應寬度
          adaptive_size = config.tree_adaptive_size,
          side = "left",
-
-         -- 是否隱藏tree頂部的當前目錄路徑
-         hide_root_folder = true,
       },
       git = {
          enable = false,
          ignore = false,
       },
       renderer = {
+         -- 是否隱藏tree頂部的當前目錄路徑
+         root_folder_label = false,
          icons = {
             show = {
                file = true,
@@ -94,55 +110,20 @@ function set_nvimtree()
    return opt
 end
 
--- kyazdani42/nvim-web-devicons
-function set_devicons()
-   local present, devicons = pcall(require, "nvim-web-devicons")
-   if not present then
-      return
-   end
+function set_devicons_opt()
+   -- TODO...
+   reset_workspace_theme()
 
-   require("base46").load_highlight "devicons"
-
-   local opt = config.icon_theme == "none" and { default = false, color_icons = false }
-      -- or { override = require("nvchad_ui.icons").devicons }
-      -- or { override = icons.devicons }
-      or { override = merge_tb("force", require("nvchad_ui.icons").devicons, icons["devicons"] or {}) }
-
-   devicons.setup(utils.load_override(opt, "nvim-tree/nvim-web-devicons"))
-end
-
--- NvChad/ui
-function set_ui()
-   return {
-      statusline = {
-         separator_style = "block", -- default/round/block/arrow
-         -- or
-         -- custom separators
-         -- separator_style = {
-         --    left = " ",
-         --    right = "",
-         --  },
-
-         overriden_modules = function()
-            return require "custom.statusline"
-         end,
-      },
-      -- statusline = require "custom.statusline",
-
-      -- lazyload it when there are 1+ buffers
-      tabufline = {
-         enabled = true,
-         lazyload = false,
-         overriden_modules = function()
-            return require "custom.tabufline"
-         end,
-      },
-   }
+   return config.icon_theme == "none" and { default = false, color_icons = false }
+       -- or { override = require("nvchad_ui.icons").devicons }
+       -- or { override = icons.devicons }
+       or { override = merge_tb("force", require("nvchad_ui.icons").devicons, icons["devicons"] or {}) }
 end
 
 -- NvChad/nvterm
-function set_nvterm()
-   return {
+function set_nvterm(opts)
+   require "base46.term"
+   opts = merge_tb("force", opts, {
       terminals = {
          list = {},
          type_opts = {
@@ -163,53 +144,36 @@ function set_nvterm()
          auto_insert = true,
       },
       enable_new_mappings = true,
-   }
+   })
+   require("nvterm").setup(opts)
 end
 
--- lewis6991/gitsigns.nvim
-function set_gitsigns()
-   local present, gitsigns = pcall(require, "gitsigns")
+-- jose-elias-alvarez/null-ls.nvim
+-- 具体支持语言
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
+function set_nullls()
+   local present, null_ls = pcall(require, "null-ls")
    if not present then
       return
    end
 
-   require("base46").load_highlight "git"
-   local gitsigns_icons = icons.gitsigns
-   icon_index = config.icon_theme == "none" and 1 or 2
+   -- require("custom.plugins.null-ls").setup()
+   -- local null_ls = require "null-ls"
+   local b = null_ls.builtins
+   null_ls.setup {
+      debug = true,
+      sources = {
+         -- lua
+         b.formatting.stylua,
+         -- b.diagnostics.luacheck.with { extra_args = { "--global vim" } },
 
-   gitsigns.setup(utils.load_override({
-      -- 行號下的git圖標設置
-      signs = {
-         add = {
-            hl = "DiffAdd",
-            text = gitsigns_icons.add[icon_index],
-            numhl = "GitSignsAddNr",
-         },
-         change = {
-            hl = "DiffChange",
-            text = gitsigns_icons.change[icon_index],
-            numhl = "GitSignsChangeNr",
-         },
-         delete = {
-            hl = "DiffDelete",
-            text = gitsigns_icons.delete[icon_index],
-            numhl = "GitSignsDeleteNr",
-         },
-         topdelete = {
-            hl = "DiffDelete",
-            text = gitsigns_icons.topdelete[icon_index],
-            numhl = "GitSignsDeleteNr",
-         },
-         changedelete = {
-            hl = "DiffChangeDelete",
-            text = gitsigns_icons.changedelete[icon_index],
-            numhl = "GitSignsChangeNr",
-         },
+         b.formatting.gdformat,
+         b.formatting.rustfmt,
+         b.formatting.zigfmt,
+         b.formatting.nimpretty,
+         b.formatting.clang_format.with { extra_args = { "--style", "{IndentWidth: 4}" } },
       },
-      on_attach = function(bufnr)
-         utils.load_mappings("gitsigns", { buffer = bufnr })
-      end,
-   }, "lewis6991/gitsigns.nvim"))
+   }
 end
 
 -- folke/zen-mode.nvim
@@ -338,60 +302,6 @@ function set_truezen()
       },
    }
 end
-
--- jose-elias-alvarez/null-ls.nvim
--- 具体支持语言
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-function set_nullls()
-   local present, null_ls = pcall(require, "null-ls")
-   if not present then
-      return
-   end
-
-   -- require("custom.plugins.null-ls").setup()
-   -- local null_ls = require "null-ls"
-   local b = null_ls.builtins
-   null_ls.setup {
-      debug = true,
-      sources = {
-         -- lua
-         b.formatting.stylua,
-         -- b.diagnostics.luacheck.with { extra_args = { "--global vim" } },
-
-         b.formatting.gdformat,
-         b.formatting.rustfmt,
-         b.formatting.zigfmt,
-         b.formatting.nimpretty,
-         b.formatting.clang_format.with { extra_args = { "--style", "{IndentWidth: 4}" } },
-      },
-   }
-end
-
--- NvChad/base46
-function set_base46()
-   local ok, base46 = pcall(require, "base46")
-   if not ok then
-      return
-   end
-
-   base46.load_theme()
-   -- :echo expand('%:e')           -- 查看當前編輯文件的後綴
-   -- :lua print(vim.fn.getcwd())   -- 查看當前root path
-   -- :lua require("base46").toggle_theme()
-   -- :lua require("nvchad").reload_theme("gruvchad")
-
-   -- 根據當前項目設置nvchad配色
-   local t = 2
-   for _, v in pairs(config.workspace_list) do
-      local wt = nil ~= string.find(v, "/") and v or "workspace/" .. v
-      if nil ~= string.find(string.lower(vim.fn.getcwd()), wt) and t ~= 1 then
-         t = 1
-         break
-      end
-   end
-   require("nvchad").reload_theme(config.workspace_theme_toggle[t])
-end
-
 -- session / workspace
 -- folke/persistence.nvim
 function set_session()
@@ -455,3 +365,4 @@ end
 --       end,
 --    })
 -- end
+

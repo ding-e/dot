@@ -3,6 +3,14 @@
 -------------
 ---@diagnostic disable: lowercase-global, undefined-global
 
+-- local autocmd = vim.api.nvim_create_autocmd
+
+-- Auto resize panes when resizing nvim window
+-- autocmd("VimResized", {
+--   pattern = "*",
+--   command = "tabdo wincmd =",
+-- })
+
 require "custom.autocmd"
 require "custom.command"
 
@@ -73,3 +81,6 @@ vim.cmd [[ set noundofile ]]
 -- 退出终端模式
 -- 在nvcard->core->mappings.lua 下，已经设置了ctrl+x退出终端模式
 -- vim.cmd [[ tnoremap <C-q> <C-\><C-n> ]]
+
+
+

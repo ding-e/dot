@@ -30,7 +30,7 @@ local M = {
 
    -- mason, tree-sitter
    mason_list = { "lua-language-server", "rust-analyzer", "clangd" },
-   sitter_list = { "help", "vim", "lua", "rust", "c" },
+   sitter_list = { "vim", "lua", "rust", "c" },
 }
 
 if M.icon_theme == "file" and os.getenv "TERM_PROGRAM" == "iTerm.app" then

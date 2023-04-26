@@ -85,9 +85,9 @@ lspconfig.nimls.setup {
    single_file_support = true,
    -- root_dir = lspconfig.util.root_pattern "*.nim",
    -- single_file_support = false,
-   -- on_exit = function(_)
-   --    os.execute "killall nimsuggest"
-   -- end,
+   on_exit = function(_)
+      os.execute "killall nimsuggest"
+   end,
    -- on_init = function(_)
    --    local timer = vim.loop.new_timer()
    --    timer:start(

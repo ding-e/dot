@@ -147,7 +147,8 @@ local plugins = {
    -- editor config - .editorconfig
    -- https://editorconfig.org
    -- ["editorconfig/editorconfig-vim"] = {},
-   { "gpanders/editorconfig.nvim" },
+   -- nvim 0.9已经内置支持了EditorConfig
+   -- { "gpanders/editorconfig.nvim" },
 
    -- 歷史修改紀錄
    -- https://github.com/mbbill/undotree/blob/master/plugin/undotree.vim

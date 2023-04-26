@@ -15,6 +15,7 @@ local plugins = {
    -----------------------------------------------------
    -- 覆盖nvchad插件
    -----------------------------
+
    -- leader快捷键菜单
    {
       "folke/which-key.nvim",
@@ -72,7 +73,10 @@ local plugins = {
 
    -- 仪表盘
    -- vim.g.startify_session_dir = "$HOME/.config/nvim/session/"
-   { "mhinz/vim-startify", lazy = false },
+   {
+      "mhinz/vim-startify",
+      lazy = false,
+   },
    -- ["goolord/alpha-nvim"] = { disable = false },
 
    -- session / workspace
@@ -113,6 +117,7 @@ local plugins = {
    },
    {
       "Pocco81/truezen.nvim",
+      cmd = { "TZAtaraxis", "TZMinimalist", "TZFocus", "TZNarrow" },
       config = function()
          set_truezen()
       end,
@@ -120,11 +125,15 @@ local plugins = {
 
    -- 加速jk
    -- vim.g.accelerated_jk_acceleration_limit = 300
-   { "rhysd/accelerated-jk" },
+   {
+      "rhysd/accelerated-jk",
+      lazy = false,
+   },
 
    -- 平滑滚动 <C-u>, <C-d>, <C-b>, <C-f>, <C-y>, <C-e>, zt, zz, zb
    {
       "karb94/neoscroll.nvim",
+      lazy = false,
       config = function()
          local present, neoscroll = pcall(require, "neoscroll")
          if not present then
@@ -150,18 +159,11 @@ local plugins = {
       end,
    },
 
-   -- 格式化
-   {
-      "jose-elias-alvarez/null-ls.nvim",
-      -- disable = true,
-      after = "nvim-lspconfig",
-      config = function()
-         set_nullls()
-      end,
-   },
-
    -- 符號對齊
-   { "junegunn/vim-easy-align" },
+   {
+      "junegunn/vim-easy-align",
+      lazy = false,
+   },
 
    -- godot gdscript
    { "habamax/vim-godot" },
@@ -172,10 +174,14 @@ local plugins = {
    -- zig language
    -- tree-sitter - TSInstall zig
    -- ["ding-e/zig-highlight-enhanced"] = { after = "zig.vim" },
-   -- TODO...
-   -- ["$HOME/.config/nvim/lua/custom/plugins/zig-highlight"] = { after = "zig.vim" },
    {
       "ziglang/zig.vim",
+      dependencies = {
+         {
+            dir = "$HOME/.config/nvim/lua/custom/plugins/zig-highlight",
+            lazy = false,
+         },
+      },
       config = function()
          -- 关闭保存自动格式化
          -- leader+fm 格式化

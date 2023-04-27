@@ -8,23 +8,23 @@ local utils = require "custom.utils"
 local create_cmd = vim.api.nvim_create_user_command
 
 -- 顯示/隱藏 行號
--- DeNumber   -> 刪除行號
--- DeNumber 1 -> 顯示行號
-create_cmd("DeNumber", function(args)
-   if args.args == "1" then
-      vim.cmd [[ set number
-                 set relativenumber ]]
-   else
+-- DeLineNumber    -> 顯示行號
+-- DeLineNumber 0  -> 刪除行號
+create_cmd("DeLineNumber", function(args)
+   if  "" ~= args.args then
       vim.cmd [[ set nonumber
                  set norelativenumber ]]
+   else
+      vim.cmd [[ set number
+                 set relativenumber ]]
    end
 end, { nargs = "*", desc = "" })
 
 -- 查看nvim快捷鍵
 -- DeNvimKey   -> 查看自定義快捷鍵
--- DeNvimKey 1 -> 查看nvchad快捷鍵
+-- DeNvimKey 0 -> 查看nvchad快捷鍵
 create_cmd("DeNvimKey", function(args)
-   if args.args == "1" then
+   if "" ~= args.args then
       vim.cmd [[ vsp $HOME/.config/nvim/lua/core/mappings.lua ]]
    else
       vim.cmd [[ vsp $HOME/.config/nvim/lua/custom/mappings.lua ]]
@@ -32,20 +32,20 @@ create_cmd("DeNvimKey", function(args)
 end, { nargs = "*", desc = "" })
 
 -- 查看dwm快捷鍵
-create_cmd("DeDwmKey", function()
+create_cmd("DeDwmKey", function(_)
    vim.cmd [[ vsp $HOME/core/software/dwm.win95/config.h ]]
 end, { nargs = "*", desc = "" })
 
 -- 打开nvchad config.lua
-create_cmd("DeNvchadConfig", function()
+create_cmd("DeNvchadConfig", function(_)
    vim.cmd [[ e $HOME/.config/nvim/lua/custom/config.lua ]]
 end, { nargs = "*", desc = "" })
 
 -- 添加一個全屏終端(tab)
 -- DeTerm   -> 新建標籤並創建終端
--- DeTerm 1 -> 關閉當前所處的標籤
+-- DeTerm 0 -> 關閉當前所處的標籤
 create_cmd("DeTerm", function(args)
-   if args.args ~= "" then
+   if "" ~= args.args then
       vim.cmd [[
          lua require("nvchad_ui.tabufline").close_buffer()
          tabc
@@ -54,16 +54,16 @@ create_cmd("DeTerm", function(args)
       vim.cmd [[
          tabe
          term
-         DeNumber
+         DeLineNumber 0
       ]]
    end
 end, { nargs = "*", desc = "" })
 
--- 是否顯示屏幕竪線
--- DeColorcolumn   -> 開啟 屏幕竪線
--- DeColorcolumn 1 -> 關閉 屏幕竪線
+-- 是否顯示换行提示线(垂直)
+-- DeColorcolumn   -> 開啟
+-- DeColorcolumn 0 -> 關閉
 create_cmd("DeColorcolumn", function(args)
-   if args.args == "1" then
+   if "" ~= args.args then
       vim.cmd [[ highlight ColorColumn guifg=#1e2122 guibg=#1e2122 ]]
    else
       vim.cmd [[ highlight ColorColumn guifg=none guibg=#2c2f30 ]]

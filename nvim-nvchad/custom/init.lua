@@ -18,7 +18,7 @@ require "custom.command"
 vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
 
 -- :FZF 命令使用
-vim.cmd [[ set rtp+=/opt/homebrew/opt/fzf ]]
+-- vim.cmd [[ set rtp+=/opt/homebrew/opt/fzf ]]
 
 -- 設置默認shell
 vim.cmd [[ set shell=zsh ]]

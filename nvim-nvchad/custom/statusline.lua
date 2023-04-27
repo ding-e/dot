@@ -68,7 +68,7 @@ M.modes = {
 M.mode = function()
    local m = vim.api.nvim_get_mode().mode
 
-   -- 将图标改为空格
+   -- 删除图标
    -- local current_mode = "%#" .. M.modes[m][2] .. "#" .. "  " .. M.modes[m][1]
    local current_mode = "%#" .. M.modes[m][2] .. "#" .. " " .. M.modes[m][1]
 
@@ -138,10 +138,13 @@ M.LSP_progress = function()
    local msg = Lsp.message or ""
    local percentage = Lsp.percentage or 0
    local title = Lsp.title or ""
-   local spinners = { "", "󰪞", "󰪟", "󰪠", "󰪢", "󰪣", "󰪤", "󰪥" }
-   local ms = vim.loop.hrtime() / 1000000
-   local frame = math.floor(ms / 120) % #spinners
-   local content = string.format(" %%<%s %s %s (%s%%%%) ", spinners[frame + 1], title, msg, percentage)
+
+   -- 删除图标
+   -- local spinners = { "", "󰪞", "󰪟", "󰪠", "󰪢", "󰪣", "󰪤", "󰪥" }
+   -- local ms = vim.loop.hrtime() / 1000000
+   -- local frame = math.floor(ms / 120) % #spinners
+   -- local content = string.format(" %%<%s %s %s (%s%%%%) ", spinners[frame + 1], title, msg, percentage)
+   local content = string.format(" %s %s (%s%%%%) ", title, msg, percentage)
 
    if config.lsprogress_len then
       content = string.sub(content, 1, config.lsprogress_len)
@@ -189,7 +192,6 @@ M.cwd = function()
    -- 删除图标
    -- local dir_icon = "%#St_cwd_icon#" .. " "
    -- local dir_name = "%#St_cwd_text#" .. " " .. fn.fnamemodify(fn.getcwd(), ":t") .. " "
-
    local dir_icon = "%#St_cwd_icon#" .. fn.fnamemodify(fn.getcwd(), ":t")
    local dir_name = " "
 

@@ -211,16 +211,15 @@ function set_zenmode()
          },
          -- folke/twilight.nvim
          twilight = { enabled = true },
-         -- 是否禁用gitsigns
+         -- gitsigns
          gitsigns = { enabled = false },
-         -- 是否禁用tmux狀態欄
+         -- tmux狀態欄
          tmux = { enabled = false },
          -- this will change the font size on kitty when in zen mode
          -- to make this work, you need to set the following kitty options:
          -- - allow_remote_control socket-only
          -- - listen_on unix:/tmp/kitty
          kitty = {
-            -- 禁用
             enabled = true,
             font = "+4",
          },
@@ -272,9 +271,9 @@ function set_truezen()
                open_pos = function()
                   -- -- 打開後調用
                   -- -- :hi ColorColumn
-                  -- -- 默認打開禪模式, 會關閉屏幕竪線, 將其開啟
+                  -- -- 默認打開禪模式, 會關閉换行提示线(垂直), 將其開啟
                   -- vim.cmd [[
-                  --    DeNumber 1
+                  --    DeLineNumber
                   --    highlight ColorColumn guifg=none guibg=#2c2f30
                   -- ]]
                end,
@@ -289,9 +288,9 @@ function set_truezen()
                open_pos = function()
                   -- -- :hi ColorColumn
                   -- -- narrow模式會打開禪模式, 禪模式下的callbacks也會被調用
-                  -- -- narrow下關閉屏幕竪線
+                  -- -- narrow下關閉换行提示线(垂直)
                   -- vim.cmd [[
-                  --    DeNumber
+                  --    DeLineNumber 0
                   --    highlight ColorColumn guifg=#1e2122 guibg=#1e2122
                   -- ]]
                end,

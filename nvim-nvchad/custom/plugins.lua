@@ -64,7 +64,7 @@ local plugins = {
    },
    {
       "nvim-treesitter/nvim-treesitter",
-      opts = { ensure_installed = config.sitter_list },
+      opts = { ensure_installed = config.treesitter_list },
    },
 
    -----------------------------------------------------

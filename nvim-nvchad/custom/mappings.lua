@@ -17,8 +17,8 @@ M.sendCommand = {
    n = {
       -- ["<leader>cc"] = {
       --    function()
-      -- require("nvterm.terminal").show "vertical"
-      -- require("nvterm.terminal").hide "vertical"
+      --       require("nvterm.terminal").show "vertical"
+      --       require("nvterm.terminal").hide "vertical"
       --       require("nvterm.terminal").send("clear && g++ -o out " .. vim.fn.expand "%" .. " && ./out", "vertical")
       --    end,
       --    "compile & run a cpp file",
@@ -47,9 +47,6 @@ M.general = {
 
       -- 禁用s按键
       ["s"] = { "<nop>", "" },
-
-      -- 【无效】 - 删除当前文件所有行为的空格或tab
-      -- ["ds"] = { "<cmd> %s/\s\+$ <CR>", "" },
 
       -- 保存/关闭文件
       ["S"] = { "<CMD> w <CR>", "" },
@@ -96,6 +93,7 @@ M.general = {
 
       -- 取消搜索高亮
       ["<leader><CR>"] = { "<CMD> nohlsearch <CR>", "取消搜索高亮" },
+      ["<Esc>"] = { "<CMD> noh <CR>", "clear highlights" },
 
       -- 移动搜索结果关键字并自动移到屏幕中心
       ["="] = { "nzz", "" },
@@ -128,7 +126,7 @@ M.general = {
       ["<right>"] = { "<CMD> vertical resize +5 <CR>", "" },
 
       -- 打开当前文件目录
-      ["<leader>op"] = { "<CMD>lua os.execute(\"open \" .. vim.fn.expand('%:p:h')) <CR>", "打开当前文件目录" },
+      ["<leader>op"] = { "<CMD>lua os.execute('open ' .. vim.fn.expand('%:p:h')) <CR>", "打开当前文件目录" },
    },
 }
 
@@ -232,7 +230,7 @@ M.plugin = {
       ["<leader>ss"] = { "<CMD> Startify <CR>", "打开startify仪表盘" },
 
       -- FZF
-      ["<leader>fz"] = { "<CMD> FZF <CR>", "fzf文件搜索" },
+      -- ["<leader>fz"] = { "<CMD> FZF <CR>", "fzf文件搜索" },
 
       -- 切换文件管理器
       -- kyazdani42/nvim-tree.lua

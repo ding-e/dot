@@ -243,17 +243,17 @@ set background=dark
 "gruvbox GruberDarker
 colorscheme gruvbox-material
 
-" 自定義一個命令
-" DeNumber   -> 刪除行號
-" DeNumber 1 -> 顯示行號
-command! -nargs=* DeNumber call s:DeNumber(<q-args>)
-function! s:DeNumber(is_num) abort
-  if a:is_num == 1
-    set number
-    set relativenumber
-  else
+" 顯示/隱藏 行號
+" DeLineNumber    -> 顯示行號
+" DeLineNumber 0  -> 刪除行號
+command! -nargs=* DeLineNumber call s:DeLineNumber(<q-args>)
+function! s:DeLineNumber(args) abort
+  if "" != a:args
     set nonumber
     set norelativenumber
+  else
+    set number
+    set relativenumber
   endif
 endfunction
 

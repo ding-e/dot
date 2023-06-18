@@ -11,5 +11,6 @@ https://gitlab.com/gnachman/iterm2/-/issues/8905
 https://zhuanlan.zhihu.com/p/157544571
 解決: defaults write com.googlecode.iterm2 NoSyncNeverAskAboutMouseReportingFrustration -bool true
 
-
+2. xxx: Bad file descriptor
+https://stackoverflow.com/questions/71677871/curl-7-failed-to-connect-to-after-ms-bad-file-descriptor
 

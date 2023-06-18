@@ -6,15 +6,15 @@
 -- Awesome plugins for Neovim
 -- https://nvimluau.dev
 
+-- editor config - .editorconfig
+-- https://editorconfig.org
+
 local config = require "custom.config"
+local utils = require "custom.utils"
 require "custom.function"
 
 ---@type NvPluginSpec[]
 local plugins = {
-
-   -----------------------------------------------------
-   -- 覆盖nvchad插件
-   -----------------------------
 
    -- leader快捷键菜单
    {
@@ -68,21 +68,20 @@ local plugins = {
    },
 
    -----------------------------------------------------
-   -- 新装插件
-   -----------------------------
 
-   -- 仪表盘
+   -- 启动页
    -- vim.g.startify_session_dir = "$HOME/.config/nvim/session/"
    {
       "mhinz/vim-startify",
       lazy = false,
+      config = function()
+         utils.set_theme("dinge")
+      end,
    },
    -- ["goolord/alpha-nvim"] = { disable = false },
 
    -- session / workspace
    -- folke/persistence.nvim
-   -- 如果當前bur list, 沒有打開buf, 則不保存
-   -- 在nvchad打開Startify的時候,馬上關閉(目前buf list數量為0), 則不保存session
    {
       "ding-e/persistence.nvim",
       config = function()
@@ -108,7 +107,7 @@ local plugins = {
       end,
    },
 
-   -- 類似vscode的禪模式 - 暂时隐藏状态栏、缓冲线等。
+   -- 禪模式
    {
       "folke/zen-mode.nvim",
       config = function()
@@ -144,12 +143,6 @@ local plugins = {
       end,
    },
 
-   -- editor config - .editorconfig
-   -- https://editorconfig.org
-   -- ["editorconfig/editorconfig-vim"] = {},
-   -- nvim 0.9已经内置支持了EditorConfig
-   -- { "gpanders/editorconfig.nvim" },
-
    -- 歷史修改紀錄
    -- https://github.com/mbbill/undotree/blob/master/plugin/undotree.vim
    {
@@ -169,9 +162,6 @@ local plugins = {
    -- godot gdscript
    { "habamax/vim-godot" },
 
-   -- ["leafo/moonscript-vim"] = {},
-   -- ["svermeulen/nvim-moonmaker"] = {},
-
    -- zig language
    -- tree-sitter - TSInstall zig
    -- ["ding-e/zig-highlight-enhanced"] = { after = "zig.vim" },
@@ -183,122 +173,18 @@ local plugins = {
             lazy = false,
          },
       },
-      config = function()
-         -- 关闭保存自动格式化
-         -- leader+fm 格式化
-         vim.g.zig_fmt_autosave = 0
-      end,
    },
 
-   -- nim language
-   -- 只代码高亮，配合nimlsp代码提示
-   -- ["ding-e/nim-highlight"] = {},
-   -- ['baabelfish/nvim-nim'] = {},
-   -- ['alaviss/nim.nvim'] = {},
-   -- ['wsdjeg/vim-nim'] = {},
-   -- ['zah/nim.vim'] = {},
-
-   -- 翻译
-   -- ["uga-rosa/translate.nvim"] = {
-   --    config = function()
-   --       require("translate").setup {
-   --          defalut = {
-   --             command = "deepl_free",
-   --             output = "floating",
-   --          },
-   --          preset = {
-   --             output = {
-   --                insert = {
-   --                   base = "top",
-   --                   off = -1,
-   --                },
-   --             },
-   --          },
-   --       }
-   --    end,
-   -- },
-
    -- ========================================================================
-
-   -- 在命令行下显示缓冲区列表
-   -- ["bling/vim-bufferline"] = {},
-
-   -- 如果你在一个分割中打开了两个缓冲区，
-   -- 并且你想要关闭一个缓冲区，那么你可以使用:bd命令。
-   -- 不幸的是，这个命令也关闭了分割。
-   -- 通常，你不想关闭分割，而只想关闭缓冲区。
-   -- 在这种情况下，使用Buffkill的:BD命令，
-   -- 该命令将关闭缓冲区，但保留分割。
-   -- ["qpkorr/vim-bufkill"] = {
-   --   config = function ()
-   --     -- Turn off default <leader>bb, <leader>bd, etc. mappings (default: 1)
-   --     vim.g.BufKillCreateMappings = 1
-   --
-   --     -- Override default <C-^> behavior for swapping between alternate buffers (default: 0)
-   --     -- vim.g.BufKillOverrideCtrlCaret = 1
-   --
-   --     -- Modify the command prefix if it conflicts with other plugins
-   --     -- The below changes BD to DD, BB to DB, etc. (default: 'B')
-   --     -- vim.g.BufKillCommandPrefix = 'D'
-   --
-   --     -- If the buffer you want to kill is in many windows, the following option governs what to do
-   --     -- (default: 'confirm', options: 'confirm'/'kill'/'cancel')
-   --     -- vim.g.BufKillActionWhenBufferDisplayedInAnotherWindow = 'kill'
-   --
-   --   end
-   -- },
 
    -- 多光标
    -- ["mg979/vim-visual-multi"] = {
    --   keys = "<C-n>",
    -- },
 
-   -- 增删改引号
-   -- ["tpope/vim-surround"] = {
-   --   keys = {"c", "d", "S"},
-   -- },
-
-   -- 快速选中
-   -- ["gcmt/wildfire.vim"] = {
-   --   keys = "<CR>",
-   -- },
-
-   -- 代码格式化
-   -- ["Chiel92/vim-autoformat"] = {
-   --   cmd = "Autoformat",
-   -- },
-
-   -- 快速分析启动时间
-   -- ["dstein64/vim-startuptime"] = {
-   --   cmd = "StartupTime",
-   -- },
-
-   -- 编辑只读文件
-   -- ["lambdalisue/suda.vim"] = {
-   --   cmd = "SudaWrite",
-   -- },
-
-   -- 现代任务系统
-   -- ["skywind3000/asynctasks.vim"] = {
-   --   requires = "skywind3000/asyncrun.vim",
-   --   cmd = {"AsyncTask", "AsyncTaskEdit"},
-   --   opt = true
-   -- },
-
    -- 函数列表
    -- ["liuchengxu/vista.vim"] = {
    --   cmd = "Vista",
-   -- },
-
-   -- markdown预览
-   -- ["iamcco/markdown-preview.nvim"] = {
-   --   run = "cd app && yarn install",
-   --   ft = "markdown",
-   -- },
-
-   -- 制作markdown表格
-   -- ["dhruvasagar/vim-table-mode"] = {
-   --   cmd = "TableModeToggle",
    -- },
 }
 

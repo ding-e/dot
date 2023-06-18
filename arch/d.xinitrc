@@ -50,12 +50,12 @@ fi
 # 在文字界面打开gdm3的用户登录界面  : sudo systemctl start gdm.service
 # -----------------------------------------------------------------------
 
-# Parallels Tools
-# 动态显示分辨率
-/usr/bin/prlcc &
-# 同步剪贴板
-/usr/bin/prlcp &
-#/usr/bin/ptiagent --info &
+## Parallels Tools
+## 动态显示分辨率
+#/usr/bin/prlcc &
+## 同步剪贴板
+#/usr/bin/prlcp &
+##/usr/bin/ptiagent --info &
 
 # 屏蔽错误输出
 exec dwm 2> /dev/null

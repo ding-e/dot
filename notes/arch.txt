@@ -82,6 +82,9 @@ git clone https://github.com/ding-e/dot.arch
 牆紙
 cd dot.arch
 mkdir ~/.dwm && cp -R wallpapers ~/.dwm/
+------------
+xsetroot -name " TEST "
+xsetroot -solid "#1D1F21"
 
 https://suckless.org/
 sudo make clean install
@@ -104,9 +107,14 @@ vim ~/.xprofile
 fcitx5 &
 
 ---------------------------
+cursors theme
+capitaine-cursors (支持HiDPI)
+
+---------------------------
 font
-terminus-font -> setfont ter-132n
-wqy-bitmapfont wqy-microhei ttf-ubuntu-font-family ttf-ubuntumono-nerd
+# https://wiki.archlinuxcn.org/wiki/Linux_控制台
+terminus-font -> setfont ter-132n / ter-128b
+wqy-bitmapfont wqy-microhei ttf-ubuntu-font-family ttf-ubuntu-mono-nerd
 ----------------
 cd ~/.local/share/fonts && wget https://github.com/kika/fixedsys/releases/download/v3.02.9/FSEX302.ttf
 
@@ -117,6 +125,7 @@ fedora : [
     https://packages.fedoraproject.org/
     ---------------------------
     libX11-devel libXft-devel libXinerama-devel
+    xsetroot xrandr dmenu alacritty chsh
 ]
 
 ubuntu : [
@@ -213,6 +222,7 @@ https://wiki.archlinuxcn.org/wiki/HiDPI#Firefox
 
 -----------------
 # gtk & qt & font
+# 如果使用gdm，xprofile将不会生效
 ~/.xprofile
     export GDK_SCALE=2
     export GDK_DPI_SCALE=0.5
@@ -280,6 +290,7 @@ https://github.com/clangd/clangd/issues/514
 -----------------
 ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+chsh -s /usr/bin/zsh
 
 zsh脚本条件判断
 https://linuxhint.com/if-else-conditionals-zsh-script/
@@ -287,6 +298,12 @@ https://linuxhint.com/if-else-conditionals-zsh-script/
 -----------------
 rustup
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+rust-analyzer
+# https://rust-analyzer.github.io/manual.html#installation
+rustup component add rust-analyzer
+rustup which --toolchain stable rust-analyzer
+rustup run stable rust-analyzer
 
 ---------------------------
 gufw & ufw
@@ -375,13 +392,17 @@ ubuntu : /etc/default/locale
 -> LANG="zh_HK.UTF-8"
    LANGUAGE="zh_HK:zh"
 
+# ~/.zshrc
+-> LANG=zh_HK.UTF-8
+   LC_ALL=zh_HK.UTF-8
+
 ---------------------------
 passwd root
 userdel dinge
 groupadd dinge
 useradd -m -g dinge -s /bin/zsh dinge
 passwd dinge
-
+b
 /etc/sudoers
 -> dinge ALL=(ALL:ALL) ALL
 
@@ -462,15 +483,15 @@ gdm登錄界面: /usr/share/xsessions/
     sudo pacman -S linux-headers dkms
     sudo mount /dev/cdrom /mnt
     sudo ./install
-
+    --------------
     共享目錄在:
     ubuntu: /media/psf
     arch: /mnt/psf
     ln -sf /mnt/psf/ /home/dinge/share
-
+    --------------
     服務:
     systemctl enable/disable/status prltoolsd.service
-
+    --------------
     cli:
     /usr/bin/prlcc &
     /usr/bin/prlcp &
@@ -483,4 +504,50 @@ gdm登錄界面: /usr/share/xsessions/
         <Enabled>0</Enabled>
         改為
         <Enabled>1</Enabled>
+
+3. VMware Tools:
+    # sudo pacman -S libmspack xmlsec python3
+    # # 并安装该网址下的所有依赖：https://archlinux.org/packages/community/x86_64/open-vm-tools/
+    # git clone https://github.com/vmware/open-vm-tools
+    # cd open-vm-tools/open-vm-tools
+    # autoreconf -i
+    # ./configure
+    # make
+    # sudo make install
+    # sudo ldconfig
+    # ------------------
+
+    # https://wiki.archlinuxcn.org/wiki/Arch_打包准则
+    # https://wiki.archlinuxcn.org/wiki/创建软件包
+    # https://wiki.archlinuxcn.org/wiki/Makepkg
+
+    # https://archlinux.org/packages/community/x86_64/open-vm-tools/files/
+    # https://github.com/archlinux/svntogit-community/tree/packages/open-vm-tools
+    makepkg --syncdeps
+    makepkg --install  
+
+
+    # ERROR: PKGBUILD contains CRLF characters and cannot be sourced.
+    ## https://unix.stackexchange.com/questions/532446/error-pkgbuild-contains-crlf-characters-and-cannot-be-executed
+    # https://bbs.archlinux.org/viewtopic.php?id=160215
+    pacman -S dos2unix
+    dos2unix PKGBUILD
+
+    # ERROR: One or more files did not pass the validity check
+    sha256sum FILE_NAME
+
+    --------------
+    共享目錄:
+    ln -sf /mnt/hgfs/linux/ /home/dinge/share
+    --------------
+    服務:
+    systemctl enable/disable/status vmtoolsd.service
+    --------------
+    cli:
+    vmware-user-suid-wrapper &
+
+4. Firefox滚动出现透明/闪烁问题
+    常规->性能->关闭推荐/关闭硬件加速
+
+
 

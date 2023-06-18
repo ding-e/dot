@@ -261,8 +261,8 @@ alias c="clear"
 alias nf="neofetch"
 alias ra="ranger"
 
-alias vi="/usr/bin/vim"
-alias vim="nvim"
+#alias vi="/usr/bin/vim"
+#alias vim="nvim"
 # alias vim="TERM=xterm-256color /usr/bin/vim"
 # alias vimtutor="LANG=zh_CN.utf-8 vimtutor"
 
@@ -338,23 +338,25 @@ function proxy_off() {
 
 # nim lang
 # langserver : nimble install nimlangserver
-# 安装nimlsp, 编译nimlsp必须制定源码目录
+# nimlsp: 编译nimlsp必须制定源码目录
 # nimble install \
   # -p:-d:explicitSourcePath:/Users/dinge/Documents/Workspace/nim/lsp/Nim-1.6.10 \
   # nimlsp --verbose
-export NIMBIN="$HOME/.nimble/bin"
-export PATH=$NIMBIN:$PATH
+# NIMBIN="$WORKSPACE_PATH/nim/bin/lang/nim-1.6.10/bin"
+# export PATH=$NIMBIN:$PATH
+NIMLIB="$HOME/.nimble/bin"
+export PATH=$NIMLIB:$PATH
 
 # zig lang - brew install zig --HEAD
 #          - brew unlink zig && brew link --HEAD zig
-# export ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.10.0
-export ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.11.0
+# ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.10.0
+ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.11.0
 export PATH=$ZIGBIN:$PATH
 # --------------------
 # zls - zig language server
 #       git clone [-b 0.10.0] --recurse-submodules zls.git && build -Drelease-small
 # zls -> zls.json path: /Users/dinge/Library/Application\ Support/zls.json
 # export ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls-0.10.0/zig-out/bin"
-ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls-master/zig-out/bin"
+ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls/zig-out/bin"
 export PATH=$ZLSBIN:$PATH
 

@@ -13,28 +13,10 @@
 -- • force: 使用最右边table的值
 local merge_tb = vim.tbl_deep_extend
 
-local utils = require "core.utils"
-
+-- local utils = require "core.utils"
 local config = require "custom.config"
 local icons = require "custom.icons"
 local icon_index = config.icon_theme == "file" and 2 or 1
-----------------------------------------------------
-
-function reset_workspace_theme()
-   -- 根據當前項目設置nvchad配色
-   local t = 2
-   for _, v in pairs(config.workspace_list) do
-      local wt = nil ~= string.find(v, "/") and v or "workspace/" .. v
-      if nil ~= string.find(string.lower(vim.fn.getcwd()), wt) and t ~= 1 then
-         t = 1
-         break
-      end
-   end
-
-   vim.g.nvchad_theme = config.workspace_theme_toggle[t]
-   require("base46").load_all_highlights()
-end
--- reset_workspace_theme()
 ----------------------------------------------------
 
 -- mbbill/undotree
@@ -111,9 +93,6 @@ function set_nvimtree_opt()
 end
 
 function set_devicons_opt()
-   -- TODO...
-   reset_workspace_theme()
-
    return config.icon_theme == "none" and { default = false, color_icons = false }
        -- or { override = require("nvchad_ui.icons").devicons }
        -- or { override = icons.devicons }
@@ -301,6 +280,7 @@ function set_truezen()
       },
    }
 end
+
 -- session / workspace
 -- folke/persistence.nvim
 function set_session()

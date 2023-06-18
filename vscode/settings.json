@@ -64,9 +64,9 @@
     // 粗宋, x12y16pxMaruMonica, ProggySmallTT, ProggySquareTT, 'ProggyVector', 
     "editor.fontFamily": "'Fixedsys Excelsior', 'Fixedsys Excelsior 3.01', 'Cascadia Code', 'FixedsysTTF', 'Lucida Console', 'UbuntuMono Nerd Font Mono', 'Terminus (TTF)', 'FuraMono Nerd Font', Monaco, 'BitstreamVeraSansMono Nerd Font Mono', 微软雅黑, Consolas, 'Courier New', monospace",
     "editor.fontLigatures": true,
-    "workbench.iconTheme": "windows-95-icons", // -0.88, //-0.68, // -0.88, // -0.66, // -1.15,
-    "editor.fontSize": 20, //16, //15, //13,
-    "terminal.integrated.fontSize": 20, //16,
+    "workbench.iconTheme": "windows-95-icons",
+    "editor.fontSize": 18,
+    "terminal.integrated.fontSize": 18,
     "editor.wordWrap": "on",
     "editor.lineHeight": 26,
     //"editor.scrollBeyondLastLine" : false,
@@ -105,8 +105,8 @@
     // 文件树层级直线
     "workbench.tree.renderIndentGuides": "none",
     "terminal.integrated.rendererType": "dom",
-    "git.enabled": false,
-    "git.autorefresh": false,
+    // "git.enabled": false,
+    // "git.autorefresh": false,
     "search.followSymlinks": false,
     "workbench.editor.showTabs": true,
     "files.exclude": {
@@ -139,7 +139,7 @@
         "editor.guides.highlightActiveIndentation": true,
     },
     "[lua]": {
-        "editor.tabSize": 2,
+        "editor.tabSize": 3,
         // 代码块层级直线
         "editor.guides.indentation": true,
         // 是否突出正在活动的代码块层级直线
@@ -239,5 +239,4 @@
     		"spaceAfter": 1
     	},
     },
-    "window.zoomLevel": -1
 }

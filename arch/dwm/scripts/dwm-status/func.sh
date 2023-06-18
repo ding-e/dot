@@ -14,7 +14,8 @@ S_LEFT_SPACE=" "
 S_RIGHT_SPACE=""
 
 #WIFI_DEVICE="wlp3s0"
-WIFI_DEVICE="enp0s5"
+#WIFI_DEVICE="enp0s5"
+WIFI_DEVICE="ens160"
 # --------------------
 
 # ========================================================

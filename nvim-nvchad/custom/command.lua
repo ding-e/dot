@@ -31,6 +31,15 @@ create_cmd("DeNvimKey", function(args)
    end
 end, { nargs = "*", desc = "" })
 
+-- 查看nvim快捷鍵(NvCheatsheet/Telescope keymaps)
+create_cmd("DeNvchadKey", function(args)
+   if "" ~= args.args then
+      vim.cmd [[ Telescope keymaps ]]
+   else
+      vim.cmd [[ NvCheatsheet ]]
+   end
+end, { nargs = "*", desc = "" })
+
 -- 查看dwm快捷鍵
 create_cmd("DeDwmKey", function(_)
    vim.cmd [[ vsp $HOME/core/software/dwm.win95/config.h ]]

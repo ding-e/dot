@@ -76,9 +76,8 @@ fcitx5 &
 #compton -bCG --shadow-opacity=OPACITY
 # =================== compton END
 
-#sleep 1;
-
-#vmware-user-suid-wrapper &
+sleep 1;
+vmware-user-suid-wrapper &
 
 #/usr/lib/aarch64-linux-gnu/polkit-mate/polkit-mate-authentication-agent-1 &
 

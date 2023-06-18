@@ -4,10 +4,6 @@ set rtp+=/opt/homebrew/opt/fzf
 " 编码为utf8
 set encoding=utf-8
 
-" =========================================
-" DINGE.CODING START
-" =========================================
-
 " 取消搜索的高亮
 let mapleader=" "
 noremap <LEADER><CR> :nohlsearch<CR>

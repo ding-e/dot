@@ -75,7 +75,8 @@ local plugins = {
       "mhinz/vim-startify",
       lazy = false,
       config = function()
-         utils.set_theme("dinge")
+         local name = utils.get_workspace_theme(config.workspace_list, config.workspace_theme_toggle)
+         utils.set_theme(name)
       end,
    },
    -- ["goolord/alpha-nvim"] = { disable = false },

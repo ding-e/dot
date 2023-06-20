@@ -57,7 +57,7 @@ fi
 #/usr/bin/prlcp &
 ##/usr/bin/ptiagent --info &
 
-# 屏蔽错误输出
+dwmblocks &
 exec dwm 2> /dev/null
 
 # exec startxfce4

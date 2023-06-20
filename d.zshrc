@@ -220,7 +220,7 @@ alias alpine="docker exec -it -u dinge -w /home/dinge w1 zsh"
 
 # bin path ---------
 # /home/dinge/core/bin
-export PATH="$HOME/core/bin:$PATH"
+export PATH="$HOME/core/bin:$HOME/core/.dwm/bin:$PATH"
 # # /home/dinge/.local/bin
 # export PATH="$HOME/.local/bin:$PATH"
 
@@ -261,8 +261,8 @@ alias c="clear"
 alias nf="neofetch"
 alias ra="ranger"
 
-#alias vi="/usr/bin/vim"
-#alias vim="nvim"
+alias vi="/usr/bin/vim"
+alias vim="nvim"
 # alias vim="TERM=xterm-256color /usr/bin/vim"
 # alias vimtutor="LANG=zh_CN.utf-8 vimtutor"
 

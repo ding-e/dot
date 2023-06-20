@@ -192,7 +192,7 @@ M.lspconfig = {
          "跳轉到聲明 - lsp declaration",
       },
 
-      ["gd"] = {
+      ["gd"] = { -- CTRL+o 返回
          function()
             vim.lsp.buf.definition()
          end,

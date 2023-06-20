@@ -14,18 +14,14 @@ xrandr --output Virtual-1 --mode 2560x1600
 feh --bg-fill /home/dinge/.dwm/wallpapers/c.jpg
 
 # dwm status
-#xsetroot -name " [ USER ${USER}  DATE $(date +%Y.%m.%d\ %H:%M:%S) ]"
 xsetroot -name " [ USER ${USER} + DATE $(date +%Y.%m.%d\ %H:%M:%S) ]"
-#xsetroot -name " [USER ${USER} + DATE $(date +%Y.%m.%d\ %H:%M:%S)]"
 
 # 无论当前current-status-type.txt文件的状态类型number是否为1, 开启dwm后都设置为1
-$(echo 1 > $(dirname $(readlink -f "$0") || (cd "$(dirname "$0")";pwd))/dwm-status/current-status-type.txt)
+#$(echo 1 > $(dirname $(readlink -f "$0") || (cd "$(dirname "$0")";pwd))/dwm-status/current-status-type.txt)
 # 启动状态栏信息
-bash /home/dinge/.dwm/scripts/dwm-status/dwm-status.sh &
-#bash /dinge/scripts/dwm-scripts/dwm-status/dwm-status.sh &
+#bash /home/dinge/.dwm/scripts/dwm-status/dwm-status.sh &
 
 # 启动picom
-# compton
 #picom -bCG --shadow-opacity=OPACITY
 picom -bCG --shadow-opacity=0.0 --fade-in-step=1.0 --fade-out-step=1.0 --fade-delta=1 --menu-opacity=1.0
 
@@ -35,7 +31,6 @@ volumeicon &
 
 # 启动 fcitx
 fcitx5 &
-# firejail --net=none 2>/dev/null fcitx &
 #firejail --net=none fcitx &
 
 # -----------------------------------------------------------------------
@@ -59,29 +54,13 @@ fcitx5 &
 
 # 切换键盘布局（主要是mod键位）
 # bash /home/dinge/core/scripts/dwm-scripts/dwm-xmodmap.sh &
-# bash /dinge/scripts/dwm-scripts/dwm-xmodmap.sh &
-
-# =================== compton START
-# 加上--config ~/.config/compton/compton.conf 切换窗口compton有模糊效果
-#compton -b
-#picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -f -D 5 -c -b
-
-#== 配置说明：https://github.com/chjj/compton/blob/master/man/compton.1.asciidoc
-#==         ：https://wiki.archlinux.org/index.php/Picom_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E4%B8%93%E4%B8%BA%E6%9F%90%E4%BA%9B%E7%AA%97%E5%8F%A3%E7%A6%81%E7%94%A8%E9%98%B4%E5%BD%B1%E6%95%88%E6%9E%9C 
-
-#== -b: 后台运行，
-#== -C: 禁用面板和 Docks 的阴影效果
-#== -G: 禁用应用程序窗口和拖放对象的阴影效果
-#== --shadow-opacity=OPACITY: 阴影的不透明度。（0.0-1.0，默认为0.75）
-#compton -bCG --shadow-opacity=OPACITY
-# =================== compton END
 
 sleep 1;
 vmware-user-suid-wrapper &
 
 #/usr/lib/aarch64-linux-gnu/polkit-mate/polkit-mate-authentication-agent-1 &
-
 # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
 # manjaro-hello &
 # pamac-tray &
 # clipit &
@@ -95,7 +74,6 @@ vmware-user-suid-wrapper &
 #xautolock -time 10 -locker blurlock &
 #xautolock -time 10 -locker slock &
 #xautolock -time 10 -locker /home/dinge/core/scripts/dwm-scripts/slock-lockscreen.sh &
-#xautolock -time 10 -locker /dinge/scripts/dwm-scripts/slock-lockscreen.sh &
 
 # 电源管理器
 #xfce4-power-manager &
@@ -108,12 +86,6 @@ vmware-user-suid-wrapper &
 
 # 开机自动打开 所需软件 - 现在集成到dwm 使用快捷键打开
 #bash /dinge/scripts/dwm-scripts/dinge-autostart.sh &
-
-# siji font
-#xset +fp /home/dinge/.local/share/fonts
-#xset fp rehash
-#xset +fp /home/dinge/.local/share/fonts/tamzen-font/bdf
-#xset fp rehash
 
 # -----------------------------------------------------------------------
 # HDMI-0 : 外接显示器

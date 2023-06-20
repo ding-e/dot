@@ -402,7 +402,7 @@ userdel dinge
 groupadd dinge
 useradd -m -g dinge -s /bin/zsh dinge
 passwd dinge
-b
+
 /etc/sudoers
 -> dinge ALL=(ALL:ALL) ALL
 
@@ -546,7 +546,7 @@ gdm登錄界面: /usr/share/xsessions/
     cli:
     vmware-user-suid-wrapper &
 
-4. Firefox滚动出现透明/闪烁问题
+4. Firefox滚动出现透明/闪烁问题 (mac vmware)
     常规->性能->关闭推荐/关闭硬件加速
 
 

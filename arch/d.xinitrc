@@ -57,7 +57,6 @@ fi
 #/usr/bin/prlcp &
 ##/usr/bin/ptiagent --info &
 
-dwmblocks &
 exec dwm 2> /dev/null
 
 # exec startxfce4

@@ -220,7 +220,7 @@ alias alpine="docker exec -it -u dinge -w /home/dinge w1 zsh"
 
 # bin path ---------
 # /home/dinge/core/bin
-export PATH="$HOME/core/bin:$HOME/core/.dwm/bin:$PATH"
+export PATH="$HOME/core/bin:$HOME/.dwm/bin:$PATH"
 # # /home/dinge/.local/bin
 # export PATH="$HOME/.local/bin:$PATH"
 
@@ -290,14 +290,6 @@ alias wttr_s="curl 'wttr.in/?lang=zh&format=4'"
 alias deldsstore="find . -name '.DS_Store' -exec rm {} \;"
 alias finddsstore="find . -name '.DS_Store'"
 
-# 解决tmux clear 提示 "terminals database is inaccessible" 问题
-# [x] alias tmux="TERM=xterm-256color tmux"
-# if [ "$TERM" = "tmux-256color" ];then
-#    #export TERMINFO=/usr/share/terminfo
-#    export TERM=xterm-256color
-# else
-# fi
-
 # vpn
 alias vpnstart="export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5://127.0.0.1:7891;echo \"Set proxy successfully\" "
 alias vpnstop="unset http_proxy;unset https_proxy;unset all_proxy;echo \"Unset proxy successfully\" "
@@ -340,17 +332,17 @@ function proxy_off() {
 # langserver : nimble install nimlangserver
 # nimlsp: 编译nimlsp必须制定源码目录
 # nimble install \
-  # -p:-d:explicitSourcePath:/Users/dinge/Documents/Workspace/nim/lsp/Nim-1.6.10 \
+  # -p:-d:explicitSourcePath:/xxx/nim/lsp/Nim-1.6.10 \
   # nimlsp --verbose
-# NIMBIN="$WORKSPACE_PATH/nim/bin/lang/nim-1.6.10/bin"
-# export PATH=$NIMBIN:$PATH
+NIMBIN="$WORKSPACE_PATH/nim/bin/lang/nim-1.6.10/bin"
+export PATH=$NIMBIN:$PATH
 NIMLIB="$HOME/.nimble/bin"
 export PATH=$NIMLIB:$PATH
 
 # zig lang - brew install zig --HEAD
 #          - brew unlink zig && brew link --HEAD zig
 # ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.10.0
-ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.11.0
+ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-dev-0.11.0
 export PATH=$ZIGBIN:$PATH
 # --------------------
 # zls - zig language server

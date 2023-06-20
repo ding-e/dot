@@ -62,10 +62,11 @@
 
 
     // 粗宋, x12y16pxMaruMonica, ProggySmallTT, ProggySquareTT, 'ProggyVector', 
-    "editor.fontFamily": "'Fixedsys Excelsior', 'Fixedsys Excelsior 3.01', 'Cascadia Code', 'FixedsysTTF', 'Lucida Console', 'UbuntuMono Nerd Font Mono', 'Terminus (TTF)', 'FuraMono Nerd Font', Monaco, 'BitstreamVeraSansMono Nerd Font Mono', 微软雅黑, Consolas, 'Courier New', monospace",
+    // "editor.fontFamily": "'Fixedsys Excelsior', 'Fixedsys Excelsior 3.01', 'Cascadia Code', 'FixedsysTTF', 'Lucida Console', 'UbuntuMono Nerd Font Mono', 'Terminus (TTF)', 'FuraMono Nerd Font', Monaco, 'BitstreamVeraSansMono Nerd Font Mono', 微软雅黑, Consolas, 'Courier New', monospace",
+    "editor.fontFamily": "'BitstreamVeraSansMono Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,
     "workbench.iconTheme": "windows-95-icons",
-    "editor.fontSize": 18,
+    "editor.fontSize": 15, //18,
     "terminal.integrated.fontSize": 18,
     "editor.wordWrap": "on",
     "editor.lineHeight": 26,

@@ -14,6 +14,7 @@ xrandr --output Virtual-1 --mode 2560x1600
 feh --bg-fill /home/dinge/.dwm/wallpapers/c.jpg
 
 # dwm status
+dwmblocks &
 xsetroot -name " [ USER ${USER} + DATE $(date +%Y.%m.%d\ %H:%M:%S) ]"
 
 # 无论当前current-status-type.txt文件的状态类型number是否为1, 开启dwm后都设置为1

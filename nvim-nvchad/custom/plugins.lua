@@ -81,6 +81,12 @@ local plugins = {
    },
    -- ["goolord/alpha-nvim"] = { disable = false },
 
+   -- 缩进
+   -- editor config - .editorconfig
+   -- https://editorconfig.org
+   -- { "gpanders/editorconfig.nvim", lazy = false },
+   { "tpope/vim-sleuth", lazy = false },
+
    -- session / workspace
    -- folke/persistence.nvim
    {

@@ -149,7 +149,7 @@ function set_nullls()
          b.formatting.gdformat,
          b.formatting.rustfmt,
          b.formatting.zigfmt,
-         b.formatting.nimpretty,
+         b.formatting.nimpretty.with { extra_args = { "--indent: 0" } },
          b.formatting.clang_format.with { extra_args = { "--style", "{IndentWidth: 4}" } },
       },
    }

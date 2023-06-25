@@ -226,8 +226,9 @@ export PATH="$HOME/core/bin:$HOME/.dwm/bin:$PATH"
 
 alias open="thunar"
 
-# 注销dinge
+# 注销
 alias kdinge="pkill -kill -u dinge"
+alias kdinge="pkill -kill -u tmp"
 
 # parallels共享目錄
 alias gshare="cd $HOME/share/linux/"
@@ -334,21 +335,19 @@ function proxy_off() {
 # nimble install \
   # -p:-d:explicitSourcePath:/xxx/nim/lsp/Nim-1.6.10 \
   # nimlsp --verbose
-NIMBIN="$WORKSPACE_PATH/nim/bin/lang/nim-1.6.10/bin"
+NIMBIN="$WORKSPACE_PATH/nim/bin/lang/Nim/bin"
 export PATH=$NIMBIN:$PATH
 NIMLIB="$HOME/.nimble/bin"
 export PATH=$NIMLIB:$PATH
 
 # zig lang - brew install zig --HEAD
 #          - brew unlink zig && brew link --HEAD zig
-# ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-macos-aarch64-0.10.0
 ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-dev-0.11.0
 export PATH=$ZIGBIN:$PATH
 # --------------------
 # zls - zig language server
 #       git clone [-b 0.10.0] --recurse-submodules zls.git && build -Drelease-small
 # zls -> zls.json path: /Users/dinge/Library/Application\ Support/zls.json
-# export ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls-0.10.0/zig-out/bin"
 ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls/zig-out/bin"
 export PATH=$ZLSBIN:$PATH
 

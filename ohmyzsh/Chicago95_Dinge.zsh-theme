@@ -3,7 +3,8 @@ local ret_status_git="%(?:G:F)"
 function __msdos_pwd() {
   local __path=$(pwd)
   #echo $__path | tr '/' '\\'
-  echo $__path
+  #echo $__path
+  echo $__path | sed -r 's/\/home\/dinge+/\/dinge/g'
 }
 function __get_prefix_chicago95_zsh() {
   if git rev-parse --git-dir > /dev/null 2>&1; then

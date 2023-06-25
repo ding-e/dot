@@ -67,6 +67,7 @@ else
     # dwm script & wallpapers -> ding-e/dot.arch
     mkdir -p "$HOME/.dwm"
     ${cmd} "$PWD/arch/dwm/autostart.sh" "$HOME/.dwm/"
+    ${cmd} "$PWD/arch/dwm/bin" "$HOME/.dwm/"
     ${cmd} "$PWD/arch/dwm/scripts" "$HOME/.dwm/"
 
     # alacritty

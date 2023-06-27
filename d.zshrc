@@ -228,7 +228,7 @@ alias open="thunar"
 
 # 注销
 alias kdinge="pkill -kill -u dinge"
-alias kdinge="pkill -kill -u tmp"
+alias ktmp="pkill -kill -u tmp"
 
 # parallels共享目錄
 alias gshare="cd $HOME/share/linux/"

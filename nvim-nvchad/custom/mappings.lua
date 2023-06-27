@@ -4,6 +4,7 @@
 ---@diagnostic disable: lowercase-global, undefined-global
 
 local config = require "custom.config"
+local utils = require "custom.utils"
 ---@type MappingsTable
 local M = {}
 
@@ -126,7 +127,13 @@ M.general = {
       ["<right>"] = { "<CMD> vertical resize +5 <CR>", "" },
 
       -- 打开当前文件目录
-      ["<leader>op"] = { "<CMD>lua os.execute('open ' .. vim.fn.expand('%:p:h')) <CR>", "打开当前文件目录" },
+      ["<leader>po"] = {
+         "<CMD>lua os.execute('"
+          .. utils.get_filemanager_cmd()
+          .. " ' .. vim.fn.expand('%:p:h') .. ' 2>/dev/null') <CR>",
+         "打开当前文件目录",
+      },
+      ["<leader>pc"] = { "<CMD>echo expand('%:p') <CR>", "查看当前文件目录" },
    },
 }
 

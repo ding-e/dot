@@ -3,6 +3,8 @@
 ---------------------------
 ---@diagnostic disable: lowercase-global, undefined-global
 
+-- os.getenv "TERM_PROGRAM" == "iTerm.app"
+
 local utils = require "custom.utils"
 local M = {
 
@@ -34,14 +36,10 @@ local M = {
    treesitter_list = { "vim", "lua", "rust", "c" },
 }
 
+if utils.is_linux() then M.icon_theme = "none" end
 M.theme = utils.get_workspace_theme(M.workspace_list, M.workspace_theme_toggle)
+
 -- leader+fm 格式化
 vim.g.zig_fmt_autosave = 0
-
-if M.icon_theme == "file" and os.getenv "TERM_PROGRAM" == "iTerm.app" then
-   M.icon_theme = "nvchad"
-elseif io.popen("uname -n", "r"):read "*l" == "de-arch" then
-   M.icon_theme = "none"
-end
 
 return M

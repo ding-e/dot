@@ -6,9 +6,6 @@
 -- Awesome plugins for Neovim
 -- https://nvimluau.dev
 
--- editor config - .editorconfig
--- https://editorconfig.org
-
 local config = require "custom.config"
 local utils = require "custom.utils"
 require "custom.function"

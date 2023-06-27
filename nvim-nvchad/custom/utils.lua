@@ -30,4 +30,26 @@ M.set_theme = function(theme_name)
    require("base46").load_all_highlights()
 end
 
+M.get_filemanager_cmd = function()
+   local c = "open"
+   if M.is_linux() then
+      c = "thunar"
+   end
+   return c
+end
+
+M.is_linux = function()
+   if io.popen("uname -o", "r"):read "*l" == "GNU/Linux" then
+      return true
+   end
+   return false
+end
+
+M.is_macos = function()
+   if io.popen("uname -o", "r"):read "*l" == "Darwin" then
+      return true
+   end
+   return false
+end
+
 return M

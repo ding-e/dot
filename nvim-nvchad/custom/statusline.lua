@@ -196,12 +196,14 @@ M.cwd = function()
    local dir_name = " "
 
    -- return (vim.o.columns > 85 and ("%#St_cwd_sep#" .. sep_l .. dir_icon .. dir_name)) or ""
-   local cwd = (vim.o.columns > 120 and ("%#St_cwd_sep#" .. sep_l .. dir_icon .. dir_name)) or ""
+   local result = (vim.o.columns > 120 and ("%#St_cwd_sep#" .. sep_l .. dir_icon .. dir_name)) or ""
 
    -- 时间
    local current_time = "%#St_cwd_text#" .. " " .. os.date('%H:%M') .. " "
-   return current_time .. cwd
 
+   local utils = require "custom.utils"
+   if not utils.is_tmux() and utils.is_macos() then result = current_time .. result end
+   return result
 end
 
 M.cursor_position = function()

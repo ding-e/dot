@@ -29,19 +29,16 @@ size_format() {
   if [[ $size == 0 ]]; then
     i=1
   else
-    if [[ $2 == 0 ]]; then
-      while [ $size -ge 1024 ]; do
-        size=$(expr $size / 1024)
-        i=$(expr $i + 1)
-      done
-    else
-      bijiao=$(awk -v size=$size 'BEGIN{printf "%0.0f", (size >= 1024)}')
-      while [ $bijiao -gt 0 ]; do
-        size=$(awk -v size=$size -v f="%0.$2f" 'BEGIN{printf f, (size / 1024)}')
-        bijiao=$(awk -v size=$size 'BEGIN{printf "%0.0f", (size >= 1024)}')
-        i=$(expr $i + 1)
-      done
-    fi
+    # while [ $size -ge 1024 ]; do
+    #   size=$(expr $size / 1024)
+    #   i=$(expr $i + 1)
+    # done
+    go=$(awk -v size=$size 'BEGIN{printf "%0.0f", (size >= 1024)}')
+    while [ $go == 1 ]; do
+      size=$(awk -v size=$size -v f="%0.$2f" 'BEGIN{printf f, (size / 1024)}')
+      go=$(awk -v size=$size 'BEGIN{printf "%0.0f", (size >= 1024)}')
+      i=$(expr $i + 1)
+    done
     if [[ $i -gt 4 ]]; then
       i=5
     fi

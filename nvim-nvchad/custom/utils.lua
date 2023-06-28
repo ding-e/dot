@@ -52,4 +52,11 @@ M.is_macos = function()
    return false
 end
 
+M.is_tmux = function()
+   if os.getenv "TERM_PROGRAM" == "tmux" then
+      return true
+   end
+   return false
+end
+
 return M

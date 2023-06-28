@@ -3,37 +3,14 @@
 CURR_DIR=$(dirname $(readlink -f "$0") || (cd "$(dirname "$0")";pwd))
 source ${CURR_DIR}/utils.sh
 
-# wifi 上传/下载速度
+# wifi 上/下行速度
 print_wifi_speed() {
-  up_time1=$(ifconfig ${WIFI_DEVICE} | grep "TX packets" | awk '{print $5}')
-  down_time1=$(ifconfig ${WIFI_DEVICE} | grep "RX packets" | awk '{print $5}')
-
-  sleep 1
-  # clear
-
-  up_time2=$(ifconfig ${WIFI_DEVICE} | grep "TX packets" | awk '{print $5}')
-  down_time2=$(ifconfig ${WIFI_DEVICE} | grep "RX packets" | awk '{print $5}')
-
-  up_time=$(expr $up_time2 - $up_time1)
-  down_time=$(expr $down_time2 - $down_time1)
-
-  echo -e "${S_ICON_3}SPE D $(size_format $down_time 0)/s${S_ICON_2}U $(size_format $up_time 0)/s${S_ICON_4}"
+  echo -e $(dwm_wifi_speed.sh)
 }
 
 # 总物理内存
 print_mem() {
-  # 总内存 (byte) 默认kb
-  memtotal=$(free | awk 'NR==2{print}' | awk '{print $2 * 1024}')
-  # 剩余内存 (byte) 默认kb
-  memavailable=$(free | awk 'NR==2{print}' | awk '{print $7 * 1024}')
-  # 计算 已用内存 (byte) 默认kb
-  memused=$(($memtotal - $memavailable))
-  # 计算已用内存 百分比
-  memusedP=$(awk -v memused=$memused -v memtotal=$memtotal 'BEGIN{printf "%0.0f", ((memused / memtotal) * 100)}')
-
-  used=$(size_format $memused 1)
-  avail=$(size_format $memavailable 1)
-  echo -e "${S_ICON_3}MEM A ${avail}${S_ICON_2}U ${used}${S_ICON_2}U.P ${memusedP}%${S_ICON_4}"
+  echo -e $(dwm_mem.sh)
 }
 
 # ======================================================

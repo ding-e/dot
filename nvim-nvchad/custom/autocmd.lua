@@ -3,6 +3,28 @@
 ------------------
 ---@diagnostic disable: lowercase-global, undefined-global
 
+local create_autocmd = vim.api.nvim_create_autocmd
+local utils = require "custom.utils"
+
+-- ======================================================
+if utils.is_linux() then
+   -- TODO...
+   -- 暂时解决: uv_close: Assertion `!uv__is_closing(handle)` failed.
+   -- https://github.com/neovim/neovim/issues/21856
+   create_autocmd({ "VimLeave" }, {
+      callback = function()
+         vim.fn.jobstart('notify-send ""', { detach = true })
+      end,
+   })
+   -- create_autocmd({ "VimLeave" }, {
+   --    callback = function()
+   --       vim.cmd '!notify-send  "hello"'
+   --       vim.cmd "sleep 10m"
+   --    end,
+   -- })
+end
+
+-- ======================================================
 -- https://zhuanlan.zhihu.com/p/557199534
 
 -- BufWinEnter（创建默认窗口）

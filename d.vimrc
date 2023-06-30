@@ -94,7 +94,7 @@ syntax on
 " 显示左下角状态栏，--INSERT--之类
 "set showmode
 
-" TODO...
+" 无需兼容vi
 set nocompatible
 
 " 文件类型
@@ -127,16 +127,16 @@ set scrolloff=5
 set tw=0
 set indentexpr=
 
-" TODO... 退格键，行首退到行尾
+" 退格键，能从当前行首退到上一行行尾
 "set backspace=indent,eol,start
 
-" TODO...
+" 折叠
 set foldmethod=indent
 set foldlevel=99
 set laststatus=2
 set autochdir
 
-" TODO... 有些终端无效 -  不同模式下，光标样式不一样
+" 有些终端无效 -  不同模式下，光标样式不一样
 "let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 "let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 "let &t_EI = "\<Esc>]50;CursorShape=0\x7"
@@ -170,7 +170,7 @@ set incsearch
 set ignorecase
 set smartcase
 
-" TODO...
+" 右下角显示当前输入的命令
 set showcmd
 
 " 输入命令，每输完再按tab建会自动罗列出命令

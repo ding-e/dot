@@ -9,14 +9,14 @@ local utils = require "custom.utils"
 local M = {
 
    theme = "gruvchad", -- one_light
-   theme_toggle = { "gruvchad", "dinge" },
+
+   -- 如果當前項目存在workspace_list中使用第一個主題
+   -- 否則使用第二個
+   theme_toggle = { "dinge", "gruvchad" },
 
    -- 項目列表
    workspace_list = { "nim", "dot", "zig", "nvim",
                       "love2d", "godot", ".config/nvim" },
-   -- 如果當前項目存在workspace_list中使用第一個主題
-   -- 否則使用第二個
-   workspace_theme_toggle = { "dinge", "gruvchad" },
 
    -- 圖標相關 (nvim-tree/tabufline)
    -- "none", "file", "nvchad"
@@ -37,7 +37,7 @@ local M = {
 }
 
 if utils.is_linux() then M.icon_theme = "none" end
-M.theme = utils.get_workspace_theme(M.workspace_list, M.workspace_theme_toggle)
+M.theme = utils.get_workspace_theme(M.workspace_list, M.theme_toggle)
 
 -- leader+fm 格式化
 vim.g.zig_fmt_autosave = 0

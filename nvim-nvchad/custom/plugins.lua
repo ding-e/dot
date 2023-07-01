@@ -72,7 +72,7 @@ local plugins = {
       "mhinz/vim-startify",
       lazy = false,
       config = function()
-         local name = utils.get_workspace_theme(config.workspace_list, config.workspace_theme_toggle)
+         local name = utils.get_workspace_theme(config.workspace_list, config.theme_toggle)
          utils.set_theme(name)
       end,
    },
@@ -90,24 +90,6 @@ local plugins = {
       "ding-e/persistence.nvim",
       config = function()
          set_session()
-      end,
-   },
-   -- ["Shatur/neovim-session-manager"] = {
-   --    -- after = { "ui", "nvim-web-devicons" },
-   --    -- setup = function() end,
-   --    config = set_neovim_session()
-   -- },
-
-   -- mac下自动切换输入法
-   {
-      "ybian/smartim",
-      -- 忽略updates/syncs
-      -- lock = true,
-      commit = "d73dc7b361966762d74254a1ba52d29dd83d5fd3",
-      lazy = false,
-      config = function()
-         -- https://blog.51cto.com/u_15273875/3858820
-         vim.g.smartim_default = "com.apple.keylayout.ABC"
       end,
    },
 
@@ -191,5 +173,23 @@ local plugins = {
    --   cmd = "Vista",
    -- },
 }
+
+if utils.is_macos() then
+   table.insert(
+      plugins,
+      -- mac下自动切换输入法
+      {
+         "ybian/smartim",
+         -- 忽略updates/syncs
+         -- lock = true,
+         commit = "d73dc7b361966762d74254a1ba52d29dd83d5fd3",
+         lazy = false,
+         config = function()
+            -- https://blog.51cto.com/u_15273875/3858820
+            vim.g.smartim_default = "com.apple.keylayout.ABC"
+         end,
+      }
+   )
+end
 
 return plugins

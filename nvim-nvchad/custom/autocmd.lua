@@ -13,15 +13,10 @@ if utils.is_linux() then
    -- https://github.com/neovim/neovim/issues/21856
    create_autocmd({ "VimLeave" }, {
       callback = function()
+         -- vim.fn.jobstart('', { detach = true })
          vim.fn.jobstart('notify-send ""', { detach = true })
       end,
    })
-   -- create_autocmd({ "VimLeave" }, {
-   --    callback = function()
-   --       vim.cmd '!notify-send  "hello"'
-   --       vim.cmd "sleep 10m"
-   --    end,
-   -- })
 end
 
 -- ======================================================

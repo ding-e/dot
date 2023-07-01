@@ -8,12 +8,6 @@ local utils = require "custom.utils"
 ---@type MappingsTable
 local M = {}
 
--- M.disabled = {
---    n = {
---       ["<leader>h"] = "",
---    },
--- }
-
 M.sendCommand = {
    n = {
       -- ["<leader>cc"] = {
@@ -67,6 +61,7 @@ M.general = {
             local curr_is_undo = vim.fn.expand "%" == "undotree_2"
             local curr_is_diff = vim.fn.expand "%" == "diffpanel_3"
 
+            -- TODO...
             if curr_is_tree then
                vim.cmd [[ NvimTreeClose ]]
             elseif curr_is_undo or curr_is_diff then

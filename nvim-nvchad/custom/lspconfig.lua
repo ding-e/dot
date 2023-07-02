@@ -49,6 +49,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 -------------------------------------
 
 local capabilities = require("plugins.configs.lspconfig").capabilities
+capabilities.offsetEncoding = 'utf-8'
 
 local lspconfig = require "lspconfig"
 local servers = { "zls" }
@@ -156,6 +157,8 @@ lspconfig.clangd.setup {
    cmd = {
       "clangd",
       "--header-insertion=never",
+      -- "--offset-encoding=utf-16",
+
       -- "--background-index",
       -- "--cross-file-rename",
    },

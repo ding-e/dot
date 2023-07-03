@@ -205,7 +205,6 @@ alias dockerstart="sudo systemctl start docker"
 alias dockerstop="sudo systemctl stop docker"
 alias dockerdisable="sudo systemctl disable docker"
 alias dockerstatus="sudo systemctl status docker"
-# alias docker="sudo docker"
 alias dockersocketstop="sudo systemctl stop docker.socket"
 alias dockersocketdisable="sudo systemctl stop docker.socket"
 

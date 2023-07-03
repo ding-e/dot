@@ -420,13 +420,6 @@ sudo pacman install docker
 sudo systemctl start docker
 https://jianshu.com/p/c4c6d1196156
 
-docker免sudo
-groupadd docker
-gpasswd -a ${USER} docker
-service docker restart
-newgrp - docker
-https://www.jb51.net/article/208613.htm
-
 -----------------------
 .Xresources - HiDPI
 https://wiki.archlinuxcn.org/wiki/HiDPI#X_Server

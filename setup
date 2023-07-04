@@ -2,21 +2,18 @@
 
 cmd=''
 
-# sh -c ohmyzsh/omz.sh
-# git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-
-# nvchad 1.0:
-# git clone https://github.com/ding-e/NvChad-1.0 ~/.config/nvim --depth 1
-# --------------------------------
-
 # MACOS
 if [ $(uname -o) = "Darwin" ]; then
 
   cmd='ln -sf'
 
   # kitty
-  ${cmd} "$PWD/kitty/kitty.conf" "$HOME/.config/kitty/"
-  ${cmd} "$PWD/kitty/kitty_search" "$HOME/.config/kitty/"
+  kitty_config="$HOME/.config/kitty/kitty.conf" 
+  inset_c="include $PWD/dinge.conf"
+
+  if [ $(grep -c "${inset_c}" "${kitty_config}") == '0' ]; then
+    echo "\n${inset_c}" >> ${kitty_config}
+  fi
   # -----------------
 
   # zls
@@ -32,15 +29,6 @@ if [ $(uname -o) = "Darwin" ]; then
 else
 
   cmd='cp -R'
-
-  # backup
-  # mv "$HOME/.zshrc"                 "$HOME/.zshrc.b"
-  # mv "$HOME/.tmux.conf"             "$HOME/.tmux.conf.b"
-  # mv "$HOME/.vimrc"                 "$HOME/.vimrc.b"
-  # mv "$HOME/.vim"                   "$HOME/.vim.b"
-  # mv "$HOME/.config/nvim"           "$HOME/.config/nvim.b"
-  # mv "$HOME/.config/ranger/rc.conf" "$HOME/.config/ranger/rc.config.b"
-  # -----------------
 
   # ranger
   mkdir -p "$HOME/.config/ranger"
@@ -83,7 +71,7 @@ else
     ${cmd} "$PWD/arch/config/morc_menu/morc_menu_v1.conf" "$HOME/.config/morc_menu/"
     ${cmd} "$PWD/arch/config/d.dmenurc" "$HOME/.config/dmenurc"
 
-    # chromium scale
+    # chromium flags
     ${cmd} "$PWD/arch/config/chromium-flags.conf" "$HOME/.config/"
 
     # rofi

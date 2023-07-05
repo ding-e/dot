@@ -216,13 +216,10 @@ let g:bufferline_echo=0
 let g:bufferline_active_buffer_left = '['
 let g:bufferline_active_buffer_right = ']'
 
-" status
+" status line
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-function! AirlineInit()
-  let g:airline_section_z = airline#section#create_right(['L:%l C:%c P:%P'])
-endfunction
-autocmd VimEnter * call AirlineInit()
+let g:airline_section_z = airline#section#create_right(['L:%l C:%c P:%P'])
 
 " tree
 let g:NERDTreeDirArrowExpandable = '+'

@@ -55,6 +55,11 @@ M.general = {
             -- echo call undotree#UndotreeIsVisible()
             -- lua print(vim.fn['undotree#UndotreeIsVisible']())
 
+            if string.find(vim.fn.expand "%", "term://") then
+               vim.cmd [[ bd! ]]
+               return
+            end
+
             local tree_isopen = require("nvim-tree.view").is_visible() == true
             local undo_isopen = vim.fn["undotree#UndotreeIsVisible"]() == 1
             local curr_is_tree = vim.fn.expand "%" == "NvimTree_1"
@@ -452,7 +457,16 @@ M.game = {
                end
             end
             if "" ~= cmd then
-               require("nvterm.terminal").send(cmd, "vertical")
+               local type, nvterm = "vertical", require("nvterm.terminal")
+               local terms, last_type_term = nvterm.list_terms(), nil
+               for _, v in pairs(terms) do
+                  last_type_term = v.type == type and v or nil
+               end
+               if nil ~= last_type_term and not last_type_term.open then
+                  nvterm.show_term(last_type_term)
+               end
+               -- nvterm.close_all_terms()
+               nvterm.send(cmd, type)
             end
          end,
          "运行游戏项目",

@@ -270,6 +270,7 @@ alias dot="cd $WORKSPACE_PATH/dot/ && vim"
 alias gwork="cd $WORKSPACE_PATH/"
 alias gdot="cd $WORKSPACE_PATH/dot/"
 
+alias gc="cd $WORKSPACE_PATH/c/"
 alias gnim="cd $WORKSPACE_PATH/nim/"
 alias gzig="cd $WORKSPACE_PATH/zig/"
 alias grust="cd $WORKSPACE_PATH/rust/"

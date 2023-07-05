@@ -9,7 +9,7 @@ if [ $(uname -o) = "Darwin" ]; then
 
   # kitty
   kitty_config="$HOME/.config/kitty/kitty.conf" 
-  inset_c="include $PWD/dinge.conf"
+  inset_c="include $PWD/kitty/dinge.conf"
 
   if [ $(grep -c "${inset_c}" "${kitty_config}") == '0' ]; then
     echo "\n${inset_c}" >> ${kitty_config}
@@ -17,7 +17,7 @@ if [ $(uname -o) = "Darwin" ]; then
   # -----------------
 
   # zls
-  ${cmd} "$PWD/zls/zls.json" "$HOME/Library/Application Support/zls.json"
+  #${cmd} "$PWD/zls/zls.json" "$HOME/Library/Application Support/zls.json"
   # -----------------
 
   # vscode

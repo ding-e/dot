@@ -28,6 +28,9 @@ https://github.com/stark/siji
 Fixedsys Excelsior
 https://github.com/kika/fixedsys
 
+https://github.com/NEX-S/Fixedsys-Nerd-Font
+https://github.com/delinx/Fixedsys-Core
+
 More/Less Perfect DOS VGA
 https://github.com/ding-e/Chicago95/tree/master/Fonts/vga_font
 

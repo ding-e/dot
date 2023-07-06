@@ -96,6 +96,7 @@ local plugins = {
    -- 禪模式
    {
       "folke/zen-mode.nvim",
+      cmd = { "ZenMode" },
       config = function()
          set_zenmode()
       end,

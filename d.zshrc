@@ -197,8 +197,9 @@ export WORKSPACE_PATH="$HOME/core/workspace"
 # alias bluestop="sudo systemctl stop bluetooth"
 
 # sshd systemd
-# alias sshstart="sudo systemctl start sshd"
-# alias sshstop="sudo systemctl stop sshd"
+alias sshstart="sudo systemctl start sshd"
+alias sshstop="sudo systemctl stop sshd"
+alias sshstatus="sudo systemctl status sshd"
 
 # docker systemd
 alias dockerstart="sudo systemctl start docker"

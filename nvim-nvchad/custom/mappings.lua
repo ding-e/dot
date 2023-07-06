@@ -121,10 +121,10 @@ M.general = {
       ["sl"] = { "<cmd> vsplit <CR>", "" },
 
       -- 调整分屏大小
-      ["<up>"] = { "<CMD> res +5 <CR>", "" },
-      ["<down>"] = { "<CMD> res -5 <CR>", "" },
-      ["<left>"] = { "<CMD> vertical resize -5 <CR>", "" },
-      ["<right>"] = { "<CMD> vertical resize +5 <CR>", "" },
+      ["<Up>"] = { "<CMD> res +5 <CR>", "" },
+      ["<Down>"] = { "<CMD> res -5 <CR>", "" },
+      ["<Left>"] = { "<CMD> vertical resize -5 <CR>", "" },
+      ["<Right>"] = { "<CMD> vertical resize +5 <CR>", "" },
 
       -- 打开当前文件目录
       ["<leader>po"] = {
@@ -361,7 +361,7 @@ M.nvterm = {
          "   切換浮動終端",
       },
 
-      ["<C-h><C-k>"] = {
+      ["<C-c><C-k>"] = {
          function()
             require("nvterm.terminal").toggle "horizontal"
          end,
@@ -387,7 +387,7 @@ M.nvterm = {
          "   切換浮動終端",
       },
 
-      ["<C-h><C-k>"] = {
+      ["<C-c><C-k>"] = {
          function()
             require("nvterm.terminal").toggle "horizontal"
          end,
@@ -460,7 +460,7 @@ M.game = {
                local type, nvterm = "vertical", require("nvterm.terminal")
                local terms, last_type_term = nvterm.list_terms(), nil
                for _, v in pairs(terms) do
-                  last_type_term = v.type == type and v or nil
+                  if v.type == type then last_type_term = v end
                end
                if nil ~= last_type_term and not last_type_term.open then
                   nvterm.show_term(last_type_term)

@@ -447,7 +447,7 @@ M.game = {
       ["<leader>gr"] = {
          function()
             local cmd, c, f = "", "", nil
-            for _, v in pairs(config.game_project_cmd) do
+            for _, v in pairs(config.project_cmd_list) do
                f = io.open(v[1], "r")
                if nil ~= f then
                   c = f:read "*a"
@@ -457,7 +457,8 @@ M.game = {
                end
             end
             if "" ~= cmd then
-               local type, nvterm = "vertical", require("nvterm.terminal")
+               local nvterm = require("nvterm.terminal")
+               local type = config.project_term_type
                local terms, last_type_term = nvterm.list_terms(), nil
                for _, v in pairs(terms) do
                   if v.type == type then last_type_term = v end

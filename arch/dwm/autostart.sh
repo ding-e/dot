@@ -1,15 +1,11 @@
 #!/bin/bash
 
-#/usr/bin/prlcc &
-#/usr/bin/ptiagent --info &
-
 xrandr --output Virtual-1 --mode 2560x1600
 # xrandr --output Virtual-1 --mode 1920x1200
 #xrandr --output Virtual-1 --mode 1680x1050
 #xrandr --output Virtual-1 --mode 1440x900
 
 # feh 设置墙纸
-# firejail --net=none feh --bg-fill /home/dinge/core/picture/xp-bg.jpg
 # feh --bg-fill /home/dinge/.dwm/wallpapers/xp.jpg
 feh --bg-fill /home/dinge/.dwm/wallpapers/c.jpg
 
@@ -17,9 +13,8 @@ feh --bg-fill /home/dinge/.dwm/wallpapers/c.jpg
 dwmblocks &
 xsetroot -name " [ USER ${USER} + DATE $(date +%Y.%m.%d\ %H:%M:%S) ]"
 
-# 无论当前current-status-type.txt文件的状态类型number是否为1, 开启dwm后都设置为1
-#$(echo 1 > $(dirname $(readlink -f "$0") || (cd "$(dirname "$0")";pwd))/dwm-status/current-status-type.txt)
 # 启动状态栏信息
+#$(echo 1 > $(dirname $(readlink -f "$0") || (cd "$(dirname "$0")";pwd))/dwm-status/current-status-type.txt)
 #bash /home/dinge/.dwm/scripts/dwm-status/dwm-status.sh &
 
 # 启动picom
@@ -28,11 +23,14 @@ picom -bCG --shadow-opacity=0.0 --fade-in-step=1.0 --fade-out-step=1.0 --fade-de
 
 # 音量gui
 volumeicon &
-# firejail --net=none volumeicon &
 
 # 启动 fcitx
 fcitx5 &
 #firejail --net=none fcitx &
+
+vmware-user-suid-wrapper &
+#/usr/bin/prlcc &
+#/usr/bin/ptiagent --info &
 
 # -----------------------------------------------------------------------
 # 禁用触摸板
@@ -56,9 +54,6 @@ fcitx5 &
 # 切换键盘布局（主要是mod键位）
 # bash /home/dinge/core/scripts/dwm-scripts/dwm-xmodmap.sh &
 
-sleep 1;
-vmware-user-suid-wrapper &
-
 #/usr/lib/aarch64-linux-gnu/polkit-mate/polkit-mate-authentication-agent-1 &
 # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
@@ -81,7 +76,6 @@ vmware-user-suid-wrapper &
 
 # 网络gui
 # nm-applet &
-# firejail --net=none nm-applet &
 
 #sleep 10;
 

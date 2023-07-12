@@ -240,9 +240,9 @@ alias gscript="cd $HOME/.dwm/"
 alias clash="$HOME/core/bin/clash/clash -d $HOME/core/bin/clash/"
 
 # net cat
-alias net_hogs="sudo nethogs enp0s1"
-alias net_iftop="sudo iftop -i enp0s1"
-alias net_nload="nload enp0s1 -u K"
+alias net_hogs="sudo nethogs ens160"
+alias net_iftop="sudo iftop -i ens160"
+alias net_nload="nload ens160 -u K"
 alias net_iptraf="sudo iptraf-ng"
 
 # npm
@@ -298,23 +298,23 @@ alias vpnstop="unset http_proxy;unset https_proxy;unset all_proxy;echo \"Unset p
 alias ipcn="curl myip.ipip.net"
 alias ip="curl ip.sb"
 
-# shell run -> proxy_on
-function proxy_on() {
-    export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
-    export http_proxy="http://127.0.0.1:7890"
-    export https_proxy=$http_proxy
-    export all_proxy="socks5://127.0.0.1:7890"
-    #curl www.google.com
-    #echo -e "\n"
-    echo -e "\033[32m已开启代理\033[0m"
-}
-# shell run -> proxy_off
-function proxy_off() {
-    unset http_proxy
-    unset https_proxy
-    unset all_proxy
-    echo -e "已关闭代理"
-}
+## shell run -> proxy_on
+#function proxy_on() {
+#    export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
+#    export http_proxy="http://127.0.0.1:7890"
+#    export https_proxy=$http_proxy
+#    export all_proxy="socks5://127.0.0.1:7890"
+#    #curl www.google.com
+#    #echo -e "\n"
+#    echo -e "\033[32m已开启代理\033[0m"
+#}
+## shell run -> proxy_off
+#function proxy_off() {
+#    unset http_proxy
+#    unset https_proxy
+#    unset all_proxy
+#    echo -e "已关闭代理"
+#}
 
 # fzf 模糊搜索
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

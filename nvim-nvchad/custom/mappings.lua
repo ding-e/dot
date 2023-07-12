@@ -133,7 +133,8 @@ M.general = {
           .. " ' .. vim.fn.expand('%:p:h') .. ' 2>/dev/null') <CR>",
          "打开当前文件目录",
       },
-      ["<leader>pc"] = { "<CMD>echo expand('%:p') <CR>", "查看当前文件目录" },
+      -- CTRL+g
+      ["<leader>pc"] = { "<CMD>echo expand('%:p') <CR>", "查看当前文件路徑" },
    },
 }
 

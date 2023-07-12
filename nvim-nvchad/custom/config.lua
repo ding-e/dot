@@ -25,10 +25,12 @@ local M = {
    -- nvimtree是否自適應寬度
    tree_adaptive_size = false,
 
+   -- TODO... auto: 檢測寬高自動匹配
    -- horizontal / vertical / float
    project_term_type = "vertical",
    -- 根据当前项目特征執行對應命令
    project_cmd_list = {
+      -- 模板名稱       文件查詢        匹配內容      執行命令           是否复制
       love      = { ".luarc.json",   "love2d", "clear && love .", init = true  },
       godot     = { "project.godot", "",       "clear && godot",  init = false },
       c_project = { "c.project",     "",       "./build.sh",      init = false },

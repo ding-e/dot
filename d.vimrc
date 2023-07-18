@@ -7,31 +7,18 @@ set encoding=utf-8
 " 取消搜索的高亮
 let mapleader=" "
 noremap <LEADER><CR> :nohlsearch<CR>
-" 搜索结果光标移动并自动到屏幕中心
+" 搜索结果光标移动并到屏幕中心
 noremap = nzz
 noremap - Nzz
 
 " jj 映射 esc
 inoremap jj <esc>
 
-" 上下左右
-"noremap i k
-"noremap k j
-"noremap j h
-"noremap l l
-
-" 快速上下左右跳转
+" 快速移動
 "noremap [ 5i
 "noremap ] 5k
 "noremap { 7i
 "noremap } 7k
-
-" 光标移到当前行首个字符
-" N key: go to the start of the line
-noremap <C-n> 0
-" 光标移到当前行最后字符
-" I key: go to the end of the line
-noremap <C-i> $
 
 " vim剪切板与系统共享
 "set clipboard+=unnamedplus
@@ -56,13 +43,13 @@ map sh :set nosplitright<CR>:vsplit<CR>
 map sk :set nosplitbelow<CR>:split<CR>
 map sj :set splitbelow<CR>:split<CR>
 
-" 分屏后光标移动
+" 分屏焦點切換
 map <C-k> <C-w>k
 map <C-j> <C-w>j
 map <C-h> <C-w>h
 map <C-l> <C-w>l
 
-" 分屏宽/高度
+" 分屏宽/高
 map <up> :res +5<CR>
 map <down> :res -5<CR>
 map <left> :vertical resize-5<CR>
@@ -72,26 +59,25 @@ map <right> :vertical resize+5<CR>
 map su <C-w>t<C-w>H
 map si <C-w>t<C-w>K
 
-" 将s屏蔽掉（小写s是删除当前字符并插入模式）
+" 屏蔽s（s: 删除当前字符并插入模式）
 map s <nop>
-" 大写S 保存文件
+
 map S :w<CR>
-" 大写Q 退出
 map Q :q<CR>
-" 大写R 重新加载vimrc配置文件
+
+" 重新加载vimrc
 map R :source $MYVIMRC<CR>
 " ----------------------------------
 
-"syntax enable
 " 语法高亮
+"syntax enable
 "syn on
 syntax on
-"syntax off
 
-" 显示右下角状态栏
+" 右下角状态栏
 "set ruler
 
-" 显示左下角状态栏，--INSERT--之类
+" 左下角状态栏，--INSERT--之类
 "set showmode
 
 " 无需兼容vi
@@ -106,9 +92,6 @@ filetype plugin indent on
 " 鼠标支持
 set mouse=a
 
-" 某些终端跑vim的时候，优化配色
-let &t_ut=''
-
 " tab 操作
 set expandtab
 set tabstop=4
@@ -118,7 +101,7 @@ set softtabstop=4
 " 自动缩进
 "set autoindent
 
-" 显示行尾的空格
+" 突出行尾空格
 set list
 set listchars=tab:\|\ ,trail:▫
 set scrolloff=5
@@ -136,35 +119,27 @@ set foldlevel=99
 set laststatus=2
 set autochdir
 
-" 有些终端无效 -  不同模式下，光标样式不一样
-"let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-"let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-"let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
-" 保存上一次的光标位置(编辑的位置) - 关闭文件后，重新进入会直接跳转到上一次光标的位置(编辑的位置)
+" 保存上一次的光标位置
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " 显示行号
-"set nu
 set number
-" 重定义行号
 set relativenumber
 
-" 当前行添加一条线
-"set cursorline
-
-" 是否换行
+" 自動换行
 set wrap
 
-" 搜索是否高亮显示
+" 突出當前行
+"set cursorline
+
+" 突出某一列(行字符數提示)
+set colorcolumn=80,120
+
+" 高亮搜索結果
 set hlsearch
-exec "nohlsearch"
 
 " 边搜索边高亮
 set incsearch
-
-" 设置屏幕中间竖条
-set colorcolumn=80,120
 
 " 忽略大小写搜索
 set ignorecase
@@ -173,7 +148,7 @@ set smartcase
 " 右下角显示当前输入的命令
 set showcmd
 
-" 输入命令，每输完再按tab建会自动罗列出命令
+" 命令行补全
 set wildmenu
 
 " ----------------------------------
@@ -218,12 +193,14 @@ let g:bufferline_active_buffer_right = ']'
 
 " status line
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '>'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_section_z = airline#section#create_right(['L:%l C:%c P:%P'])
 
 " tree
-let g:NERDTreeDirArrowExpandable = '+'
-let g:NERDTreeDirArrowCollapsible = '-'
+let g:NERDTreeDirArrowExpandable = ' +'
+let g:NERDTreeDirArrowCollapsible = ' -'
 nnoremap <leader>n :NERDTreeFocus<CR>
 " nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
@@ -254,9 +231,8 @@ else
   "set guifont=新宋体:h10
   set guifont=Fixedsys:h10
 
-  " 列数
+  " 行列
   set columns=165
-  " 行数
   set lines=40
 
   " 启动时屏幕位置
@@ -270,10 +246,10 @@ else
 
 endif
 
-" 显示颜色色调- dark, light
+" dark, light
 set background=dark
 
-"gruvbox GruberDarker
+" gruvbox GruberDarker
 colorscheme gruvbox-material
 
 " 顯示/隱藏 行號

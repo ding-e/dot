@@ -132,6 +132,31 @@ ubuntu : [
     apt install/update/upgrade
     ---------------------------
     software-properties-common psmisc
+
+    ========================================
+    apt list --installed | wc -l
+    snap list
+    ip address show
+
+    ========================================
+    iso
+    https://cdimage.ubuntu.com/jammy/daily-live/current/
+    https://cdimage.ubuntu.com/ubuntu/daily-live/current/
+
+    selinux
+    https://blog.csdn.net/qq_43203949/article/details/125305342
+
+    snap
+    禁止自動更新:
+    https://baijiahao.baidu.com/s?id=1749711851925865498
+    --classic:
+    https://blog.csdn.net/tcliuwenwen/article/details/107985647
+
+    sshd
+    https://blog.csdn.net/qq_29761395/article/details/123022985
+
+    cloud-init
+    https://blog.csdn.net/netgc/article/details/119978547
 ]
 
 ---------------------------
@@ -139,6 +164,12 @@ ubuntu : [
 sudo vim /etc/pacman.d/mirrorlist
     Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/$arch/$repo
 sudo pacman -Syyu
+
+---------------------------
+apparmor
+https://wiki.archlinux.org/title/AppArmor
+https://wiki.archlinux.org/title/Kernel_parameters
+systemctl enable apparmor.service
 
 ---------------------------
 xinit
@@ -448,6 +479,22 @@ https://help.gnome.org/admin/system-admin-guide/stable/autostart-applications.ht
 開機啟動: /etc/xdg/autostart/
 
 gdm登錄界面: /usr/share/xsessions/
+
+-----------------------
+wayland
+替代X11的程序 / 软件列表: 
+https://github.com/djpohly/dwl/wiki#migrating-from-x
+https://github.com/swaywm/sway/wiki/i3-Migration-Guide
+https://github.com/natpen/awesome-wayland
+https://arewewaylandyet.com/
+https://github.com/swaywm/sway/wiki/Useful-add-ons-for-sway
+https://wiki.gentoo.org/wiki/Wayland_Desktop_Landscape
+
+dwm wayland:
+https://github.com/djpohly/dwl
+patches:
+https://github.com/djpohly/dwl/wiki/Patches
+
 
 -----------------------
 一些問題:

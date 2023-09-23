@@ -28,8 +28,11 @@ M.ui = {
    statusline = {
       -- theme = "minimal", -- "default" -- "vscode",
       separator_style = "block", -- default/round/block/arrow
-      overriden_modules = function()
-         return require "custom.statusline"
+      overriden_modules = function(modules)
+         local statusline = require "custom.statusline"
+         for k, v in ipairs(statusline.get_modules_arr()) do
+            modules[k] = v
+         end
       end,
    },
 
@@ -37,8 +40,11 @@ M.ui = {
    tabufline = {
       enabled = true,
       lazyload = false,
-      overriden_modules = function()
-         return require "custom.tabufline"
+      overriden_modules = function(modules)
+         local tabufline = require "custom.tabufline"
+         for k, v in ipairs(tabufline.get_modules_arr()) do
+            modules[k] = v
+         end
       end,
    },
 }

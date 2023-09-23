@@ -57,7 +57,7 @@ create_cmd("DeTerm", function(args)
    if "" ~= args.args then
       -- TODO...
       vim.cmd [[
-         lua require("nvchad_ui.tabufline").close_buffer()
+         lua require("nvchad.tabufline").close_buffer()
          tabc
       ]]
    else
@@ -86,6 +86,7 @@ create_cmd("DeProjectinit", function(args)
    local c, l = string.gsub(args.args, "^%s*(.-)%s*$", "%1"), ""
    local len, i = utils.table_len(config.project_cmd_list), 0
    local template_path = "$HOME/.config/nvim/lua/custom/template/"
+   -- TODO...
    for k, v in pairs(config.project_cmd_list) do
       if false ~= v.init then
          if c == k then

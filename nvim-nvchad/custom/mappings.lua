@@ -223,7 +223,7 @@ M.lspconfig = {
 
       ["<leader>ra"] = {
          function()
-            require("nvchad_ui.renamer").open()
+            require("nvchad.renamer").open()
          end,
          "修改名稱 - lsp rename",
       },
@@ -295,9 +295,9 @@ M.session = {
                (buf_list_len == 0)
                or (buf_list_len == 1 and (vim.api.nvim_buf_get_name(0) == "" or vim.api.nvim_buf_line_count(0) == 1))
             then
-               require("nvchad_ui.tabufline").close_buffer()
+               require("nvchad.tabufline").close_buffer()
             end
-            -- if buf_list_len == 0 then require("nvchad_ui.tabufline").close_buffer() end
+            -- if buf_list_len == 0 then require("nvchad.tabufline").close_buffer() end
             require("persistence").load()
             -- require("nvim-tree").toggle(false, true)
          end,

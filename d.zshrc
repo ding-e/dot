@@ -227,6 +227,7 @@ export PATH="$HOME/core/bin:$HOME/.dwm/bin:$PATH"
 alias open="thunar"
 
 # 注销
+alias kuser="pkill -kill -u "
 alias kdinge="pkill -kill -u dinge"
 alias ktmp="pkill -kill -u tmp"
 
@@ -288,12 +289,16 @@ alias ggodot="cd $WORKSPACE_PATH/godot/"
 alias wttr="curl 'wttr.in/?lang=zh'"
 alias wttr_s="curl 'wttr.in/?lang=zh&format=4'"
 
+# yt-dlp
+alias ytd_l="yt-dlp -o '%(id)s.%(ext)s' -f bestvideo+bestaudio --write-auto-sub --sub-format vtt --sub-lang zh-Hans,en --embed-sub -i "
+alias ytd_t="yt-dlp -f bestvideo+bestaudio --write-auto-sub --sub-format vtt --sub-lang zh-Hans,en --embed-sub -i "
+
 # 批量删除当前目录下的所有.DS_Store文件
 alias deldsstore="find . -name '.DS_Store' -exec rm {} \;"
 alias finddsstore="find . -name '.DS_Store'"
 
 # vpn
-alias vpnstart="export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5://127.0.0.1:7891;echo \"Set proxy successfully\" "
+alias vpnstart="export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127.0.0.1:7890;export all_proxy=socks5://127.0.0.1:7890;echo \"Set proxy successfully\" "
 alias vpnstop="unset http_proxy;unset https_proxy;unset all_proxy;echo \"Unset proxy successfully\" "
 alias ipcn="curl myip.ipip.net"
 alias ip="curl ip.sb"

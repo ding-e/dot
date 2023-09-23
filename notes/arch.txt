@@ -14,15 +14,20 @@ packages : [
     xorg-server xorg-xinit xorg-xsetroot
     xorg-xrandr xorg-xinput xorg-xev libxft
     dmenu rofi alacritty feh picom ranger
-    trayer acpi dunst
+    trayer acpi dunst capitaine-cursors
     alsa-utils pavucontrol pulseaudio pulseaudio-alsa
-    firefox chromium
+    chromium firefox speech-dispatcher
 
     thunar tumbler file-roller
     lxappearance mousepad
     volumeicon gufw
     xfce4-taskmanager viewnior
-    fcitx5-im fcitx5-chinese-addons fcitx5-chewing
+    
+    wqy-bitmapfont wqy-microhei
+    ttf-ubuntu-font-family ttf-ubuntu-mono-nerd
+
+    fcitx5-im fcitx5-chinese-addons
+    # fcitx5-chewing
 
     cmake llvm clang ninja
     stylua nim nimlangserver
@@ -75,6 +80,9 @@ packages : [
 ]
 
 ================================================
+
+https://ghproxy.com
+https://gitclone.com
 
 git clone --recursive https://github.com/ding-e/dot
 git clone https://github.com/ding-e/dot.arch
@@ -138,10 +146,18 @@ ubuntu : [
     snap list
     ip address show
 
+    移除普通用戶sudo權限
+    # /etc/group
+    # /etc/gshadow
+    # 移除sudo行後面的用戶
+
     ========================================
     iso
     https://cdimage.ubuntu.com/jammy/daily-live/current/
     https://cdimage.ubuntu.com/ubuntu/daily-live/current/
+
+    修改时区
+    https://blog.csdn.net/kaka_buka/article/details/131540461
 
     selinux
     https://blog.csdn.net/qq_43203949/article/details/125305342

@@ -94,9 +94,9 @@ end
 
 function set_devicons_opt()
    return config.icon_theme == "none" and { default = false, color_icons = false }
-       -- or { override = require("nvchad_ui.icons").devicons }
+       -- or { override = require("nvchad.icons").devicons }
        -- or { override = icons.devicons }
-       or { override = merge_tb("force", require("nvchad_ui.icons").devicons, icons["devicons"] or {}) }
+       or { override = merge_tb("force", require("nvchad.icons").devicons, icons["devicons"] or {}) }
 end
 
 -- NvChad/nvterm
@@ -223,7 +223,7 @@ function set_truezen()
                number = true, -- false
                relativenumber = true, -- false
                signcolumn = "yes", -- no
-               -- statusline = "%!v:lua.require('nvchad_ui').statusline()",
+               -- statusline = "%!v:lua.require('nvchad').statusline()",
 
                showtabline = 0,
                cmdheight = 1,

@@ -146,9 +146,6 @@ local plugins = {
       lazy = false,
    },
 
-   -- godot gdscript
-   { "habamax/vim-godot" },
-
    -- zig language
    -- tree-sitter - TSInstall zig
    -- ["ding-e/zig-highlight-enhanced"] = { after = "zig.vim" },
@@ -176,8 +173,7 @@ local plugins = {
 }
 
 if utils.is_macos() then
-   table.insert(
-      plugins,
+   local macos_plugins = {
       -- mac下自动切换输入法
       {
          "ybian/smartim",
@@ -189,8 +185,15 @@ if utils.is_macos() then
             -- https://blog.51cto.com/u_15273875/3858820
             vim.g.smartim_default = "com.apple.keylayout.ABC"
          end,
-      }
-   )
+      },
+
+      -- godot gdscript
+      { "habamax/vim-godot" },
+   }
+
+   for _, v in ipairs(macos_plugins) do
+      table.insert(plugins, v)
+   end
 end
 
 return plugins

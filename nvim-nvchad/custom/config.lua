@@ -20,7 +20,7 @@ local M = {
 
    -- 圖標相關 (nvim-tree/tabufline)
    -- "none", "file", "nvchad"
-   icon_theme = "file",
+   icon_theme = "none",
 
    -- nvimtree是否自適應寬度
    tree_adaptive_size = false,
@@ -37,7 +37,7 @@ local M = {
    },
 
    -- mason, tree-sitter
-   mason_list = { "lua-language-server", "clangd" },
+   mason_list = { "lua-language-server" }, -- "clangd"
    treesitter_list = { "vim", "lua", "rust", "c" },
 }
 

@@ -1,0 +1,72 @@
+# nord - color
+# Project:    Nord Alacritty
+# Version:    0.1.0
+# Repository: https://github.com/arcticicestudio/nord-alacritty
+# License:    MIT
+# References:
+#   https://github.com/jwilm/alacritty
+[colors.bright]
+black = "0x4C566A"
+blue = "0x81A1C1"
+cyan = "0x8FBCBB"
+green = "0xA3BE8C"
+magenta = "0xB48EAD"
+red = "0xBF616A"
+white = "0xECEFF4"
+yellow = "0xEBCB8B"
+
+[colors.cursor]
+cursor = "0xD8DEE9"
+text = "0x2E3440"
+
+[colors.normal]
+black = "0x3B4252"
+blue = "0x81A1C1"
+cyan = "0x88C0D0"
+green = "0xA3BE8C"
+magenta = "0xB48EAD"
+red = "0xBF616A"
+white = "0xE5E9F0"
+yellow = "0xEBCB8B"
+
+[colors.primary]
+background = "0x000000"
+foreground = "0xD8DEE9"
+
+[font]
+size = 10.0
+
+[font.bold]
+family = "Fixedsys Excelsior + Fusion Pixel"
+style = "Bold"
+
+[font.bold_italic]
+family = "Fixedsys Excelsior + Fusion Pixel"
+style = "Bold"
+
+[font.italic]
+family = "Fixedsys Excelsior + Fusion Pixel"
+
+[font.normal]
+# family = "monospace"
+# family = "BitstreamVeraSansMono Nerd Font Mono"
+# family = "UbuntuMono Nerd Font Mono"
+# family = "Terminus"
+# family = "Fixedsys Excelsior"
+family = "Fixedsys Excelsior + Fusion Pixel"
+
+[font.offset]
+x = 0
+y = 1
+
+[window]
+dynamic_padding = false
+opacity = 1.0
+
+[window.dimensions]
+columns = 120
+lines = 32
+
+[window.padding]
+x = 4
+y = 2

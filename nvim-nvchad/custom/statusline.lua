@@ -188,7 +188,7 @@ M.LSP_status = function()
          if client.attached_buffers[vim.api.nvim_get_current_buf()] and client.name ~= "null-ls" then
             -- 删除图标
             -- return (vim.o.columns > 100 and "%#St_LspStatus#" .. "   LSP ~ " .. client.name .. " ") or "   LSP "
-            return (vim.o.columns > 70 and "%#St_LspStatus#" .. "LSP ~ " .. client.name .. " ") or " LSP "
+            return (vim.o.columns > 70 and "%#St_LspStatus#" .. "LSP ~ " .. client.name .. " ") or "LSP "
          end
       end
    end

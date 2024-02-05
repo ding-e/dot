@@ -26,7 +26,7 @@ vim.cmd [[ set shell=zsh ]]
 -- vim剪切板与系统共享
 vim.cmd [[ set clipboard+=unnamedplus ]]
 
--- 重定义行号
+-- 相对行号
 vim.cmd [[ set relativenumber ]]
 
 -- 是否换行
@@ -68,6 +68,9 @@ vim.cmd [[ set scrolloff=5 ]]
 
 -- 关闭文件后，不保存之前的撤回与撤销功能
 vim.cmd [[ set noundofile ]]
+
+-- nvim-tree
+vim.cmd [[ hi! link NvimTreeExecFile NONE ]]
 
 -- search
 -- vim.cmd [[

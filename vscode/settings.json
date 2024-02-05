@@ -45,8 +45,8 @@
         "editor.insertSpaces": true,
         "editor.formatOnSave": false,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": false,
-            "source.fixAll": false,
+            "source.organizeImports": "never",
+            "source.fixAll": "never"
         },
         "editor.links": false, // 是否点击链接自动跳转
     },
@@ -109,7 +109,7 @@
     // "git.enabled": false,
     // "git.autorefresh": false,
     "search.followSymlinks": false,
-    "workbench.editor.showTabs": true,
+    "workbench.editor.showTabs": "multiple",
     "files.exclude": {
         // "**/.git": true,
         // "**/.svn": true,
@@ -183,7 +183,6 @@
         //     "commands": [":q!"],
         // }
     ],
-    "workbench.activityBar.visible": false,
     "markdown-preview-enhanced.previewTheme": "github-light.css",
     "zls.check_for_update": false,
     "workbench.colorTheme": "win95",
@@ -240,4 +239,6 @@
     		"spaceAfter": 1
     	},
     },
+    "liveServer.settings.donotShowInfoMsg": true,
+    "workbench.activityBar.location": "hidden",
 }

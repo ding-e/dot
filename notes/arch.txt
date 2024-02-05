@@ -22,7 +22,7 @@ packages : [
     lxappearance mousepad
     volumeicon gufw
     xfce4-taskmanager viewnior
-    
+
     wqy-bitmapfont wqy-microhei
     ttf-ubuntu-font-family ttf-ubuntu-mono-nerd
 

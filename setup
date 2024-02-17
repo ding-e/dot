@@ -60,7 +60,7 @@ else
 
     # alacritty
     mkdir -p "$HOME/.config/alacritty"
-    ${cmd} "$PWD/arch/config/alacritty/alacritty.yml" "$HOME/.config/alacritty/"
+    ${cmd} "$PWD/arch/config/alacritty/alacritty.toml" "$HOME/.config/alacritty/"
 
     # dunst
     mkdir -p "$HOME/.config/dunst"

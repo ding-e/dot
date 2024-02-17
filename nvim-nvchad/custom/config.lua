@@ -37,7 +37,7 @@ local M = {
    },
 
    -- mason, tree-sitter
-   mason_list = { "lua-language-server" }, -- "clangd"
+   mason_list = { "lua-language-server" }, -- "clangd", "haxe-language-server"
    treesitter_list = { "vim", "lua", "rust", "c" },
 }
 

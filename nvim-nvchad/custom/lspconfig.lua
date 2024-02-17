@@ -150,6 +150,15 @@ lspconfig.nimls.setup {
    -- end,
 }
 
+-- haxe language
+lspconfig.haxe_language_server.setup {
+   on_attach = on_attach,
+   capabilities = capabilities,
+   -- flags = { },
+   -- filetypes = { "haxe" },
+   cmd = {"haxe-language-server"}
+}
+
 -- c language
 lspconfig.clangd.setup {
    on_attach = on_attach,

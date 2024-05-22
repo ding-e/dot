@@ -331,9 +331,9 @@ alias ip="curl ip.sb"
 
 # haxe lang
 # HAXE_STD_PATH="/opt/homebrew/lib/haxe/std"
-# alias openfl="haxelib run openfl"
-# alias lime="haxelib run lime"
-# alias flixel="haxelib run flixel-tools"
+alias openfl="haxelib run openfl"
+alias lime="haxelib run lime"
+alias flixel="haxelib run flixel-tools"
 
 # nim lang
 # langserver : nimble install nimlangserver

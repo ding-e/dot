@@ -50,6 +50,16 @@ function set_nvimtree_opt()
          -- 是否隱藏tree頂部的當前目錄路徑
          root_folder_label = false,
          icons = {
+            web_devicons = {
+               file = {
+                  enable = false,
+                  color = true,
+               },
+               folder = {
+                  enable = false,
+                  color = true,
+               },
+            },
             show = {
                file = true,
                folder = true,
@@ -221,9 +231,9 @@ function set_truezen()
          minimalist = {
             ignored_buf_types = { "nofile" },
             options = {
-               number = true, -- false
+               number = true,         -- false
                relativenumber = true, -- false
-               signcolumn = "yes", -- no
+               signcolumn = "yes",    -- no
                -- statusline = "%!v:lua.require('nvchad').statusline()",
 
                showtabline = 0,

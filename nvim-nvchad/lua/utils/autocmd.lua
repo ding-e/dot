@@ -4,8 +4,7 @@
 ---@diagnostic disable: lowercase-global, undefined-global
 
 -- local create_autocmd = vim.api.nvim_create_autocmd
--- local utils = require "custom.utils"
-
+-- local utils = require "utils.func"
 
 -- ======================================================
 -- https://zhuanlan.zhihu.com/p/557199534
@@ -24,7 +23,6 @@
 -- BufWinEnter（激活新缓冲区的窗口）i
 -- InsertEnter（切换到插入模式）
 
-
 -- local autocmd = vim.api.nvim_create_autocmd
 --
 -- -- BufNewFile : 编辑一个不存在的文件时 (:e xxx)
@@ -34,4 +32,3 @@
 --       print("test... - " .. ctx.id)
 --    end,
 -- })
-

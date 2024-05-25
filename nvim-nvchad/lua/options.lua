@@ -3,6 +3,10 @@
 -------------
 ---@diagnostic disable: lowercase-global, undefined-global
 
+require "nvchad.options"
+require "utils.autocmd"
+require "utils.command"
+
 -- local autocmd = vim.api.nvim_create_autocmd
 
 -- Auto resize panes when resizing nvim window
@@ -11,8 +15,10 @@
 --   command = "tabdo wincmd =",
 -- })
 
-require "custom.autocmd"
-require "custom.command"
+-- add yours here!
+
+-- local o = vim.o
+-- o.cursorlineopt ='both' -- to enable cursorline!
 
 -- 打开文件返回上次修改的位置
 vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
@@ -84,6 +90,3 @@ vim.cmd [[ hi! link NvimTreeExecFile NONE ]]
 -- 退出终端模式
 -- 在nvcard->core->mappings.lua 下，已经设置了ctrl+x退出终端模式
 -- vim.cmd [[ tnoremap <C-q> <C-\><C-n> ]]
-
-
-

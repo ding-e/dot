@@ -98,10 +98,23 @@ ${cmd} "$PWD/d.zshrc" "$HOME/.zshrc"
 ${cmd} "$PWD/d.tmux.conf" "$HOME/.tmux.conf"
 # -----------------
 
-# nvim nvchad
-mkdir -p "$HOME/.config/nvim/" "$HOME/.config/nvim/lua"
-${cmd} "$PWD/nvim-nvchad/custom" "$HOME/.config/nvim/lua"
+# nvim nvchad - 2.0
+# mkdir -p "$HOME/.config/nvim/" "$HOME/.config/nvim/lua"
+# ${cmd} "$PWD/nvim-nvchad/custom" "$HOME/.config/nvim/lua"
+# ${cmd} "$PWD/nvim-nvchad/after" "$HOME/.config/nvim"
+# ${cmd} "$PWD/d.editorconfig" "$HOME/.editorconfig"
+
+# nvim nvchad - 2.5
+# git clone https://github.com/NvChad/starter ~/.config/nvim
+# nvim目录存在，则备份
+if [ -d "$HOME/.config/nvim" ]; then
+    mv "$HOME/.config/nvim" "$HOME/.config/nvim-dot-$(date +%s)"
+fi
+mkdir -p "$HOME/.config/nvim/"
+cp "$PWD/nvim-nvchad/LICENSE"  "$PWD/nvim-nvchad/init.lua" "$HOME/.config/nvim"
+${cmd} "$PWD/nvim-nvchad/lua" "$HOME/.config/nvim"
 ${cmd} "$PWD/nvim-nvchad/after" "$HOME/.config/nvim"
+${cmd} "$PWD/nvim-nvchad/.stylua.toml" "$HOME/.config/nvim"
 ${cmd} "$PWD/d.editorconfig" "$HOME/.editorconfig"
 # -----------------
 

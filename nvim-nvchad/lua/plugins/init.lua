@@ -1,17 +1,21 @@
 ------------------------------------
--- 插件添加/覆蓋/移除/禁用
-------------------------------
+-- lazy加载plugin
+---------------------------
 ---@diagnostic disable: lowercase-global, undefined-global
 
--- Awesome plugins for Neovim
--- https://nvimluau.dev
+local config = require "configs.config"
+local utils = require "utils.func"
+require "configs.plugins"
 
-local config = require "custom.config"
-local utils = require "custom.utils"
-require "custom.function"
-
----@type NvPluginSpec[]
 local plugins = {
+   -- {
+   --    "stevearc/conform.nvim",
+   --    -- event = 'BufWritePre', -- uncomment for format on save
+   --    config = function()
+   --       require "configs.conform"
+   --    end,
+   -- },
+   --
 
    -- leader快捷键菜单
    {
@@ -28,15 +32,15 @@ local plugins = {
       opts = set_devicons_opt(),
    },
 
-   {
-      "NvChad/nvterm",
-      init = function()
-         require("core.utils").load_mappings "nvterm"
-      end,
-      config = function(_, opts)
-         set_nvterm(opts)
-      end,
-   },
+   -- {
+   --    "NvChad/nvterm",
+   --    init = function()
+   --       require("core.utils").load_mappings "nvterm"
+   --    end,
+   --    config = function(_, opts)
+   --       set_nvterm(opts)
+   --    end,
+   -- },
 
    {
       "neovim/nvim-lspconfig",
@@ -50,8 +54,8 @@ local plugins = {
          },
       },
       config = function()
-         require "plugins.configs.lspconfig"
-         require "custom.lspconfig"
+         require("nvchad.configs.lspconfig").defaults()
+         require "configs.lspconfig"
       end, -- Override to setup mason-lspconfig
    },
 
@@ -72,8 +76,9 @@ local plugins = {
       "mhinz/vim-startify",
       lazy = false,
       config = function()
-         local name = utils.get_workspace_theme(config.workspace_list, config.theme_toggle)
-         utils.set_theme(name)
+         -- local name = utils.get_workspace_theme(config.workspace_list, config.theme_toggle)
+         -- utils.set_theme(name)
+         -- utils.set_theme("dinge")
       end,
    },
    -- ["goolord/alpha-nvim"] = { disable = false },
@@ -83,6 +88,23 @@ local plugins = {
    -- https://editorconfig.org
    -- { "gpanders/editorconfig.nvim", lazy = false },
    { "tpope/vim-sleuth", lazy = false },
+   {
+      "lukas-reineke/indent-blankline.nvim",
+      event = "User FilePost",
+      opts = {
+         indent = { char = "│", highlight = "IblChar" },
+         scope = { enabled = false, show_start = true, char = "│", highlight = "IblScopeChar" },
+      },
+      config = function(_, opts)
+         dofile(vim.g.base46_cache .. "blankline")
+
+         local hooks = require "ibl.hooks"
+         hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+         require("ibl").setup(opts)
+
+         dofile(vim.g.base46_cache .. "blankline")
+      end,
+   },
 
    -- session / workspace
    -- folke/persistence.nvim
@@ -126,7 +148,7 @@ local plugins = {
             return
          end
 
-         neoscroll.setup()
+         neoscroll.setup {}
       end,
    },
 
@@ -153,7 +175,7 @@ local plugins = {
       "ziglang/zig.vim",
       dependencies = {
          {
-            dir = "$HOME/.config/nvim/lua/custom/plugins/zig-highlight",
+            dir = "$HOME/.config/nvim/lua/plugins/zig-highlight",
             lazy = false,
          },
       },

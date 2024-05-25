@@ -14,9 +14,8 @@
 local merge_tb = vim.tbl_deep_extend
 
 -- local utils = require "core.utils"
-local config = require "custom.config"
-local icons = require "custom.icons"
-local icon_index = config.icon_theme == "file" and 2 or 1
+local config = require "configs.config"
+local icons = require "configs.icons"
 ----------------------------------------------------
 
 -- mbbill/undotree
@@ -49,6 +48,15 @@ function set_nvimtree_opt()
       renderer = {
          -- 是否隱藏tree頂部的當前目錄路徑
          root_folder_label = false,
+         -- 层级缩进参考线
+         indent_markers = {
+            enable = false,
+            icons = {
+               corner = "└ ",
+               edge = "│ ",
+               none = "  ",
+            },
+         },
          icons = {
             web_devicons = {
                file = {
@@ -73,29 +81,29 @@ function set_nvimtree_opt()
    local nvimtree_icons = icons.nvimtree
 
    if config.icon_theme ~= "nvchad" then
-      opt.renderer.icons.symlink_arrow = nvimtree_icons.symlink_arrow[icon_index]
+      opt.renderer.icons.symlink_arrow = nvimtree_icons.symlink_arrow
       opt.renderer.icons.glyphs = {
-         default = nvimtree_icons.file_default[icon_index],
-         symlink = nvimtree_icons.symlink[icon_index],
+         default = nvimtree_icons.file_default,
+         symlink = nvimtree_icons.symlink,
          folder = {
-            default = nvimtree_icons.folder_default[icon_index],
-            empty = nvimtree_icons.folder_empty[icon_index],
-            empty_open = nvimtree_icons.folder_empty_open[icon_index],
-            open = nvimtree_icons.folder_open[icon_index],
-            symlink = nvimtree_icons.folder_symlink[icon_index],
-            symlink_open = nvimtree_icons.folder_symlink_open[icon_index],
+            default = nvimtree_icons.folder_default,
+            empty = nvimtree_icons.folder_empty,
+            empty_open = nvimtree_icons.folder_empty_open,
+            open = nvimtree_icons.folder_open,
+            symlink = nvimtree_icons.folder_symlink,
+            symlink_open = nvimtree_icons.folder_symlink_open,
 
-            arrow_open = nvimtree_icons.folder_arrow_open[icon_index],
-            arrow_closed = nvimtree_icons.folder_arrow_closed[icon_index],
+            arrow_open = nvimtree_icons.folder_arrow_open,
+            arrow_closed = nvimtree_icons.folder_arrow_closed,
          },
          git = {
-            unstaged = nvimtree_icons.git_unstaged[icon_index],
-            staged = nvimtree_icons.git_staged[icon_index],
-            unmerged = nvimtree_icons.git_unmerged[icon_index],
-            renamed = nvimtree_icons.git_renamed[icon_index],
-            untracked = nvimtree_icons.git_untracked[icon_index],
-            deleted = nvimtree_icons.git_deleted[icon_index],
-            ignored = nvimtree_icons.git_ignored[icon_index],
+            unstaged = nvimtree_icons.git_unstaged,
+            staged = nvimtree_icons.git_staged,
+            unmerged = nvimtree_icons.git_unmerged,
+            renamed = nvimtree_icons.git_renamed,
+            untracked = nvimtree_icons.git_untracked,
+            deleted = nvimtree_icons.git_deleted,
+            ignored = nvimtree_icons.git_ignored,
          },
       }
    end
@@ -104,39 +112,39 @@ end
 
 function set_devicons_opt()
    return config.icon_theme == "none" and { default = false, color_icons = false }
-       -- or { override = require("nvchad.icons").devicons }
-       -- or { override = icons.devicons }
-       -- or { override = merge_tb("force", require("nvchad.icons").devicons, icons["devicons"] or {}) }
-       or { override = merge_tb("force", require "nvchad.icons.devicons", icons["devicons"] or {}) }
+      -- or { override = require("nvchad.icons").devicons }
+      -- or { override = icons.devicons }
+      -- or { override = merge_tb("force", require("nvchad.icons").devicons, icons["devicons"] or {}) }
+      or { override = merge_tb("force", require "nvchad.icons.devicons", icons["devicons"] or {}) }
 end
 
 -- NvChad/nvterm
-function set_nvterm(opts)
-   require "base46.term"
-   opts = merge_tb("force", opts, {
-      terminals = {
-         list = {},
-         type_opts = {
-            float = {
-               relative = "editor",
-               row = 0.16,
-               col = 0.1,
-               width = 0.8,
-               height = 0.66,
-               border = "single",
-            },
-            horizontal = { location = "rightbelow", split_ratio = 0.3 },
-            vertical = { location = "rightbelow", split_ratio = 0.5 },
-         },
-      },
-      behavior = {
-         close_on_exit = true,
-         auto_insert = true,
-      },
-      enable_new_mappings = true,
-   })
-   require("nvterm").setup(opts)
-end
+-- function set_nvterm(opts)
+--    require "base46.term"
+--    opts = merge_tb("force", opts, {
+--       terminals = {
+--          list = {},
+--          type_opts = {
+--             float = {
+--                relative = "editor",
+--                row = 0.16,
+--                col = 0.1,
+--                width = 0.8,
+--                height = 0.66,
+--                border = "single",
+--             },
+--             horizontal = { location = "rightbelow", split_ratio = 0.3 },
+--             vertical = { location = "rightbelow", split_ratio = 0.5 },
+--          },
+--       },
+--       behavior = {
+--          close_on_exit = true,
+--          auto_insert = true,
+--       },
+--       enable_new_mappings = true,
+--    })
+--    require("nvterm").setup(opts)
+-- end
 
 -- jose-elias-alvarez/null-ls.nvim
 -- 具体支持语言
@@ -231,9 +239,9 @@ function set_truezen()
          minimalist = {
             ignored_buf_types = { "nofile" },
             options = {
-               number = true,         -- false
+               number = true, -- false
                relativenumber = true, -- false
-               signcolumn = "yes",    -- no
+               signcolumn = "yes", -- no
                -- statusline = "%!v:lua.require('nvchad').statusline()",
 
                showtabline = 0,

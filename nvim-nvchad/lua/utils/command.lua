@@ -3,15 +3,15 @@
 ------------------
 ---@diagnostic disable: lowercase-global, undefined-global
 
-local config = require "custom.config"
-local utils = require "custom.utils"
+local config = require "configs.config"
+local utils = require "utils.func"
 local create_cmd = vim.api.nvim_create_user_command
 
 -- 顯示/隱藏 行號
 -- DeLineNumber    -> 顯示行號
 -- DeLineNumber 0  -> 刪除行號
 create_cmd("DeLineNumber", function(args)
-   if  "" ~= args.args then
+   if "" ~= args.args then
       vim.cmd [[ set nonumber
                  set norelativenumber ]]
    else
@@ -25,9 +25,10 @@ end, { nargs = "*", desc = "" })
 -- DeNvimKey 0 -> 查看nvchad快捷鍵
 create_cmd("DeNvimKey", function(args)
    if "" ~= args.args then
-      vim.cmd [[ vsp $HOME/.config/nvim/lua/core/mappings.lua ]]
+      -- vim.cmd [[ vsp $HOME/.config/nvim/lua/core/mappings.lua ]]
+      vim.cmd [[ vsp $HOME/.local/share/nvim/lazy/NvChad/lua/nvchad/mappings.lua ]]
    else
-      vim.cmd [[ vsp $HOME/.config/nvim/lua/custom/mappings.lua ]]
+      vim.cmd [[ vsp $HOME/.config/nvim/lua/mappings.lua ]]
    end
 end, { nargs = "*", desc = "" })
 
@@ -46,8 +47,12 @@ create_cmd("DeDwmKey", function(_)
 end, { nargs = "*", desc = "" })
 
 -- 打开nvchad config.lua
-create_cmd("DeNvchadConfig", function(_)
-   vim.cmd [[ e $HOME/.config/nvim/lua/custom/config.lua ]]
+create_cmd("DeNvchadConfig", function(args)
+   if "" ~= args.args then
+      vim.cmd [[ e $HOME/.local/share/nvim/lazy/NvChad/lua/nvconfig.lua ]]
+   else
+      vim.cmd [[ e $HOME/.config/nvim/lua/configs/config.lua ]]
+   end
 end, { nargs = "*", desc = "" })
 
 -- 添加一個全屏終端(tab)
@@ -85,7 +90,7 @@ end, { nargs = "*", desc = "" })
 create_cmd("DeProjectinit", function(args)
    local c, l = string.gsub(args.args, "^%s*(.-)%s*$", "%1"), ""
    local len, i = utils.table_len(config.project_cmd_list), 0
-   local template_path = "$HOME/.config/nvim/lua/custom/template/"
+   local template_path = "$HOME/.config/nvim/lua/template/"
    -- TODO...
    for k, v in pairs(config.project_cmd_list) do
       if false ~= v.init then

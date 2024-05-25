@@ -6,15 +6,14 @@
 local M = {}
 
 M.tabufline = {
-   --             { none,    file  }
-   -- 如果buff[2] == devicons, 則使用nvchad默認的圖標
-   buff         = { "Ғ",     "Ғ" },
-   buff_close   = { "☓",     "☓" },
-   tab_close    = { "K",     "K" },
-   tab_add      = { "+",     "+" },
-   tab_toggle   = { "ℷ",     "<" },
-   theme_toggle = { "T",     "☻" },
-   all_close    = { "CLOSE", "CLOSE" },
+   buff          = "Ғ",
+   buff_close    = "☓",
+   buff_modified = "",
+   tab_close     = "K",
+   tab_add       = "+",
+   tab_toggle    = "TABS", -- ℷ
+   theme_toggle  = "T",    -- ☻
+   all_close     = "CLOSE",
 }
 
 M.statusline = { }
@@ -27,36 +26,34 @@ M.statusline = { }
 -- ● ◐ ◑ ◒ ◓ ◔ ◕ ◖ ◗
 -- ☻ ☽ ☾ ❛ ❜ ♯  
 M.nvimtree = {
-   --                    { none,   file }
-   file_default        = { "F",    "" },
-   symlink             = { "L",    "" },
-   symlink_arrow       = { " -> ", " -> " },
+   file_default        = "F",
+   symlink             = "L",
+   symlink_arrow       = " -> ",
 
-   folder_default      = { "D",    "D" },
-   folder_empty        = { "D",    "D" },
-   folder_empty_open   = { "D",    "D" },
-   folder_open         = { "D",    "D" },
-   folder_symlink      = { "L",    "L" },
-   folder_symlink_open = { "L",    "L" },
-   folder_arrow_open   = { "",    "", },
-   folder_arrow_closed = { "",    "" },
+   folder_default      = "D",
+   folder_empty        = "D",
+   folder_empty_open   = "D",
+   folder_open         = "D",
+   folder_symlink      = "L",
+   folder_symlink_open = "L",
+   folder_arrow_open   = "",
+   folder_arrow_closed = "",
 
-   git_unstaged        = { "✗",    "✗" },
-   git_staged          = { "✓",    "✓" },
-   git_unmerged        = { "",    "" },
-   git_renamed         = { "➜",    "➜" },
-   git_untracked       = { "★",    "★" },
-   git_deleted         = { "",    "" },
-   git_ignored         = { "◌",    "◌" },
+   git_unstaged        = "✗",
+   git_staged          = "✓",
+   git_unmerged        = "",
+   git_renamed         = "➜",
+   git_untracked       = "★",
+   git_deleted         = "",
+   git_ignored         = "◌",
 }
 
 M.gitsigns = {
-   --             { none,   file }
-   add          = { "│",    "│" },
-   change       = { "│",    "│" },
-   delete       = { "D",    "" },
-   topdelete    = { "‾",    "‾" },
-   changedelete = { "~",    "~" },
+   add          = "│",
+   change       = "│",
+   delete       = "D",
+   topdelete    = "‾",
+   changedelete = "~",
 }
 
 M.devicons = {
@@ -119,3 +116,4 @@ M.lspkind = {
 }
 
 return M
+

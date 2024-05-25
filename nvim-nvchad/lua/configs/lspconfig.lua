@@ -3,19 +3,16 @@
 --------------
 ---@diagnostic disable: lowercase-global, undefined-global
 
-------------------------------
--- 重置lua/ui/lsp.lua设置下的行数中（错误/警告等）代码检查图标
-local function lspSymbol(name, icon)
-   local hl = "DiagnosticSign" .. name
-   vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-end
-lspSymbol("Error", " E")
-lspSymbol("Info", " I")
-lspSymbol("Hint", " H")
-lspSymbol("Warn", " W")
-------------------------------
+-- EXAMPLE
+-- local on_attach = require("nvchad.configs.lspconfig").on_attach
+local on_init = require("nvchad.configs.lspconfig").on_init
+local capabilities = require("nvchad.configs.lspconfig").capabilities
 
--- local on_attach = require("plugins.configs.lspconfig").on_attach
+capabilities.offsetEncoding = "utf-8"
+
+local lspconfig = require "lspconfig"
+local servers = { "html", "cssls", "zls" }
+
 local on_attach = function(client, bufnr)
    require("plugins.configs.lspconfig").on_attach(client, bufnr)
 
@@ -37,6 +34,35 @@ local on_attach = function(client, bufnr)
    --    end,
    -- })
 end
+
+------------------------------
+-- 重置lua/ui/lsp.lua设置下的行数中（错误/警告等）代码检查图标
+local function lspSymbol(name, icon)
+   local hl = "DiagnosticSign" .. name
+   vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
+end
+lspSymbol("Error", " E")
+lspSymbol("Info", " I")
+lspSymbol("Hint", " H")
+lspSymbol("Warn", " W")
+------------------------------
+
+-- lsps with default config
+for _, lsp in ipairs(servers) do
+   lspconfig[lsp].setup {
+      on_attach = on_attach,
+      on_init = on_init,
+      capabilities = capabilities,
+   }
+end
+
+-- typescript
+lspconfig.tsserver.setup {
+   on_attach = on_attach,
+   on_init = on_init,
+   capabilities = capabilities,
+}
+
 --------------------
 -- 禁用lsp错误信息在当前行末显示
 -- https://github.com/neovim/nvim-lspconfig/issues/662
@@ -47,19 +73,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
    underline = true,
 })
 -------------------------------------
-
-local capabilities = require("plugins.configs.lspconfig").capabilities
-capabilities.offsetEncoding = 'utf-8'
-
-local lspconfig = require "lspconfig"
-local servers = { "zls" }
-
-for _, lsp in ipairs(servers) do
-   lspconfig[lsp].setup {
-      on_attach = on_attach,
-      capabilities = capabilities,
-   }
-end
 
 lspconfig.gdscript.setup {
    on_attach = on_attach,
@@ -156,7 +169,7 @@ lspconfig.haxe_language_server.setup {
    capabilities = capabilities,
    -- flags = { },
    -- filetypes = { "haxe" },
-   cmd = {"haxe-language-server"}
+   cmd = { "haxe-language-server" },
 }
 
 -- c language

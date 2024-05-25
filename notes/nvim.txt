@@ -1,0 +1,18 @@
+------------------------------------
+- Nvim
+------------------
+
+
+1.vim/vi编辑器挂到后台ctrl+z, 如何返回上次挂后台的程序
+https://www.cnblogs.com/linga/p/11059090.html
+
+    vim/vi编辑器通过ctrl+z将文件挂在到后台后，如果要再次进入，需通过jobs查看文件的序号，然后通过fg 序号进入文件进行编辑
+
+    示例:
+        (BaiduPictureToWord) [master@instance-2m5iiamd BPTW]$ jobs 
+        [1]+  Stopped                 vim baidutest.py
+        [2]-  Stopped                 vim baidu.py
+        (BaiduPictureToWord) [master@instance-2m5iiamd BPTW]$ fg 1
+        vim baidutest.py
+
+        [1]+  Stopped                 vim baidutest.py

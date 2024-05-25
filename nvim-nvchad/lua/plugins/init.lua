@@ -142,6 +142,9 @@ local plugins = {
    {
       "karb94/neoscroll.nvim",
       lazy = false,
+      -- TODO... 最新版本bug: 88e63a89fee0f6112f0477a5709a460c45e5dee9
+      -- neoscroll/init.lua:269: attempt to perform arithmetic on local 'half_win_duration' (a table value)
+      commit = "e78657719485c5663b88e5d96ffcfb6a2fe3eec0",
       config = function()
          local present, neoscroll = pcall(require, "neoscroll")
          if not present then

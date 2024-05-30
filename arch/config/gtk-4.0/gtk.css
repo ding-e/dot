@@ -1,0 +1,8 @@
+window decoration,
+dialog > decoration {
+    box-shadow: none;
+    margin: 0px;
+    padding: 0px;
+    /* border: 0px; */
+    border: 1px solid #000080;
+}

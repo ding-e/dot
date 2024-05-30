@@ -8,7 +8,7 @@ if [ $(uname -o) = "Darwin" ]; then
   cmd='ln -sf'
 
   # kitty
-  kitty_config="$HOME/.config/kitty/kitty.conf" 
+  kitty_config="$HOME/.config/kitty/kitty.conf"
   inset_c="include $PWD/kitty/dinge.conf"
 
   if [ $(grep -c "${inset_c}" "${kitty_config}") == '0' ]; then
@@ -51,6 +51,11 @@ else
     ${cmd} "$PWD/arch/config/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/"
     ${cmd} "$PWD/arch/config/gtk-3.0/d.bookmarks" "$HOME/.config/gtk-3.0/bookmarks"
     ${cmd} "$PWD/arch/d.gtkrc-2.0" "$HOME/.gtkrc-2.0"
+
+    mkdir -p "$HOME/.config/gtk-4.0"
+    ${cmd} "$PWD/arch/config/gtk-4.0/gtk.css" "$HOME/.config/gtk-4.0/"
+    ${cmd} "$PWD/arch/config/gtk-4.0/settings.ini" "$HOME/.config/gtk-4.0/"
+    ${cmd} "$PWD/arch/config/gtk-4.0/d.bookmarks" "$HOME/.config/gtk-4.0/bookmarks"
 
     # dwm script & wallpapers -> ding-e/dot.arch
     mkdir -p "$HOME/.dwm"

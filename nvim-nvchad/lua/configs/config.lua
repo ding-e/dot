@@ -20,7 +20,6 @@ local M = {
    -- 項目列表
    workspace_list = { "nim", "dot", "zig", "nvim", "love2d", "godot", ".config/nvim" },
 
-   -- TODO... auto: 檢測寬高自動匹配
    -- horizontal / vertical / float
    project_term_type = "vertical",
    -- 根据当前项目特征執行對應命令

@@ -6,16 +6,16 @@ xrandr --output Virtual-1 --mode 2560x1600
 #xrandr --output Virtual-1 --mode 1440x900
 
 # feh 设置墙纸
-# feh --bg-fill /home/dinge/.dwm/wallpapers/xp.jpg
-feh --bg-fill /home/dinge/.dwm/wallpapers/c.jpg
+feh --bg-fill /home/dinge/.dwm/wallpapers/xp.jpg
+# feh --bg-fill /home/dinge/.dwm/wallpapers/c.jpg
 
 # dwm status
-dwmblocks &
+# dwmblocks &
 xsetroot -name " [ USER ${USER} + DATE $(date +%Y.%m.%d\ %H:%M:%S) ]"
 
 # 启动状态栏信息
 #$(echo 1 > $(dirname $(readlink -f "$0") || (cd "$(dirname "$0")";pwd))/dwm-status/current-status-type.txt)
-#bash /home/dinge/.dwm/scripts/dwm-status/dwm-status.sh &
+bash /home/dinge/.dwm/scripts/dwm-status/dwm-status.sh &
 
 # 启动picom
 #picom -bCG --shadow-opacity=OPACITY

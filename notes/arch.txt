@@ -607,11 +607,11 @@ https://github.com/djpohly/dwl/wiki/Patches
 
 5. Chicago95不支持gtk4, 因此有些程序使用了gtk4的话无法正确显示, 暂时使用旧版本解决
 
-        file-roller (GTK3最后一个版本: file-roller-43.1-1-aarch64.pkg.tar.xz)
-            # sudo pacman -U /var/cache/pacman/pkg/file-roller-43.1-1-aarch64.pkg.tar.xz
-            sudo pacman -U dot.arch/software/GTK3/file-roller-43.1-1-aarch64.pkg.tar.xz
+    file-roller (GTK3最后一个版本: file-roller-43.1-1-aarch64.pkg.tar.xz)
+        # sudo pacman -U /var/cache/pacman/pkg/file-roller-43.1-1-aarch64.pkg.tar.xz
+        sudo pacman -U dot.arch/software/GTK3/file-roller-43.1-1-aarch64.pkg.tar.xz
 
-        pavucontrol (GTK3最后一个版本: pavucontrol-1:5.0+r66+gc330506-1-aarch64.pkg.tar.xz)
-            sudo pacman -U dot.arch/software/GTK3/pavucontrol-1:5.0+r66+gc330506-1-aarch64.pkg.tar.xz
+    pavucontrol (GTK3最后一个版本: pavucontrol-1:5.0+r66+gc330506-1-aarch64.pkg.tar.xz)
+        sudo pacman -U dot.arch/software/GTK3/pavucontrol-1:5.0+r66+gc330506-1-aarch64.pkg.tar.xz
 
 

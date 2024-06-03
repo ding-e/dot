@@ -14,7 +14,7 @@ local lspconfig = require "lspconfig"
 local servers = { "html", "cssls", "zls" }
 
 local on_attach = function(client, bufnr)
-   require("plugins.configs.lspconfig").on_attach(client, bufnr)
+   require("nvchad.configs.lspconfig").on_attach(client, bufnr)
 
    -- lsp錯誤信息 - 光標懸停時浮動顯示 - (錯誤信息也可以使用folke/trouble.nvim)
    -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization \

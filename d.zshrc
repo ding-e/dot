@@ -348,12 +348,13 @@ export PATH=$NIMLIB:$PATH
 
 # zig lang - brew install zig --HEAD
 #          - brew unlink zig && brew link --HEAD zig
-ZIGBIN=$WORKSPACE_PATH/zig/bin/lang/zig-dev-0.11.0
+ZIGBIN="$WORKSPACE_PATH/zig/bin/lang/zig-dev-0.13.0"
 export PATH=$ZIGBIN:$PATH
 # --------------------
 # zls - zig language server
 #       git clone [-b 0.10.0] --recurse-submodules zls.git && build -Drelease-small
 # zls -> zls.json path: /Users/dinge/Library/Application\ Support/zls.json
-ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls/zig-out/bin"
+# ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls/zig-out/bin"
+ZLSBIN="$WORKSPACE_PATH/zig/bin/lsp/zls-release"
 export PATH=$ZLSBIN:$PATH
 

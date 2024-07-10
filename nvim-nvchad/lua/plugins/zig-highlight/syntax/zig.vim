@@ -39,6 +39,7 @@ let s:zig_syntax_keywords = {
     \ ,             "usize"
     \ ,             "comptime_int"
     \ ,             "comptime_float"
+    \ ,             "c_char"
     \ ,             "c_short"
     \ ,             "c_ushort"
     \ ,             "c_int"
@@ -101,6 +102,7 @@ let s:zig_syntax_keywords = {
     \ ,                  "@atomicStore"
     \ ,                  "@bitCast"
     \ ,                  "@breakpoint"
+    \ ,                  "@trap"
     \ ,                  "@alignCast"
     \ ,                  "@alignOf"
     \ ,                  "@cDefine"
@@ -132,9 +134,10 @@ let s:zig_syntax_keywords = {
     \ ,                  "@unionInit"
     \ ,                  "@frameAddress"
     \ ,                  "@import"
+    \ ,                  "@inComptime"
     \ ,                  "@newStackCall"
     \ ,                  "@asyncCall"
-    \ ,                  "@intToPtr"
+    \ ,                  "@ptrFromInt"
     \ ,                  "@max"
     \ ,                  "@min"
     \ ,                  "@memcpy"
@@ -151,7 +154,7 @@ let s:zig_syntax_keywords = {
     \ ,                  "@panic"
     \ ,                  "@prefetch"
     \ ,                  "@ptrCast"
-    \ ,                  "@ptrToInt"
+    \ ,                  "@intFromPtr"
     \ ,                  "@rem"
     \ ,                  "@returnAddress"
     \ ,                  "@setCold"
@@ -175,19 +178,19 @@ let s:zig_syntax_keywords = {
     \ ,                  "@subWithOverflow"
     \ ,                  "@intCast"
     \ ,                  "@floatCast"
-    \ ,                  "@intToFloat"
-    \ ,                  "@floatToInt"
-    \ ,                  "@boolToInt"
-    \ ,                  "@errSetCast"
+    \ ,                  "@floatFromInt"
+    \ ,                  "@intFromFloat"
+    \ ,                  "@intFromBool"
+    \ ,                  "@errorCast"
     \ ,                  "@truncate"
     \ ,                  "@typeInfo"
     \ ,                  "@typeName"
     \ ,                  "@TypeOf"
     \ ,                  "@atomicRmw"
-    \ ,                  "@intToError"
-    \ ,                  "@errorToInt"
-    \ ,                  "@intToEnum"
-    \ ,                  "@enumToInt"
+    \ ,                  "@errorFromInt"
+    \ ,                  "@intFromError"
+    \ ,                  "@enumFromInt"
+    \ ,                  "@intFromEnum"
     \ ,                  "@setAlignStack"
     \ ,                  "@frame"
     \ ,                  "@Frame"
@@ -203,7 +206,7 @@ let s:zig_syntax_keywords = {
     \ ,                  "@log"
     \ ,                  "@log2"
     \ ,                  "@log10"
-    \ ,                  "@fabs"
+    \ ,                  "@abs"
     \ ,                  "@floor"
     \ ,                  "@ceil"
     \ ,                  "@trunc"
@@ -282,15 +285,15 @@ highlight default link zigArrowCharacter zigOperator
 highlight default link zigOperator Operator
 highlight default link zigStructure Structure
 highlight default link zigExecution Special
-highlight default link zigMacro Macro
+"highlight default link zigMacro Macro
+highlight default link zigMacro Keyword
 highlight default link zigConditional Conditional
 highlight default link zigComparatorWord Keyword
 highlight default link zigRepeat Repeat
 highlight default link zigSpecial Special
-" highlight default link zigVarDecl Function
+"highlight default link zigVarDecl Function
 highlight default link zigPreProc PreProc
 highlight default link zigException Exception
-
 
 delfunction s:syntax_keyword
 

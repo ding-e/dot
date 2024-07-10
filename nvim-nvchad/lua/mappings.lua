@@ -9,6 +9,7 @@ local config = require "configs.config"
 local utils = require "utils.func"
 
 local map = vim.keymap.set
+local term = require "nvchad.term"
 
 -- map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("i", "jk", "<ESC>")
@@ -18,9 +19,9 @@ local map = vim.keymap.set
 -- sendCommand
 -----------------
 -- map("n", "<leader>cc", function ()
---    require("nvchad.term").show "vertical"
---    require("nvchad.term").hide "vertical"
---    require("nvchad.term").send("clear && g++ -o out " .. vim.fn.expand "%" .. " && ./out", "vertical")
+--    term.show "vertical"
+--    term.hide "vertical"
+--    term.send("clear && g++ -o out " .. vim.fn.expand "%" .. " && ./out", "vertical")
 -- end, "compile & run a cpp file")
 
 -----------------
@@ -265,15 +266,16 @@ map(
 
 -- zen
 -- Pocco81/truezen.nvim
+local zenMode = require "zen-mode"
 map("n", "<leader>zz", "<CMD> ZenMode <CR>", { desc = "禪模式 (zen-mode)" })
 map("n", "<leader>zi", function()
-   require("zen-mode").toggle { window = { width = 88 } }
+   zenMode.toggle { window = { width = 88 } }
 end, { desc = "禪模式: width = 88 (zen-mode)" })
 map("n", "<leader>ze", function()
-   require("zen-mode").toggle { window = { width = 0.85 } }
+   zenMode.toggle { window = { width = 0.85 } }
 end, { desc = "禪模式: width = 85% (zen-mode)" })
 map("n", "<leader>zo", function()
-   require("zen-mode").toggle { window = { width = 0.5 } }
+   zenMode.toggle { window = { width = 0.5 } }
 end, { desc = "禪模式: width = 50% (zen-mode)" })
 map("n", "<leader>za", "<CMD> TZAtaraxis <CR>", { desc = "禪模式 (truezen)" })
 map("n", "<leader>zf", "<CMD> TZFocus <CR>", { desc = "當有分屏時全屏" })
@@ -295,11 +297,11 @@ map("t", "AA", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), 
 
 -- new terminals
 map("n", "<leader>ht", function()
-   require("nvchad.term").new { pos = "sp" }
+   term.new { pos = "bo sp", size = 0.3 }
 end, { desc = "   新建水平終端" })
 
 map("n", "<leader>vt", function()
-   require("nvchad.term").new { pos = "vsp" }
+   term.new { pos = "bo vsp", size = 0.3 }
 end, { desc = "   新建垂直終端" })
 map("n", "<leader>st", function()
    vim.cmd [[ DeTerm ]]
@@ -307,15 +309,15 @@ end, { desc = "   新建全屏終端" })
 
 -- toggleable
 map({ "n", "t" }, "<C-v><C-k>", function()
-   require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
+   term.toggle { pos = "bo vsp", id = "vtoggleTerm", size = 0.3 }
 end, { desc = "   切換右側終端" })
 
 map({ "n", "t" }, "<C-c><C-k>", function()
-   require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+   term.toggle { pos = "bo sp", id = "htoggleTerm", size = 0.3 }
 end, { desc = "   切換底部終端" })
 
 map({ "n", "t" }, "<C-j><C-k>", function()
-   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+   term.toggle { pos = "float", id = "floatTerm" }
 end, { desc = "   切換浮動終端" })
 
 -- lang

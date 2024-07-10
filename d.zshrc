@@ -348,7 +348,8 @@ export PATH=$NIMLIB:$PATH
 
 # zig lang - brew install zig --HEAD
 #          - brew unlink zig && brew link --HEAD zig
-ZIGBIN="$WORKSPACE_PATH/zig/bin/lang/zig-dev-0.13.0"
+# ZIGBIN="$WORKSPACE_PATH/zig/bin/lang/zig-dev-0.14.0"
+ZIGBIN="$WORKSPACE_PATH/zig/bin/lang/zig-release"
 export PATH=$ZIGBIN:$PATH
 # --------------------
 # zls - zig language server

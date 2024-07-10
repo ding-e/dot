@@ -37,14 +37,21 @@ end
 
 ------------------------------
 -- 重置lua/ui/lsp.lua设置下的行数中（错误/警告等）代码检查图标
-local function lspSymbol(name, icon)
-   local hl = "DiagnosticSign" .. name
-   vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-end
-lspSymbol("Error", " E")
-lspSymbol("Info", " I")
-lspSymbol("Hint", " H")
-lspSymbol("Warn", " W")
+-- local function lspSymbol(name, icon)
+--    local hl = "DiagnosticSign" .. name
+--    vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
+-- end
+-- lspSymbol("Error", " E")
+-- lspSymbol("Info", " I")
+-- lspSymbol("Hint", " H")
+-- lspSymbol("Warn", " W")
+local x = vim.diagnostic.severity
+vim.diagnostic.config {
+   virtual_text = { prefix = "" },
+   signs = { text = { [x.ERROR] = " E", [x.WARN] = " W", [x.INFO] = " I", [x.HINT] = " H" } },
+   underline = true,
+   float = { border = "single" },
+}
 ------------------------------
 
 -- lsps with default config

@@ -28,19 +28,6 @@ M.ui = {
    --   ["@comment"] = { italic = true },
    -- },
 
-   term = {
-      hl = "Normal:term,WinSeparator:WinSeparator",
-      sizes = { sp = 0.3, vsp = 0.2 },
-      float = {
-         relative = "editor",
-         row = 0.16,
-         col = 0.1,
-         width = 0.8,
-         height = 0.66,
-         border = "single",
-      },
-   },
-
    tabufline = {
       enabled = true,
       lazyload = false,
@@ -88,6 +75,19 @@ M.ui = {
          --    return "%#BruhHl#" .. " bruh " -- the highlight group here is BruhHl      end,
          -- end,
       },
+   },
+}
+
+M.term = {
+   winopts = { winhl = "Normal:term,WinSeparator:WinSeparator" },
+   sizes = { sp = 0.3, vsp = 0.2, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
+   float = {
+      relative = "editor",
+      row = 0.16,
+      col = 0.1,
+      width = 0.8,
+      height = 0.66,
+      border = "single",
    },
 }
 

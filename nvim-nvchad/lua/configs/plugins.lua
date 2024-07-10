@@ -80,42 +80,42 @@ function set_nvimtree_opt()
    }
    local nvimtree_icons = icons.nvimtree
 
-   if config.icon_theme ~= "nvchad" then
-      opt.renderer.icons.symlink_arrow = nvimtree_icons.symlink_arrow
-      opt.renderer.icons.glyphs = {
-         default = nvimtree_icons.file_default,
-         symlink = nvimtree_icons.symlink,
-         folder = {
-            default = nvimtree_icons.folder_default,
-            empty = nvimtree_icons.folder_empty,
-            empty_open = nvimtree_icons.folder_empty_open,
-            open = nvimtree_icons.folder_open,
-            symlink = nvimtree_icons.folder_symlink,
-            symlink_open = nvimtree_icons.folder_symlink_open,
+   opt.renderer.icons.symlink_arrow = nvimtree_icons.symlink_arrow
+   opt.renderer.icons.glyphs = {
+      default = nvimtree_icons.file_default,
+      symlink = nvimtree_icons.symlink,
+      folder = {
+         default = nvimtree_icons.folder_default,
+         empty = nvimtree_icons.folder_empty,
+         empty_open = nvimtree_icons.folder_empty_open,
+         open = nvimtree_icons.folder_open,
+         symlink = nvimtree_icons.folder_symlink,
+         symlink_open = nvimtree_icons.folder_symlink_open,
 
-            arrow_open = nvimtree_icons.folder_arrow_open,
-            arrow_closed = nvimtree_icons.folder_arrow_closed,
-         },
-         git = {
-            unstaged = nvimtree_icons.git_unstaged,
-            staged = nvimtree_icons.git_staged,
-            unmerged = nvimtree_icons.git_unmerged,
-            renamed = nvimtree_icons.git_renamed,
-            untracked = nvimtree_icons.git_untracked,
-            deleted = nvimtree_icons.git_deleted,
-            ignored = nvimtree_icons.git_ignored,
-         },
-      }
-   end
+         arrow_open = nvimtree_icons.folder_arrow_open,
+         arrow_closed = nvimtree_icons.folder_arrow_closed,
+      },
+      git = {
+         unstaged = nvimtree_icons.git_unstaged,
+         staged = nvimtree_icons.git_staged,
+         unmerged = nvimtree_icons.git_unmerged,
+         renamed = nvimtree_icons.git_renamed,
+         untracked = nvimtree_icons.git_untracked,
+         deleted = nvimtree_icons.git_deleted,
+         ignored = nvimtree_icons.git_ignored,
+      },
+   }
+
    return opt
 end
 
 function set_devicons_opt()
-   return config.icon_theme == "none" and { default = false, color_icons = false }
-      -- or { override = require("nvchad.icons").devicons }
-      -- or { override = icons.devicons }
-      -- or { override = merge_tb("force", require("nvchad.icons").devicons, icons["devicons"] or {}) }
-      or { override = merge_tb("force", require "nvchad.icons.devicons", icons["devicons"] or {}) }
+   -- return config.icon_theme == "none" and { default = false, color_icons = false }
+   --    -- or { override = require("nvchad.icons").devicons }
+   --    -- or { override = icons.devicons }
+   --    -- or { override = merge_tb("force", require("nvchad.icons").devicons, icons["devicons"] or {}) }
+   --    or { override = merge_tb("force", require "nvchad.icons.devicons", icons["devicons"] or {}) }
+   return { default = false, color_icons = false }
 end
 
 -- NvChad/nvterm

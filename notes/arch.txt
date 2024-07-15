@@ -363,6 +363,10 @@ sudo ufw allow 22
 sudo ufw allow 8080
 
 ---------------------------
+# aseprite
+win95 theme: https://thkaspar.itch.io/aseprite-95-theme
+
+---------------------------
 chromium
 隱藏滾動條
     chrome://flags/#overlay-scrollbars -> enable
@@ -406,6 +410,13 @@ makepkg -si
 ---------------------------
 snap
 # https://snapcraft.io/docs/installing-snap-on-arch-linux
+
+---------------------------
+# Serenity OS
+https://serenityos.org/
+https://serenityos.net/
+
+font: https://fonts.serenityos.net/#
 
 ---------------------------
 pacman-key --init

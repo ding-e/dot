@@ -13,6 +13,26 @@ M.table_len = function(t)
    return r
 end
 
+M.table_intersection_by_keyword = function(set_list, keyword_list, by)
+    local result = {}
+    if by == "val" then
+        for _, keyword in pairs(keyword_list) do
+            for key, val in pairs(set_list) do
+              if val == keyword then
+                  result[key] = val
+              end
+            end
+        end
+    else
+        for _, keyword in pairs(keyword_list) do
+            if set_list[keyword] then
+                result[keyword] = set_list[keyword]
+            end
+        end
+    end
+    return result
+end
+
 -- M.get_workspace_theme = function(project_list, theme_list)
 --    -- 根據當前項目設置nvchad配色
 --    local t = 2

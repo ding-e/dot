@@ -25,9 +25,9 @@ local M = {
    -- 根据当前项目特征執行對應命令
    project_cmd_list = {
       -- 模板名稱       文件查詢        匹配內容      執行命令           是否复制
-      love = { ".luarc.json", "love2d", "clear && love .", init = true },
-      godot = { "project.godot", "", "clear && godot", init = false },
-      c_project = { "c.project", "", "./build.sh", init = false },
+      love      = {   ".luarc.json",    "love2d",  "clear && love .",  init = true  },
+      godot     = {   "project.godot",  "",        "clear && godot",   init = false },
+      c_project = {   "c.project",      "",        "./build.sh",       init = false },
    },
 
    -- mason, tree-sitter

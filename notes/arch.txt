@@ -419,6 +419,10 @@ https://serenityos.net/
 font: https://fonts.serenityos.net/#
 
 ---------------------------
+# Hot Dog Linux
+https://hotdoglinux.com/
+
+---------------------------
 pacman-key --init
 mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.b
 # echo "Server = https://mirrors.mit.edu/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist

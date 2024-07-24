@@ -3,16 +3,11 @@
 --------------
 ---@diagnostic disable: lowercase-global, undefined-global
 
--- EXAMPLE
--- local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
-
 capabilities.offsetEncoding = "utf-8"
 
-local lspconfig = require "lspconfig"
-local servers = { "html", "cssls", "zls" }
-
+-- local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_attach = function(client, bufnr)
    require("nvchad.configs.lspconfig").on_attach(client, bufnr)
 
@@ -52,23 +47,6 @@ vim.diagnostic.config {
    underline = true,
    float = { border = "single" },
 }
-------------------------------
-
--- lsps with default config
-for _, lsp in ipairs(servers) do
-   lspconfig[lsp].setup {
-      on_attach = on_attach,
-      on_init = on_init,
-      capabilities = capabilities,
-   }
-end
-
--- typescript
-lspconfig.tsserver.setup {
-   on_attach = on_attach,
-   on_init = on_init,
-   capabilities = capabilities,
-}
 
 --------------------
 -- 禁用lsp错误信息在当前行末显示
@@ -79,8 +57,24 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
    update_in_insert = false,
    underline = true,
 })
+------------------------------
+
+local lspconfig = require "lspconfig"
+-- TODO...
+-- ui/lua/nvchad/mason/names.lua
+local servers = { "zls" }
+
+-- lsps with default config
+for _, lsp in ipairs(servers) do
+   lspconfig[lsp].setup {
+      on_attach = on_attach,
+      on_init = on_init,
+      capabilities = capabilities,
+   }
+end
 -------------------------------------
 
+-- godot gdscript
 lspconfig.gdscript.setup {
    on_attach = on_attach,
    capabilities = capabilities,
@@ -89,6 +83,58 @@ lspconfig.gdscript.setup {
    },
    filetypes = { "gd", "gdscript", "gdscript3" },
    -- cmd = {"ncat", "localhost", "6008"}
+}
+
+-- haxe language
+lspconfig.haxe_language_server.setup {
+   on_attach = on_attach,
+   capabilities = capabilities,
+   -- flags = { },
+   -- filetypes = { "haxe" },
+   cmd = { "haxe-language-server" },
+}
+
+-- c language
+lspconfig.clangd.setup {
+   on_attach = on_attach,
+   capabilities = capabilities,
+   cmd = {
+      "clangd",
+      "--header-insertion=never",
+      -- "--offset-encoding=utf-16",
+
+      -- "--background-index",
+      -- "--cross-file-rename",
+   },
+   filetypes = { "c", "cpp", "h", "hpp", "objc" },
+   -- rootPatterns = { ".git", "compile_flags.txt", "compile_commands.json" },
+   -- handlers = {
+   --    ["textDocument/publishDiagnostics"] = vim.lsp.with(
+   --       vim.lsp.diagnostic.on_publish_diagnostics, {
+   --          virtual_text = true, signs = true, underline = true, update_in_insert = false,
+   --       }
+   --    ),
+   -- },
+}
+
+-- rust language
+lspconfig.rust_analyzer.setup {
+   on_attach = on_attach,
+   capabilities = capabilities,
+   -- handlers = {
+   --    ["textDocument/publishDiagnostics"] = vim.lsp.with(
+   --       vim.lsp.diagnostic.on_publish_diagnostics, {
+   --          virtual_text = false, signs = true, underline = true, update_in_insert = false,
+   --       }
+   --    ),
+   -- },
+   -- settings = {
+   --    ["rust-analyzer"] = {
+   --       imports = { granularity = { group = "module", }, prefix = "self", },
+   --       cargo = { buildScripts = { enable = true, }, },
+   --       procMacro = { enable = true, },
+   --    },
+   -- },
 }
 
 -- nim language
@@ -170,54 +216,3 @@ lspconfig.nimls.setup {
    -- end,
 }
 
--- haxe language
-lspconfig.haxe_language_server.setup {
-   on_attach = on_attach,
-   capabilities = capabilities,
-   -- flags = { },
-   -- filetypes = { "haxe" },
-   cmd = { "haxe-language-server" },
-}
-
--- c language
-lspconfig.clangd.setup {
-   on_attach = on_attach,
-   capabilities = capabilities,
-   cmd = {
-      "clangd",
-      "--header-insertion=never",
-      -- "--offset-encoding=utf-16",
-
-      -- "--background-index",
-      -- "--cross-file-rename",
-   },
-   filetypes = { "c", "cpp", "h", "hpp", "objc" },
-   -- rootPatterns = { ".git", "compile_flags.txt", "compile_commands.json" },
-   -- handlers = {
-   --    ["textDocument/publishDiagnostics"] = vim.lsp.with(
-   --       vim.lsp.diagnostic.on_publish_diagnostics, {
-   --          virtual_text = true, signs = true, underline = true, update_in_insert = false,
-   --       }
-   --    ),
-   -- },
-}
-
--- rust
-lspconfig.rust_analyzer.setup {
-   on_attach = on_attach,
-   capabilities = capabilities,
-   -- handlers = {
-   --    ["textDocument/publishDiagnostics"] = vim.lsp.with(
-   --       vim.lsp.diagnostic.on_publish_diagnostics, {
-   --          virtual_text = false, signs = true, underline = true, update_in_insert = false,
-   --       }
-   --    ),
-   -- },
-   -- settings = {
-   --    ["rust-analyzer"] = {
-   --       imports = { granularity = { group = "module", }, prefix = "self", },
-   --       cargo = { buildScripts = { enable = true, }, },
-   --       procMacro = { enable = true, },
-   --    },
-   -- },
-}

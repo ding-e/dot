@@ -11,7 +11,7 @@
 -- • error: 抛出错误
 -- • keep : 使用最左边table的值
 -- • force: 使用最右边table的值
-local merge_tb = vim.tbl_deep_extend
+-- local merge_tb = vim.tbl_deep_extend
 
 -- local utils = require "core.utils"
 local config = require "configs.config"

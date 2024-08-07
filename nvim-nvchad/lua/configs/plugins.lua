@@ -146,6 +146,7 @@ end
 --    require("nvterm").setup(opts)
 -- end
 
+-- TODO... nvchad 现在改用conform
 -- jose-elias-alvarez/null-ls.nvim
 -- 具体支持语言
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting

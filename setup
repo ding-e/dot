@@ -49,13 +49,13 @@ else
     mkdir -p "$HOME/.config/gtk-3.0"
     ${cmd} "$PWD/arch/config/gtk-3.0/gtk.css" "$HOME/.config/gtk-3.0/"
     ${cmd} "$PWD/arch/config/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/"
-    ${cmd} "$PWD/arch/config/gtk-3.0/d.bookmarks" "$HOME/.config/gtk-3.0/bookmarks"
+    ${cmd} "$PWD/arch/config/gtk-3.0/bookmarks" "$HOME/.config/gtk-3.0/bookmarks"
     ${cmd} "$PWD/arch/d.gtkrc-2.0" "$HOME/.gtkrc-2.0"
 
     mkdir -p "$HOME/.config/gtk-4.0"
     ${cmd} "$PWD/arch/config/gtk-4.0/gtk.css" "$HOME/.config/gtk-4.0/"
     ${cmd} "$PWD/arch/config/gtk-4.0/settings.ini" "$HOME/.config/gtk-4.0/"
-    ${cmd} "$PWD/arch/config/gtk-4.0/d.bookmarks" "$HOME/.config/gtk-4.0/bookmarks"
+    ${cmd} "$PWD/arch/config/gtk-4.0/bookmarks" "$HOME/.config/gtk-4.0/bookmarks"
 
     # dwm script & wallpapers -> ding-e/dot.arch
     mkdir -p "$HOME/.dwm"
@@ -63,18 +63,22 @@ else
     ${cmd} "$PWD/arch/dwm/bin" "$HOME/.dwm/"
     ${cmd} "$PWD/arch/dwm/scripts" "$HOME/.dwm/"
 
+    # i3wm
+    mkdir -p "$HOME/.config/i3/log"
+    ${cmd} "$PWD/arch/i3/config" "$HOME/.config/i3/"
+
     # alacritty
     mkdir -p "$HOME/.config/alacritty"
     ${cmd} "$PWD/arch/config/alacritty/alacritty.toml" "$HOME/.config/alacritty/"
 
     # dunst
     mkdir -p "$HOME/.config/dunst"
-    ${cmd} "$PWD/arch/config/dunst/d.dunstrc" "$HOME/.config/dunst/dunstrc"
+    ${cmd} "$PWD/arch/config/dunst/dunstrc" "$HOME/.config/dunst/dunstrc"
 
     # morc_menua & dmenu
     mkdir -p "$HOME/.config/morc_menu"
     ${cmd} "$PWD/arch/config/morc_menu/morc_menu_v1.conf" "$HOME/.config/morc_menu/"
-    ${cmd} "$PWD/arch/config/d.dmenurc" "$HOME/.config/dmenurc"
+    ${cmd} "$PWD/arch/config/dmenurc" "$HOME/.config/dmenurc"
 
     # chromium flags
     ${cmd} "$PWD/arch/config/chromium-flags.conf" "$HOME/.config/"

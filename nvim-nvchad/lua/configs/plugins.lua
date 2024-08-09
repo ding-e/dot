@@ -41,6 +41,12 @@ function set_nvimtree_opt()
          adaptive_size = config.tree_adaptive_size,
          side = "left",
       },
+      filters = {
+         -- 显示隐藏文件
+         dotfiles = false,
+         -- 自定义隐藏文件或文件夹
+         -- custom = { '.git', '.svn' },
+      },
       git = {
          enable = false,
          ignore = false,

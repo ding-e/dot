@@ -65,7 +65,7 @@ else
 
     # i3wm
     mkdir -p "$HOME/.config/i3/log"
-    ${cmd} "$PWD/arch/i3/config" "$HOME/.config/i3/"
+    ${cmd} "$PWD/arch/config/i3/config" "$HOME/.config/i3/"
 
     # alacritty
     mkdir -p "$HOME/.config/alacritty"

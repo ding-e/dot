@@ -12,7 +12,7 @@ packages : [
     man man-pages-zh_tw man-pages-zh_cn
 
     xorg-server xorg-xinit xorg-xsetroot
-    xorg-xrandr xorg-xinput xorg-xev libxft
+    xorg-xrandr xorg-xinput xorg-xev libxft libmd libbsd
     dmenu rofi alacritty feh picom ranger
     trayer acpi dunst capitaine-cursors
     alsa-utils pavucontrol pulseaudio pulseaudio-alsa
@@ -76,6 +76,7 @@ packages : [
         TWP - Translate Web Pages, 側邊翻譯
         NoScript, AdBlocker Ultimate, Proxy SwitchyOmega
         windowed-fullscreen-video, YouTube™ 双字幕
+        字体选择器, Dark Reader
     ]
 ]
 

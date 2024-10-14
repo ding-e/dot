@@ -51,7 +51,8 @@ M.nvimtree = {
 M.gitsigns = {
    add          = "│",
    change       = "│",
-   delete       = "D",
+   -- delete       = "D",
+   delete       = "│",
    topdelete    = "‾",
    changedelete = "~",
 }

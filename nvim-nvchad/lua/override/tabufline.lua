@@ -21,6 +21,7 @@ vim.t.bufs = vim.api.nvim_list_bufs()
 local config = { order = require("configs.config").tabufline_order }
 local tab_icons = require("configs.icons").tabufline
 
+-- g.toggle_theme_icon = "   "
 ---------------------------------------------------------- btn onclick functions ----------------------------------------------
 
 vim.cmd "function! TbGoToBuf(bufnr,b,c,d) \n execute 'b'..a:bufnr \n endfunction"
@@ -48,7 +49,7 @@ local function getNvimTreeWidth()
 end
 
 ------------------ DINGE nvchad/tabufline/utils functions ---------------------
-local buf_opt = api.nvim_buf_get_option
+local get_opt = api.nvim_get_option_value
 local buf_name = api.nvim_buf_get_name
 local function filename(str)
    return str:match "([^/\\]+)[/\\]*$"
@@ -113,10 +114,16 @@ local style_buf = function(nr, i)
    name = btn(name, nil, "GoToBuf", nr)
 
    -- modified bufs icon or close icon
-   local mod = buf_opt(nr, "mod")
-   local cur_mod = buf_opt(0, "mod")
+   local mod = get_opt("mod", { buf = nr })
+   local cur_mod = get_opt("mod", { buf = 0 })
 
    -- color close btn for focused / hidden  buffers
+   -- DINGE
+   -- if is_curbuf then
+   --   close_btn = cur_mod and txt("  ", "BufOnModified") or txt(close_btn, "BufOnClose")
+   -- else
+   --   close_btn = mod and txt("  ", "BufOffModified") or txt(close_btn, "BufOffClose")
+   -- end
    if is_curbuf then
       close_btn = cur_mod and txt(" " .. tab_icons.buff_modified .. " ", "BufOnModified")
          or txt(close_btn, "BufOnClose")

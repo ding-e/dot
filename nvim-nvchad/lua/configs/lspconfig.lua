@@ -3,11 +3,13 @@
 --------------
 ---@diagnostic disable: lowercase-global, undefined-global
 
-local on_init = require("nvchad.configs.lspconfig").on_init
-local capabilities = require("nvchad.configs.lspconfig").capabilities
-capabilities.offsetEncoding = "utf-8"
+-- load defaults i.e lua_lsp
+require("nvchad.configs.lspconfig").defaults()
 
--- local on_attach = require("nvchad.configs.lspconfig").on_attach
+local nvlsp = require "nvchad.configs.lspconfig"
+local on_init = nvlsp.on_init
+local capabilities = nvlsp.capabilities
+capabilities.offsetEncoding = "utf-8"
 local on_attach = function(client, bufnr)
    require("nvchad.configs.lspconfig").on_attach(client, bufnr)
 

@@ -3,8 +3,9 @@
 ---------------------------
 ---@diagnostic disable: lowercase-global, undefined-global
 
--- This file  needs to have same structure as nvconfig.lua
--- https://github.com/NvChad/NvChad/blob/v2.5/lua/nvconfig.lua
+-- This file needs to have same structure as nvconfig.lua
+-- https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua
+-- Please read that file to know all available options :(
 
 ---@type ChadrcConfig
 local M = {}
@@ -18,7 +19,7 @@ local statusline = require "override.statusline"
 --   M.ui.tabufline.modules[k] = v
 -- end
 
-M.ui = {
+M.base46 = {
    theme = "dinge", -- dinge, gruvchad, one_light, ashes
    theme_toggle = { "dinge", "ashes" },
    transparency = false,
@@ -27,12 +28,15 @@ M.ui = {
    --   Comment = { italic = true },
    --   ["@comment"] = { italic = true },
    -- },
+}
 
+M.ui = {
    tabufline = {
       enabled = true,
       lazyload = false,
+
       --  more opts
-      order = config.tabufline_other,
+      order = config.tabufline_order,
       modules = {
          treeOffset = tabufline.treeOffset,
          buffers = tabufline.buffers,
@@ -47,6 +51,9 @@ M.ui = {
    },
 
    statusline = {
+      -- theme = "default",         -- default/vscode/vscode_colored/minimal
+      -- separator_style = "block", -- default/round/block/arrow
+
       -- more opts
       -- order = { ... }, -- check stl/utils.lua file in ui repo
       order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "current_time", "cwd", "cursor" },
@@ -60,15 +67,8 @@ M.ui = {
          diagnostics = statusline.diagnostics,
          lsp = statusline.lsp, -- or "",
          current_time = statusline.current_time,
-         -- current_time = function ()
-         --    return "abc"
-         -- end,
-         -- statusline.current_time,
          cwd = statusline.cwd,
-         -- cursor = statusline.cursor,
-         cursor = function()
-            return statusline.cursor
-         end,
+         cursor = statusline.cursor,
 
          -- The default cursor module is override
          -- cursor = function()

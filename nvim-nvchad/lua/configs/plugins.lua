@@ -124,6 +124,41 @@ function set_devicons_opt()
    return { default = false, color_icons = false }
 end
 
+-- lewis6991/gitsigns.nvim
+function set_gitsigns_opt()
+   local gitsigns_icons = icons.gitsigns
+   return {
+      -- 行號下的git圖標設置
+      signs = {
+         add = {
+            hl = "DiffAdd",
+            text = gitsigns_icons.add,
+            numhl = "GitSignsAddNr",
+         },
+         change = {
+            hl = "DiffChange",
+            text = gitsigns_icons.change,
+            numhl = "GitSignsChangeNr",
+         },
+         delete = {
+            hl = "DiffDelete",
+            text = gitsigns_icons.delete,
+            numhl = "GitSignsDeleteNr",
+         },
+         topdelete = {
+            hl = "DiffDelete",
+            text = gitsigns_icons.topdelete,
+            numhl = "GitSignsDeleteNr",
+         },
+         changedelete = {
+            hl = "DiffChangeDelete",
+            text = gitsigns_icons.changedelete,
+            numhl = "GitSignsChangeNr",
+         },
+      },
+   }
+end
+
 -- NvChad/nvterm
 -- function set_nvterm(opts)
 --    require "base46.term"

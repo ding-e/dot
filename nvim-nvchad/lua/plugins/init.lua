@@ -69,6 +69,11 @@ local plugins = {
       opts = { ensure_installed = config.treesitter_list },
    },
 
+   {
+      "lewis6991/gitsigns.nvim",
+      opts = set_gitsigns_opt(),
+   },
+
    -----------------------------------------------------
 
    -- 启动页

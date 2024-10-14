@@ -22,16 +22,17 @@ local sep_r = separators["right"]
 
 ------------------ DINGE nvchad/stl/utils functions ---------------------
 local version = vim.version().minor
+-- credits to ii14 for str:match func
 local utils_file = function()
    -- DINGE
    -- local icon = "󰈚"
    local icon = "F"
 
    local path = vim.api.nvim_buf_get_name(utils.stbufnr())
-   local name = (path == "" and "Empty ") or path:match "([^/\\]+)[/\\]*$"
+   local name = (path == "" and "Empty") or path:match "([^/\\]+)[/\\]*$"
 
    -- DINGE
-   -- if name ~= "Empty " then
+   -- if name ~= "Empty" then
    --    local devicons_present, devicons = pcall(require, "nvim-web-devicons")
    --
    --    if devicons_present then
@@ -78,7 +79,7 @@ local utils_lsp_msg = function()
 
    -- DINGE
    -- local spinners = { "", "󰪞", "󰪟", "󰪠", "󰪢", "󰪣", "󰪤", "󰪥" }
-   -- local ms = vim.loop.hrtime() / 1e6
+   -- local ms = vim.uv.hrtime() / 1e6
    -- local frame = math.floor(ms / 100) % #spinners
    -- return spinners[frame + 1] .. " " .. msg
    return msg
@@ -86,13 +87,11 @@ end
 local utils_lsp = function()
    -- DINGE
    -- if rawget(vim, "lsp") and version >= 10 then
-   --    for _, client in ipairs(vim.lsp.get_clients()) do
-   --       if client.attached_buffers[utils.stbufnr()] then
-   --          -- DINGE
-   --          -- return (vim.o.columns > 100 and "   LSP ~ " .. client.name .. " ") or "   LSP "
-   --          return (vim.o.columns > 100 and "LSP ~ " .. client.name .. " ") or "LSP "
-   --       end
-   --    end
+   --   for _, client in ipairs(vim.lsp.get_clients()) do
+   --     if client.attached_buffers[M.stbufnr()] then
+   --       return (vim.o.columns > 100 and "   LSP ~ " .. client.name .. " ") or "   LSP "
+   --     end
+   --   end
    -- end
    if rawget(vim, "lsp") then
       for _, client in ipairs(vim.lsp.get_active_clients()) do
@@ -155,7 +154,7 @@ end
 M.file = function()
    -- DINGE
    -- local x = utils.file()
-   -- local name = " " .. x[2] .. " "
+   -- local name = " " .. x[2] .. (sep_style == "default" and " " or "")
    local x = utils_file()
    local name = " " .. x[2]
 
@@ -188,7 +187,7 @@ M.cwd = function()
    -- DINGE
    -- local icon = "%#St_cwd_icon#" .. "󰉋 "
    local icon = "%#St_cwd_icon#"
-   local name = vim.loop.cwd()
+   local name = vim.uv.cwd()
 
    -- DINGE
    -- name = "%#St_cwd_text#" .. " " .. (name:match "([^/\\]+)[/\\]*$" or name) .. " "

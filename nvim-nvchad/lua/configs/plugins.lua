@@ -130,31 +130,12 @@ function set_gitsigns_opt()
    return {
       -- 行號下的git圖標設置
       signs = {
-         add = {
-            hl = "DiffAdd",
-            text = gitsigns_icons.add,
-            numhl = "GitSignsAddNr",
-         },
-         change = {
-            hl = "DiffChange",
-            text = gitsigns_icons.change,
-            numhl = "GitSignsChangeNr",
-         },
-         delete = {
-            hl = "DiffDelete",
-            text = gitsigns_icons.delete,
-            numhl = "GitSignsDeleteNr",
-         },
-         topdelete = {
-            hl = "DiffDelete",
-            text = gitsigns_icons.topdelete,
-            numhl = "GitSignsDeleteNr",
-         },
-         changedelete = {
-            hl = "DiffChangeDelete",
-            text = gitsigns_icons.changedelete,
-            numhl = "GitSignsChangeNr",
-         },
+         add = { text = gitsigns_icons.add },
+         change = { text = gitsigns_icons.change },
+         delete = { text = gitsigns_icons.delete },
+         topdelete = { text = gitsigns_icons.topdelete },
+         changedelete = { text = gitsigns_icons.changedelete },
+         untracked = { text = gitsigns_icons.untracked },
       },
    }
 end

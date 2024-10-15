@@ -55,6 +55,7 @@ M.gitsigns = {
    delete       = "│",
    topdelete    = "‾",
    changedelete = "~",
+   untracked    = "┆",
 }
 
 M.devicons = {

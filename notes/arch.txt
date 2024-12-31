@@ -76,7 +76,7 @@ packages : [
         TWP - Translate Web Pages, 側邊翻譯
         NoScript, AdBlocker Ultimate, Proxy SwitchyOmega
         windowed-fullscreen-video, YouTube™ 双字幕
-        字体选择器, Dark Reader
+        字体选择器, Dark Reader, Tab Center Reborn
     ]
 ]
 

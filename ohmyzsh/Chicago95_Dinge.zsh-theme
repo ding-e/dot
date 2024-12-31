@@ -4,7 +4,11 @@ function __msdos_pwd() {
   local __path=$(pwd)
   #echo $__path | tr '/' '\\'
   #echo $__path
-  echo $__path | sed -r 's/\/home\/dinge\/core+/\/dinge/g'
+  if [[ $(uname -o) = "Darwin" ]]; then
+    echo $__path | sed -r 's/\/Users\/dinge\/Documents+/\/Dinge/g'
+  else # LINUX
+    echo $__path | sed -r 's/\/home\/dinge\/core+/\/dinge/g'
+  fi
 }
 function __get_prefix_chicago95_zsh() {
   if git rev-parse --git-dir > /dev/null 2>&1; then
@@ -23,6 +27,7 @@ function __get_prefix_chicago95_zsh() {
 # ---------------------------------------------
 
 PROMPT='%{$fg_bold[white]%}$(__get_prefix_chicago95_zsh):$(__msdos_pwd)$(git_prompt_info)>%{$reset_color%} '
+# PROMPT='%{$fg_bold[white]%}$(__get_prefix_chicago95_zsh):$(__msdos_pwd)$(git_prompt_info)%{$reset_color%} '
 
 #ZSH_THEME_GIT_PROMPT_PREFIX=":("
 #ZSH_THEME_GIT_PROMPT_SUFFIX=")"

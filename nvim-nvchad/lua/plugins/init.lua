@@ -181,7 +181,8 @@ local plugins = {
       "ziglang/zig.vim",
       dependencies = {
          {
-            dir = "$HOME/.config/nvim/lua/plugins/zig-highlight",
+            -- dir = "$HOME/.config/nvim/lua/plugins/zig-highlight",
+            dir = "~/.config/nvim/lua/plugins/zig-highlight",
             lazy = false,
          },
       },

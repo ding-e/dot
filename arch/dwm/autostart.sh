@@ -19,7 +19,8 @@ bash /home/dinge/.dwm/scripts/dwm-status/dwm-status.sh &
 
 # 启动picom
 #picom -bCG --shadow-opacity=OPACITY
-picom -bCG --shadow-opacity=0.0 --fade-in-step=1.0 --fade-out-step=1.0 --fade-delta=1 --menu-opacity=1.0
+# picom -bCG --shadow-opacity=0.0 --fade-in-step=1.0 --fade-out-step=1.0 --fade-delta=1 --menu-opacity=1.0
+picom -b --shadow-opacity=0.0 --fade-in-step=1.0 --fade-out-step=1.0 --fade-delta=1
 
 # 音量gui
 volumeicon &

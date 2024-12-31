@@ -13,7 +13,8 @@ ZSH_THEME="robbyrussell"
 
 # MACOS
 if [[ $(uname -o) = "Darwin" ]]; then
-ZSH_THEME="dinge"
+# ZSH_THEME="dinge"
+ZSH_THEME="Chicago95_Dinge"
 else # LINUX
 if [[ $(uname -n) = "de-alpine" ]]; then
 ZSH_THEME="norm"

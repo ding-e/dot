@@ -6,8 +6,8 @@
 local M = {}
 
 M.tabufline = {
-   buff          = "Ғ",
-   buff_close    = "☓",
+   buff          = "F",    -- Ғ
+   buff_close    = "󰅖",    -- ☓
    buff_modified = "",
    tab_close     = "K",
    tab_add       = "+",

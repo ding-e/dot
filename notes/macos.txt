@@ -8,16 +8,17 @@ packages: [
     dash(kapeli.com/dash)
     RDM(avibrazil/RDM)
 
-    steam aseprite wacom
-    unity godot blender ldtk
-    avira, radio silence, tencent lemon
+    aseprite wacom
+    avira, radio silence
 
     discord spotify
     字由
     rustup ohmyzsh
 
     brew : [
-        kitty rectangle lulu tiled iterm2 snipaste
+        kitty rectangle lulu iterm2 snipaste steam
+        unity-hub tiled godot blender ldtk inkscape
+        trae krita github, vmware-fusion
 
         #docker(cask)
         multipass
@@ -33,9 +34,9 @@ packages: [
     ]
 
     appstore : [
-        hidden bar
+        hidden bar, runcat
         xcode
-        youdao wechat qq
+        youdao wechat qq, tencent lemon lite
         網易雲 印象筆記 即刻轉換
     ]
 

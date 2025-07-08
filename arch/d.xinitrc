@@ -57,12 +57,12 @@ fi
 #/usr/bin/prlcp &
 ##/usr/bin/ptiagent --info &
 
-exec dwm 2> /dev/null
+# exec dwm 2> /dev/null
 
 # exec startxfce4
 # exec cinnamon-session
 
-# exec i3 -V >> ~/.config/i3/log/log-$(date +'%Y%m%d-%H%M%S') 2>&1
+exec i3 -V >> ~/.config/i3/log/log-$(date +'%Y%m%d-%H%M%S') 2>&1
 # exec awesome
 
 #twm &

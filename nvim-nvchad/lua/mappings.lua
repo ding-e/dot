@@ -49,7 +49,8 @@ map("n", "Q", function()
       return
    end
 
-   local tree_isopen = require("nvim-tree.view").is_visible() == true
+   -- nvim-tree-api.tree.is_visible()
+   local tree_isopen = require("nvim-tree.api").tree.is_visible() == true
    local undo_isopen = vim.fn["undotree#UndotreeIsVisible"]() == 1
    local curr_is_tree = vim.fn.expand "%" == "NvimTree_1"
    local curr_is_undo = vim.fn.expand "%" == "undotree_2"
@@ -244,9 +245,8 @@ map("n", "<leader>sd", function()
       (buf_list_len == 0)
       or (buf_list_len == 1 and (vim.api.nvim_buf_get_name(0) == "" or vim.api.nvim_buf_line_count(0) == 1))
    then
-      require("nvchad.tabufline").close_buffer()
+      require("nvchad.tabufline").closeAllBufs(true)
    end
-   -- if buf_list_len == 0 then require("nvchad.tabufline").close_buffer() end
    require("persistence").load()
    -- require("nvim-tree").toggle(false, true)
 end, { desc = "session: 恢复当前目录的会话" })
@@ -297,11 +297,11 @@ map("t", "AA", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), 
 
 -- new terminals
 map("n", "<leader>ht", function()
-   term.new { pos = "bo sp", size = 0.3 }
+   term.new { pos = "bo sp", id = "htoggleTerm", size = 0.3 }
 end, { desc = "   新建水平終端" })
 
 map("n", "<leader>vt", function()
-   term.new { pos = "bo vsp", size = 0.3 }
+   term.new { pos = "bo vsp", id = "vtoggleTerm", size = 0.3 }
 end, { desc = "   新建垂直終端" })
 map("n", "<leader>st", function()
    vim.cmd [[ DeTerm ]]
@@ -334,32 +334,42 @@ end, { desc = "kill掉所有nimsuggest进程" })
 -- map("n", "<leader>gz", "<CMD> GodotRunFZF <CR>", {desc = "Godot-FZF查找并运行场景"})
 -- map("n", "<leader>gr", "<CMD> !godot <CR>", {desc = "Godot-运行特定场景/主场景"})
 map("n", "<leader>gr", function()
-   -- TODO...
-   -- local cmd, c, f = "", "", nil
-   -- for _, v in pairs(config.project_cmd_list) do
-   --    f = io.open(v[1], "r")
-   --    if nil ~= f then
-   --       c = f:read "*a"
-   --       f:close()
-   --       cmd = "" ~= v[2] and (nil ~= string.find(c, v[2]) and v[3] or "") or v[3]
-   --       break
-   --    end
-   -- end
-   -- if "" ~= cmd then
-   --    local nvterm = require "nvterm.terminal"
-   --    local type = config.project_term_type
-   --    local terms, last_type_term = nvterm.list_terms(), nil
-   --    for _, v in pairs(terms) do
-   --       if v.type == type then
-   --          last_type_term = v
-   --       end
-   --    end
-   --    if nil ~= last_type_term and not last_type_term.open then
-   --       nvterm.show_term(last_type_term)
-   --    end
-   --    -- nvterm.close_all_terms()
-   --    nvterm.send(cmd, type)
-   -- end
+   local cmd, c, f = "", "", nil
+   for _, v in pairs(config.project_cmd_list) do
+      f = io.open(v[1], "r")
+      if nil ~= f then
+         c = f:read "*a"
+         f:close()
+         cmd = "" ~= v[2] and (nil ~= string.find(c, v[2]) and v[3] or "") or v[3]
+         break
+      end
+   end
+   if "" ~= cmd then
+      -- term.runner({cmd = cmd, id = "floatTerm", pos = "float", clear_cmd = true})
+      -- term.runner { pos = "float", cmd = cmd, id = "floatTerm", clear_cmd = "" }
+      -- term.runner { pos = "bo vsp", cmd = cmd, id = "vtoggleTerm", clear_cmd = "", size = 0.3 }
+
+      local type = config.project_term_type
+      if type == "nvimCMD" then
+         vim.cmd('!' .. cmd)
+      else
+         term.runner { cmd = cmd, id = type, clear_cmd = "" }
+      end
+
+      -- local nvterm = require "nvterm.terminal"
+      -- local type = config.project_term_type
+      -- local terms, last_type_term = nvterm.list_terms(), nil
+      -- for _, v in pairs(terms) do
+      --    if v.type == type then
+      --       last_type_term = v
+      --    end
+      -- end
+      -- if nil ~= last_type_term and not last_type_term.open then
+      --    nvterm.show_term(last_type_term)
+      -- end
+      -- -- nvterm.close_all_terms()
+      -- nvterm.send(cmd, type)
+   end
 end, { desc = "运行游戏项目" })
 
 --  ========================

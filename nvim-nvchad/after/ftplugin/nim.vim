@@ -1,6 +1,7 @@
 setlocal comments=:##,:#,s1:#[,e:]#,fb:-
-setlocal commentstring=#%s
-setlocal formatoptions-=t formatoptions+=croql
+setlocal commentstring=#\ %s
+setlocal formatoptions-=t
+"setlocal formatoptions+=croql
 
 " setlocal expandtab
 " setlocal shiftwidth=2

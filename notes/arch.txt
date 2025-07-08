@@ -596,7 +596,7 @@ https://github.com/djpohly/dwl/wiki/Patches
     # https://archlinux.org/packages/community/x86_64/open-vm-tools/files/
     # https://github.com/archlinux/svntogit-community/tree/packages/open-vm-tools
     makepkg --syncdeps
-    makepkg --install  
+    makepkg --install
 
 
     # ERROR: PKGBUILD contains CRLF characters and cannot be sourced.
@@ -630,4 +630,19 @@ https://github.com/djpohly/dwl/wiki/Patches
     pavucontrol (GTK3最后一个版本: pavucontrol-1:5.0+r66+gc330506-1-aarch64.pkg.tar.xz)
         sudo pacman -U dot.arch/software/GTK3/pavucontrol-1:5.0+r66+gc330506-1-aarch64.pkg.tar.xz
 
+6. chromium单独使用一组gtk字体/主题配置:
+https://bbs.archlinux.org/viewtopic.php?pid=1860745#p1860745
 
+    mkdir -p ~/.config/cr1/gtk-3.0
+    # printf "[Settings]\ngtk-font-name = JetBrainsMono Nerd Font 10\n" > ~/.config/cr1/gtk-3.0/settings.ini
+    cp ~/.config/gtk-3.0/settings.ini ~/.config/cr1/gtk-3.0/
+    ln -s ~/.config/chromium ~/.config/cr1/
+    ln -s ~/.config/chromium-flags.conf ~/.config/cr1/
+
+    # XDG_CONFIG_HOME=$HOME/.config/cr1 chromium
+    vim ~/core/bin/chromium
+        ->
+            #!/bin/sh
+            XDG_CONFIG_HOME=$HOME/.config/cr1 /usr/bin/chromium "$@"
+    cd ~/core/chromium
+    chmod +x chromium

@@ -8,14 +8,14 @@ local utils = require "utils.func"
 require "configs.plugins"
 
 local plugins = {
-   -- {
-   --    "stevearc/conform.nvim",
-   --    enabled = true,
-   --    -- event = 'BufWritePre', -- uncomment for format on save
-   --    config = function()
-   --       require "configs.conform"
-   --    end,
-   -- },
+   {
+      "stevearc/conform.nvim",
+      enabled = true,
+      -- event = 'BufWritePre', -- uncomment for format on save
+      config = function()
+         require "configs.conform"
+      end,
+   },
 
    -- leader快捷键菜单
    {
@@ -47,12 +47,12 @@ local plugins = {
       dependencies = {
          -- TODO... nvchad 现在改用conform
          -- format & linting
-         {
-            "jose-elias-alvarez/null-ls.nvim",
-            config = function()
-               set_nullls()
-            end,
-         },
+         -- {
+         --    "jose-elias-alvarez/null-ls.nvim",
+         --    config = function()
+         --       set_nullls()
+         --    end,
+         -- },
       },
       config = function()
          require("nvchad.configs.lspconfig").defaults()

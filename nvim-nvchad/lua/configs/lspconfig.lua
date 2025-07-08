@@ -76,6 +76,19 @@ for _, lsp in ipairs(servers) do
 end
 -------------------------------------
 
+-- go language
+lspconfig.gopls.setup {
+   -- settings = {
+   --    gopls = {
+   --       analyses = {
+   --          unusedparams = true,
+   --       },
+   --       staticcheck = true,
+   --       gofumpt = true,
+   --    },
+   -- },
+}
+
 -- godot gdscript
 lspconfig.gdscript.setup {
    on_attach = on_attach,
